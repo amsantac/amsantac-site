@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>CUproject by amsantac</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">CUproject</h1>
+      <h2 class="project-tagline">Research activities</h2>
+      <a href="index.html" class="btn">Overview</a>
+      <a href="phase1.html" class="btn">Phase 1</a>
+      <a href="phase2.html" class="btn">Phase 2</a>
+      <a href="phase3.html" class="btn">Phase 3</a>
+    </section>
+
+    <section class="main-content">
+<h2><strong>Phase 1: Spatial dynamics and drivers of land-cover change</strong></h2>
+
+<p>The first phase of this research is the analysis of the spatial dynamic and drivers of land-cover change. The following sections are shown below:</p>
+
+<ol>
+<li><a href="#data-sources">Data sources</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+
+<h3><a id="data-sources"></a>Data sources</h3>
+
+<ul>
+<li>Landsat 5 TM, Landsat 7 ETM+ and Landsat 8 OLI/TIRS imagery from <a href="http://landsat.usgs.gov/index.php">USGS</a>.</li>
+<li><a href="http://landsat.usgs.gov/tools_wrs-2_shapefile.php">WRS-2 descending grid</a>. </li>
+</ul>
+
+<h3><a id="methods"></a>Methods</h3>
+
+<h4><em>Image selection</em></h4>
+
+<ul>
+<li>Landsat imagery was selected for <a href="www/landsat_scenes.html" target="_blank">12 scenes</a> for the time period between 2000 and 2016. One Landsat image was selected for each scene for each year, for a total of 204 Landsat scenes. Landsat 5 and Landsat 7 imagery was selected for years 2000 to 2011. Landsat 8 images were used for years 2013 to 2016.</li>
+<li>Landsat scenes with low or none cloud cover over the <a href="index.html#study-area">study area</a> were preferred. Landsat 5 and Landsat 7 SLC-on scenes were preferred over Landsat 7 SLC-off scenes. Images taken during the dry season (January-March) were preferred over images taken in other months over the year when possible.</li>
+<li>Landsat 5 and Landsat 7 imagery was selected using the <a href="http://earthexplorer.usgs.gov/">USGS EarthExplorer</a>. Landsat 8 imagery was selected using the <a href="https://libra.developmentseed.org/">Libra browser</a>. All the imagery was downloaded using the <a href="http://earthexplorer.usgs.gov/bulk">Landsat Data Bulk Download utility</a>.</li>
+<li>The <strong>complete list of the selected Landsat imagery</strong> can be seen <a href="https://docs.google.com/spreadsheets/d/1HMtOeW7eo_KRrg6BND2eItIp7VS1p0e_YWS3_YHaYEM/edit?usp=sharing" target="_blank"><strong>here</strong></a>. This list also shows cloud cover, acquisition date and progress in image processing as well as a link to each scene thumbnail.</li>
+</ul>
+
+<h4><em>Image preparation</em></h4>
+
+<ul>
+<li>Landsat bands were stacked for each image using the <a href="http://claslite.carnegiescience.edu/en/">CLASlite</a> software (<a href="#asner_etal_2009">Asner et al., 2009</a>). An <a href="https://github.com/amsantac/cuproject/blob/gh-pages/code/stackImgTable4csv.R" target="_blank">R script</a> was used to create the <a href="https://github.com/amsantac/cuproject/blob/gh-pages/other/processing/landsat/CLASliteCSVs/stack_2000_2014.csv" target="_blank">csv file</a> required for stacking the Landsat images through batch processing in CLASlite.</li>
+<li>Radiometric calibration and atmospheric correction were conducted on every Landsat image using CLASlite. CLASlite uses conversion factors (aka gains) to convert units of digital numbers into units of radiance. Then CLASlite uses the 6S radiative transfer model (<a href="#vermote_etal_1997">Vermote et al., 1997</a>) to simulate the Earth&#39;s atmospheric atmosphere in each satellite image and to covert the radiance values to surface reflectance. No masking of clouds/cloud shadows/water was conducted with CLASlite at this step. An <a href="https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R" target="_blank">R script</a> was used to create the <a href="https://github.com/amsantac/cuproject/blob/gh-pages/other/processing/landsat/CLASliteCSVs/reflectance" target="_blank">csv files</a> required for image calibration through batch processing in CLASlite.<br/></li>
+</ul>
+
+<h3><a id="results"></a>Results</h3>
+
+<ul>
+<li>In progress.</li>
+</ul>
+
+<p>Table 1</p>
+
+<iframe id="lp_t1" frameborder="0" scrolling="no" width=700 height=460 marginheight="0" marginwidth="0" src="https://docs.google.com/spreadsheets/d/1HMtOeW7eo_KRrg6BND2eItIp7VS1p0e_YWS3_YHaYEM/pubhtml?gid=1294784214&single=true"></iframe>
+
+<p>Table 2</p>
+
+<iframe id="lp_t2" frameborder="0" scrolling="no" width=700 height=400 marginheight="0" marginwidth="0" src="https://docs.google.com/spreadsheets/d/1HMtOeW7eo_KRrg6BND2eItIp7VS1p0e_YWS3_YHaYEM/pubhtml?gid=1521379850&single=true"></iframe>
+
+<p>video</p>
+
+<h3><a id="references"></a>References</h3>
+
+<ul>
+<li><a id="asner_etal_2009"></a>Asner, G.P., Knapp, D.E., Balaji, A., Paez-Acosta, G. 2009. Automated mapping of tropical deforestation and forest degradation: CLASlite. Journal of Applied Remote Sensing 3: 033543.</li>
+<li><a id="vermote_etal_1997"></a>Vermote, E.F., Tanre, D., Deuze, J.L., Herman, M., Morcrette, J.-J. 1997. Second Simulation of the Satellite Signal in the Solar Spectrum, 6S: An Overview. IEEE Transactions on Geoscience and Remote Sensing 35 (3), 675-686.</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/amsantac/cuproject">CUproject</a> is maintained by <a href="https://github.com/amsantac">amsantac</a>.</span>
+
+      </footer>
+
+    </section>
+
+  </body>
+</html>
