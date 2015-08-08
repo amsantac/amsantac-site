@@ -18,10 +18,10 @@
 		<script src="js/skel-panels.min.js"></script>
 		<script src="js/init.js"></script>
 		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-desktop.css" />
-			<link rel="stylesheet" href="{{ "css/main.css" | prepend: site.baseurl }}">
+			<link rel="stylesheet" href="{{ "/css/skel-noscript.css" | prepend: site.baseurl | prepend: site.url }}/>
+			<link rel="stylesheet" href="{{ "/css/style.css" | prepend: site.baseurl | prepend: site.url }}/>
+			<link rel="stylesheet" href="{{ "/css/style-desktop.css" | prepend: site.baseurl | prepend: site.url }}/>
+			<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl | prepend: site.url }}">
 			<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 			<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 		</noscript>
