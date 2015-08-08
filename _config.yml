@@ -9,9 +9,10 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://amsantac.co" # the base hostname & protocol for your site
 #twitter_username: jekyllrb
 github_username:  amsantac
-pages_list:       
-  Blog: '/blog'
-  Feed: '/feed.xml'
+#pages_list:       
+#  Blog: '/blog'
+#  Feed: '/feed.xml'
 
 # Build settings
 markdown: kramdown
+#markdown: rdiscount
