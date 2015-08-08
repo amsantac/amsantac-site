@@ -1,0 +1,17 @@
+# Site settings
+title: amsantac
+email: your-email@domain.com
+description: > # this means to ignore newlines until "baseurl:"
+  Awesome description of my website edited in the 
+  _config.yml file for document head meta for Google search results
+  and feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://amsantac.co" # the base hostname & protocol for your site
+#twitter_username: jekyllrb
+github_username:  amsantac
+pages_list:       
+  Blog: '/blog'
+  Feed: '/feed.xml'
+
+# Build settings
+markdown: kramdown
