@@ -29,8 +29,7 @@
 	
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
 		{
-			color: #1e6bb8;
-			/*inherit;*/
+			color: inherit;
 			text-decoration: none;
 		}
 		
@@ -50,7 +49,8 @@
 	a
 	{
 		text-decoration: underline;
-		color: #272727;
+		color: #1e6bb8;
+		/*  #272727 */
 	}
 
 	a:hover
