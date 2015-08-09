@@ -12,5 +12,6 @@ github_username:  amsantac
 #  Feed: '/feed.xml'
 
 # Build settings
-markdown: kramdown
-#markdown: rdiscount
+markdown: rdiscount
+#markdown: kramdown
+highlighter: pygment

@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Welcome!"
-date:   2015-08-11 17:02:52
+title:  "Welcome to the R-Spatialist Blog!"
+date:   2015-08-11 09:02:52
 categories: blog
 ---
-Hi there! Welcome to the R-Spatialist blog!
+Hi there! Welcome to my blog!
 
 I'll be posting about topics related to the application of programming for the processing, visualization and analysis of spatial data, especially using the [R language].
 

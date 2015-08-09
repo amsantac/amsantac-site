@@ -9,8 +9,8 @@
   
   <meta name="keywords" content="" />
 
-  <title>Welcome to the R-Spatialist Blog!</title>
-  <meta name="description" content="Hi there! Welcome to my blog!">
+  <title>Web mapping with Leaflet and R</title>
+  <meta name="description" content="Leaflet is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a Leaflet map that shows (e...">
   
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
   
@@ -28,7 +28,7 @@
 			<link rel="stylesheet" href="http://amsantac.co/css/style.css"/>
 			<link rel="stylesheet" href="http://amsantac.co/css/style-desktop.css"/>
 			<!-- <link rel="stylesheet" href="http://amsantac.co/css/main.css"> -->
-			<link rel="canonical" href="http://amsantac.co/blog/2015/08/11/first-post.html">
+			<link rel="canonical" href="http://amsantac.co/blog/leaflet/r/2015/08/11/leaflet-R.html">
 			<link rel="alternate" type="application/rss+xml" title="amsantac" href="http://amsantac.co/feed.xml" />
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
@@ -82,7 +82,7 @@
 													<div id="content" class="8u skel-cell-important">
 						<section>
 							<header>
-								<h2>Welcome to the R-Spatialist Blog!</h2>
+								<h2>Web mapping with Leaflet and R</h2>
 								
 							</header>
 							  <article class="post-content">
@@ -90,13 +90,62 @@
 
 
   <!-- <article> -->
-    <p>Hi there! Welcome to my blog!</p>
+    <p><a href="http://leafletjs.com/">Leaflet</a> is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a Leaflet map that shows (e.g., a shapefile).  Quisque erat. Vestibulum pellentesque,</p>
 
-<p>I'll be posting about topics related to the application of programming for the processing, visualization and analysis of spatial data, especially using the <a href="http://r-project.org">R language</a>.</p>
+<p>The guys from <a href="https://www.rstudio.com/">RStudio</a> have developed an R package called <a href="http://leafletjs.com/">leaflet</a> which allows controlling and integrating Leaflet maps in the R environment.</p>
 
-<p>I have been programming for 10+ years for performing different kind of tasks in fields such as geostatistics, optimization of spatial sampling networks and the processing of geographic and remotely-sensed data, among others. The application of scripting languages to automate the execution of otherwise time-consuming tasks has helped me a lot to be more efficient in a number of academic and professional activities. Through this blog I want to share what I have learned so far and what I am learning these days.</p>
+<p>First you need to install the leaflet package in R:</p>
 
-<p>Feel free to comment and give (hopefully constructive!) feedback. Hope you enjoy the reading!</p>
+<pre><code>install.packages("leaflet")
+</code></pre>
+
+<p><br></p>
+
+<pre class="prettyprint">
+install.packages("leaflet")
+class Voila {
+public:
+  // Voila
+  static const string VOILA = "Voila";
+  // will not interfere with embedded <a href="#voila2">tags</a>.
+}
+</pre>
+
+
+<h1>using the leaflet package from RStudio</h1>
+
+<p>library(raster)
+library(leaflet)
+setwd("C:/amsantac/other/temp/borrar")</p>
+
+<p>llanos &lt;- shapefile("C:/amsantac/PhD/Research/dissertation/data/shps/llanos_latlon_col_v3.shp")</p>
+
+<h2>map_llanos.html</h2>
+
+<p>leaflet(data = llanos) %>% addTiles() %>%   addPolygons(fill = FALSE, stroke = TRUE, color = "#03F") %>%
+  addLegend("bottomright", colors = "#03F", labels = "Llanos ecoregion")</p>
+
+<h2>landsat_scenes.html</h2>
+
+<p>llanos_wrs2 &lt;- shapefile("C:/amsantac/PhD/Research/dissertation/data/landsat/wrs grids/llanos_wrs2_desc.shp")</p>
+
+<p>leaflet() %>% addTiles() %>% <br/>
+  addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = "#03F", group = "Study area") %>%
+  addPolygons(data = llanos_wrs2, fill = TRUE, stroke = TRUE, color = "#f93",
+              popup = paste0("Scene: ", as.character(llanos_wrs2$PATH_ROW)), group = "Landsat scenes") %>%</p>
+
+<p>  # legend
+  addLegend("bottomright", colors = c("#03F", "#f93"), labels = c("Study area", "Landsat scenes (path - row)")) %>%</p>
+
+<p>  # layers control
+  addLayersControl(
+    overlayGroups = c("Study area", "Landsat scenes"),
+    options = layersControlOptions(collapsed = FALSE)
+  )</p>
+
+<h2>Finally export the map as html in RStudio. Click the 'Export' button and then click 'Save as Web page...'</h2>
+
+<p>You can see an example of a map created with leaflet in this <a href="http://amsantac.github.io/cuproject/www/map_llanos.html">link</a>. You can also embed</p>
 
   <!-- </article> -->
 
