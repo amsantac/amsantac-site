@@ -29,7 +29,7 @@
 	
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
 		{
-			color: #1e6bb8
+			color: #1e6bb8;
 			/*inherit;*/
 			text-decoration: none;
 		}
