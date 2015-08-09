@@ -8,4 +8,3 @@ var webFolderFullPath = location.substring(0, webFolderIndex);
 return webFolderFullPath;
 }
 var rootDir = getRootWebSitePath();
-print rootDir;
