@@ -4,10 +4,8 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
 
-/* Banner */
+/* Basic */
 
-	#banner {
-		background: url("../../images/banner.jpg");
-		background-size: cover;
-		-ms-behavior: url("css/ie/backgroundsize.min.htc");
+	body, input, select, textarea {
+		font-size: 13pt;
 	}
