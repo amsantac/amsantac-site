@@ -6,9 +6,29 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 08 Aug 2015 21:23:33 -0500</pubDate>
-    <lastBuildDate>Sat, 08 Aug 2015 21:23:33 -0500</lastBuildDate>
+    <pubDate>Sun, 09 Aug 2015 16:05:47 -0500</pubDate>
+    <lastBuildDate>Sun, 09 Aug 2015 16:05:47 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Welcome!</title>
+        <description>&lt;p&gt;Hi there! Welcome to the R-Spatialist blog!&lt;/p&gt;
+
+&lt;p&gt;I’ll be posting about topics related to the application of programming for the processing, visualization and analysis of spatial data, especially using the &lt;a href=&quot;http://r-project.org&quot;&gt;R language&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I have been programming for 10+ years for performing different kind of tasks in fields such as geostatistics, optimization of spatial sampling networks and the processing of geographic and remotely-sensed data, among others. The application of scripting languages to automate the execution of otherwise time-consuming tasks has helped me a lot to be more efficient in a number of academic and professional activities. Through this blog I want to share what I have learned so far and what I am learning these days.&lt;/p&gt;
+
+&lt;p&gt;Feel free to comment and give (hopefully constructive!) feedback. Hope you enjoy the reading!&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 11 Aug 2015 12:02:52 -0500</pubDate>
+        <link>http://amsantac.co/blog/2015/08/11/first-post.html</link>
+        <guid isPermaLink="true">http://amsantac.co/blog/2015/08/11/first-post.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Second post!</title>
