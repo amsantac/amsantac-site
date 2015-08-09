@@ -14,4 +14,4 @@ github_username:  amsantac
 # Build settings
 markdown: rdiscount
 #markdown: kramdown
-highlighter: pygment
+highlighter: pygments
