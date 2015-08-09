@@ -6,6 +6,6 @@ var applicationName = location.substring(0, applicationNameIndex) + '/';
 var webFolderIndex = location.indexOf('/', location.indexOf(applicationName) + applicationName.length);
 var webFolderFullPath = location.substring(0, webFolderIndex);
 //return webFolderFullPath;
-return location;
+return applicationNameIndex;
 }
 var rootDir = getRootWebSitePath();
