@@ -1,16 +1,16 @@
 ---
 layout: page
-title: R Spatialist
+title: The R-Spatialist Blog
 ---
 
 
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="page-heading">POSTS</h1>
   <br>
 
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="post-meta"><em>{{ post.date | date: "%b %-d, %Y" }}</em></span>
 
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

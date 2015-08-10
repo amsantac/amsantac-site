@@ -56,7 +56,8 @@
 			display: block;
 			letter-spacing: 1px;
 			text-decoration: none;
-			text-transform: uppercase;
+			text-transform: none;
+			/*text-transform: uppercase;*/
 			font-size: 5em;
 			font-weight: 900;
 			color: #FFF;
