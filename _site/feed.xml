@@ -6,66 +6,68 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 09 Aug 2015 21:33:55 -0500</pubDate>
-    <lastBuildDate>Sun, 09 Aug 2015 21:33:55 -0500</lastBuildDate>
+    <pubDate>Mon, 10 Aug 2015 10:05:27 -0500</pubDate>
+    <lastBuildDate>Mon, 10 Aug 2015 10:05:27 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>Web mapping with Leaflet and R</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://leafletjs.com/&quot;&gt;Leaflet&lt;/a&gt; is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a Leaflet map that shows (e.g., a shapefile).  Quisque erat. Vestibulum pellentesque,&lt;/p&gt;
+        <description>&lt;p&gt;&lt;a href=&quot;http://leafletjs.com/&quot;&gt;Leaflet&lt;/a&gt; is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a Leaflet map that shows (e.g., a shapefile) .  Quisque erat. Vestibulum pellentesque,&lt;/p&gt;
 
-&lt;p&gt;The guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt; have developed an R package called &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt; which allows controlling and integrating Leaflet maps in the R environment.&lt;/p&gt;
+&lt;p&gt;using an R package called &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt; developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;. The leaflet R package allows controlling and integrating Leaflet maps in the R environment.&lt;/p&gt;
 
-&lt;p&gt;First you need to install the leaflet package in R:&lt;/p&gt;
+&lt;p&gt;First we need to install the leaflet package in R entering the following command line in the R console:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;install.packages(&quot;leaflet&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;pre class=&quot;prettyprint&quot;&gt;
-install.packages(&quot;leaflet&quot;)
-class Voila {
-public:
-  // Voila
-  static const string VOILA = &quot;Voila&quot;;
-  // will not interfere with embedded &lt;a href=&quot;#voila2&quot;&gt;tags&lt;/a&gt;.
-}
-&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;install.packages(&quot;leaflet&quot;)
+&lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;using the leaflet package from RStudio&lt;/p&gt;
 
-&lt;h1&gt;using the leaflet package from RStudio&lt;/h1&gt;
-
-&lt;p&gt;library(raster)
+&lt;pre&gt;&lt;code&gt;library(raster)
 library(leaflet)
-setwd(&quot;C:/amsantac/other/temp/borrar&quot;)&lt;/p&gt;
+setwd(&quot;C:/amsantac/other/temp/borrar&quot;)
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;llanos &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/shps/llanos_latlon_col_v3.shp&quot;)&lt;/p&gt;
+&lt;p&gt;read shapefile&lt;/p&gt;
 
-&lt;h2&gt;map_llanos.html&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;llanos &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/shps/llanos_latlon_col_v3.shp&quot;)
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;leaflet(data = llanos) %&gt;% addTiles() %&gt;%   addPolygons(fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;) %&gt;%
-  addLegend(&quot;bottomright&quot;, colors = &quot;#03F&quot;, labels = &quot;Llanos ecoregion&quot;)&lt;/p&gt;
+&lt;p&gt;map_llanos.html&lt;/p&gt;
 
-&lt;h2&gt;landsat_scenes.html&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;leaflet(data = llanos) %&amp;gt;% addTiles() %&amp;gt;%   addPolygons(fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;) %&amp;gt;% 
+  addLegend(&quot;bottomright&quot;, colors = &quot;#03F&quot;, labels = &quot;Llanos ecoregion&quot;)
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;llanos_wrs2 &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/landsat/wrs grids/llanos_wrs2_desc.shp&quot;)&lt;/p&gt;
+&lt;p&gt;landsat_scenes.html&lt;/p&gt;
 
-&lt;p&gt;leaflet() %&gt;% addTiles() %&gt;% &lt;br/&gt;
-  addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;, group = &quot;Study area&quot;) %&gt;%
-  addPolygons(data = llanos_wrs2, fill = TRUE, stroke = TRUE, color = &quot;#f93&quot;,
-              popup = paste0(&quot;Scene: &quot;, as.character(llanos_wrs2$PATH_ROW)), group = &quot;Landsat scenes&quot;) %&gt;%&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;llanos_wrs2 &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/landsat/wrs grids/llanos_wrs2_desc.shp&quot;)
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;  # legend
-  addLegend(&quot;bottomright&quot;, colors = c(&quot;#03F&quot;, &quot;#f93&quot;), labels = c(&quot;Study area&quot;, &quot;Landsat scenes (path - row)&quot;)) %&gt;%&lt;/p&gt;
+&lt;p&gt;add legend and layers control&lt;/p&gt;
 
-&lt;p&gt;  # layers control
+&lt;pre&gt;&lt;code&gt;leaflet() %&amp;gt;% addTiles() %&amp;gt;%   
+  addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;, group = &quot;Study area&quot;) %&amp;gt;% 
+  addPolygons(data = llanos_wrs2, fill = TRUE, stroke = TRUE, color = &quot;#f93&quot;, 
+              popup = paste0(&quot;Scene: &quot;, as.character(llanos_wrs2$PATH_ROW)), group = &quot;Landsat scenes&quot;) %&amp;gt;% 
+
+  # legend
+  addLegend(&quot;bottomright&quot;, colors = c(&quot;#03F&quot;, &quot;#f93&quot;), labels = c(&quot;Study area&quot;, &quot;Landsat scenes (path - row)&quot;)) %&amp;gt;%   
+
+  # layers control
   addLayersControl(
     overlayGroups = c(&quot;Study area&quot;, &quot;Landsat scenes&quot;),
     options = layersControlOptions(collapsed = FALSE)
-  )&lt;/p&gt;
+  )
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2&gt;Finally export the map as html in RStudio. Click the &#39;Export&#39; button and then click &#39;Save as Web page...&#39;&lt;/h2&gt;
+&lt;p&gt;&lt;br&gt;
+Finally export the map as html in RStudio. Click the &#39;Export&#39; button and then click &#39;Save as Web page...&#39;&lt;/p&gt;
 
 &lt;p&gt;You can see an example of a map created with leaflet in this &lt;a href=&quot;http://amsantac.github.io/cuproject/www/map_llanos.html&quot;&gt;link&lt;/a&gt;. You can also embed&lt;/p&gt;
 </description>
@@ -86,15 +88,15 @@ setwd(&quot;C:/amsantac/other/temp/borrar&quot;)&lt;/p&gt;
         <title>Welcome to the R-Spatialist Blog!</title>
         <description>&lt;p&gt;Hi there! Welcome to my blog!&lt;/p&gt;
 
-&lt;p&gt;I&#39;ll be posting about topics related to the application of programming for the processing, visualization and analysis of spatial data, especially using the &lt;a href=&quot;http://r-project.org&quot;&gt;R language&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I&#39;ll be posting about topics related to the application of programming languages to the processing, visualization and analysis of spatial data, especially using the &lt;a href=&quot;http://r-project.org&quot;&gt;R language&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I have been programming for 10+ years for performing different kind of tasks in fields such as geostatistics, optimization of spatial sampling networks and the processing of geographic and remotely-sensed data, among others. The application of scripting languages to automate the execution of otherwise time-consuming tasks has helped me a lot to be more efficient in a number of academic and professional activities. Through this blog I want to share what I have learned so far and what I am learning these days.&lt;/p&gt;
 
 &lt;p&gt;Feel free to comment and give (hopefully constructive!) feedback. Hope you enjoy the reading!&lt;/p&gt;
 </description>
-        <pubDate>Tue, 11 Aug 2015 04:02:52 -0500</pubDate>
-        <link>http://amsantac.co/blog/2015/08/11/first-post.html</link>
-        <guid isPermaLink="true">http://amsantac.co/blog/2015/08/11/first-post.html</guid>
+        <pubDate>Sun, 09 Aug 2015 04:02:52 -0500</pubDate>
+        <link>http://amsantac.co/blog/2015/08/09/first-post.html</link>
+        <guid isPermaLink="true">http://amsantac.co/blog/2015/08/09/first-post.html</guid>
         
         
         <category>blog</category>
@@ -113,6 +115,8 @@ end
 print_hi(&#39;Tom&#39;)
 #=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;script src=&quot;https://gist.github.com/amsantac/2edfa9e582805178e4a9.js&quot;&gt;&lt;/script&gt;
 
@@ -138,11 +142,11 @@ print_hi(&#39;Tom&#39;)
 
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;def print_hi(name)
-  puts &amp;quot;Hi, #{name}&amp;quot;
-end
-print_hi(&amp;#39;Tom&amp;#39;)
-#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
