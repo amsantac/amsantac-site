@@ -68,6 +68,11 @@
     background-color: #fdfdfd;
     border-color: #ff0000;
   }
+  
+  code
+	{
+    border-color: #d1d1d1;
+  }
 	
 	sub
 	{
