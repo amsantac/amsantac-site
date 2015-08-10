@@ -1,7 +1,7 @@
 /* Pretty printing styles. Used with prettify.js. */
 
 pre, code {
-    background-color: #ff0000;
+    background-color: #f5f5f5;
     /*#f5f5f5;*/
     border-color: #ff0000;
 }
