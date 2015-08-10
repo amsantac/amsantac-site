@@ -6,8 +6,8 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 10 Aug 2015 15:55:51 -0500</pubDate>
-    <lastBuildDate>Mon, 10 Aug 2015 15:55:51 -0500</lastBuildDate>
+    <pubDate>Mon, 10 Aug 2015 16:04:27 -0500</pubDate>
+    <lastBuildDate>Mon, 10 Aug 2015 16:04:27 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -79,7 +79,7 @@ Finally export the map as an html page. In the &#39;Viewer&#39; tab in RStudio, 
 &lt;p&gt;Once uploaded, you can also embed your map in another web page inserting a code snippet like the one below wherever you want to display it:&lt;/p&gt;
 
 &lt;div font style=&quot;BACKGROUND-COLOR:#f5f5f5;line-height:0.8&quot;&gt;
-&lt;xmp font style=&quot;border:1px solid;border-color:#888888;black;border-radius:3px;padding: 0em 0 0.3em 0.3em&quot;&gt;
+&lt;xmp font style=&quot;border:1px solid;border-color:#d1d1d1;black;border-radius:3px;padding: 0em 0 0.3em 0.3em&quot;&gt;
 &lt;iframe id=&quot;map_id&quot; width=700 height=500 src=&quot;http://mywebsite.com/my_map.html&quot;&gt;&lt;/iframe&gt;
 &lt;/xmp&gt;
 &lt;/font&gt;&lt;/div&gt;
