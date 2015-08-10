@@ -14,8 +14,7 @@ pre code {
 
 /* SPAN elements with the classes below are added by prettyprint. */
 .pln {
-    color: #ff0000
-    /*#000*/
+    color: #000
 }
 
 /* plain text */
@@ -118,6 +117,14 @@ pre code {
     .atv {
         color: #060;
     }
+}
+
+/* copiado siguiente codigo de prettify.css de la web */
+/* https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css*/
+/* porque esta reemplazando color de borde definido en el prettify.css local*/
+pre.prettyprint{
+  padding:2px;
+  border:1px solid #d1d1d1
 }
 
 /* Specify class=linenums on a pre to get line numbering */
