@@ -6,15 +6,15 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 10 Aug 2015 12:58:35 -0500</pubDate>
-    <lastBuildDate>Mon, 10 Aug 2015 12:58:35 -0500</lastBuildDate>
+    <pubDate>Mon, 10 Aug 2015 15:39:03 -0500</pubDate>
+    <lastBuildDate>Mon, 10 Aug 2015 15:39:03 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>Web mapping with Leaflet and R</title>
         <description>&lt;p&gt;&lt;a href=&quot;http://leafletjs.com/&quot;&gt;Leaflet&lt;/a&gt; is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a Leaflet map that shows (e.g., a shapefile) .  Quisque erat. Vestibulum pellentesque,&lt;/p&gt;
 
-&lt;p&gt;using an R package called &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt; developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;. The leaflet R package allows controlling and integrating Leaflet maps in the R environment.&lt;/p&gt;
+&lt;p&gt;using an R package called &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt; developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;. The leaflet R package allows controlling and integrating Leaflet maps in the R environment. I recommend to use the &lt;a href=&quot;https://www.rstudio.com/products/rstudio/&quot;&gt;RStudio IDE&lt;/a&gt; for the purpose of this tutorial.&lt;/p&gt;
 
 &lt;p&gt;First we need to install the leaflet package in R entering the following command line in the R console:&lt;/p&gt;
 
@@ -28,17 +28,16 @@ fefafa&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-using the leaflet package from RStudio&lt;/p&gt;
+Now we load the two packages:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;library(raster)
 library(leaflet)
-setwd(&quot;C:/amsantac/other/temp/borrar&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-read shapefile&lt;/p&gt;
+The next step is to read in R the maps we want to display in our web map. For this example I am going to use a polygon shapefile enclosing the study area of one of my projects. The projection of this map is defined in geographic coordinates (latitude/longitude). Let&#39;s use the &lt;code&gt;shapefile&lt;/code&gt; function from the raster package:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;llanos &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/shps/llanos_latlon_col_v3.shp&quot;)
+&lt;pre&gt;&lt;code&gt;llanos &amp;lt;- shapefile(&quot;C:/my_dir/llanos.shp&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
@@ -49,7 +48,11 @@ map_llanos.html&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-landsat_scenes.html&lt;/p&gt;
+If you are working in RStudio, you should see your map displayed in the &#39;Viewer&#39; tab:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015-08-11-leaflet-R-fig-1.png&quot; alt=&quot;Web map with leaflet&quot; style=&quot;width:785px&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Leaflet display [OpenStreetMap] tiles by default but you can use any map provider (e.g., &lt;a href=&quot;http://www.mapquest.com/&quot;&gt;MapQuest Open&lt;/a&gt;, &lt;a href=&quot;https://www.mapbox.com/&quot;&gt;MapBox&lt;/a&gt;, &lt;a href=&quot;http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx&quot;&gt;Bing Maps&lt;/a&gt;, etc.) as long as you conform to its terms of use&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;llanos_wrs2 &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/landsat/wrs grids/llanos_wrs2_desc.shp&quot;)
 &lt;/code&gt;&lt;/pre&gt;
@@ -61,11 +64,9 @@ add legend and layers control&lt;/p&gt;
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;, group = &quot;Study area&quot;) %&amp;gt;% 
   addPolygons(data = llanos_wrs2, fill = TRUE, stroke = TRUE, color = &quot;#f93&quot;, 
               popup = paste0(&quot;Scene: &quot;, as.character(llanos_wrs2$PATH_ROW)), group = &quot;Landsat scenes&quot;) %&amp;gt;% 
-
-  # legend
+  # add a legend
   addLegend(&quot;bottomright&quot;, colors = c(&quot;#03F&quot;, &quot;#f93&quot;), labels = c(&quot;Study area&quot;, &quot;Landsat scenes (path - row)&quot;)) %&amp;gt;%   
-
-  # layers control
+  # add layers controls
   addLayersControl(
     overlayGroups = c(&quot;Study area&quot;, &quot;Landsat scenes&quot;),
     options = layersControlOptions(collapsed = FALSE)
@@ -73,27 +74,28 @@ add legend and layers control&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-Finally export the map as html in RStudio. Click the &#39;Export&#39; button and then click &#39;Save as Web page...&#39;. Then you just need to upload your output html page to your website to make your map available online. You can see an example of a map created with leaflet in this &lt;a href=&quot;http://amsantac.github.io/cuproject/www/map_llanos.html&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
+Finally export the map as an html page. In the &#39;Viewer&#39; tab in RStudio, click the &#39;Export&#39; button and then click &#39;Save as Web page...&#39;. Then you just need to upload your output html page to your website to make your map available online. You can see an example of a map created with leaflet in this &lt;a href=&quot;http://amsantac.github.io/cuproject/www/map_llanos.html&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Once uploaded, you can also embed the output html in another html page inserting a code snippet like this wherever you want to display it:&lt;/p&gt;
+&lt;p&gt;Once uploaded, you can also embed your map in another web page inserting a code snippet like the one below wherever you want to display it:&lt;/p&gt;
 
-&lt;div font style=&quot;BACKGROUND-COLOR:#f5f5f5;line-height:1&quot;&gt;
+&lt;div font style=&quot;BACKGROUND-COLOR:#f5f5f5;line-height:0.8&quot;&gt;
 &lt;xmp font style=&quot;border:1px solid;border-color:#888888;black;border-radius:3px;padding: 0em 0 0.3em 0.3em&quot;&gt;
 &lt;iframe id=&quot;map_id&quot; width=700 height=500 src=&quot;http://mywebsite.com/my_map.html&quot;&gt;&lt;/iframe&gt;
 &lt;/xmp&gt;
 &lt;/font&gt;&lt;/div&gt;
 
 
-&lt;p&gt;And there it is! You got a pretty web map:&lt;/p&gt;
+&lt;p&gt;Now you have a fancy web map with a legend, controls and pop-ups:&lt;/p&gt;
 
 &lt;iframe id=&quot;map_llanos_emb&quot; width=785 height=500 src=&quot;http://amsantac.github.io/cuproject/www/landsat_scenes.html&quot;&gt;&lt;/iframe&gt;
 
 
-
+&lt;p&gt;&lt;br&gt;
+That&#39;s it. Congratulations!&lt;/p&gt;
 </description>
         <pubDate>Tue, 11 Aug 2015 06:02:52 -0500</pubDate>
-        <link>http://amsantac.co/blog/leaflet/r/2015/08/11/leaflet-R.html</link>
-        <guid isPermaLink="true">http://amsantac.co/blog/leaflet/r/2015/08/11/leaflet-R.html</guid>
+        <link>http://amsantac.co/blog/leaflet/r/webmapping/2015/08/11/leaflet-R.html</link>
+        <guid isPermaLink="true">http://amsantac.co/blog/leaflet/r/webmapping/2015/08/11/leaflet-R.html</guid>
         
         
         <category>blog</category>
@@ -101,6 +103,8 @@ Finally export the map as html in RStudio. Click the &#39;Export&#39; button and
         <category>leaflet</category>
         
         <category>r</category>
+        
+        <category>webmapping</category>
         
       </item>
     
