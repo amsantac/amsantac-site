@@ -100,35 +100,41 @@
 <pre><code>install.packages("leaflet")
 </code></pre>
 
-<p><br></p>
+<p><br>
+fefafa</p>
 
 <pre><code>install.packages("leaflet")
 </code></pre>
 
-<p>using the leaflet package from RStudio</p>
+<p><br>
+using the leaflet package from RStudio</p>
 
 <pre><code>library(raster)
 library(leaflet)
 setwd("C:/amsantac/other/temp/borrar")
 </code></pre>
 
-<p>read shapefile</p>
+<p><br>
+read shapefile</p>
 
 <pre><code>llanos &lt;- shapefile("C:/amsantac/PhD/Research/dissertation/data/shps/llanos_latlon_col_v3.shp")
 </code></pre>
 
-<p>map_llanos.html</p>
+<p><br>
+map_llanos.html</p>
 
 <pre><code>leaflet(data = llanos) %&gt;% addTiles() %&gt;%   addPolygons(fill = FALSE, stroke = TRUE, color = "#03F") %&gt;% 
   addLegend("bottomright", colors = "#03F", labels = "Llanos ecoregion")
 </code></pre>
 
-<p>landsat_scenes.html</p>
+<p><br>
+landsat_scenes.html</p>
 
 <pre><code>llanos_wrs2 &lt;- shapefile("C:/amsantac/PhD/Research/dissertation/data/landsat/wrs grids/llanos_wrs2_desc.shp")
 </code></pre>
 
-<p>add legend and layers control</p>
+<p><br>
+add legend and layers control</p>
 
 <pre><code>leaflet() %&gt;% addTiles() %&gt;%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = "#03F", group = "Study area") %&gt;% 
@@ -146,13 +152,31 @@ setwd("C:/amsantac/other/temp/borrar")
 </code></pre>
 
 <p><br>
-Finally export the map as html in RStudio. Click the 'Export' button and then click 'Save as Web page...'</p>
+Finally export the map as html in RStudio. Click the 'Export' button and then click 'Save as Web page...'. Then you just need to upload your output html page to your website to make your map available online. You can see an example of a map created with leaflet in this <a href="http://amsantac.github.io/cuproject/www/map_llanos.html">link</a>.</p>
 
-<p>You can see an example of a map created with leaflet in this <a href="http://amsantac.github.io/cuproject/www/map_llanos.html">link</a>. You can also embed</p>
+<p>Once uploaded, you can also embed the output html in another html page inserting a code snippet like this wherever you want to display it:</p>
+
+<div font style="BACKGROUND-COLOR:#f5f5f5;line-height:1">
+<xmp font style="border:1px solid;border-color:#888888;black;border-radius:3px;padding: 0em 0 0.3em 0.3em">
+<iframe id="map_id" width=700 height=500 src="http://mywebsite.com/my_map.html"></iframe>
+</xmp>
+</font></div>
+
+
+<p>And there it is! You got a pretty web map:</p>
+
+<iframe id="map_llanos_emb" width=785 height=500 src="http://amsantac.github.io/cuproject/www/landsat_scenes.html"></iframe>
+
+
+
 
   <!-- </article> -->
 
   <br>
+  <br>
+  <p class="rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a></p>
+  <br>
+
 <!--  <h2>Comments Section</h2> -->
 
     <div id="disqus_thread"></div>

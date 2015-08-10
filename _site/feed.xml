@@ -6,8 +6,8 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 10 Aug 2015 10:33:35 -0500</pubDate>
-    <lastBuildDate>Mon, 10 Aug 2015 10:33:35 -0500</lastBuildDate>
+    <pubDate>Mon, 10 Aug 2015 12:58:35 -0500</pubDate>
+    <lastBuildDate>Mon, 10 Aug 2015 12:58:35 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -21,35 +21,41 @@
 &lt;pre&gt;&lt;code&gt;install.packages(&quot;leaflet&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+fefafa&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;install.packages(&quot;leaflet&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;using the leaflet package from RStudio&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+using the leaflet package from RStudio&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;library(raster)
 library(leaflet)
 setwd(&quot;C:/amsantac/other/temp/borrar&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;read shapefile&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+read shapefile&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;llanos &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/shps/llanos_latlon_col_v3.shp&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;map_llanos.html&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+map_llanos.html&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;leaflet(data = llanos) %&amp;gt;% addTiles() %&amp;gt;%   addPolygons(fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;) %&amp;gt;% 
   addLegend(&quot;bottomright&quot;, colors = &quot;#03F&quot;, labels = &quot;Llanos ecoregion&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;landsat_scenes.html&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+landsat_scenes.html&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;llanos_wrs2 &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/landsat/wrs grids/llanos_wrs2_desc.shp&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;add legend and layers control&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+add legend and layers control&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;leaflet() %&amp;gt;% addTiles() %&amp;gt;%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;, group = &quot;Study area&quot;) %&amp;gt;% 
@@ -67,9 +73,23 @@ setwd(&quot;C:/amsantac/other/temp/borrar&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-Finally export the map as html in RStudio. Click the &#39;Export&#39; button and then click &#39;Save as Web page...&#39;&lt;/p&gt;
+Finally export the map as html in RStudio. Click the &#39;Export&#39; button and then click &#39;Save as Web page...&#39;. Then you just need to upload your output html page to your website to make your map available online. You can see an example of a map created with leaflet in this &lt;a href=&quot;http://amsantac.github.io/cuproject/www/map_llanos.html&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;You can see an example of a map created with leaflet in this &lt;a href=&quot;http://amsantac.github.io/cuproject/www/map_llanos.html&quot;&gt;link&lt;/a&gt;. You can also embed&lt;/p&gt;
+&lt;p&gt;Once uploaded, you can also embed the output html in another html page inserting a code snippet like this wherever you want to display it:&lt;/p&gt;
+
+&lt;div font style=&quot;BACKGROUND-COLOR:#f5f5f5;line-height:1&quot;&gt;
+&lt;xmp font style=&quot;border:1px solid;border-color:#888888;black;border-radius:3px;padding: 0em 0 0.3em 0.3em&quot;&gt;
+&lt;iframe id=&quot;map_id&quot; width=700 height=500 src=&quot;http://mywebsite.com/my_map.html&quot;&gt;&lt;/iframe&gt;
+&lt;/xmp&gt;
+&lt;/font&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And there it is! You got a pretty web map:&lt;/p&gt;
+
+&lt;iframe id=&quot;map_llanos_emb&quot; width=785 height=500 src=&quot;http://amsantac.github.io/cuproject/www/landsat_scenes.html&quot;&gt;&lt;/iframe&gt;
+
+
+
 </description>
         <pubDate>Tue, 11 Aug 2015 06:02:52 -0500</pubDate>
         <link>http://amsantac.co/blog/leaflet/r/2015/08/11/leaflet-R.html</link>
