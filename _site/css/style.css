@@ -23,7 +23,7 @@
 
 	h1,h2,h3,h4,h5,h6
 	{
-		text-transform: uppercase;
+		/*text-transform: uppercase;*/
 		font-weight: bold;
 	}
 	
@@ -48,14 +48,16 @@
 	/* Don't forget to set this to something that matches the design */
 	a
 	{
-		text-decoration: underline;
+		text-decoration: none;
+		/*text-decoration: underline;*/
 		color: #1e6bb8;
 		/*  #272727 */
 	}
 
 	a:hover
 	{
-		text-decoration: none;
+		text-decoration: underline;
+		/*text-decoration: none;*/
 	}
 	
 	sub
