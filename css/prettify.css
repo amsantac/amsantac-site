@@ -8,7 +8,7 @@ pre, code {
 
 pre code {
     background-color: transparent;
-    border-color: transparent;
+    border-color: #d1d1d1;
 }
 
 /* SPAN elements with the classes below are added by prettyprint. */
