@@ -45,7 +45,7 @@
   ga('send', 'pageview');
 
   </script>
-
+ <link rel="shortcut icon" href="/favicon.ico">
 </head>
 
 
@@ -110,7 +110,7 @@ fefafa</p>
 Now we load the two packages:</p>
 
 <pre><code>library(raster)
-library(leaflet)
+ library(leaflet)
 </code></pre>
 
 <p><br>
@@ -131,7 +131,7 @@ If you are working in RStudio, you should see your map displayed in the 'Viewer'
 
 <p><img src="/images/2015-08-11-leaflet-R-fig-1.png" alt="Web map with leaflet" style="width:785px"></p>
 
-<p>Leaflet display [OpenStreetMap] tiles by default but you can use any map provider (e.g., <a href="http://www.mapquest.com/">MapQuest Open</a>, <a href="https://www.mapbox.com/">MapBox</a>, <a href="http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx">Bing Maps</a>, etc.) as long as you conform to its terms of use</p>
+<p>Leaflet displays <a href="http://www.openstreetmap.org/">OpenStreetMap</a> tiles by default but you can use any map provider (e.g., <a href="http://www.mapquest.com/">MapQuest Open</a>, <a href="https://www.mapbox.com/">MapBox</a>, <a href="http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx">Bing Maps</a>, etc.) as long as you conform to its terms of use.</p>
 
 <pre><code>llanos_wrs2 &lt;- shapefile("C:/amsantac/PhD/Research/dissertation/data/landsat/wrs grids/llanos_wrs2_desc.shp")
 </code></pre>
@@ -164,7 +164,7 @@ Finally export the map as an html page. In the 'Viewer' tab in RStudio, click th
 </font></div>
 
 
-<p>Now you have a fancy web map with a legend, controls and pop-ups:</p>
+<p>Now you have a fancy web map with legend, layers controls and pop-ups:</p>
 
 <iframe id="map_llanos_emb" width=785 height=500 src="http://amsantac.github.io/cuproject/www/landsat_scenes.html"></iframe>
 

@@ -6,8 +6,8 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 10 Aug 2015 18:29:08 -0500</pubDate>
-    <lastBuildDate>Mon, 10 Aug 2015 18:29:08 -0500</lastBuildDate>
+    <pubDate>Mon, 10 Aug 2015 19:44:36 -0500</pubDate>
+    <lastBuildDate>Mon, 10 Aug 2015 19:44:36 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -31,7 +31,7 @@ fefafa&lt;/p&gt;
 Now we load the two packages:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;library(raster)
-library(leaflet)
+ library(leaflet)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
@@ -52,7 +52,7 @@ If you are working in RStudio, you should see your map displayed in the &#39;Vie
 
 &lt;p&gt;&lt;img src=&quot;/images/2015-08-11-leaflet-R-fig-1.png&quot; alt=&quot;Web map with leaflet&quot; style=&quot;width:785px&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;Leaflet display [OpenStreetMap] tiles by default but you can use any map provider (e.g., &lt;a href=&quot;http://www.mapquest.com/&quot;&gt;MapQuest Open&lt;/a&gt;, &lt;a href=&quot;https://www.mapbox.com/&quot;&gt;MapBox&lt;/a&gt;, &lt;a href=&quot;http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx&quot;&gt;Bing Maps&lt;/a&gt;, etc.) as long as you conform to its terms of use&lt;/p&gt;
+&lt;p&gt;Leaflet displays &lt;a href=&quot;http://www.openstreetmap.org/&quot;&gt;OpenStreetMap&lt;/a&gt; tiles by default but you can use any map provider (e.g., &lt;a href=&quot;http://www.mapquest.com/&quot;&gt;MapQuest Open&lt;/a&gt;, &lt;a href=&quot;https://www.mapbox.com/&quot;&gt;MapBox&lt;/a&gt;, &lt;a href=&quot;http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx&quot;&gt;Bing Maps&lt;/a&gt;, etc.) as long as you conform to its terms of use.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;llanos_wrs2 &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/landsat/wrs grids/llanos_wrs2_desc.shp&quot;)
 &lt;/code&gt;&lt;/pre&gt;
@@ -85,7 +85,7 @@ Finally export the map as an html page. In the &#39;Viewer&#39; tab in RStudio, 
 &lt;/font&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now you have a fancy web map with a legend, controls and pop-ups:&lt;/p&gt;
+&lt;p&gt;Now you have a fancy web map with legend, layers controls and pop-ups:&lt;/p&gt;
 
 &lt;iframe id=&quot;map_llanos_emb&quot; width=785 height=500 src=&quot;http://amsantac.github.io/cuproject/www/landsat_scenes.html&quot;&gt;&lt;/iframe&gt;
 
@@ -124,65 +124,6 @@ That&#39;s it. Congratulations!&lt;/p&gt;
         
         
         <category>blog</category>
-        
-      </item>
-    
-      <item>
-        <title>Second post!</title>
-        <description>&lt;p&gt;This is the second post!&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def print_hi(name)
-  puts &quot;Hi, #{name}&quot;
-end
-print_hi(&#39;Tom&#39;)
-#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/amsantac/2edfa9e582805178e4a9.js&quot;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 07 Aug 2015 12:02:52 -0500</pubDate>
-        <link>http://amsantac.co/jekyll/update/2015/08/07/second-post.html</link>
-        <guid isPermaLink="true">http://amsantac.co/jekyll/update/2015/08/07/second-post.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You will find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 07 Aug 2015 10:20:52 -0500</pubDate>
-        <link>http://amsantac.co/jekyll/update/2015/08/07/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://amsantac.co/jekyll/update/2015/08/07/welcome-to-jekyll.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
         
       </item>
     
