@@ -6,8 +6,8 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Aug 2015 18:43:12 -0500</pubDate>
-    <lastBuildDate>Tue, 11 Aug 2015 18:43:12 -0500</lastBuildDate>
+    <pubDate>Tue, 11 Aug 2015 18:53:07 -0500</pubDate>
+    <lastBuildDate>Tue, 11 Aug 2015 18:53:07 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -80,7 +80,7 @@ As before, we create the Leaflet map widget, add the OSM tiles and add the polyg
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-Finally export the map as an html page. In the &#39;Viewer&#39; tab in RStudio, click the &#39;Export&#39; button and then click &#39;Save as Web page...&#39;. Then you just need to upload your output html page to your website to make your map available online. You can see an example of a map created with leaflet in this &lt;a href=&quot;http://amsantac.github.io/cuproject/www/map_llanos.html&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
+Finally export the map as an html page. In the &#39;Viewer&#39; tab in RStudio, click the &#39;Export&#39; button and then click &#39;Save as Web page...&#39;. Then you just need to upload your output html page to your website to make your map available online. You can see an example of a map created with leaflet in this &lt;a href=&quot;http://amsantac.github.io/cuproject/www/landsat_scenes.html&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Once uploaded, you can also embed your map in another web page inserting a code snippet like the one below wherever you want to display it:&lt;/p&gt;
 
