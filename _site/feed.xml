@@ -6,15 +6,17 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 10 Aug 2015 20:03:34 -0500</pubDate>
-    <lastBuildDate>Mon, 10 Aug 2015 20:03:34 -0500</lastBuildDate>
+    <pubDate>Tue, 11 Aug 2015 10:45:16 -0500</pubDate>
+    <lastBuildDate>Tue, 11 Aug 2015 10:45:16 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>Web mapping with Leaflet and R</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://leafletjs.com/&quot;&gt;Leaflet&lt;/a&gt; is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a Leaflet map that shows (e.g., a shapefile) .  Quisque erat. Vestibulum pellentesque,&lt;/p&gt;
+        <description>&lt;p&gt;&lt;a href=&quot;https://rstudio.github.io/leaflet/&quot;&gt;Leaflet&lt;/a&gt; is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a web map using Leaflet in the &lt;a href=&quot;http://r-project.org&quot;&gt;R environment&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;using an R package called &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt; developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;. The leaflet R package allows controlling and integrating Leaflet maps in the R environment. I recommend to use the &lt;a href=&quot;https://www.rstudio.com/products/rstudio/&quot;&gt;RStudio IDE&lt;/a&gt; for the purpose of this tutorial.&lt;/p&gt;
+&lt;p&gt;There are different ways to create a map using the Leaflet JS library. One way is to include the Leaflet JS and CSS files in the head of a web page and then set up the map in the body of the html page, as shown in the &lt;a href=&quot;http://leafletjs.com/examples/quick-start.html&quot;&gt;Leaflet Quick Start Guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;An alternative way is to create the web map in the R environment using an R package called &lt;a href=&quot;https://rstudio.github.io/leaflet/&quot;&gt;leaflet&lt;/a&gt;, developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;, which allows controlling and integrating Leaflet maps in R. Here I&#39;ll show how to read a vector map in &lt;a href=&quot;https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm&quot;&gt;shapefile&lt;/a&gt; format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, layer controls and pop-ups for displaying attribute data. I recommend to use the &lt;a href=&quot;https://www.rstudio.com/products/rstudio/&quot;&gt;RStudio IDE&lt;/a&gt; for the purpose of this tutorial.&lt;/p&gt;
 
 &lt;p&gt;First we need to install the leaflet package in R entering the following command line in the R console:&lt;/p&gt;
 
@@ -22,28 +24,28 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-fefafa&lt;/p&gt;
+The next step is to read in R the maps we want to display in our web map. For reading a shapefile, there are a number of functions included in different R packages (see &lt;a href=&quot;https://cran.r-project.org/package=rgdal&quot;&gt;rgdal&lt;/a&gt;, &lt;a href=&quot;https://cran.r-project.org/package=maptools&quot;&gt;maptools&lt;/a&gt;, &lt;a href=&quot;https://cran.r-project.org/package=shapefiles&quot;&gt;shapefiles&lt;/a&gt;, and &lt;a href=&quot;http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment&quot;&gt;others&lt;/a&gt;). I&#39;m going to use the &lt;a href=&quot;https://cran.r-project.org/package=raster&quot;&gt;raster&lt;/a&gt; package, so we need to install it first:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;install.packages(&quot;leaflet&quot;)
+&lt;pre&gt;&lt;code&gt;install.packages(&quot;raster&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-Now we load the two packages:&lt;/p&gt;
+Now let&#39;s load the two packages:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;library(raster)
  library(leaflet)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-The next step is to read in R the maps we want to display in our web map. For this example I am going to use a polygon shapefile enclosing the study area of one of my projects. The projection of this map is defined in geographic coordinates (latitude/longitude). Let&#39;s use the &lt;code&gt;shapefile&lt;/code&gt; function from the raster package:&lt;/p&gt;
+For this example I am going to import in R a polygon shapefile enclosing the study area of one of my projects. The projection of this map is defined in geographic coordinates (latitude/longitude). Let&#39;s use the &lt;code&gt;shapefile&lt;/code&gt; function from the raster package to read the file:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;llanos &amp;lt;- shapefile(&quot;C:/my_dir/llanos.shp&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-map_llanos.html&lt;/p&gt;
+In this case the file has been read in R as an &lt;a href=&quot;http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame&quot;&gt;SpatialPolygonsDataFrame&lt;/a&gt; object called &lt;em&gt;llanos&lt;/em&gt;. Now we are going to create the leaflet map. We can do that in just one line of code concatenating several commands with the forward pipe operator &lt;code&gt;%&amp;gt;%&lt;/code&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;leaflet(data = llanos) %&amp;gt;% addTiles() %&amp;gt;%   addPolygons(fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;) %&amp;gt;% 
+&lt;pre&gt;&lt;code&gt;leaflet(data = llanos) %&amp;gt;% addTiles() %&amp;gt;% addPolygons(fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;) %&amp;gt;% 
   addLegend(&quot;bottomright&quot;, colors = &quot;#03F&quot;, labels = &quot;Llanos ecoregion&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -52,7 +54,7 @@ If you are working in RStudio, you should see your map displayed in the &#39;Vie
 
 &lt;p&gt;&lt;img src=&quot;/images/2015-08-11-leaflet-R-fig-1.png&quot; alt=&quot;Web map with leaflet&quot; style=&quot;width:785px&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;Leaflet displays &lt;a href=&quot;http://www.openstreetmap.org/&quot;&gt;OpenStreetMap&lt;/a&gt; tiles by default but you can use any map provider (e.g., &lt;a href=&quot;http://www.mapquest.com/&quot;&gt;MapQuest Open&lt;/a&gt;, &lt;a href=&quot;https://www.mapbox.com/&quot;&gt;MapBox&lt;/a&gt;, &lt;a href=&quot;http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx&quot;&gt;Bing Maps&lt;/a&gt;, etc.) as long as you conform to its terms of use.&lt;/p&gt;
+&lt;p&gt;Leaflet displays &lt;a href=&quot;http://www.openstreetmap.org/&quot;&gt;OpenStreetMap&lt;/a&gt; tiles by default but you can use any map provider (e.g., &lt;a href=&quot;http://www.mapquest.com/&quot;&gt;MapQuest Open&lt;/a&gt;, &lt;a href=&quot;https://www.mapbox.com/&quot;&gt;MapBox&lt;/a&gt;, &lt;a href=&quot;http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx&quot;&gt;Bing Maps&lt;/a&gt;, etc.) as long as you conform to its terms of use. You can see the help page for the &lt;code&gt;addTiles&lt;/code&gt; function in R for this purpose entering &lt;code&gt;?addTiles&lt;/code&gt; in the R console.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;llanos_wrs2 &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/landsat/wrs grids/llanos_wrs2_desc.shp&quot;)
 &lt;/code&gt;&lt;/pre&gt;
@@ -94,15 +96,15 @@ Finally export the map as an html page. In the &#39;Viewer&#39; tab in RStudio, 
 That&#39;s it. Congratulations!&lt;/p&gt;
 </description>
         <pubDate>Tue, 11 Aug 2015 06:02:52 -0500</pubDate>
-        <link>http://amsantac.co/blog/leaflet/r/webmapping/2015/08/11/leaflet-R.html</link>
-        <guid isPermaLink="true">http://amsantac.co/blog/leaflet/r/webmapping/2015/08/11/leaflet-R.html</guid>
+        <link>http://amsantac.co/blog/r/leaflet/webmapping/2015/08/11/leaflet-R.html</link>
+        <guid isPermaLink="true">http://amsantac.co/blog/r/leaflet/webmapping/2015/08/11/leaflet-R.html</guid>
         
         
         <category>blog</category>
         
-        <category>leaflet</category>
-        
         <category>r</category>
+        
+        <category>leaflet</category>
         
         <category>webmapping</category>
         
