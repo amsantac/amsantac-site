@@ -6,8 +6,8 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Aug 2015 18:10:11 -0500</pubDate>
-    <lastBuildDate>Tue, 11 Aug 2015 18:10:11 -0500</lastBuildDate>
+    <pubDate>Tue, 11 Aug 2015 18:43:12 -0500</pubDate>
+    <lastBuildDate>Tue, 11 Aug 2015 18:43:12 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -16,7 +16,7 @@
 
 &lt;p&gt;There are different ways to create a map using the Leaflet JS library. One way is to include the Leaflet JS and CSS files in the head of a web page and then set up the map in the body of the html page, as shown in the &lt;a href=&quot;http://leafletjs.com/examples/quick-start.html&quot;&gt;Leaflet Quick Start Guide&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;An alternative way is to create the web map in the R environment using an R package called &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt;, developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;, which allows controlling and integrating Leaflet maps in R. Here I&#39;ll show how to read a vector map in &lt;a href=&quot;https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm&quot;&gt;shapefile&lt;/a&gt; format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, layer controls and popups for displaying attribute data. I recommend to use the &lt;a href=&quot;https://www.rstudio.com/products/rstudio/&quot;&gt;RStudio IDE&lt;/a&gt; for the purpose of this tutorial.&lt;/p&gt;
+&lt;p&gt;An alternative way is to create the web map in the R environment using an R package called &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt;, developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;, which allows controlling and integrating Leaflet maps in R. Here I&#39;ll show how to read a vector map in &lt;a href=&quot;https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm&quot;&gt;shapefile&lt;/a&gt; format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, a layers control and popups for displaying attribute data. I recommend to use the &lt;a href=&quot;https://www.rstudio.com/products/rstudio/&quot;&gt;RStudio IDE&lt;/a&gt; for the purpose of this tutorial.&lt;/p&gt;
 
 &lt;p&gt;First we need to install the leaflet package in R entering the following command line in the R console:&lt;/p&gt;
 
@@ -62,10 +62,9 @@ The &lt;code&gt;fill&lt;/code&gt;, &lt;code&gt;stroke&lt;/code&gt; and &lt;code&
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define &quot;Study area&quot; as the group for the &lt;code&gt;llanos&lt;/code&gt; layer, and the &quot;Landsat scenes&quot; group for the &lt;code&gt;wrs2&lt;/code&gt; layer. For popups, the &lt;code&gt;popup&lt;/code&gt; argument in the &lt;code&gt;addPolygons&lt;/code&gt; function is used to display attribute data from the vector map. In this case, I am using a column called &#39;PATH_ROW&#39; that indicates the path and row of the corresponding Landsat scene.
-&lt;br&gt;
-&lt;br&gt;
-For the legend, we add pairs of values for the &lt;code&gt;colors&lt;/code&gt; and &lt;code&gt;labels&lt;/code&gt; arguments corresponding to the corresponding values for each of the map layers. Finally, the &lt;code&gt;addLayersControl&lt;/code&gt; functions allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the &lt;code&gt;overlayGroups&lt;/code&gt; argument and then we define whether we want the layers control to be collapsed or not, using the &lt;code&gt;options&lt;/code&gt; argument. The complete code snippet can be seen below:&lt;/p&gt;
+As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define &quot;Study area&quot; as the group for the &lt;code&gt;llanos&lt;/code&gt; layer, and the &quot;Landsat scenes&quot; group for the &lt;code&gt;wrs2&lt;/code&gt; layer. For popups, the &lt;code&gt;popup&lt;/code&gt; argument in the &lt;code&gt;addPolygons&lt;/code&gt; function is used to display attribute data from the vector map. In this case, I am using a column called &#39;PATH_ROW&#39; that indicates the path and row of the corresponding Landsat scene.&lt;/p&gt;
+
+&lt;p&gt;For the legend, we add pairs of values for the &lt;code&gt;colors&lt;/code&gt; and &lt;code&gt;labels&lt;/code&gt; arguments for the corresponding values of the two map layers. Finally, the &lt;code&gt;addLayersControl&lt;/code&gt; function allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the &lt;code&gt;overlayGroups&lt;/code&gt; argument and then we define whether we want the layers control to be collapsed or not, using the &lt;code&gt;options&lt;/code&gt; argument. The complete code snippet can be seen below:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;leaflet() %&amp;gt;% addTiles() %&amp;gt;%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;, group = &quot;Study area&quot;) %&amp;gt;% 
