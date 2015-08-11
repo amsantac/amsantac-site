@@ -30,7 +30,7 @@
 			<link rel="stylesheet" href="http://amsantac.co/css/style-desktop.css"/>
 			<!-- <link rel="stylesheet" href="http://amsantac.co/css/main.css"> -->
 			<link rel="canonical" href="http://amsantac.co/blog/r/leaflet/webmapping/2015/08/11/leaflet-R.html">
-			<link rel="alternate" type="application/rss+xml" title="amsantac" href="http://amsantac.co/feed.xml" />
+			<link rel="alternate" type="application/rss+xml" title="R-Spatialist" href="http://amsantac.co/feed.xml" />
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
@@ -131,7 +131,7 @@ In this case the file has been read in R as an <a href="http://www.inside-r.org/
 </code></pre>
 
 <p><br>
-The <code>fill</code>, <code>stroke</code> and <code>color</code> arguments allow customizing whether to fill the polygon with color, whether to draw the border of the polygon, and the border color, respectively. For the <code>addLegend</code> command, we define the position, colors and labels of the legend. If you are working in RStudio, you should see your map displayed in the 'Viewer' tab When you hit enter:</p>
+The <code>fill</code>, <code>stroke</code> and <code>color</code> arguments allow customizing whether to fill the polygon with color, whether to draw the border of the polygon, and the border color, respectively. For the <code>addLegend</code> command, we define the position, colors and labels of the legend. If you are working in RStudio, you should see your map displayed in the 'Viewer' tab when you hit enter:</p>
 
 <p><img src="/images/2015-08-11-leaflet-R-fig-1.png" alt="Web map with leaflet" style="width:785px"></p>
 
@@ -143,8 +143,10 @@ The <code>fill</code>, <code>stroke</code> and <code>color</code> arguments allo
 </code></pre>
 
 <p><br>
-As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define "Study area" as the group for the <code>llanos</code> layer, and the "Landsat scenes" group for the <code>wrs2</code> layer. For popups, the <code>popup</code> argument in the <code>addPolygons</code> function is used to display attribute data from the vector map. In this case, I am using a column called 'PATH_ROW' that indicates the path and row of the corresponding Landsat scene. For the legend, we add pairs of values for the <code>colors</code> and <code>labels</code> arguments corresponding to the corresponding values for each of the map layers. Finally, the <code>addLayersControl</code> functions allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the <code>overlayGroups</code> argument and then we define whether we want the layers control to be collapsed or not, using the <code>options</code> argument.<br/>
-The complete code snippet can be seen below:</p>
+As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define "Study area" as the group for the <code>llanos</code> layer, and the "Landsat scenes" group for the <code>wrs2</code> layer. For popups, the <code>popup</code> argument in the <code>addPolygons</code> function is used to display attribute data from the vector map. In this case, I am using a column called 'PATH_ROW' that indicates the path and row of the corresponding Landsat scene.
+<br>
+<br>
+For the legend, we add pairs of values for the <code>colors</code> and <code>labels</code> arguments corresponding to the corresponding values for each of the map layers. Finally, the <code>addLayersControl</code> functions allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the <code>overlayGroups</code> argument and then we define whether we want the layers control to be collapsed or not, using the <code>options</code> argument. The complete code snippet can be seen below:</p>
 
 <pre><code>leaflet() %&gt;% addTiles() %&gt;%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = "#03F", group = "Study area") %&gt;% 

@@ -46,7 +46,7 @@ In this case the file has been read in R as an &lt;a href=&quot;http://www.insid
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-The &lt;code&gt;fill&lt;/code&gt;, &lt;code&gt;stroke&lt;/code&gt; and &lt;code&gt;color&lt;/code&gt; arguments allow customizing whether to fill the polygon with color, whether to draw the border of the polygon, and the border color, respectively. For the &lt;code&gt;addLegend&lt;/code&gt; command, we define the position, colors and labels of the legend. If you are working in RStudio, you should see your map displayed in the &#39;Viewer&#39; tab When you hit enter:&lt;/p&gt;
+The &lt;code&gt;fill&lt;/code&gt;, &lt;code&gt;stroke&lt;/code&gt; and &lt;code&gt;color&lt;/code&gt; arguments allow customizing whether to fill the polygon with color, whether to draw the border of the polygon, and the border color, respectively. For the &lt;code&gt;addLegend&lt;/code&gt; command, we define the position, colors and labels of the legend. If you are working in RStudio, you should see your map displayed in the &#39;Viewer&#39; tab when you hit enter:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/2015-08-11-leaflet-R-fig-1.png&quot; alt=&quot;Web map with leaflet&quot; style=&quot;width:785px&quot;&gt;&lt;/p&gt;
 
@@ -58,8 +58,10 @@ The &lt;code&gt;fill&lt;/code&gt;, &lt;code&gt;stroke&lt;/code&gt; and &lt;code&
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define &quot;Study area&quot; as the group for the &lt;code&gt;llanos&lt;/code&gt; layer, and the &quot;Landsat scenes&quot; group for the &lt;code&gt;wrs2&lt;/code&gt; layer. For popups, the &lt;code&gt;popup&lt;/code&gt; argument in the &lt;code&gt;addPolygons&lt;/code&gt; function is used to display attribute data from the vector map. In this case, I am using a column called &#39;PATH_ROW&#39; that indicates the path and row of the corresponding Landsat scene. For the legend, we add pairs of values for the &lt;code&gt;colors&lt;/code&gt; and &lt;code&gt;labels&lt;/code&gt; arguments corresponding to the corresponding values for each of the map layers. Finally, the &lt;code&gt;addLayersControl&lt;/code&gt; functions allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the &lt;code&gt;overlayGroups&lt;/code&gt; argument and then we define whether we want the layers control to be collapsed or not, using the &lt;code&gt;options&lt;/code&gt; argument.&lt;br/&gt;
-The complete code snippet can be seen below:&lt;/p&gt;
+As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define &quot;Study area&quot; as the group for the &lt;code&gt;llanos&lt;/code&gt; layer, and the &quot;Landsat scenes&quot; group for the &lt;code&gt;wrs2&lt;/code&gt; layer. For popups, the &lt;code&gt;popup&lt;/code&gt; argument in the &lt;code&gt;addPolygons&lt;/code&gt; function is used to display attribute data from the vector map. In this case, I am using a column called &#39;PATH_ROW&#39; that indicates the path and row of the corresponding Landsat scene.
+&lt;br&gt;
+&lt;br&gt;
+For the legend, we add pairs of values for the &lt;code&gt;colors&lt;/code&gt; and &lt;code&gt;labels&lt;/code&gt; arguments corresponding to the corresponding values for each of the map layers. Finally, the &lt;code&gt;addLayersControl&lt;/code&gt; functions allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the &lt;code&gt;overlayGroups&lt;/code&gt; argument and then we define whether we want the layers control to be collapsed or not, using the &lt;code&gt;options&lt;/code&gt; argument. The complete code snippet can be seen below:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;leaflet() %&amp;gt;% addTiles() %&amp;gt;%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;, group = &quot;Study area&quot;) %&amp;gt;% 
