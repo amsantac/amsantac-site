@@ -6,17 +6,17 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Aug 2015 11:20:26 -0500</pubDate>
-    <lastBuildDate>Tue, 11 Aug 2015 11:20:26 -0500</lastBuildDate>
+    <pubDate>Tue, 11 Aug 2015 17:04:29 -0500</pubDate>
+    <lastBuildDate>Tue, 11 Aug 2015 17:04:29 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>Web mapping with Leaflet and R</title>
-        <description>&lt;p&gt;&lt;a href=&quot;https://rstudio.github.io/leaflet/&quot;&gt;Leaflet&lt;/a&gt; is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a web map using Leaflet in the &lt;a href=&quot;http://r-project.org&quot;&gt;R environment&lt;/a&gt;.&lt;/p&gt;
+        <description>&lt;p&gt;&lt;a href=&quot;http://leafletjs.com/&quot;&gt;Leaflet&lt;/a&gt; is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a web map using Leaflet in the &lt;a href=&quot;http://r-project.org&quot;&gt;R environment&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;There are different ways to create a map using the Leaflet JS library. One way is to include the Leaflet JS and CSS files in the head of a web page and then set up the map in the body of the html page, as shown in the &lt;a href=&quot;http://leafletjs.com/examples/quick-start.html&quot;&gt;Leaflet Quick Start Guide&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;An alternative way is to create the web map in the R environment using an R package called &lt;a href=&quot;https://rstudio.github.io/leaflet/&quot;&gt;leaflet&lt;/a&gt;, developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;, which allows controlling and integrating Leaflet maps in R. Here I&#39;ll show how to read a vector map in &lt;a href=&quot;https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm&quot;&gt;shapefile&lt;/a&gt; format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, layer controls and pop-ups for displaying attribute data. I recommend to use the &lt;a href=&quot;https://www.rstudio.com/products/rstudio/&quot;&gt;RStudio IDE&lt;/a&gt; for the purpose of this tutorial.&lt;/p&gt;
+&lt;p&gt;An alternative way is to create the web map in the R environment using an R package called &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt;, developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;, which allows controlling and integrating Leaflet maps in R. Here I&#39;ll show how to read a vector map in &lt;a href=&quot;https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm&quot;&gt;shapefile&lt;/a&gt; format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, layer controls and popups for displaying attribute data. I recommend to use the &lt;a href=&quot;https://www.rstudio.com/products/rstudio/&quot;&gt;RStudio IDE&lt;/a&gt; for the purpose of this tutorial.&lt;/p&gt;
 
 &lt;p&gt;First we need to install the leaflet package in R entering the following command line in the R console:&lt;/p&gt;
 
@@ -43,32 +43,35 @@ For this example I am going to import in R a polygon shapefile enclosing the stu
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-In this case the file has been read in R as an &lt;a href=&quot;http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame&quot;&gt;SpatialPolygonsDataFrame&lt;/a&gt; object called &lt;em&gt;llanos&lt;/em&gt;. Now we are going to create the leaflet map. We can do that in just one line of code concatenating several commands with the forward pipe operator &lt;code&gt;%&amp;gt;%&lt;/code&gt;.&lt;/p&gt;
+In this case the file has been read in R as an &lt;a href=&quot;http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame&quot;&gt;SpatialPolygonsDataFrame&lt;/a&gt; object called &lt;code&gt;llanos&lt;/code&gt;. Now we are going to create the leaflet map using this object for the &lt;code&gt;data&lt;/code&gt; argument in the &lt;code&gt;leaflet&lt;/code&gt; function. We can do that in just one line of code concatenating several commands with the forward pipe operator &lt;code&gt;%&amp;gt;%&lt;/code&gt;. First we create a Leaflet map widget (with the &lt;code&gt;leaflet&lt;/code&gt; command) and then add a tile layer (with &lt;code&gt;addTiles&lt;/code&gt;), the vector map as polygon (&lt;code&gt;addPolygons&lt;/code&gt;) and a legend (&lt;code&gt;addLegend&lt;/code&gt;).&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;leaflet(data = llanos) %&amp;gt;% addTiles() %&amp;gt;% addPolygons(fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;) %&amp;gt;% 
   addLegend(&quot;bottomright&quot;, colors = &quot;#03F&quot;, labels = &quot;Llanos ecoregion&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-If you are working in RStudio, you should see your map displayed in the &#39;Viewer&#39; tab:&lt;/p&gt;
+The &lt;code&gt;fill&lt;/code&gt;, &lt;code&gt;stroke&lt;/code&gt; and &lt;code&gt;color&lt;/code&gt; arguments allow customizing whether to fill the polygon with color, whether to draw the border of the polygon, and the border color, respectively. For the &lt;code&gt;addLegend&lt;/code&gt; command, we define the position, colors and labels of the legend. If you are working in RStudio, you should see your map displayed in the &#39;Viewer&#39; tab When you hit enter:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/2015-08-11-leaflet-R-fig-1.png&quot; alt=&quot;Web map with leaflet&quot; style=&quot;width:785px&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;Leaflet displays &lt;a href=&quot;http://www.openstreetmap.org/&quot;&gt;OpenStreetMap&lt;/a&gt; tiles by default but you can use any map provider (e.g., &lt;a href=&quot;http://www.mapquest.com/&quot;&gt;MapQuest Open&lt;/a&gt;, &lt;a href=&quot;https://www.mapbox.com/&quot;&gt;MapBox&lt;/a&gt;, &lt;a href=&quot;http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx&quot;&gt;Bing Maps&lt;/a&gt;, etc.) as long as you conform to its terms of use. You can see the help page for the &lt;code&gt;addTiles&lt;/code&gt; function in R for this purpose entering &lt;code&gt;?addTiles&lt;/code&gt; in the R console.&lt;/p&gt;
+&lt;p&gt;Leaflet displays &lt;a href=&quot;http://www.openstreetmap.org/&quot;&gt;OpenStreetMap (OSM)&lt;/a&gt; tiles by default but you can use any map provider (e.g., &lt;a href=&quot;http://www.mapquest.com/&quot;&gt;MapQuest Open&lt;/a&gt;, &lt;a href=&quot;https://www.mapbox.com/&quot;&gt;MapBox&lt;/a&gt;, &lt;a href=&quot;http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx&quot;&gt;Bing Maps&lt;/a&gt;, etc.) as long as you conform to its terms of use. You can see the help page for the &lt;code&gt;addTiles&lt;/code&gt; function in R, if needed, entering &lt;code&gt;?addTiles&lt;/code&gt; in the R console.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;llanos_wrs2 &amp;lt;- shapefile(&quot;C:/amsantac/PhD/Research/dissertation/data/landsat/wrs grids/llanos_wrs2_desc.shp&quot;)
+&lt;p&gt;We can display more than one map at a time with leaflet. For this example I am going to overlay another polygon feature that shows the &lt;a href=&quot;http://landsat.usgs.gov/&quot;&gt;Landsat&lt;/a&gt; scenes that cover my study area based on the &lt;a href=&quot;http://landsat.usgs.gov/tools_wrs-2_shapefile.php&quot;&gt;WRS2 descending grid&lt;/a&gt;. Let&#39;s read this second shapefile:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wrs2 &amp;lt;- shapefile(&quot;C:/my_dir/wrs2_desc.shp&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-add legend and layers control&lt;/p&gt;
+As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define &quot;Study area&quot; as the group for the &lt;code&gt;llanos&lt;/code&gt; layer, and the &quot;Landsat scenes&quot; group for the &lt;code&gt;wrs2&lt;/code&gt; layer. For popups, the &lt;code&gt;popup&lt;/code&gt; argument in the &lt;code&gt;addPolygons&lt;/code&gt; function is used to display attribute data from the vector map. In this case, I am using a column called &#39;PATH_ROW&#39; that indicates the path and row of the corresponding Landsat scene. For the legend, we add pairs of values for the &lt;code&gt;colors&lt;/code&gt; and &lt;code&gt;labels&lt;/code&gt; arguments corresponding to the corresponding values for each of the map layers. Finally, the &lt;code&gt;addLayersControl&lt;/code&gt; functions allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the &lt;code&gt;overlayGroups&lt;/code&gt; argument and then we define whether we want the layers control to be collapsed or not, using the &lt;code&gt;options&lt;/code&gt; argument.&lt;br/&gt;
+The complete code snippet can be seen below:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;leaflet() %&amp;gt;% addTiles() %&amp;gt;%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;, group = &quot;Study area&quot;) %&amp;gt;% 
-  addPolygons(data = llanos_wrs2, fill = TRUE, stroke = TRUE, color = &quot;#f93&quot;, 
-              popup = paste0(&quot;Scene: &quot;, as.character(llanos_wrs2$PATH_ROW)), group = &quot;Landsat scenes&quot;) %&amp;gt;% 
+  addPolygons(data = wrs2, fill = TRUE, stroke = TRUE, color = &quot;#f93&quot;, 
+              popup = paste0(&quot;Scene: &quot;, as.character(wrs2$PATH_ROW)), group = &quot;Landsat scenes&quot;) %&amp;gt;% 
   # add a legend
   addLegend(&quot;bottomright&quot;, colors = c(&quot;#03F&quot;, &quot;#f93&quot;), labels = c(&quot;Study area&quot;, &quot;Landsat scenes (path - row)&quot;)) %&amp;gt;%   
-  # add layers controls
+  # add layers control
   addLayersControl(
     overlayGroups = c(&quot;Study area&quot;, &quot;Landsat scenes&quot;),
     options = layersControlOptions(collapsed = FALSE)
@@ -87,7 +90,7 @@ Finally export the map as an html page. In the &#39;Viewer&#39; tab in RStudio, 
 &lt;/font&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now you have a fancy web map with legend, layers controls and pop-ups:&lt;/p&gt;
+&lt;p&gt;Now you have a fancy web map with legend, layers controls and popups:&lt;/p&gt;
 
 &lt;iframe id=&quot;map_llanos_emb&quot; width=785 height=500 src=&quot;http://amsantac.github.io/cuproject/www/landsat_scenes.html&quot;&gt;&lt;/iframe&gt;
 
