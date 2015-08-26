@@ -155,6 +155,12 @@
 		font-size: 1.40em;
 	}
 	
+	/** I introduce this change for h2 titles */
+	#content h2
+	{
+		font-size: 1.40em;
+	}
+	
 	#sidebar h2
 	{
 		display: block;

@@ -5,7 +5,7 @@
 */
 
 skel.init({
-	prefix: 'http://amsantac.co/'+'css/style',
+	prefix: '/css/style',
 	resetCSS: true,
 	boxModel: 'border',
 	grid: {
