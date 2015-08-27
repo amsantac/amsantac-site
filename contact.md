@@ -12,7 +12,7 @@ date:   2015-09-11 11:02:52
 ##Social media:
 <br>
 
-  [![google+]][g+_profile]   <a href="https://www.facebook.com/amsantac"><img src="/images/f_icon.png" title="Facebook" style="height:32px"></a>  <a href="http://www.researchgate.net/profile/Ali_Santacruz"><img src="/images/rg-icon-180x180.png" title="ResearchGate" style="height:32px"></a>  <a href="/feed.xml"><img src="/images/rss.jpg" title="RSS" style="height:32px"></a>
+  [![google+]][g+_profile]   <a href="https://www.facebook.com/amsantac"><img src="/images/F_icon.png" title="Facebook" style="height:32px"></a>  <a href="http://www.researchgate.net/profile/Ali_Santacruz"><img src="/images/rg-icon-180x180.png" title="ResearchGate" style="height:32px"></a>  <a href="/feed.xml"><img src="/images/rss.jpg" title="RSS" style="height:32px"></a>
 
 <br>
 Or if you prefer, please use the below contact form:
