@@ -3,6 +3,7 @@ layout: post
 title:  "Preparing files for CLASlite using R"
 date:   2015-09-11 11:02:52
 categories: blog R CLASlite stacking
+published: false
 ---
 
 [CLASlite] is a powerful software designed to process satellite imagery from its original (raw) format to . I will describe in this post how to use the [R language] for creating the text files required by CLASlite for stacking imagery through batch processing.

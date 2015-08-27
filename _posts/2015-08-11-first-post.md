@@ -3,6 +3,7 @@ layout: post
 title:  "Welcome to the R-Spatialist Blog!"
 date:   2015-08-09 09:02:52
 categories: blog
+published: true
 ---
 Hi there! Welcome to my blog!
 

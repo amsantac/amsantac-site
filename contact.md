@@ -5,15 +5,22 @@ date:   2015-09-11 11:02:52
 ---
 <header>
 <h2>Contact</h2>
-<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+<br>
+<span class="byline">Would you like to contact me about something? You are in the right spot!</span>
 </header>
 
-<a href="#" class="image full"><img src="images/pic07.jpg" alt="" /></a>
+##Social media:
+<br>
 
-Sed etiam vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl. Fusce mattis viverra elit. Fusce quis tortor. Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget lorem ipsum dolor. Sed etiam vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl. Fusce mattis viverra elit. Fusce quis tortor. Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget lorem ipsum dolor.
+  [![google+]][g+_profile]   <a href="https://www.facebook.com/amsantac"><img src="/images/f_icon.png" title="Facebook" style="height:32px"></a>  <a href="http://www.researchgate.net/profile/Ali_Santacruz"><img src="/images/rg-icon-180x180.png" title="ResearchGate" style="height:32px"></a>  <a href="/feed.xml"><img src="/images/rss.jpg" title="RSS" style="height:32px"></a>
 
-Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit.
+<br>
+Or if you prefer, please use the below contact form:
 
-Donec nonummy magna quis risus. Quisque eleifend. Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit.
+<iframe src="https://docs.google.com/forms/d/1KwCSsN7CkE-BD9KPWYtBRdXUeZJGXZZ8Qad6xAmNCqM/viewform?embedded=true" width="760" height="760" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 
 
+[google+]: /images/g+32.png "Google+"
+[g+_profile]: https://plus.google.com/u/0/117898713832632782598/
+[facebook]: /images/f_icon.png "Facebook"
+[face_profile]: https://www.facebook.com/amsantac
