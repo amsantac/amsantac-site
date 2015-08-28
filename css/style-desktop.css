@@ -167,6 +167,12 @@
 		padding-bottom: 2em;
 		font-size: 1.4em;
 	}
+	
+	/** I introduce this change for h3 titles */
+	#content h3
+	{
+		font-size: 1.20em;
+	}
 
 /*********************************************************************************/
 /* Featured                                                                      */

@@ -35,7 +35,11 @@ The TOC R Shiny web application allows the construction of the ROC curve and the
 <br>
 ## The Llanos Google Earth Engine App
 <br>
-The Llanos GEE App displays Landsat imagery (Landsat 5 TM, Landsat 7 ETM and Landsat 8 OLI) in false color composite (RGB: near infrared, short wave infrared and red) from 2000 to 2014 for the tropical ecorregion known as the Llanos savannas located in Colombia, South America. This app is powered by [Google Earth Engine]. Click <a href="https://test-project-1036.appspot.com/" target="_blank">here to launch this app in full screen</a>.
+The Llanos GEE App displays Landsat imagery (Landsat 5 TM, Landsat 7 ETM and Landsat 8 OLI) in false color composite (RGB: near infrared/short wave infrared/red) from 2000 to 2014 for the tropical ecorregion known as the Llanos savannas located in Colombia, South America. This app is powered by [Google Earth Engine]. Click <a href="https://test-project-1036.appspot.com/" target="_blank">here to launch this app in full screen</a>.
+
+<br>
+### *Interested in collaboration for the development of similar software tools? Feel free to [contact me].*
+
 
 [geospt_CRAN]: http://cran.r-project.org/web/packages/geospt/
 [geospt_github]: https://github.com/amsantac/geospt
@@ -45,4 +49,4 @@ The Llanos GEE App displays Landsat imagery (Landsat 5 TM, Landsat 7 ETM and Lan
 [toc_github]: https://github.com/amsantac/TOC
 [Professor Gil Pontius]: http://www.clarku.edu/~rpontius/
 [Google Earth Engine]: https://earthengine.google.org
-
+[contact me]: contact.html
