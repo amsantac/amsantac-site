@@ -45,15 +45,6 @@ Laguado, W., Gutierrez, V., **Santacruz, A.** 2005. State of the art of the form
 
 **Santacruz, A.**, Gutierrez, V., Laguado, W. 2004. International controversy over forest projects in the Clean Development Mechanism (CDM), after the Ninth Conference of the Parties (COP9). Cambium 2 (4), 3-4. (In Spanish) [[link]][Santacruz_et_al_2004]
 
-<br>
-##Publications as refereed conference proceedings
-<br>
-**Santacruz, A.**, Rubiano, Y., Melo, C. 2009. Evolutionary optimization of spatial networks designed for soil organic carbon sampling. Proceedings of the National Conference of Graduate Research (ENIP) 2009. National University of Colombia, Bogota. (In Spanish)
-
-**Santacruz, A.**, Urrego, L. 2005. Landscape heterogeneity of the municipality of Rionegro. Proceedings of the DCF 2005 Forest Symposium. National University of Colombia, Medellin. (In Spanish)
-
-Gutierrez, V., Zapata, M., Laguado, W., **Santacruz, A.** 2005. Viable market scenarios for the implementation of forestry projects under the Clean Development Mechanism (CDM). Proceedings of the DCF 2005 Forest Symposium. National University of Colombia, Medellin. (In Spanish)
-
 
 [Pontius_Santacruz_2014]: http://www.researchgate.net/publication/267979928_Quantity_exchange_and_shift_components_of_difference_in_a_square_contingency_table
 [Gutierrez_et_al_2006]: https://www.researchgate.net/publication/222702607_Maximizing_the_profitability_of_forestry_projects_under_the_Clean_Development_Mechanism_using_a_forest_management_optimization_model
