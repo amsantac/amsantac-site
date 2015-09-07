@@ -105,91 +105,6 @@
         </h2>
         <p><a href="http://leafletjs.com/">Leaflet</a> is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a web map using Leaflet in the <a href="http://r-project.org">R environment</a>.</p>
 
-<p>There are different ways to create a map using the Leaflet JS library. One way is to include the Leaflet JS and CSS files in the head of a web page and then set up the map in the body of the html page, as shown in the <a href="http://leafletjs.com/examples/quick-start.html">Leaflet Quick Start Guide</a>.</p>
-
-<p>An alternative way is to create the web map in the R environment using an R package called <a href="http://leafletjs.com/">leaflet</a>, developed by the guys from <a href="https://www.rstudio.com/">RStudio</a>, which allows controlling and integrating Leaflet maps in R. Here I'll show how to read a vector map in <a href="https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm">shapefile</a> format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, a layers control and popups for displaying attribute data. I recommend to use the <a href="https://www.rstudio.com/products/rstudio/">RStudio IDE</a> for the purpose of this tutorial.</p>
-
-<p>First we need to install the leaflet package in R entering the following command line in the R console:</p>
-
-<pre><code>install.packages("leaflet")
-</code></pre>
-
-<p><br>
-The next step is to read in R the maps we want to display in our web map. For reading a shapefile, there are a number of functions included in different R packages (see <a href="https://cran.r-project.org/package=rgdal">rgdal</a>, <a href="https://cran.r-project.org/package=maptools">maptools</a>, <a href="https://cran.r-project.org/package=shapefiles">shapefiles</a>, and <a href="http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment">others</a>). I'm going to use the <a href="https://cran.r-project.org/package=raster">raster</a> package, so we need to install it first:</p>
-
-<pre><code>install.packages("raster")
-</code></pre>
-
-<p><br>
-Now let's load the two packages:</p>
-
-<pre><code>library(raster)
- library(leaflet)
-</code></pre>
-
-<p><br>
-For this example I am going to import in R a polygon shapefile enclosing the study area of one of my projects. The projection of this map is defined in geographic coordinates (latitude/longitude). Let's use the <code>shapefile</code> function from the raster package to read the file:</p>
-
-<pre><code>llanos &lt;- shapefile("C:/my_dir/llanos.shp")
-</code></pre>
-
-<p><br>
-In this case the file has been read in R as an <a href="http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame">SpatialPolygonsDataFrame</a> object called <code>llanos</code>. Now we are going to create the leaflet map using this object for the <code>data</code> argument in the <code>leaflet</code> function. We can do that in just one line of code concatenating several commands with the forward pipe operator <code>%&gt;%</code>. First we create a Leaflet map widget (with the <code>leaflet</code> command) and then add a tile layer (with <code>addTiles</code>), the vector map as polygon (<code>addPolygons</code>) and a legend (<code>addLegend</code>).</p>
-
-<pre><code>leaflet(data = llanos) %&gt;% addTiles() %&gt;% addPolygons(fill = FALSE, stroke = TRUE, color = "#03F") %&gt;% 
-  addLegend("bottomright", colors = "#03F", labels = "Llanos ecoregion")
-</code></pre>
-
-<p><br>
-The <code>fill</code>, <code>stroke</code> and <code>color</code> arguments allow customizing whether to fill the polygon with color, whether to draw the border of the polygon, and the border color, respectively. For the <code>addLegend</code> command, we define the position, colors and labels of the legend. If you are working in RStudio, you should see your map displayed in the 'Viewer' tab when you hit enter:</p>
-
-<p><img src="/images/2015-08-11-leaflet-R-fig-1.png" alt="Web map with leaflet" style="width:785px"></p>
-
-<p>Leaflet displays <a href="http://www.openstreetmap.org/">OpenStreetMap (OSM)</a> tiles by default but you can use any map provider (e.g., <a href="http://www.mapquest.com/">MapQuest Open</a>, <a href="https://www.mapbox.com/">MapBox</a>, <a href="http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx">Bing Maps</a>, etc.) as long as you conform to its terms of use. You can see the help page for the <code>addTiles</code> function in R, if needed, entering <code>?addTiles</code> in the R console.</p>
-
-<p>We can display more than one map at a time with leaflet. For this example I am going to overlay another polygon feature that shows the <a href="http://landsat.usgs.gov/">Landsat</a> scenes that cover my study area based on the <a href="http://landsat.usgs.gov/tools_wrs-2_shapefile.php">WRS2 descending grid</a>. Let's read this second shapefile:</p>
-
-<pre><code>wrs2 &lt;- shapefile("C:/my_dir/wrs2_desc.shp")
-</code></pre>
-
-<p><br>
-As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define "Study area" as the group for the <code>llanos</code> layer, and the "Landsat scenes" group for the <code>wrs2</code> layer. For popups, the <code>popup</code> argument in the <code>addPolygons</code> function is used to display attribute data from the vector map. In this case, I am using a column called 'PATH_ROW' that indicates the path and row of the corresponding Landsat scene.</p>
-
-<p>For the legend, we add pairs of values for the <code>colors</code> and <code>labels</code> arguments for the corresponding values of the two map layers. Finally, the <code>addLayersControl</code> function allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the <code>overlayGroups</code> argument and then we define whether we want the layers control to be collapsed or not, using the <code>options</code> argument. The complete code snippet can be seen below:</p>
-
-<pre><code>leaflet() %&gt;% addTiles() %&gt;%   
-  addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = "#03F", group = "Study area") %&gt;% 
-  addPolygons(data = wrs2, fill = TRUE, stroke = TRUE, color = "#f93", 
-              popup = paste0("Scene: ", as.character(wrs2$PATH_ROW)), group = "Landsat scenes") %&gt;% 
-  # add a legend
-  addLegend("bottomright", colors = c("#03F", "#f93"), labels = c("Study area", "Landsat scenes (path - row)")) %&gt;%   
-  # add layers control
-  addLayersControl(
-    overlayGroups = c("Study area", "Landsat scenes"),
-    options = layersControlOptions(collapsed = FALSE)
-  )
-</code></pre>
-
-<p><br>
-Finally export the map as an html page. In the 'Viewer' tab in RStudio, click the 'Export' button and then click 'Save as Web page...'. Then you just need to upload your output html page to your website to make your map available online. You can see an example of a map created with leaflet in this <a href="http://amsantac.github.io/cuproject/www/landsat_scenes.html">link</a>.</p>
-
-<p>Once uploaded, you can also embed your map in another web page inserting a code snippet like the one below wherever you want to display it:</p>
-
-<div font style="BACKGROUND-COLOR:#f5f5f5;line-height:0.8">
-<xmp font style="border:1px solid;border-color:#d1d1d1;black;border-radius:3px;padding: 0em 0 0.3em 0.3em">
-<iframe id="map_id" width=700 height=500 src="http://mywebsite.com/my_map.html"></iframe>
-</xmp>
-</font></div>
-
-
-<p>Now you have a fancy web map with legend, layers controls and popups:</p>
-
-<iframe id="map_llanos_emb" width=785 height=500 src="http://amsantac.github.io/cuproject/www/landsat_scenes.html"></iframe>
-
-
-<p><br>
-That's it. Congratulations!</p>
-
         <a href="/blog/r/leaflet/webmapping/2015/08/11/leaflet-R.html">Read more ...</a>
       </li>
       <br>
@@ -201,12 +116,6 @@ That's it. Congratulations!</p>
           <a class="post-link" href="/blog/2015/08/09/first-post.html">Welcome to the R-Spatialist Blog!</a>
         </h2>
         <p>Hi there! Welcome to my blog!</p>
-
-<p>I'll be posting about topics related to the application of programming languages to the processing, visualization and analysis of spatial data, especially using the <a href="http://r-project.org">R language</a>.</p>
-
-<p>I have been programming for 10+ years for performing different kind of tasks in fields such as geostatistics, optimization of spatial sampling networks and the processing of geographic and remotely-sensed data. The application of scripting languages to automate the execution of otherwise time-consuming tasks has helped me a lot to be more efficient in a number of academic and professional activities. Through this blog I want to share what I have learned so far and what I am learning these days.</p>
-
-<p>Feel free to comment and give (hopefully constructive!) feedback. Hope you enjoy the reading!</p>
 
         <a href="/blog/2015/08/09/first-post.html">Read more ...</a>
       </li>
