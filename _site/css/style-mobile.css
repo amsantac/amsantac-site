@@ -19,6 +19,13 @@
 	{
 	}
 
+  /* I include this for h1 titles */
+	h1
+	{
+		font-size: 1.5em;
+	}
+
+
 	h2, h3, h4, h5, h6
 	{
 		font-size: 1.5em;
@@ -205,6 +212,13 @@
 		margin-bottom: 2em;
 	}
 	
+  /* I include this for h1 titles */
+	#content header h1
+	{
+		line-height: 1em;
+		font-size: 1.8em;
+	}
+
 	#content header h2
 	{
 		line-height: 1em;

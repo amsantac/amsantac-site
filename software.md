@@ -26,6 +26,8 @@ The diffeR package implements a set of metrics of difference for comparing pairs
 This R package allows the construction of the Receiver (aka Relative) Operating Characteristic (ROC) curve and the Total Operating Characteristic (TOC) curve for spatial and non-spatial data. The ROC curve is a widely-popular statistical technique used for evaluating the performance of a binary classifier system as its discrimination threshold is varied. The TOC method is a novel modification of the ROC method that has been introduced recently by [Professor Gil Pontius] from Clark University. The TOC package can be installed from [CRAN][toc_CRAN] and [GitHub][toc_github].
 
 <br>
+<hr>
+<br>
 <h2 style= "color:#1e6bb8">WEB APPS</h2>
 <br>
 ## TOC Shiny App

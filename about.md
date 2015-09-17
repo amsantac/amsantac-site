@@ -4,16 +4,26 @@ title:  "About amsantac.co"
 date:   2015-09-11 11:02:52
 ---
 <header>
-<h2>About</h2>
-<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+<h2>About me</h2>
+<span class="byline">R Programmer | Geomatician | Lifelong learner</span>
 </header>
 
-<a href="#" class="image full"><img src="images/pic07.jpg" alt="" /></a>
+<p>
+<a href="#" class="image full"><img src="images/aboutme.jpg" alt="" style="float:left;width:250px;height:430px;"/></a>
+<strong>Hi, I'm Ali!</strong>
 
-Sed etiam vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl. Fusce mattis viverra elit. Fusce quis tortor. Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget lorem ipsum dolor. Sed etiam vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl. Fusce mattis viverra elit. Fusce quis tortor. Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget lorem ipsum dolor.
-
-Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit.
-
-Donec nonummy magna quis risus. Quisque eleifend. Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit.
+I am a geomatician with a passion for <a href="http://r-project.org">(R!)</a> programming and data mapping. Currently I'm pursuing a PhD degree in Geography at <a href="http://www.clarku.edu">Clark University</a>. My dissertation research focuses on the environmental impacts of land cover and land use change on tropical savannas. My current interests involve remote sensing, environmental modeling, machine learning for image processing, and automation of data processing using high-level programming languages.
+</p>
 
 
+I graduated from the [National University of Colombia] as a Forest Engineer in 2004 and as a Master in Geomatics in 2010. Through the past years I found I'm also passionate about teaching and making my knowledge available to others through the Web. I enjoy helping students and colleagues by sharing my expertise and experience about processing geospatial data and the development of desktop programs and web apps. 
+
+More about me? Well, one of my favorite phrases is: **You can do that with R!** (*You will probably hear that from me more than once!*)
+
+If you want to get in touch, feel free to send me a message! Here's [my contact page].
+
+[(R!)]: http://r-project.org
+[R!]: http://r-project.org
+[Clark University]: http://www.clarku.edu
+[National University of Colombia]: http://www.unal.edu.co
+[my contact page]: contact.html

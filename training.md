@@ -13,7 +13,7 @@ date:   2015-09-11 11:02:52
 
 ##Introduction to Geographic Information Systems
 <br>
-The goal of this course is to introduce the students to the basics of Geographic Information Systems (GIS), cartography and spatial analysis through a series of lectures and hands-on exercises. The course is given through a set of modules that include:
+The goal of this course is to introduce students with the basics of Geographic Information Systems (GIS), cartography and spatial analysis through a series of lectures and hands-on exercises. The course is given through a set of modules that includes:
 
 <ul style="margin-left:2em; list-style-type:none">
   <li><strong>1. Basic concepts: </strong>Definitions and applications of GIS | Vector and raster data structures | Coordinate systems | Geographical data bases</li>
@@ -27,7 +27,7 @@ I have taught this course several times for different departments at the [Nation
 <br>
 ##Intro to Remote Sensing and Digital Image Processing
 <br>
-The goal of this course is to introduce the students to the basics of Geographic Information Systems (GIS), cartography and spatial analysis through a series of lectures and hands-on exercises. The course is given through a set of modules that include:
+This course seeks students develop a good understanding and basic skills of remote sensing. The main techniques and tools used to visualize, process, and analyze remotely sensed data are introduced to students through oral presentations and lab exercises. The course is taught with an emphasis on the environmental applications of remote sensing. The following topics are presented during this course:
 
 <ul style="margin-left:2em; list-style-type:none">
   <li><strong>1. Remote sensing fundamentals: </strong>Definition of RS | History and applications of RS  | Physical principles of RS</li>
@@ -44,7 +44,7 @@ I taught this course to students in the M.Sc. program in Geomatics at the Nation
 <br>
 ##Intro to Geostatistics
 <br>
-The goal of this course is to introduce the students to the basics of Geographic Information Systems (GIS), cartography and spatial analysis through a series of lectures and hands-on exercises. The course is given through a set of modules that include:
+This course gives the students an insight into geostatistics, both in theory and in practice. The first part introduces the students with the fundamentals and basic techniques of statistical and geostatistical analysis. The second part deals with application of geostatistical principles to spatial prediction and the design of optimal spatial sampling networks. The course is structured as follows:
 
 <ul style="margin-left:2em; list-style-type:none">
   <li><strong>1. Review of basic statistical concepts: </strong>Central tendency and spread measures | Probability distributions | Correlation and linear regression | Random variables</li>
@@ -60,7 +60,7 @@ I taught this course at the graduate program in Geographic Information Systems a
 <br>
 ##Data Analysis with the R Language
 <br>
-I'm currently preparing this new course for introducing people to the analysis of quantitative data using the [R language]. Evolutionary optimization of spatial sampling networks. 
+I'm currently preparing this new course for introducing students to the analysis of quantitative data using the [R language] and other modern tools. The course covers the essential techniques for collecting, cleaning, visualizing and processing raw data and turn them into actionable knowlegde. The course also provides a practical introduction to techniques widely-used today by data scientists to generate modern data analysis reports in a reproducible manner. The following topics are covered:    
 
 <ul style="margin-left:2em; list-style-type:none">
   <li><strong>1. Introduction to data analysis: </strong>What is data science? | Required skills and tools for data scientists | Structure of a data analysis</li>
@@ -70,7 +70,7 @@ I'm currently preparing this new course for introducing people to the analysis o
   <li><strong>5. Exploratory data analysis: </strong>Exploratory graphs | R plotting systems | Summarizing data | Central tendency and spread measures</li>
   <li><strong>6. Statistical inference and regression models: </strong>Intro to statistical inference | Probability distributions | Confidence intervals | Hypothesis testing | Linear regression models | Residuals | Inference in regression | Multivariable regression</li>
   <li><strong>7. Classification and prediction (Machine Learning): </strong>Prediction process steps | Data preprocessing | Predicting with regression | Prediction techniques for non-linear models: recursive partitioning, Random Forests, boosting  | Model testing and validation</li>
-  <li><strong>8. Reproducible research: </strong>What is reproducible research? | Tools for reproducible research | Markdown and RMarkdown | Version control systems: Git and GitHub | How to communicate and publish reproducible research? | Creating and sharing an R package </li>
+  <li><strong>8. Reproducible research: </strong>What is reproducible research? | Tools for reproducible research | Markdown and RMarkdown | Version control systems: Git and GitHub | How to communicate and publish reproducible research? | R Shiny web apps | Slidify presentations | Creating and sharing an R package </li>
 </ul>
 
 <br>

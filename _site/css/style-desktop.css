@@ -145,12 +145,25 @@
 		margin-bottom: 2em;
 	}
 	
+	/** I introduce this change for h1 titles en header */
+	#content header h1
+	{
+		font-size: 2.7em;
+	}
+	
+	/** I introduce this change for header h2 titles from 3 to 2.7 */
 	#content header h2
 	{
-		font-size: 3em;
+		font-size: 2.7em;
 	}
 	
 	#content header .byline
+	{
+		font-size: 1.40em;
+	}
+
+  /** I introduce this change for h1 titles */
+	#content h1
 	{
 		font-size: 1.40em;
 	}
@@ -161,10 +174,11 @@
 		font-size: 1.40em;
 	}
 	
+	/** I change padding-bottom from 2em to 1em */
 	#sidebar h2
 	{
 		display: block;
-		padding-bottom: 2em;
+		padding-bottom: 1em;
 		font-size: 1.4em;
 	}
 	
@@ -172,6 +186,13 @@
 	#content h3
 	{
 		font-size: 1.20em;
+	}
+	
+	/** I introduce this change for h4 a */
+	#sidebar h4 a
+	{
+		color: #696969;
+		font-weight: bold;
 	}
 
 /*********************************************************************************/

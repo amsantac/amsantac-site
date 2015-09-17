@@ -6,9 +6,105 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 06 Sep 2015 19:11:03 -0500</pubDate>
-    <lastBuildDate>Sun, 06 Sep 2015 19:11:03 -0500</lastBuildDate>
+    <pubDate>Sun, 13 Sep 2015 19:45:25 -0500</pubDate>
+    <lastBuildDate>Sun, 13 Sep 2015 19:45:25 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Using R for file stacking in CLASlite</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://claslite.carnegiescience.edu/&quot;&gt;CLASlite&lt;/a&gt; is a powerful image processing software developed by the &lt;a href=&quot;https://carnegiescience.edu/&quot;&gt;Carnegie Institution for Science&lt;/a&gt; that provides functionality for calibration, pre-processing, atmospheric correction, cloud masking, Monte Carlo Spectral Mixture Analysis and classification. I describe in this post how to use the &lt;a href=&quot;http://r-project.org&quot;&gt;R language&lt;/a&gt; for creating the text files required by CLASlite for stacking imagery through batch processing. This is a simple application that shows R beginners how to make use of basic R functions such as file listing and for loops.&lt;/p&gt;
+
+&lt;p&gt;Usually the first step for processing imagery obtained in raw format is to stack the individual layers into a single file. CLASlite allows stacking Landsat imagery using the &#39;Prepare Landsat&#39; tool which can be accessed from the Tools - Prepare Landsat menu in the CLASlite graphical user interface:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015-09-26-stacking-R-fig-1.png&quot; alt=&quot;Prepare Landsat Tool in CLASlite&quot; title=&quot;Prepare Landsat Tool in CLASlite&quot; style=&quot;width:600px&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;One pretty useful feature of CLASlite is that a number of processing and preprocessing tasks can be executed for several files at a time through batch processing. For example, the batched &#39;Prepare Landsat&#39; tool requires the user to enter a CSV file that lists the absolute path of the folder of each Landsat image to be processed. Each folder must contain all the (unzipped) individual files (bands), which are usually obtained from a provider such as the &lt;a href=&quot;http://www.usgs.gov&quot;&gt;USGS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;CLASlite requires that the CSV file contains the character string: &quot;LANDSAT_Folder_Names&quot; in the first row, and the absolute path of the folder of each image in the following rows as can be seen below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015-09-26-stacking-R-fig-2.png&quot; alt=&quot;Prepare Landsat template&quot; title=&quot;Prepare Landsat template&quot; style=&quot;width:400px&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;This template can be found in the &#39;templates&#39; folder inside the directory where CLASlite is installed. We can create a small R script that help us to automate the creation of this CSV file avoiding therefore to waste time on a repetitive action such as manually copying/pasting to a text file. Let&#39;s assume that we have a set of images of a given region that have been stored separately by year, as it would be the case for a land cover change study:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015-09-26-stacking-R-fig-3.png&quot; alt=&quot;Folder structure&quot; title=&quot;Folder structure&quot; style=&quot;width:800px&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The purpose of our R script will be to list all the folders inside each year folders which are contained in the &#39;images&#39; folder. Let&#39;s assume that we have stored images from 2000 to 2015 in our example, so let&#39;s create an integer object in R that lists the sequence of years. Let&#39;s also create a null object where we will iteratively add the list of folders for each year, and a character object to store the path to our top-level folder &#39;images&#39;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;years &amp;lt;- 2000:2014
+foldersList &amp;lt;- NULL
+path &amp;lt;- &quot;C:/images&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Now we can use a &lt;code&gt;for&lt;/code&gt; loop to, first, create the absolute path to the folder of each year (&lt;code&gt;path_year&lt;/code&gt;), list all the folders inside the &lt;code&gt;path_year&lt;/code&gt; folder using the &lt;code&gt;list.files&lt;/code&gt; function, and then add this list of folders to &lt;code&gt;foldersList&lt;/code&gt; object. This will be done iteratively for each year in the &lt;code&gt;years&lt;/code&gt; sequence. Sounds complicated right? Well, the actual code is quite simple:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for (year in years){
+  path_year &amp;lt;- paste0(path, &quot;/&quot;, year)
+  foldersList &amp;lt;- c(foldersList, paste0(path_year, &quot;/&quot;, list.files(path_year)))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Finally we can create a data frame to store the folders list giving the required name (i.e., &quot;LANDSAT_Folder_Names&quot;) to the data column:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;foldersListDF &amp;lt;- data.frame(&quot;LANDSAT_Folder_Names&quot; = foldersList)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Usually it is advisable to write a script as a function to facilitate its use in the future. This requires the definition of the required parameters that the function needs to be run. Only two parameters are required in this case, the path to the top-level folder and the sequence of years. Thus, our function, which I have named here as &lt;code&gt;stackImgTable4csv&lt;/code&gt;, can be defined as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;stackImgTable4csv &amp;lt;- function(path, years){
+  foldersList &amp;lt;- NULL
+    for (year in years){
+      path_year &amp;lt;- paste0(path, &quot;/&quot;, year)
+      foldersList &amp;lt;- c(foldersList, paste0(path_y, &quot;/&quot;, list.files(path_year)))
+    }
+  foldersListDF &amp;lt;- data.frame(&quot;LANDSAT_Folder_Names&quot; = foldersList)
+  return(foldersListDF)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+With a function defined this way, we just need to call the function and provide the arguments for each of the parameters and the name for the output object (e.g., &lt;code&gt;outDF&lt;/code&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;path &amp;lt;- &quot;C:/images&quot;
+years &amp;lt;- 2000:2014
+outDF &amp;lt;- stackImgTable4csv(path, years)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Then we can write the ouput data frame to a CSV file that will be loaded into CLASlite. For the &lt;code&gt;write.csv&lt;/code&gt; function, we must enter the data to be written and the name of the ouput file (e.g., &quot;stack_2000_2014.csv&quot;). We also need (and this is quite important for the CSV file to be read by CLASlite correctly) to indicate that the row names must not be written and that the character strings must not be surrounded by double quotes in the ouput file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;write.csv(outDF, file = &quot;stack_2000_2014.csv&quot;, row.names = FALSE, quote = FALSE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Finally we can go back to CLASlite and use the CSV file that we just created. Open CLASlite and click &quot;Tools&quot; - &quot;Prepare Landsat&quot;. Select &quot;Batch Process&quot; and click the &quot;Load File&quot; button to browse and select the output CSV file created previously. Finally click the &quot;Stack&quot; button. As a result of the stacking process, you should find raw and therm files in each image folder:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015-09-26-stacking-R-fig-4.png&quot; alt=&quot;Output folder&quot; title=&quot;Ouput folder&quot; style=&quot;width:800px&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Hope you found this post helpful! In the next post I will explain how we can use R to automatically create the text files required by CLASlite for producing atmospherically-corrected imagery. See you then!&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;comments&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 05 Sep 2015 06:02:52 -0500</pubDate>
+        <link>http://amsantac.co/blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html</link>
+        <guid isPermaLink="true">http://amsantac.co/blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html</guid>
+        
+        
+        <category>blog</category>
+        
+        <category>en</category>
+        
+        <category>r</category>
+        
+        <category>claslite</category>
+        
+        <category>stacking</category>
+        
+        <category>landsat</category>
+        
+      </item>
     
       <item>
         <title>Web mapping with Leaflet and R</title>
@@ -98,13 +194,17 @@ Finally export the map as an html page. In the &#39;Viewer&#39; tab in RStudio, 
 
 &lt;p&gt;&lt;br&gt;
 That&#39;s it. Congratulations for finishing this first tutorial!&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;comments&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 11 Aug 2015 06:02:52 -0500</pubDate>
-        <link>http://amsantac.co/blog/r/leaflet/webmapping/2015/08/11/leaflet-R.html</link>
-        <guid isPermaLink="true">http://amsantac.co/blog/r/leaflet/webmapping/2015/08/11/leaflet-R.html</guid>
+        <link>http://amsantac.co/blog/en/r/leaflet/webmapping/2015/08/11/leaflet-R.html</link>
+        <guid isPermaLink="true">http://amsantac.co/blog/en/r/leaflet/webmapping/2015/08/11/leaflet-R.html</guid>
         
         
         <category>blog</category>
+        
+        <category>en</category>
         
         <category>r</category>
         
@@ -120,16 +220,20 @@ That&#39;s it. Congratulations for finishing this first tutorial!&lt;/p&gt;
 
 &lt;p&gt;I&#39;ll be posting about topics related to the application of programming languages to the processing, visualization and analysis of spatial data, especially using the &lt;a href=&quot;http://r-project.org&quot;&gt;R language&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I have been programming for 10+ years for performing different kind of tasks in fields such as geostatistics, optimization of spatial sampling networks and the processing of geographic and remotely-sensed data. The application of scripting languages to automate the execution of otherwise time-consuming tasks has helped me a lot to be more efficient in a number of academic and professional activities. Through this blog I want to share what I have learned so far and what I am learning these days.&lt;/p&gt;
+&lt;p&gt;I have been programming for 10+ years for performing different kind of tasks in fields such as geostatistics, optimization of spatial sampling networks and the processing of geographic and remotely-sensed data. The application of scripting languages to automate the execution of otherwise time-consuming tasks has been quite helpful for being more efficient in a number of academic and professional activities. Through this blog I want to share what I have learned so far and what I am learning these days.&lt;/p&gt;
 
 &lt;p&gt;Feel free to comment and give (hopefully constructive!) feedback. Hope you enjoy the reading!&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;comments&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 09 Aug 2015 04:02:52 -0500</pubDate>
-        <link>http://amsantac.co/blog/2015/08/09/first-post.html</link>
-        <guid isPermaLink="true">http://amsantac.co/blog/2015/08/09/first-post.html</guid>
+        <link>http://amsantac.co/blog/en/2015/08/09/first-post.html</link>
+        <guid isPermaLink="true">http://amsantac.co/blog/en/2015/08/09/first-post.html</guid>
         
         
         <category>blog</category>
+        
+        <category>en</category>
         
       </item>
     

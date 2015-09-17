@@ -35,7 +35,7 @@
 		/*font-size: 1.4em;*/
 	}
 	
-		h1 a, h2 a, h4 a, h5 a, h6 a
+		h1 a, h2 a, h5 a, h6 a
 		{
 			color: inherit;
 			text-decoration: none;
@@ -255,10 +255,12 @@
 		ul.style {
 		}
 		
+		/* I remove padding and border-top */
 		ul.style li {
 			margin: 0;
-			padding: 2em 0em 1.5em 0em;
-			border-top: 1px solid #ECECEC;
+			/*padding: 2em 0em 1.5em 0em;
+			border-top: 1px solid #ECECEC;*/
+			padding: 0em 0em 0.5em 0em;
 		}
 		
 		ul.style li:first-child
@@ -278,7 +280,7 @@
 		ul.style .posted {
 			padding: 0em 0em 1em 0em;
 			letter-spacing: 1px;
-			text-transform: uppercase;
+			/*text-transform: uppercase;*/
 			font-size: 8pt;
 			color: #A2A2A2;
 		}
@@ -287,6 +289,13 @@
 			padding-top: 0px;
 			border-top: none;
 		}
+		
+		/* I added 
+		h1.post-list a {
+		  margin-bottom: 3em;
+		}
+		ul.post-list p {
+		}*/
 							
 
 	/* Buttons */
@@ -398,14 +407,14 @@
 /*********************************************************************************/
 /* Copyright                                                                     */
 /*********************************************************************************/
-	
+/* I changed opacity from 0.2 and 0.3 to 0.6 and 0.7, and text-decoration from none to underline */	
 	#copyright
 	{
 		position: relative;
 		padding: 3em 0em;
 		letter-spacing: 1px;
 		text-align: center;
-		color: rgba(255,255,255,.2);
+		color: rgba(255,255,255,.6);
 	}
 	
 	#copyright .container
@@ -414,6 +423,6 @@
 	
 	#copyright a
 	{
-		text-decoration: none;
-		color: rgba(255,255,255,.3);
+		text-decoration: underline;
+		color: rgba(255,255,255,.7);
 	}	
