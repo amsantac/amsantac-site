@@ -6,18 +6,18 @@ categories: blog en R CLASlite reflectance landsat
 published: false
 ---
 
+A common step in land cover mapping and multitemporal analysis of land cover change based on remotely-sensed data is the conversion of the data registered in each pixel of land cover by the satellite sensor into surface reflectance values that can be used for mapping. This process is known as calibration to surface reflectance and involves radiometric calibration and atmospheric correction. As mentioned in [my previous post], these steps can be conducted using the [CLASlite software]. In this post I explain how to automate the creation of the text files required by CLASlite for image calibration through batch processing.
 
+For the batched conversion to surface reflectance, CLASlite asks for a CSV text file containing 18 columns with the following names: "Input_FileName", "Date", "Time", "Gain_Settings", "Satellite", "Lead_File", "Therm_File", "QA_File", "Output_File", "GeoTIFF", "Proc_sys", "Reduce_masking", "no_masking", "fmask", "cldpix", "sdpix", "snpix" and "cldprob". A template file called 'step1_template.csv' can be found in the templates folder inside the CLASlite installation directory.
 
+"Input_FileName" refers to the absolute paths of the folders containing images to be processed. "Date" and "Time" refer to the date and time of the image acquisition. "Gain_Settings" refers to low or high gain settings used for optimizing sensor sensitivity. "Therm_File" and "QA_File" refer to the absolute paths of the thermal band files and the quality image files (e.g., for Landsat 8). "Output_File" refers to the desired name for the output surface reflectance file while "Proc_sys" refers to the processing software version (e.g., LPGS or NLAPS used by [USGS]). The description of the other data columns required by CLASlite can be seen [here].
 
-If you open the step1_template.csv file located in the templates folder inside the CLASlite installation directory,
-
-CLASlite requires that the CSV file contains 18 columns with the following names: "Input_FileName", "Date", "Time", "Gain_Settings", "Satellite", "Lead_File", "Therm_File", "QA_File", "Output_File", "GeoTIFF", "Proc_sys", "Reduce_masking", "no_masking", "fmask", "cldpix", "sdpix", "snpix" and "cldprob".
-This template can be found in the 'templates' folder inside the directory where CLASlite is installed. 
+I wrote an R script called [reflectanceImgTable4csv.R] that helps to the creation of this text file by reading the required information from the metadata file of the corresponding images. Below I describe how to run this script and how to use the output text file in CLASlite for producing surface reflectance from raw imagery.
 
 
 ### **How to run the script**
 
-First it is necessary to create a list of the folders containing the stacked Landsat images that will be processed. Let's assume we have a group of Landsat images for a number of years for which we have already created raw and thermal files as shown in [my previous post]:
+For using the R script, it is necessary to create first a list of the folders containing the stacked Landsat images that will be processed. Let's assume we have a group of Landsat images for a number of years for which we have already created raw and thermal files as shown in [my previous post]:
 
 <img src="/images/2015-10-03-reflectance-R-fig-1.png" alt="Input folder" title="Input folder" style="width:800px">
 
@@ -25,7 +25,7 @@ Let's use R to create the folders list:
 
 ```
 setwd("C:/images/2000")   # set the working directory
-foldersList <- normalizePath(list.dirs(full.names = TRUE, recursive = FALSE))  # get absolute file paths
+ foldersList <- normalizePath(list.dirs(full.names = TRUE, recursive = FALSE))  # get absolute file paths
 ```
 <br>
 You can found the complete code script for the `reflectanceImgTable4csv` function in this [link]. Let's source the script file:
@@ -131,7 +131,7 @@ gains <- NULL
 }
 ```    
 <br>
-The processing system is read and treated as a boolean variable (i.e., 0 for LPGS, 1 for NLAPS):
+The processing software version is read and treated as a boolean variable (i.e., 0 for LPGS, 1 for NLAPS):
 
 ```
 sys1 <- strsplit(mtl[grep("PROCESSING_SOFTWARE_VERSION", mtl)], "= ")[[1]][2]
@@ -166,11 +166,11 @@ This R script can be quite useful for an efficient creation of the text files ne
 
 <a id="comments"></a>
 
-[CLASlite]:                         http://claslite.carnegiescience.edu/
+[CLASlite software]:                http://claslite.carnegiescience.edu/
 [R language]:                       http://r-project.org
-[Carnegie Institution for Science]: https://carnegiescience.edu/
 [USGS]:                             http://www.usgs.gov
-
+[here]:                             https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [link]:                             https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [my previous post]:                 /blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html
+[reflectanceImgTable4csv.R]:        https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [reflectanceImgTable4csv.R script]: https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
