@@ -30,16 +30,16 @@ foldersList <- NULL
 path <- "C:/images"
 ```
 <br>
-Now we can use a `for` loop to, first, create the absolute path to the folder of each year (`path_year`), list all the folders inside the `path_year` folder using the `list.files` function, and then add this list of folders to `foldersList` object. This will be done iteratively for each year in the `years` sequence. Sounds complicated right? Well, the actual code is quite simple:
+Now we can use a `for` loop to, first, create the absolute path to the folder of each year (`path_year`), list the folders inside the `path_year` folder using the `list.dirs` function, and then add this list of folders to the `foldersList` object. This will be done iteratively for each year in the `years` sequence. Sounds complicated uh? Well, the actual code is quite simple:
 
 ```
 for (year in years){
   path_year <- paste0(path, "/", year)
-  foldersList <- c(foldersList, paste0(path_year, "/", list.files(path_year)))
+  foldersList <- c(foldersList, list.dirs(path_year, recursive = FALSE))
 }
 ```
 <br>
-Finally we can create a data frame to store the folders list giving the required name (i.e., "LANDSAT_Folder_Names") to the data column:
+Finally we can create a data frame to store the folders list giving the required name to the data column (i.e., "LANDSAT_Folder_Names"):
 
 ```
 foldersListDF <- data.frame("LANDSAT_Folder_Names" = foldersList)
@@ -52,7 +52,7 @@ stackImgTable4csv <- function(path, years){
   foldersList <- NULL
     for (year in years){
       path_year <- paste0(path, "/", year)
-      foldersList <- c(foldersList, paste0(path_y, "/", list.files(path_year)))
+      foldersList <- c(foldersList, list.dirs(path_year, recursive = FALSE))
     }
   foldersListDF <- data.frame("LANDSAT_Folder_Names" = foldersList)
   return(foldersListDF)
@@ -67,13 +67,13 @@ years <- 2000:2014
 outDF <- stackImgTable4csv(path, years)
 ```
 <br>
-Then we can write the ouput data frame to a CSV file that will be loaded into CLASlite. For the `write.csv` function, we must enter the data to be written and the name of the ouput file (e.g., "stack_2000_2014.csv"). We also need (and this is quite important for the CSV file to be read by CLASlite correctly) to indicate that the row names must not be written and that the character strings must not be surrounded by double quotes in the ouput file.
+Then we can write the ouput data frame to a CSV file that will be loaded into CLASlite. For the `write.csv` function, we must enter the data to be written and the name of the ouput file (e.g., "stack_2000_2014.csv"). We also have to indicate that the row names must not be written and that the character strings must not be surrounded by double quotes in the ouput file. This is quite important for the CSV file to be read correctly by CLASlite:
 
 ```
 write.csv(outDF, file = "stack_2000_2014.csv", row.names = FALSE, quote = FALSE)
 ```
 <br>
-Finally we can go back to CLASlite and use the CSV file that we just created. Open CLASlite and click "Tools" - "Prepare Landsat". Select "Batch Process" and click the "Load File" button to browse and select the output CSV file created previously. Finally click the "Stack" button. As a result of the stacking process, you should find raw and therm files in each image folder:
+Finally we can go back to CLASlite and use the CSV file that we just created. Open CLASlite and click "Tools" - "Prepare Landsat". Select "Batch Process" and click the "Load File" button to browse and select the output CSV file created previously. Finally click the "Stack" button. As a result of the stacking process, you should find raw and thermal files in each image folder:
 
 <img src="/images/2015-09-05-stacking-R-fig-4.png" alt="Output folder" title="Ouput folder" style="width:800px">
 

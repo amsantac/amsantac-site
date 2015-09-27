@@ -99,17 +99,17 @@
 
 <p>Usually the first step for processing imagery obtained in raw format is to stack the individual layers into a single file. CLASlite allows stacking Landsat imagery using the 'Prepare Landsat' tool which can be accessed from the Tools - Prepare Landsat menu in the CLASlite graphical user interface:</p>
 
-<p><img src="/images/2015-09-26-stacking-R-fig-1.png" alt="Prepare Landsat Tool in CLASlite" title="Prepare Landsat Tool in CLASlite" style="width:600px"></p>
+<p><img src="/images/2015-09-05-stacking-R-fig-1.png" alt="Prepare Landsat Tool in CLASlite" title="Prepare Landsat Tool in CLASlite" style="width:600px"></p>
 
 <p>One pretty useful feature of CLASlite is that a number of processing and preprocessing tasks can be executed for several files at a time through batch processing. For example, the batched 'Prepare Landsat' tool requires the user to enter a CSV file that lists the absolute path of the folder of each Landsat image to be processed. Each folder must contain all the (unzipped) individual files (bands), which are usually obtained from a provider such as the <a href="http://www.usgs.gov">USGS</a>.</p>
 
 <p>CLASlite requires that the CSV file contains the character string: "LANDSAT_Folder_Names" in the first row, and the absolute path of the folder of each image in the following rows as can be seen below:</p>
 
-<p><img src="/images/2015-09-26-stacking-R-fig-2.png" alt="Prepare Landsat template" title="Prepare Landsat template" style="width:400px"></p>
+<p><img src="/images/2015-09-05-stacking-R-fig-2.png" alt="Prepare Landsat template" title="Prepare Landsat template" style="width:400px"></p>
 
 <p>This template can be found in the 'templates' folder inside the directory where CLASlite is installed. We can create a small R script that help us to automate the creation of this CSV file avoiding therefore to waste time on a repetitive action such as manually copying/pasting to a text file. Let's assume that we have a set of images of a given region that have been stored separately by year, as it would be the case for a land cover change study:</p>
 
-<p><img src="/images/2015-09-26-stacking-R-fig-3.png" alt="Folder structure" title="Folder structure" style="width:800px"></p>
+<p><img src="/images/2015-09-05-stacking-R-fig-3.png" alt="Folder structure" title="Folder structure" style="width:800px"></p>
 
 <p>The purpose of our R script will be to list all the folders inside each year folders which are contained in the 'images' folder. Let's assume that we have stored images from 2000 to 2015 in our example, so let's create an integer object in R that lists the sequence of years. Let's also create a null object where we will iteratively add the list of folders for each year, and a character object to store the path to our top-level folder 'images':</p>
 
@@ -119,16 +119,16 @@ path &lt;- "C:/images"
 </code></pre>
 
 <p><br>
-Now we can use a <code>for</code> loop to, first, create the absolute path to the folder of each year (<code>path_year</code>), list all the folders inside the <code>path_year</code> folder using the <code>list.files</code> function, and then add this list of folders to <code>foldersList</code> object. This will be done iteratively for each year in the <code>years</code> sequence. Sounds complicated right? Well, the actual code is quite simple:</p>
+Now we can use a <code>for</code> loop to, first, create the absolute path to the folder of each year (<code>path_year</code>), list the folders inside the <code>path_year</code> folder using the <code>list.dirs</code> function, and then add this list of folders to the <code>foldersList</code> object. This will be done iteratively for each year in the <code>years</code> sequence. Sounds complicated uh? Well, the actual code is quite simple:</p>
 
 <pre><code>for (year in years){
   path_year &lt;- paste0(path, "/", year)
-  foldersList &lt;- c(foldersList, paste0(path_year, "/", list.files(path_year)))
+  foldersList &lt;- c(foldersList, list.dirs(path_year, recursive = FALSE))
 }
 </code></pre>
 
 <p><br>
-Finally we can create a data frame to store the folders list giving the required name (i.e., "LANDSAT_Folder_Names") to the data column:</p>
+Finally we can create a data frame to store the folders list giving the required name to the data column (i.e., "LANDSAT_Folder_Names"):</p>
 
 <pre><code>foldersListDF &lt;- data.frame("LANDSAT_Folder_Names" = foldersList)
 </code></pre>
@@ -140,7 +140,7 @@ Usually it is advisable to write a script as a function to facilitate its use in
   foldersList &lt;- NULL
     for (year in years){
       path_year &lt;- paste0(path, "/", year)
-      foldersList &lt;- c(foldersList, paste0(path_y, "/", list.files(path_year)))
+      foldersList &lt;- c(foldersList, list.dirs(path_year, recursive = FALSE))
     }
   foldersListDF &lt;- data.frame("LANDSAT_Folder_Names" = foldersList)
   return(foldersListDF)
@@ -156,15 +156,15 @@ outDF &lt;- stackImgTable4csv(path, years)
 </code></pre>
 
 <p><br>
-Then we can write the ouput data frame to a CSV file that will be loaded into CLASlite. For the <code>write.csv</code> function, we must enter the data to be written and the name of the ouput file (e.g., "stack_2000_2014.csv"). We also need (and this is quite important for the CSV file to be read by CLASlite correctly) to indicate that the row names must not be written and that the character strings must not be surrounded by double quotes in the ouput file.</p>
+Then we can write the ouput data frame to a CSV file that will be loaded into CLASlite. For the <code>write.csv</code> function, we must enter the data to be written and the name of the ouput file (e.g., "stack_2000_2014.csv"). We also have to indicate that the row names must not be written and that the character strings must not be surrounded by double quotes in the ouput file. This is quite important for the CSV file to be read correctly by CLASlite:</p>
 
 <pre><code>write.csv(outDF, file = "stack_2000_2014.csv", row.names = FALSE, quote = FALSE)
 </code></pre>
 
 <p><br>
-Finally we can go back to CLASlite and use the CSV file that we just created. Open CLASlite and click "Tools" - "Prepare Landsat". Select "Batch Process" and click the "Load File" button to browse and select the output CSV file created previously. Finally click the "Stack" button. As a result of the stacking process, you should find raw and therm files in each image folder:</p>
+Finally we can go back to CLASlite and use the CSV file that we just created. Open CLASlite and click "Tools" - "Prepare Landsat". Select "Batch Process" and click the "Load File" button to browse and select the output CSV file created previously. Finally click the "Stack" button. As a result of the stacking process, you should find raw and thermal files in each image folder:</p>
 
-<p><img src="/images/2015-09-26-stacking-R-fig-4.png" alt="Output folder" title="Ouput folder" style="width:800px"></p>
+<p><img src="/images/2015-09-05-stacking-R-fig-4.png" alt="Output folder" title="Ouput folder" style="width:800px"></p>
 
 <p>Hope you found this post helpful! In the next post I will explain how we can use R to automatically create the text files required by CLASlite for producing atmospherically-corrected imagery. See you then!</p>
 
@@ -226,12 +226,12 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 							<ul class="style">
 								<li>
 									<img src="/images/reflectance_mini.jpg" alt="" width=70 height=70/>
-									<p class="text"><h4><a href="/blog/en/r/claslite/reflectance/landsat/2015/10/03/reflectance-R.html">Prepare files for reflectance in CLASlite using R</a></h4></p>
+									<p class="text"><h4><a href="/blog/en/r/claslite/reflectance/landsat/2015/10/03/reflectance-R.html">Prepare files for production of atmospherically-corrected imagery in CLASlite using R</a></h4></p>
 									<p class="posted">OCTOBER 3, 2015  |  <a href="/blog/en/r/claslite/reflectance/landsat/2015/10/03/reflectance-R.html#comments">COMMENTS</a></p>
 								</li>
 								<li>
 									<a href="/blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html"><img src="/images/CLASlite_v3.png" alt="" width=70 height=70/></a>
-									<p class="text"><h4><a href="/blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html#comments">Using R for file stacking in CLASlite</a></h4></p>
+									<p class="text"><h4><a href="/blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html">Using R for file stacking in CLASlite</a></h4></p>
 									<p class="posted">SEPTEMBER 5, 2015  |  <a href="/blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html#comments">COMMENTS</a></p>
 								</li>
 							</ul>
@@ -272,12 +272,17 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 								<li>
 									<a href="https://plus.google.com/u/0/communities/108037738151282716907"><img src="/images/geomatica.jpg" width=70 height=70></a>
 									<p class="text"><h4><a href="https://plus.google.com/u/0/communities/108037738151282716907">GEOMATICA</a></h4></p>
-									<p class="posted">GOOGLE+ COMMUNITY</p>
+									<p class="posted">G+ COMMUNITY ABOUT GEOMATICS</p>
 								</li>
 								<li>
 									<a href="http://www.r-bloggers.com"><img src="/images/rbloggers.png" width=70 height=70/></a>
 									<p class="text"><h4><a href="http://www.r-bloggers.com/">R-BLOGGERS</a></h4></p>
 									<p class="posted">R NEWS AND TUTORIALS</a></p>
+								</li>
+								<li>
+									<a href="https://www.facebook.com/DronITech"><img src="/images/CaptureDronEs.png" width=70 height=70/></a>
+									<p class="text"><h4><a href="https://www.facebook.com/DronITech">DronIT</a></h4></p>
+									<p class="posted">NEWS ABOUT DRONES TECHNOLOGY</a></p>
 								</li>
 							</ul>
 						</section>						

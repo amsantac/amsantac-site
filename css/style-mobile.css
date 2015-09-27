@@ -174,7 +174,8 @@
 			text-decoration: none;
 			text-transform: none;
 			/*text-transform: uppercase;*/
-			font-size: 3em;
+			/* I reduce font-size from 3em to 2.5em */
+			font-size: 2.5em;
 			font-weight: 900;
 			color: #FFF;
 		}

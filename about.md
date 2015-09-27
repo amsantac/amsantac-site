@@ -5,7 +5,7 @@ date:   2015-09-11 11:02:52
 ---
 <header>
 <h2>About me</h2>
-<span class="byline">R Programmer | Geomatician | Lifelong learner</span>
+<span class="byline">Spatial data scientist | R geek | Lifelong learner</span>
 </header>
 
 <p>
