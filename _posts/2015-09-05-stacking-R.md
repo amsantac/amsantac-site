@@ -2,7 +2,8 @@
 layout: post
 title:  "Using R for file stacking in CLASlite"
 date:   2015-09-05 11:02:52
-categories: blog en R CLASlite stacking landsat
+categories: blog en R 
+tags: R CLASlite stacking landsat
 published: true
 ---
 
@@ -79,9 +80,17 @@ Finally we can go back to CLASlite and use the CSV file that we just created. Op
 
 Hope you found this post helpful! In the next post I will explain how we can use R to automatically create the text files required by CLASlite for producing atmospherically-corrected imagery. See you then! 
 
+<br>
+<br>
+**You may be also interested in:**
+
+&#42; [Prepare files for production of atmospherically-corrected imagery in CLASlite using R]
+
 <a id="comments"></a>
 
 [CLASlite]:                         http://claslite.carnegiescience.edu/
 [R language]:                       http://r-project.org
 [Carnegie Institution for Science]: https://carnegiescience.edu/
 [USGS]:                             http://www.usgs.gov
+[Prepare files for production of atmospherically-corrected imagery in CLASlite using R]: /blog/en/r/claslite/reflectance/landsat/2015/10/03/reflectance-R.html
+

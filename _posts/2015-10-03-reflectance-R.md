@@ -2,7 +2,8 @@
 layout: post
 title:  "Prepare files for production of atmospherically-corrected imagery in CLASlite using R"
 date:   2015-10-03 11:02:52
-categories: blog en R CLASlite reflectance landsat
+categories: blog en R
+tags: R CLASlite reflectance landsat
 published: false
 ---
 
@@ -162,7 +163,13 @@ Finally the names of the output files are assigned:
 outDF[i, "Output_File"] <- sub("_therm", "_refl", outDF[i, "Therm_File"])
 ```    
 <br>
-This R script can be quite useful for an efficient creation of the text files necessary for producing surface reflectance imagery using the CLASlite software. This script has been tested for Landsat imagery on a Windows environment. If you happen to use this script, I appreciate any feedback that helps to its improvement. Hope you find it helpful! 
+This R script intends to help for an efficient creation of the text files required by the CLASlite software for producing surface reflectance imagery. The script has been tested for Landsat imagery on a Windows environment. If you happen to use this script, I appreciate any feedback that helps to its improvement. Hope you find it helpful! 
+
+<br>
+<br>
+**You may be also interested in:**
+
+&#42; [Using R for file stacking in CLASlite]
 
 <a id="comments"></a>
 
@@ -172,5 +179,6 @@ This R script can be quite useful for an efficient creation of the text files ne
 [here]:                             https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [link]:                             https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [my previous post]:                 /blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html
+[Using R for file stacking in CLASlite]:                 /blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html
 [reflectanceImgTable4csv.R]:        https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [reflectanceImgTable4csv.R script]: https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R

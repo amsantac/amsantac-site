@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Web mapping with Leaflet and R"
+title:  "Web en espanol mapping with Leaflet and R en espanol"
 date:   2015-08-11 11:02:52
-categories: blog en R
+categories: blog es R
 tags: R leaflet webmapping
-published: true
+published: false
 ---
 
 [Leaflet] is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a web map using Leaflet in the [R environment].

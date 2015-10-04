@@ -1,0 +1,28 @@
+---
+layout: page
+title: The R-Spatialist Blog
+---
+
+
+  <h1 class="page-heading">POSTS</h1>
+  <br>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span ><em>{{ post.date | date: "%b %-d, %Y" }}</em></span>
+
+        <h1 class="post-list">
+          <p><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></p>
+        </h1>
+        {{ post.excerpt }}
+        <a href="{{ post.url | prepend: site.baseurl }}">Read more ...</a>
+      </li>
+      <br>
+      <br>
+    {% endfor %}
+  </ul>
+
+    <p class="rss-subscribe"><strong>Subscribe to my blog <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></strong> <a href="{{ "/feed.xml" | prepend: site.baseurl }}">&nbsp;<img src="/images/rss.jpg" alt="" style="right;width:15px;height:15px;"/></a></p>
+
+<!-- permalink: blog -->
