@@ -16,3 +16,4 @@ github_username:  amsantac
 markdown: rdiscount
 #markdown: kramdown
 highlighter: pygments
+excerpt_separator: <!--more-->

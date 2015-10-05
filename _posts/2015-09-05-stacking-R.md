@@ -3,11 +3,16 @@ layout: post
 title:  "Using R for file stacking in CLASlite"
 date:   2015-09-05 11:02:52
 categories: blog en R 
-tags: R CLASlite stacking landsat
+tags: R RemoteSensing CLASlite stacking landsat
+image: 2015-09-05-stacking-R-mini.png
 published: true
 ---
 
-[CLASlite] is a powerful image processing software developed by the [Carnegie Institution for Science] that provides functionality for calibration, pre-processing, atmospheric correction, cloud masking, Monte Carlo Spectral Mixture Analysis and classification. I describe in this post how to use the [R language] for creating the text files required by CLASlite for stacking imagery through batch processing. This is a simple application that shows R beginners how to make use of basic R functions such as file listing and for loops.
+[CLASlite] is a powerful image processing software developed by the [Carnegie Institution for Science] that provides functionality for calibration, pre-processing, atmospheric correction, cloud masking, Monte Carlo Spectral Mixture Analysis and classification. 
+
+I describe in this post how to use the [R language] for creating the text files required by CLASlite for stacking imagery through batch processing. This is a simple application that shows R beginners how to make use of basic R functions such as file listing and for loops.
+
+<!--more-->
 
 Usually the first step for processing imagery obtained in raw format is to stack the individual layers into a single file. CLASlite allows stacking Landsat imagery using the 'Prepare Landsat' tool which can be accessed from the Tools - Prepare Landsat menu in the CLASlite graphical user interface:
 
@@ -74,7 +79,7 @@ Then we can write the ouput data frame to a CSV file that will be loaded into CL
 write.csv(outDF, file = "stack_2000_2014.csv", row.names = FALSE, quote = FALSE)
 ```
 <br>
-Finally we can go back to CLASlite and use the CSV file that we just created. Open CLASlite and click "Tools" - "Prepare Landsat". Select "Batch Process" and click the "Load File" button to browse and select the output CSV file created previously. Finally click the "Stack" button. As a result of the stacking process, you should find raw and thermal files in each image folder:
+Now we can go back to CLASlite and use the CSV file that we just created. Open CLASlite and click "Tools" - "Prepare Landsat". Select "Batch Process" and click the "Load File" button to browse and select the output CSV file created previously. Finally click the "Stack" button. As a result of the stacking process, you should find raw and thermal files in each image folder:
 
 <img src="/images/2015-09-05-stacking-R-fig-4.png" alt="Output folder" title="Ouput folder" style="width:800px">
 
@@ -82,9 +87,8 @@ Hope you found this post helpful! In the next post I will explain how we can use
 
 <br>
 <br>
-**You may be also interested in:**
 
-&#42; [Prepare files for production of atmospherically-corrected imagery in CLASlite using R]
+
 
 <a id="comments"></a>
 

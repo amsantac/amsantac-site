@@ -11,7 +11,7 @@ published: false
 
 There are different ways to create a map using the Leaflet JS library. One way is to include the Leaflet JS and CSS files in the head of a web page and then set up the map in the body of the html page, as shown in the [Leaflet Quick Start Guide].
 
-An alternative way is to create the web map in the R environment using an R package called [leaflet], developed by the guys from [RStudio], which allows controlling and integrating Leaflet maps in R. Here I'll show how to read a vector map in [shapefile] format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, a layers control and popups for displaying attribute data. I recommend to use the [RStudio IDE] for the purpose of this tutorial.
+An alternative way is to create the web map in the R environment using an R package called [leaflet], developed by the guys from [RStudio], which allows controlling and integrating Leaflet maps in R. Here I'll show how to read a vector map in [shapefile] format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, a layers control and popups for displaying attribute data. <!--more-->I recommend to use the [RStudio IDE] for the purpose of this tutorial.
 
 First we need to install the leaflet package in R entering the following command line in the R console:
 

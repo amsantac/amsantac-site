@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R-Spatialist</title>
+    <description>Smart solutions for geospatial data processing
+</description>
+    <link>http://amsantac.co/</link>
+    <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 05 Oct 2015 15:32:27 -0500</pubDate>
+    <lastBuildDate>Mon, 05 Oct 2015 15:32:27 -0500</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Using R for file stacking in CLASlite</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://claslite.carnegiescience.edu/&quot;&gt;CLASlite&lt;/a&gt; is a powerful image processing software developed by the &lt;a href=&quot;https://carnegiescience.edu/&quot;&gt;Carnegie Institution for Science&lt;/a&gt; that provides functionality for calibration, pre-processing, atmospheric correction, cloud masking, Monte Carlo Spectral Mixture Analysis and classification.&lt;/p&gt;
+
+&lt;p&gt;I describe in this post how to use the &lt;a href=&quot;http://r-project.org&quot;&gt;R language&lt;/a&gt; for creating the text files required by CLASlite for stacking imagery through batch processing. This is a simple application that shows R beginners how to make use of basic R functions such as file listing and for loops.&lt;/p&gt;
+
+        <p><a href="http://amsantac.co/blog/en/r/2015/09/05/stacking-R.html">To read this article in full, please click here</a></p></description>
+        <pubDate>Sat, 05 Sep 2015 06:02:52 -0500</pubDate>
+        <link>http://amsantac.co/blog/en/r/2015/09/05/stacking-R.html</link>
+        <guid isPermaLink="true">http://amsantac.co/blog/en/r/2015/09/05/stacking-R.html</guid>
+        
+        <category>R</category>
+        
+        <category>RemoteSensing</category>
+        
+        <category>CLASlite</category>
+        
+        <category>stacking</category>
+        
+        <category>landsat</category>
+        
+        
+        <category>blog</category>
+        
+        <category>en</category>
+        
+        <category>r</category>
+        
+      </item>
+    
+      <item>
+        <title>Web mapping with Leaflet and R</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://leafletjs.com/&quot;&gt;Leaflet&lt;/a&gt; is a JavaScript library that has become quite popular for creating interactive maps. One way to create a map using the Leaflet JS library is to include the Leaflet JS and CSS files in the head of a web page and then set up the map in the body of the html page, as shown in the &lt;a href=&quot;http://leafletjs.com/examples/quick-start.html&quot;&gt;Leaflet Quick Start Guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;An alternative way is to create the web map in the R environment using an R package called &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt;, developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;, which allows controlling and integrating Leaflet maps in R. In this post I show how to read a vector map in &lt;a href=&quot;https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm&quot;&gt;shapefile&lt;/a&gt; format and create a leaflet web map customizing how the vector map is displayed. I will also show how to add a legend, a layers control and popups for displaying attribute data.&lt;/p&gt;
+
+        <p><a href="http://amsantac.co/blog/en/r/2015/08/11/leaflet-R.html">To read this article in full, please click here</a></p></description>
+        <pubDate>Tue, 11 Aug 2015 06:02:52 -0500</pubDate>
+        <link>http://amsantac.co/blog/en/r/2015/08/11/leaflet-R.html</link>
+        <guid isPermaLink="true">http://amsantac.co/blog/en/r/2015/08/11/leaflet-R.html</guid>
+        
+        <category>R</category>
+        
+        <category>GIS</category>
+        
+        <category>leaflet</category>
+        
+        <category>webmapping</category>
+        
+        
+        <category>blog</category>
+        
+        <category>en</category>
+        
+        <category>r</category>
+        
+      </item>
+    
+  </channel>
+</rss>

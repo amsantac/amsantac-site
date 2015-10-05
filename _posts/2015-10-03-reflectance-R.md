@@ -3,11 +3,16 @@ layout: post
 title:  "Prepare files for production of atmospherically-corrected imagery in CLASlite using R"
 date:   2015-10-03 11:02:52
 categories: blog en R
-tags: R CLASlite reflectance landsat
+tags: R RemoteSensing CLASlite reflectance landsat
+image: 2015-10-03-reflectance-R-mini.jpg
 published: false
 ---
 
-A common step in land cover mapping and multitemporal analysis of land cover change based on remotely-sensed data is the conversion of the data registered in each pixel of land cover by the satellite sensor into surface reflectance values that can be used for mapping. This process is known as calibration to surface reflectance and involves radiometric calibration and atmospheric correction. As mentioned in [my previous post], these steps can be conducted using the [CLASlite software]. In this post I explain how to automate the creation of the text files required by CLASlite for image calibration through batch processing.
+A common step in land cover mapping and multitemporal analysis of land cover change based on remotely-sensed data is the conversion of the data registered in each pixel of land cover by the satellite sensor into surface reflectance values that can be used for mapping. This process is known as calibration to surface reflectance and involves radiometric calibration and atmospheric correction. 
+
+As mentioned in [my previous post], these steps can be conducted using the [CLASlite software]. In this post I explain how to automate the creation of the text files required by CLASlite for image calibration through batch processing.
+
+<!--more-->
 
 For the batched conversion to surface reflectance, CLASlite asks for a CSV text file containing 18 columns with the following names: "Input_FileName", "Date", "Time", "Gain_Settings", "Satellite", "Lead_File", "Therm_File", "QA_File", "Output_File", "GeoTIFF", "Proc_sys", "Reduce_masking", "no_masking", "fmask", "cldpix", "sdpix", "snpix" and "cldprob". A template file called 'step1_template.csv' can be found in the templates folder inside the CLASlite installation directory.
 
