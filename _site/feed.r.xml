@@ -136,7 +136,7 @@ In this case the file has been read in R as an &lt;a href=&quot;http://www.insid
 &lt;p&gt;&lt;br&gt;
 The &lt;code&gt;fill&lt;/code&gt;, &lt;code&gt;stroke&lt;/code&gt; and &lt;code&gt;color&lt;/code&gt; arguments allow customizing whether to fill the polygon with color, whether to draw the border of the polygon, and the border color, respectively. For the &lt;code&gt;addLegend&lt;/code&gt; command, we define the position, colors and labels of the legend. If you are working in RStudio, you should see your map displayed in the &#39;Viewer&#39; tab when you hit enter:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/2015-08-11-leaflet-R-fig-1.png&quot; alt=&quot;Web map with leaflet&quot; style=&quot;width:785px&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/images/2015-08-11-leaflet-R-fig-1.png&quot;&gt;&lt;img src=&quot;/images/2015-08-11-leaflet-R-fig-1.png&quot; alt=&quot;Web map with leaflet&quot; style=&quot;width:785px&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Leaflet displays &lt;a href=&quot;http://www.openstreetmap.org/&quot;&gt;OpenStreetMap (OSM)&lt;/a&gt; tiles by default but you can use any map provider (e.g., &lt;a href=&quot;http://www.mapquest.com/&quot;&gt;MapQuest Open&lt;/a&gt;, &lt;a href=&quot;https://www.mapbox.com/&quot;&gt;MapBox&lt;/a&gt;, &lt;a href=&quot;http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx&quot;&gt;Bing Maps&lt;/a&gt;, etc.) as long as you conform to its terms of use. You can see the help page for the &lt;code&gt;addTiles&lt;/code&gt; function in R, if needed, entering &lt;code&gt;?addTiles&lt;/code&gt; in the R console.&lt;/p&gt;
 
