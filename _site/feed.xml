@@ -6,8 +6,8 @@
 </description>
     <link>http://amsantac.co/</link>
     <atom:link href="http://amsantac.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 06 Oct 2015 17:48:02 -0500</pubDate>
-    <lastBuildDate>Tue, 06 Oct 2015 17:48:02 -0500</lastBuildDate>
+    <pubDate>Tue, 06 Oct 2015 20:54:46 -0500</pubDate>
+    <lastBuildDate>Tue, 06 Oct 2015 20:54:46 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -72,7 +72,7 @@
         <title>Welcome to the R-Spatialist Blog!</title>
         <description>&lt;p&gt;Hi there! Welcome to my blog!&lt;/p&gt;
 
-&lt;p&gt;I&#39;ll be posting about topics related to the application of programming languages to the processing, visualization and analysis of spatial data, especially using the &lt;a href=&quot;http://r-project.org&quot;&gt;R language&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I&#39;ll be writing about several topics related to GIS, remote sensing and the application of programming languages to the processing, visualization and analysis of spatial data, especially using the &lt;a href=&quot;http://r-project.org&quot;&gt;R language&lt;/a&gt;.&lt;/p&gt;
 
         <p><a href="http://amsantac.co/blog/en/2015/08/09/first-post.html">To read this article in full, please click here</a></p></description>
         <pubDate>Sun, 09 Aug 2015 04:02:52 -0500</pubDate>

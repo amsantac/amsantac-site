@@ -8,7 +8,7 @@ published: true
 ---
 Hi there! Welcome to my blog!
 
-I'll be posting about topics related to the application of programming languages to the processing, visualization and analysis of spatial data, especially using the [R language].
+I'll be writing about several topics related to GIS, remote sensing and the application of programming languages to the processing, visualization and analysis of spatial data, especially using the [R language].
 <!--more-->
 I have been programming for 10+ years for performing different kind of tasks in fields such as geostatistics, optimization of spatial sampling networks and the processing of geographic and remotely-sensed data. The application of scripting languages to automate the execution of otherwise time-consuming tasks has been quite helpful for being more efficient in a number of academic and professional activities. Through this blog I want to share what I have learned so far and what I am learning these days. 
 
