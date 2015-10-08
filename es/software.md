@@ -1,46 +1,46 @@
 ---
-layout: default-soft
-title:  "Software by amsantac.co"
+layout: default-soft-es
+title:  "Software de amsantac.co"
 date:   2015-09-11 11:02:52
 ---
 <header>
 <h2>Software</h2>
 <br>
-<span class="byline">Some programs and apps you may find useful!</span>
+<span class="byline">Algunos programas y aplicaciones web que pueden serte útiles!</span>
 </header>
-
-<h2 style= "color:#1e6bb8">R PACKAGES</h2>
 <br>
-## The geospt package
+<h2 style= "color:#1e6bb8">PAQUETES DE R</h2>
 <br>
-This R package provides a set of techniques for geostatistical analysis and for the design of optimal spatial sampling networks. It includes variogram estimation through the trimmed mean, summary statistics for cross-validation and the design of optimal sampling networks through sequential and simultaneous points methods using genetic algorithms, among other functionalities. The package is available at [CRAN][geospt_CRAN] and [GitHub][geospt_github]. 
-
+## El paquete geospt
 <br>
-## The diffeR package
-<br>
-The diffeR package implements a set of metrics of difference for comparing pairs of maps representing real or categorical variables at original and multiple resolutions. The package can be downloaded and installed from [CRAN][differ_CRAN] and [GitHub][differ_github]. 
+Este paquete de R contiene un conjunto de técnicas para el análisis geoestadístico y para el diseño de redes espaciales de muestreo óptimas. Incluye la estimación del variograma a través de la media recortada, estadísticas de resumen para validación cruzada, y el diseño de redes óptimas de muestreo a través de los métodos de puntos secuenciales y puntos simultáneos usando algoritmos genéticos, además de otras funcionalidades. El paquete se encuentra disponible en [CRAN][geospt_CRAN] y [GitHub][geospt_github]. 
 
 <br>
-## The TOC package
+## El paquete diffeR
 <br>
-This R package allows the construction of the Receiver (aka Relative) Operating Characteristic (ROC) curve and the Total Operating Characteristic (TOC) curve for spatial and non-spatial data. The ROC curve is a widely-popular statistical technique used for evaluating the performance of a binary classifier system as its discrimination threshold is varied. The TOC method is a novel modification of the ROC method that has been introduced recently by [Professor Gil Pontius] from Clark University. The TOC package can be installed from [CRAN][toc_CRAN] and [GitHub][toc_github].
+El paquete diffeR implementa un conjunto de métricas de diferencia para comparar pares de mapas que representen variables categóricas o reales, a la resolución original o a múltiples resoluciones. Este paquete puede ser descargado e instalado desde [CRAN][differ_CRAN] o [GitHub][differ_github]. 
+
+<br>
+## El paquete TOC
+<br>
+Este paquete de R permite la construcción de la curva ROC (i.e., Receiver (aka Relative) Operating Characteristic) y la curva TOC (i.e., Total Operating Characteristic) para datos espaciales y no espaciales. La curva ROC es una técnica estadística muy popular usada para evaluar el comportamiento de un sistema clasificador binario a medida que el umbral de discriminación varía. El método TOC es una modificación novedosa de la técnica ROC que ha sido desarrollado recientemente por el profesor [Gil Pontius] de Clark University. El paquete TOC puede ser instalado desde [CRAN][toc_CRAN] o [GitHub][toc_github].
 
 <br>
 <hr>
 <br>
-<h2 style= "color:#1e6bb8">WEB APPS</h2>
+<h2 style= "color:#1e6bb8">APLICACIONES WEB</h2>
 <br>
-## TOC Shiny App
+## Aplicación TOC implementada con Shiny
 <br>
-The TOC R Shiny web application allows the construction of the ROC curve and the TOC curve for spatial and non-spatial data through a graphical user interface. Click <a href="https://amsantac.shinyapps.io/TOCapp" target="_blank">here to launch the app in full screen</a>.
+Esta aplicación web desarrollada con [Shiny] permite la construcción de la curva ROC y la curva TOC para datos espaciales y no espaciales a través de una interfaz gráfica de usuario. <a href="https://amsantac.shinyapps.io/TOCapp" target="_blank">Haz clic aquí</a> para lanzar esta aplicación en pantalla completa.
 
 <br>
-## The Llanos Google Earth Engine App
+## Aplicación de Los Llanos implementada con Google Earth Engine
 <br>
-The Llanos GEE App displays Landsat imagery (Landsat 5 TM, Landsat 7 ETM and Landsat 8 OLI) in false color composite (RGB: near infrared/short wave infrared/red) from 2000 to 2014 for the tropical ecorregion known as the Llanos savannas located in Colombia, South America. This app is powered by [Google Earth Engine]. Click <a href="https://test-project-1036.appspot.com/" target="_blank">here to launch this app in full screen</a>.
+Esta aplicación muestra imágenes Landsat (Landsat 5 TM, Landsat 7 ETM y Landsat 8 OLI) en composición de falso color (RGB: infrarrojo cercano/ infrarrojo de onda corta/ rojo) desde el año 2000 hasta el año 2014 para la ecoregión tropical conocida como Los Llanos localizada en Colombia, Suramérica. Esta aplicación está implementada con [Google Earth Engine]. <a href="https://test-project-1036.appspot.com/" target="_blank">Haz clic aquí</a> para lanzar esta aplicación en pantalla completa.
 
 <br>
-### *Interested in collaboration for the development of similar software tools? Feel free to [contact me].*
+### *Interesado en colaboración para el desarrollo de herramientas de software similares? Escríbeme a través de [mi página de contacto].*
 
 
 [geospt_CRAN]: http://cran.r-project.org/web/packages/geospt/
@@ -49,6 +49,8 @@ The Llanos GEE App displays Landsat imagery (Landsat 5 TM, Landsat 7 ETM and Lan
 [differ_github]: https://github.com/amsantac/diffeR
 [toc_CRAN]: http://cran.r-project.org/web/packages/TOC/
 [toc_github]: https://github.com/amsantac/TOC
-[Professor Gil Pontius]: http://www.clarku.edu/~rpontius/
+[Gil Pontius]: http://www.clarku.edu/~rpontius/
 [Google Earth Engine]: https://earthengine.google.org
-[contact me]: contact.html
+[mi página de contacto]: /es/contact.html
+[Shiny]: http://shiny.rstudio.com/
+

@@ -1,49 +1,49 @@
 ---
-layout: default-pubs
-title:  "Publications by amsantac.co"
+layout: default-pubs-es
+title:  "Publicaciones de amsantac.co"
 date:   2015-09-11 11:02:52
 ---
 <header>
-<h2>Publications</h2>
+<h2>Publicaciones</h2>
 </header>
 <br>
 
-##Peer reviewed journal articles
+##Artículos revisados por pares
 <br>
 Pontius Jr., R.G., **Santacruz, A.** 2014. Quantity, exchange and shift components of difference in a square contingency table. International Journal of Remote Sensing 35 (21), 7543-7554. [[link]][Pontius_Santacruz_2014]
 
 Gutierrez, V., Zapata, M., Usma, C., Laguado, W., **Santacruz, A.** 2006. Maximizing the profitability of forestry projects under the Clean Development Mechanism using a forest management optimization model. Forest Ecology and Management 226 (1-3), 341-350. [[link]][Gutierrez_et_al_2006]
 
 <br>
-##Peer reviewed book chapters
+##Capítulos de libro revisados por pares
 <br>
 **Santacruz, A.**, Rubiano, Y., Melo, C. 2014. Evolutionary optimization of spatial sampling networks designed for the monitoring of soil organic carbon. In: Hartemink, A.E., McSweeney, K. (Eds.). Soil Carbon (Progress in Soil Science Series). Springer, Dordrecht. ISBN: 978-3-319-04083-7. [[link]][Santacruz_et_al_2014]
 
 <br>
-##Books
+##Libros
 <br>
-**Santacruz, A.** 2011. Evolutionary optimization of spatial sampling networks. An application of genetic algorithms and geostatistics for the monitoring of soil organic carbon. Editorial Academica Espanola. Saarbrucken, Germany. 183 p. ISBN: 978-3-8454-9815-7. (In Spanish) Available at [amazon.com][Santacruz_2011b_1] and [amazon.co.uk][Santacruz_2011b_2].
+**Santacruz, A.** 2011. Optimización evolutiva de redes espaciales de muestreo. Una aplicación de los algoritmos genéticos y la geoestadística al monitoreo del carbono orgánico del suelo. Editorial Académica Española. 183 p. ISBN: 978-3-8454-9815-7. Disponible en [amazon.com][Santacruz_2011b_1] y [amazon.co.uk][Santacruz_2011b_2].
 
-**Santacruz, A.** 2011. Study of the dynamics of the landscape matrix. A landscape ecology application for land use change analysis. Editorial Academica Espanola. Saarbrucken, Germany. 80 p. ISBN: 978-3-8443-4504-9. (In Spanish) Available at [amazon.com][Santacruz_2011a_1] and [amazon.co.uk][Santacruz_2011a_2].
+**Santacruz, A.** 2011. Estudio de la dinámica de la matriz del paisaje. Una aplicación de la ecología del paisaje al análisis del cambio en el uso del suelo. Editorial Académica Española. 80 p. ISBN: 978-3-8443-4504-9. Disponible en [amazon.com][Santacruz_2011a_1] y [amazon.co.uk][Santacruz_2011a_2].
 
 <br>
-##Publications as popular scientific newsletters
+##Publicaciones en otras revistas
 <br>
-Arias, L., **Santacruz, A.**, Posada, E. 2010. Colombian Earth Observation Satellite Program: A strategy of innovation and technological development for Colombia. Revista Analisis Geograficos 44, 13-29. (In Spanish)
+Arias, L., **Santacruz, A.**, Posada, E. 2010. Programa Satelital Colombiano de Observación de la Tierra: Una estrategia de innovación y desarrollo tecnológico para Colombia. Revista Análisis Geográficos No. 44. Edición especial Comisión Colombiana del Espacio VI. Págs.: 13-29.
 
-**Santacruz, A.**, Posada, E. 2010. Classification of the growth stages of rice crops in radarsat-2 imaging through the Polsarpro program. Revista Analisis Geograficos 44, 59-71. (In Spanish)   
+**Santacruz, A.**, Posada, E. 2010. Clasificación de los estados fenológicos del cultivo de arroz a partir de imágenes de radarsat-2 mediante el programa Polsarpro. Revista Análisis Geográficos No. 44. Edición especial Comisión Colombiana del Espacio VI. Págs.: 59-71.   
 
-**Santacruz, A.**, Posada, E. 2010. Evaluation of non-commercial software available for digital processing of radar imagery. Revista Analisis Geograficos 44, 45-57. (In Spanish)
+**Santacruz, A.**, Posada, E. 2010. Evaluación de los programas no comerciales disponibles para el procesamiento digital de imágenes de radar. Revista Análisis Geográficos No. 44. Edición especial Comisión Colombiana del Espacio VI. Págs.: 45-57.
 
-Fandino, Y., **Santacruz, A.** 2009. Classification of remote sensors and Earth observation technologies. Revista Analisis Geograficos 40, 97-108. (In Spanish)
+Fandino, Y., **Santacruz, A.** 2009. Clasificación de sensores remotos y tecnologías para observación de la Tierra. Revista Análisis Geográficos No. 40. Edición especial Comisión Colombiana del Espacio III. Págs.: 97-108. 
 
-**Santacruz, A.**, Melo, C., Lara, W. 2007. Design of optimal networks for soil organic carbon sampling. Revista Analisis Geograficos 38, 31-45. (In Spanish)
+**Santacruz, A.**, Melo, C., Lara, W. 2007. Diseño de redes de muestreo óptimas para el monitoreo del carbono orgánico del suelo. Revista Análisis Geográficos 38: 31-45.
 
-**Santacruz, A.** 2006. Is it possible to stop the deforestation of tropical forests? Perspectives on the framework of international climate policy. Cambium 4 (1), 1-4. (In Spanish) [[link]][Santacruz_2006]
+**Santacruz, A.** 2006. Es posible detener la deforestación de los bosques tropicales? Perspectivas frente al marco de la política climática internacional. Boletín Informativo sobre Cambio Global Cambium 4 (1): 1-4. [[link]][Santacruz_2006]
 
-Laguado, W., Gutierrez, V., **Santacruz, A.** 2005. State of the art of the formulation and adoption of forestry projects under the Clean Development Mechanism (CDM). Cambium 3 (5), 1-5. (In Spanish) [[link]][Santacruz_et_al_2005]
+Laguado, W., Gutierrez, V., **Santacruz, A.** 2005. Estado del arte en la formulación y aprobación de proyectos forestales bajo el Mecanismo de Desarrollo Limpio (MDL). Boletín Informativo sobre Cambio Global Cambium 3 (5): 1-5.  [[link]][Santacruz_et_al_2005]
 
-**Santacruz, A.**, Gutierrez, V., Laguado, W. 2004. International controversy over forest projects in the Clean Development Mechanism (CDM), after the Ninth Conference of the Parties (COP9). Cambium 2 (4), 3-4. (In Spanish) [[link]][Santacruz_et_al_2004]
+**Santacruz, A.**, Gutierrez, V., Laguado, W. 2004. Controversia internacional sobre los proyectos forestales en el Mecanismo de Desarrollo Limpio (MDL), luego de la Novena Conferencia de las Partes (COP9). Boletín Informativo sobre Cambio Global Cambium 2 (4): 3-4.  [[link]][Santacruz_et_al_2004]
 
 
 [Pontius_Santacruz_2014]: http://www.researchgate.net/publication/267979928_Quantity_exchange_and_shift_components_of_difference_in_a_square_contingency_table

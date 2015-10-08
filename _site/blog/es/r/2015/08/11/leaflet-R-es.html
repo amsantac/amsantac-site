@@ -10,8 +10,8 @@
   <meta name="description" content="" />
   <meta name="keywords" content="" />
 
-  <title>Web en espanol mapping with Leaflet and R en espanol</title>
-  <meta name="description" content="Leaflet is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a web map using Leaflet in ...">
+  <title>Mapeo web con Leaflet y R</title>
+  <meta name="description" content="Leaflet es una librería de JavaScript my popular para la creación de mapas interactivos. Una forma de crear un mapa usando la librería JavaScript de Leaflet ...">
   
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
   
@@ -36,7 +36,7 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 		
-		<link href='http://amsantac.co/feed.en.xml' rel='alternate' type='application/atom+xml'>
+		<link href='http://amsantac.co/feed.es.xml' rel='alternate' type='application/atom+xml'>
 		<link rel="canonical" href="http://amsantac.co/blog/es/r/2015/08/11/leaflet-R-es.html">
 		
 	<script>
@@ -60,21 +60,22 @@
 			<div class="container"> 
 				
 				<!-- Logo -->
-				<div id="logo">
-					<h1><a href="/">R-Spatialist</a></h1>
-					<span>Smart solutions for geospatial data processing</span>
+								<div id="logo">
+					<h1><a href="/es/">amsantac.co</a></h1>
+					<span>Soluciones eficientes para el procesamiento de datos geoespaciales</span>
 				</div>
+
 				
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li><a href="/">Home</a></li>
-						<li><a href="/about.html">About</a></li>
-						<li><a href="/software.html">Software</a></li>
-						<li><a href="/publications.html">Publications</a></li>
-						<li><a href="/training.html">Training</a></li>
-						<li class="active"><a href="/blog.html">Blog</a></li>
-						<li><a href="/contact.html">Contact</a></li>
+						<li><a href="/es/">Inicio</a></li>
+						<li><a href="/es/about.html">Acerca de mí</a></li>
+						<li><a href="/es/software.html">Software</a></li>
+						<li><a href="/es/publications.html">Publicaciones</a></li>
+						<li><a href="/es/training.html">Capacitación</a></li>
+						<li class="active"><a href="/es/blog.html">Blog</a></li>
+						<li><a href="/es/contact.html">Contacto</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -89,7 +90,7 @@
 													<div id="content" class="8u skel-cell-important">
 						<section>
 							<header>
-								<h1>Web en espanol mapping with Leaflet and R en espanol</h1>
+								<h1>Mapeo web con Leaflet y R</h1>
 								
 							</header>
 							  <article class="post-content">
@@ -97,59 +98,57 @@
 
 
   <!-- <article> -->
-    <p><a href="http://leafletjs.com/">Leaflet</a> is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a web map using Leaflet in the <a href="https://www.r-project.org/">R environment</a>.</p>
+    <p><a href="http://leafletjs.com/">Leaflet</a> es una librería de JavaScript my popular para la creación de mapas interactivos. Una forma de crear un mapa usando la librería JavaScript de Leaflet es incluir los archivos de la librería Leaflet y los archivos de estilo (CSS) en la cabecera de la página y luego definir la configuración del mapa en el cuerpo de la página html.</p>
 
-<p>There are different ways to create a map using the Leaflet JS library. One way is to include the Leaflet JS and CSS files in the head of a web page and then set up the map in the body of the html page, as shown in the <a href="http://leafletjs.com/examples/quick-start.html">Leaflet Quick Start Guide</a>.</p>
+<p>Una forma alternativa es crear el mapa web usando un paquete desarrollado para el <a href="https://www.r-project.org/">lenguaje R</a> llamado <a href="http://leafletjs.com/">leaflet</a>, desarrollado por la gente de <a href="https://www.rstudio.com/">RStudio</a>, el cual permite controlar e integrar mapas de Leaflet en R. En esta entrada del blog explico cómo leer en R un mapa vectorial en formato <a href="https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm">shapefile</a> y cómo crear un mapa web con leaflet personalizando la forma en que el mapa vectorial es presentado. También describo cómo adicionar una legenda, un control para las capas y popups para desplegar datos de la tabla de atributos. <!--more--> Para el propósito de este tutorial recomiendo utilizar el programa <a href="https://www.rstudio.com/">RStudio</a>.</p>
 
-<p>An alternative way is to create the web map in the R environment using an R package called <a href="http://leafletjs.com/">leaflet</a>, developed by the guys from <a href="https://www.rstudio.com/">RStudio</a>, which allows controlling and integrating Leaflet maps in R. Here I'll show how to read a vector map in <a href="https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm">shapefile</a> format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, a layers control and popups for displaying attribute data. <!--more-->I recommend to use the <a href="https://www.rstudio.com/products/rstudio/">RStudio IDE</a> for the purpose of this tutorial.</p>
-
-<p>First we need to install the leaflet package in R entering the following command line in the R console:</p>
+<p>Primero necesitamos instalar el paquete leaflet en R ingresando la siguiente línea de comando en la consola de R:</p>
 
 <pre><code>install.packages("leaflet")
 </code></pre>
 
 <p><br>
-The next step is to read in R the maps we want to display in our web map. For reading a shapefile, there are a number of functions included in different R packages (see <a href="https://cran.r-project.org/package=rgdal">rgdal</a>, <a href="https://cran.r-project.org/package=maptools">maptools</a>, <a href="https://cran.r-project.org/package=shapefiles">shapefiles</a>, and <a href="http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment">others</a>). I'm going to use the <a href="https://cran.r-project.org/package=raster">raster</a> package, so we need to install it first:</p>
+El siguiente paso es importar en R los mapas que deseamos visualizar en nuestro mapa web. Existen varias funciones disponibles en diferentes paquetes de R (ver <a href="https://cran.r-project.org/package=rgdal">rgdal</a>, <a href="https://cran.r-project.org/package=maptools">maptools</a>, <a href="https://cran.r-project.org/package=shapefiles">shapefiles</a>, y <a href="http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment">otros</a>). Aquí voy a utilizar el paquete <a href="https://cran.r-project.org/package=raster">raster</a>, así que primero necesitamos instalarlo:</p>
 
 <pre><code>install.packages("raster")
 </code></pre>
 
 <p><br>
-Now let's load the two packages:</p>
+Ahora carguemos los dos paquetes:</p>
 
 <pre><code>library(raster)
  library(leaflet)
 </code></pre>
 
 <p><br>
-For this example I am going to import in R a polygon shapefile enclosing the study area of one of my projects. The projection of this map is defined in geographic coordinates (latitude/longitude). Let's use the <code>shapefile</code> function from the raster package to read the file:</p>
+Para este ejemplo voy a importar en R un shapefile de polígonos que abarca el área de estudio de uno de mis proyectos. La proyección de este mapa está definida en coordenadas geográficas (latitud/longitud). Usemos la función <code>shapefile</code> del paquete raster para leer el archivo:</p>
 
 <pre><code>llanos &lt;- shapefile("C:/my_dir/llanos.shp")
 </code></pre>
 
 <p><br>
-In this case the file has been read in R as an <a href="http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame">SpatialPolygonsDataFrame</a> object called <code>llanos</code>. Now we are going to create the leaflet map using this object for the <code>data</code> argument in the <code>leaflet</code> function. We can do that in just one line of code concatenating several commands with the forward pipe operator <code>%&gt;%</code>. First we create a Leaflet map widget (with the <code>leaflet</code> command) and then add a tile layer (with <code>addTiles</code>), the vector map as polygon (<code>addPolygons</code>) and a legend (<code>addLegend</code>).</p>
+En este caso el archivo ha sido leído en R como un objeto de clase <a href="http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame">SpatialPolygonsDataFrame</a> que he llamado <code>llanos</code>. Ahora vamos a crear un mapa leaflet usando este objeto para el argumento <code>data</code> en la función <code>leaflet</code>. Podemos hacer eso en una sola línea de código concatenando varios comandos con el operador <code>%&gt;%</code>. Primero creamos un <em>widget</em> para un mapa Leaflet (con el comando <code>leaflet</code>) y luego adicionamos la capa de referencia de fondo (con <code>addTiles</code>), el mapa vectorial como un polígono (<code>addPolygons</code>) y una leyenda (<code>addLegend</code>).</p>
 
 <pre><code>leaflet(data = llanos) %&gt;% addTiles() %&gt;% addPolygons(fill = FALSE, stroke = TRUE, color = "#03F") %&gt;% 
   addLegend("bottomright", colors = "#03F", labels = "Llanos ecoregion")
 </code></pre>
 
 <p><br>
-The <code>fill</code>, <code>stroke</code> and <code>color</code> arguments allow customizing whether to fill the polygon with color, whether to draw the border of the polygon, and the border color, respectively. For the <code>addLegend</code> command, we define the position, colors and labels of the legend. If you are working in RStudio, you should see your map displayed in the 'Viewer' tab when you hit enter:</p>
+Los argumentos <code>fill</code>, <code>stroke</code> y <code>color</code> permiten personalizar si deseamos rellenar el polígono con color, si deseamos dibujar el borde del polígono, y definir el color del borde, respectivamente. Para el comando <code>addLegend</code>, definimos la posición, los colores y las etiquetas de la leyenda. Si estás trabajando en RStudio, deberías ver tu mapa desplegado en la pestaña 'Viewer' una vez presiones la tecla Enter:</p>
 
 <p><img src="/images/2015-08-11-leaflet-R-fig-1.png" alt="Web map with leaflet" style="width:785px"></p>
 
-<p>Leaflet displays <a href="http://www.openstreetmap.org/">OpenStreetMap (OSM)</a> tiles by default but you can use any map provider (e.g., <a href="http://www.mapquest.com/">MapQuest Open</a>, <a href="https://www.mapbox.com/">MapBox</a>, <a href="http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx">Bing Maps</a>, etc.) as long as you conform to its terms of use. You can see the help page for the <code>addTiles</code> function in R, if needed, entering <code>?addTiles</code> in the R console.</p>
+<p>Leaflet despliega una capa de <a href="http://www.openstreetmap.org/">OpenStreetMap (OSM)</a> por defecto pero puedes usar cualquier servicio proveedor de mapas (e.g., <a href="http://www.mapquest.com/">MapQuest Open</a>, <a href="https://www.mapbox.com/">MapBox</a>, <a href="http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx">Bing Maps</a>, etc.) en tanto que aceptes los términos de uso correspondientes. Si lo necesitas puedes revisar la página de ayuda de la función <code>addTiles</code> ingresando <code>?addTiles</code> en la consola de R.</p>
 
-<p>We can display more than one map at a time with leaflet. For this example I am going to overlay another polygon feature that shows the <a href="http://landsat.usgs.gov/">Landsat</a> scenes that cover my study area based on the <a href="http://landsat.usgs.gov/tools_wrs-2_shapefile.php">WRS2 descending grid</a>. Let's read this second shapefile:</p>
+<p>Es posible visualizar más de un mapa a la vez con leaflet. Para este ejemplo voy a superponer otro mapa de polígonos que muestra las escenas de <a href="http://landsat.usgs.gov/">Landsat</a> que cubren mi área de estudio con base en la <a href="http://landsat.usgs.gov/tools_wrs-2_shapefile.php">grilla de referencia WRS2</a>. Importemos este segundo shapefile:</p>
 
 <pre><code>wrs2 &lt;- shapefile("C:/my_dir/wrs2_desc.shp")
 </code></pre>
 
 <p><br>
-As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define "Study area" as the group for the <code>llanos</code> layer, and the "Landsat scenes" group for the <code>wrs2</code> layer. For popups, the <code>popup</code> argument in the <code>addPolygons</code> function is used to display attribute data from the vector map. In this case, I am using a column called 'PATH_ROW' that indicates the path and row of the corresponding Landsat scene.</p>
+Como lo hicimos anteriormente, creamos el widget del mapa Leaflet, adicionamos la capa OSM y añadimos los polígonos. Para incluir los controles de las capas, necesitamos indicar el nombre del grupo a los cuales pertenecen las nuevas capas. Por ejemplo, voy a crear el grupo "Study area" para la capa <code>llanos</code>, y el grupo "Landsat scenes" para la capa <code>wrs2</code>. En cuanto a los popups, el argumento <code>popup</code> en la función <code>addPolygons</code> es utilizado para desplegar datos de la tabla de atributos del mapa vectorial. En este caso, estoy usando una columna llamada 'PATH_ROW' que indica las propiedades 'path' y 'row' de la correspondiente escena de Landsat.</p>
 
-<p>For the legend, we add pairs of values for the <code>colors</code> and <code>labels</code> arguments for the corresponding values of the two map layers. Finally, the <code>addLayersControl</code> function allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the <code>overlayGroups</code> argument and then we define whether we want the layers control to be collapsed or not, using the <code>options</code> argument. The complete code snippet can be seen below:</p>
+<p>Con respecto a la leyenda, debemos adicionar parejas de valores para los argumentos <code>colors</code> y <code>labels</code> para los valores correspondientes de las dos capas de mapas. Finalmente, la función <code>addLayersControl</code> realiza la adición de controles para la interfaz de usuario para permitir prender y apagar las capas. Debemos ingresar el nombre del grupo al cual pertenece cada capa en el argumento <code>overlayGroups</code> y luego debemos definir si deseamos que el control de las capas esté colapsado o no, usando el argumento <code>options</code>. El fragmento completo del código lo puedes ver a continuación:</p>
 
 <pre><code>leaflet() %&gt;% addTiles() %&gt;%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = "#03F", group = "Study area") %&gt;% 
@@ -165,9 +164,9 @@ As before, we create the Leaflet map widget, add the OSM tiles and add the polyg
 </code></pre>
 
 <p><br>
-Finally export the map as an html page. In the 'Viewer' tab in RStudio, click the 'Export' button and then click 'Save as Web page...'. Then you just need to upload your output html page to your website to make your map available online. You can see an example of a map created with leaflet in this <a href="http://amsantac.github.io/cuproject/www/landsat_scenes.html">link</a>.</p>
+Finalmente podemos exportar el mapa como una página html. En la pestaña 'Viewer' de RStudio, haz click en el botón 'Export' y luego en 'Save as Web page...'. Posteriormente ya solo necesitas subir la página html que guardaste a tu sitio web para hacer que tu mapa esté disponible en internet. Puedes ver un ejemplo de un mapa creado con leaflet en este <a href="http://amsantac.github.io/cuproject/www/landsat_scenes.html">link</a>.</p>
 
-<p>Once uploaded, you can also embed your map in another web page inserting a code snippet like the one below wherever you want to display it:</p>
+<p>Una vez subido a la web, puedes incrustar tu mapa en otras páginas web insertando un fragmento de código como el que presento a continuación donde sea que desees mostrar tu mapa:</p>
 
 <div font style="BACKGROUND-COLOR:#f5f5f5;line-height:0.8">
 <xmp font style="border:1px solid;border-color:#d1d1d1;black;border-radius:3px;padding: 0em 0 0.3em 0.3em">
@@ -176,20 +175,20 @@ Finally export the map as an html page. In the 'Viewer' tab in RStudio, click th
 </font></div>
 
 
-<p>Now you have a fancy web map with legend, layers controls and popups:</p>
+<p>Si has seguido estos pasos, ahora debes tener un muy elegante mapa web con leyenda, controles de capas y popups:</p>
 
 <iframe id="map_llanos_emb" width=785 height=500 src="http://amsantac.github.io/cuproject/www/landsat_scenes.html"></iframe>
 
 
 <p><br>
-That's it. Congratulations for finishing this first tutorial!</p>
+Eso es todo. Felicitaciones por completar este primer tutorial!</p>
 
 <p><a id="comments"></a></p>
 
   <!-- </article> -->
 
   <br>
-  <p><strong>Share this post: &nbsp;&nbsp;</strong></p>
+  <p><strong>Comparte este post: &nbsp;&nbsp;</strong></p>
   
   <!-- facebook button -->
   <div id="fb-root"></div>
@@ -197,7 +196,7 @@ That's it. Congratulations for finishing this first tutorial!</p>
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.4";
   fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
@@ -210,14 +209,16 @@ That's it. Congratulations for finishing this first tutorial!</p>
   
   <div class="social-share">
     <!--<g:plusone></g:plusone>--> 
-    <div class="g-plusone" data-size="medium"></div><div class="fb-share-button" data-href="http://amsantac.co/blog/es/r/2015/08/11/leaflet-R-es.html" data-layout="button_count"></div> <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amsantac.co/blog/es/r/2015/08/11/leaflet-R-es.html">Tweet</a>
+    
+<div class="g-plusone" data-size="medium"></div> <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amsantac.co/blog/es/r/2015/08/11/leaflet-R-es.html">Tweet</a>
+<div class="fb-share-button" data-href="http://amsantac.co/blog/es/r/2015/08/11/leaflet-R-es.html" data-layout="button_count" style="vertical-align: top !important;"></div>
 
     </div>
   <br>
   
   <br>
   
-      <p class="rss-subscribe"><strong>Subscribe to my blog <a href="/feed.en.xml">via RSS</a></strong> &nbsp;<a href="/feed.en.xml"><img src="/images/rss.jpg" alt="" style="right;width:15px;height:15px;"/></a></p>
+      <p class="rss-subscribe"><strong>Subscríbete a mi blog <a href="/feed.es.xml">via RSS</a></strong> &nbsp;<a href="/feed.es.xml"><img src="/images/rss.jpg" alt="" style="right;width:15px;height:15px;"/></a></p>
   
   <br>
 
@@ -256,7 +257,7 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 					  <hr>
 					  
 					  
-					  <a href="https://plus.google.com/u/0/117898713832632782598/"><img src="/images/g+32.png" title="Google+" style="height:32px"></a>  <a href="https://www.linkedin.com/in/amsantac"><img src="/images/linkedin.png" title="LinkedIn" style="height:32px"></a> <a href="http://www.researchgate.net/profile/Ali_Santacruz"><img src="/images/rg-icon-180x180.png" title="ResearchGate" style="height:32px"></a> <a href="https://www.facebook.com/amsantac"><img src="/images/F_icon.png" title="Facebook" style="height:32px"></a>  <a href="/feed.xml"><img src="/images/rss.jpg" title="RSS" style="height:32px"></a>
+					  <a href="https://plus.google.com/u/0/117898713832632782598/"><img src="/images/g+32.png" title="Google+" style="height:32px"></a>  <a href="https://www.linkedin.com/in/amsantac"><img src="/images/linkedin.png" title="LinkedIn" style="height:32px"></a> <a href="http://www.researchgate.net/profile/Ali_Santacruz"><img src="/images/rg-icon-180x180.png" title="ResearchGate" style="height:32px"></a> <a href="https://www.facebook.com/amsantac"><img src="/images/F_icon.png" title="Facebook" style="height:32px"></a>  <a href="/feed.es.xml"><img src="/images/rss.jpg" title="RSS" style="height:32px"></a>
 
 
 					  <hr>
@@ -266,16 +267,16 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 					  
 						<section>
 							<header>
-								<h2>Highlighted blog posts</h2>
+								<h2>Posts recomendados</h2>
 							</header>
 							<ul class="style">
 							  
 
 								
 								<li>
-									<a href="/blog/en/r/2015/09/05/stacking-R.html"><img src="/images/2015-09-05-stacking-R-icon.png" alt="" width=70 height=70/></a>
-									<p class="text"><h4><a href="/blog/en/r/2015/09/05/stacking-R.html">Using R for file stacking in CLASlite</a></h4></p>
-									<p class="posted">SEPTEMBER 5, 2015  |  <a href="/blog/en/r/2015/09/05/stacking-R.html#comments">COMMENTS</a></p>
+									<a href="/blog/es/r/2015/09/05/stacking-R.html"><img src="/images/2015-09-05-stacking-R-icon.png" alt="" width=70 height=70/></a>
+									<p class="text"><h4><a href="/blog/es/r/2015/09/05/stacking-R.html">Usando R para el apilamiento de imágenes en CLASlite</a></h4></p>
+									<p class="posted">SEPTIEMBRE 5, 2015  |  <a href="/blog/es/r/2015/09/05/stacking-R.html#comments">COMENTARIOS</a></p>
 								</li>
 								
 							</ul>
@@ -288,20 +289,20 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 					  
 						<section>
 							<header>
-								<h2>Browse posts by tag</h2>
+								<h2>Navega en el blog por etiquetas</h2>
 							</header>
 
 									<p class="text">
 									<h4>
-									<a href="/tags/R"> R</a>
+									<a href="/tags-es/R"> R</a>
 									&nbsp; | &nbsp; 
-									<a href="/tags/GIS"> GIS</a>
+									<a href="/tags-es/SIG"> SIG</a>
 									&nbsp; | &nbsp;
-									<a href="/tags/RemoteSensing"> Remote Sensing</a>
+									<a href="/tags-es/PercepcionRemota"> Percepción Remota</a>
 									&nbsp; | &nbsp;
-									<a href="/tags/landsat"> LANDSAT</a>
+									<a href="/tags-es/landsat"> LANDSAT</a>
 									&nbsp; | &nbsp; 
-									<a href="/tags/CLASlite"> CLASlite </a>
+									<a href="/tags-es/CLASlite"> CLASlite </a>
 									</h4>
 									</p>
 									
@@ -314,31 +315,31 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 					  
 						<section>
 							<header>
-								<h2>Recommended sites</h2>
+								<h2>Sitios web recomendados</h2>
 							</header>
 							<ul class="style">
 								<li>
 									<a href="https://plus.google.com/u/0/communities/108037738151282716907"><img src="/images/geomatica.jpg" width=70 height=70></a>
 									<p class="text"><h4><a href="https://plus.google.com/u/0/communities/108037738151282716907">GEOMATICA</a></h4></p>
-									<p class="posted">G+ COMMUNITY ABOUT GIS & RS</p>
+									<p class="posted">COMUNIDAD EN G+ SOBRE SIG Y PR</p>
 								</li>
 
 								<li>
 									<a href="https://plus.google.com/u/0/collection/oefHm"><img src="/images/r-collection-icon.png" width=70 height=70/></a>
 									<p class="text"><h4><a href="https://plus.google.com/u/0/collection/oefHm">The R Collection</a></h4></p>
-									<p class="posted">SELECTED NEWS AND TIPS ABOUT R</a></p>
+									<p class="posted">NOTICIAS Y TIPS ACERCA DE R</a></p>
 								</li>
 								
 								<li>
 									<a href="http://www.r-bloggers.com"><img src="/images/rbloggers.png" width=70 height=70/></a>
 									<p class="text"><h4><a href="http://www.r-bloggers.com/">R-BLOGGERS</a></h4></p>
-									<p class="posted">R NEWS AND TUTORIALS</a></p>
+									<p class="posted">TUTORIALES Y NOTICIAS SOBRE R</a></p>
 								</li>
 
 								<li>
 									<a href="https://www.facebook.com/DronITech"><img src="/images/CaptureDronEs.png" width=70 height=70/></a>
 									<p class="text"><h4><a href="https://www.facebook.com/DronITech">DronIT</a></h4></p>
-									<p class="posted">NEWS ABOUT DRONES TECHNOLOGY</a></p>
+									<p class="posted">NOTICIAS SOBRE DRONES Y TECNOLOGIA</a></p>
 								</li>
 
 							</ul>
@@ -359,22 +360,29 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 			<div class="container">
 				<div class="row">
 					<div class="4u">
-						<h2>The geospt package</h2>
-						<a href="/software.html" class="image full"><img src="/images/geospt-featured.png" alt="" /></a>
-						<p>This R package provides a set of geostatistical techniques for variogram estimation and cross-validation as well as methods for the design of optimal spatial sampling networks.</p>
-						<p><a href="/software.html" class="button">More Details</a></p>
+						<h2>El paquete geospt</h2>
+						<a href="/es/software.html" class="image full"><img src="/images/geospt-featured.png" alt="" /></a>
+						<p>
+						Este paquete de R contiene un conjunto de técnicas geoestadísticas para la estimación del variograma y la validación cruzada, así como métodos para el diseño de redes óptimas de muestreo. 
+						</p>
+						<p><a href="/es/software.html" class="button">Más Detalles</a></p>
 					</div>
+					
 					<div class="4u">
-						<h2>The diffeR package</h2>
+						<h2>El paquete diffeR</h2>
 						<a href="/software.html" class="image full"><img src="/images/differ-featured.png" alt="" /></a>
-						<p>The diffeR package implements a set of metrics of difference for comparing pairs of maps representing real or categorical variables at original and multiple resolutions.</p>
-						<p><a href="/software.html" class="button">More Details</a></p>
+						<p>
+						El paquete diffeR implementa un conjunto de métricas de diferencia para comparar pares de mapas que representen variables categóricas o reales, a la resolución original o a múltiples resoluciones.</p>
+						<p><a href="/es/software.html" class="button">Más Detalles</a></p>
 					</div>
+					
 					<div class="4u">
-						<h2>The TOC package</h2>
-						<a href="/software.html" class="image full"><img src="/images/toc-featured.png" alt="" /></a>
-						<p>This R package allows the construction of the Receiver (aka Relative) Operating Characteristic (ROC) curve and the Total Operating Characteristic (TOC) curve for spatial and non-spatial data.</p>
-						<p><a href="/software.html" class="button">More Details</a></p>
+						<h2>El paquete TOC</h2>
+						<a href="/es/software.html" class="image full"><img src="/images/toc-featured.png" alt="" /></a>
+						<p>
+						Este paquete de R permite la construcción de la curva ROC (i.e., Receiver (aka Relative) Operating Characteristic) y la curva TOC (i.e., Total Operating Characteristic) para datos espaciales y no espaciales.
+						</p>
+						<p><a href="/es/software.html" class="button">Más Detalles</a></p>
 					</div>
 				</div>
 			</div>
@@ -387,37 +395,37 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 				<div class="row">
 					<div class="4u">
 						<section>
-							<h2>Latest Posts</h2>
+							<h2>Posts más recientes</h2>
 							<ul class="default">
 								
-								<li><a href="/blog/en/r/2015/09/05/stacking-R.html">Using R for file stacking in CLASlite</a></li>
-								<li><a href="/blog/en/r/2015/08/11/leaflet-R.html">Web mapping with Leaflet and R</a></li>
-								<li><a href="/blog/en/2015/08/09/first-post.html">Welcome to the R-Spatialist Blog!</a></li>
+								<li><a href="/blog/es/r/2015/09/05/stacking-R.html">Usando R para el apilamiento de imágenes en CLASlite</a></li>
+								<li><a href="/blog/es/r/2015/08/11/leaflet-R.html">Mapeo web con Leaflet y R</a></li>
+								<li><a href="/blog/es/2015/08/09/first-post.html">Bienvenido a mi Blog: The R-Spatialist</a></li>
 								<li><a href="#"></a></li>
 							</ul>
 						</section>
 					</div>
 					<div class="4u">
 						<section>
-							<h2>Latest publications</h2>
+							<h2>Publicaciones más recientes</h2>
 							<ul class="default">
-								<li><a href="/publications.html">Quantity and allocation metrics for comparing maps</a></li>
-								<li><a href="/publications.html">Evolutionary optimization of spatial sampling networks</a></li>
-								<li><a href="/publications.html">Land use change and the landscape matrix  dynamics</a></li>
-								<li><a href="/publications.html">Maximizing CDM forestry projects profitability</a></li>
-								<li><a href="/publications.html">Classification of rice crops using Radarsat-2</a></li>
+								<li><a href="/es/publications.html">Métricas de cantidad y alocación para comparar mapas</a></li>
+								<li><a href="/es/publications.html">Optimización de redes espaciales de muestreo</a></li>
+								<li><a href="/es/publications.html">Dinámica de la matriz del paisaje</a></li>
+								<li><a href="/es/publications.html">Maximizando la rentabilidad de proyectos forestales</a></li>
+								<li><a href="/es/publications.html">Clasificación de cultivos de arroz usando Radarsat-2</a></li>
 							</ul>
 						</section>
 					</div>
 					<div class="4u">
 						<section>
-							<h2>Software packages</h2>
+							<h2>Paquetes de software y apps</h2>
 							<ul class="default">
-								<li><a href="/software.html">The Llanos GEE web app</a></li>
-								<li><a href="/software.html">TOC R Shiny web app</a></li>
-								<li><a href="/software.html">The TOC R package</a></li>
-								<li><a href="/software.html">The diffeR R package</a></li>
-								<li><a href="/software.html">The geospt R package</a></li>
+								<li><a href="/es/software.html">App web Los Llanos basada en Google Earth Engine</a></li>
+								<li><a href="/es/software.html">App web TOC implementada con R y Shiny</a></li>
+								<li><a href="/es/software.html">El paquete TOC para R</a></li>
+								<li><a href="/es/software.html">El paquete diffeR para R</a></li>
+								<li><a href="/es/software.html">El paquete geospt para R</a></li>
 							</ul>
 						</section>
 					</div>
@@ -431,7 +439,7 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 			  <!--
 				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
 				-->
-				&copy; Ali Santacruz - <a href="/es/">Version en espanol</a>
+				&copy; Alí Santacruz - <a href="/">English version</a>
 			</div>
 		</div>
 

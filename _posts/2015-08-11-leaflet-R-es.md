@@ -1,66 +1,64 @@
 ---
-layout: post
-title:  "Web en espanol mapping with Leaflet and R en espanol"
+layout: post-es
+title:  "Mapeo web con Leaflet y R"
 date:   2015-08-11 11:02:52
 categories: blog es R
-tags: R leaflet webmapping
+tags: R SIG leaflet webmapping
 image: 2015-08-11-leaflet-R-mini.png
 published: true
 ---
 
-[Leaflet] is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a web map using Leaflet in the [R environment]. 
+[Leaflet] es una librería de JavaScript my popular para la creación de mapas interactivos. Una forma de crear un mapa usando la librería JavaScript de Leaflet es incluir los archivos de la librería Leaflet y los archivos de estilo (CSS) en la cabecera de la página y luego definir la configuración del mapa en el cuerpo de la página html. 
 
-There are different ways to create a map using the Leaflet JS library. One way is to include the Leaflet JS and CSS files in the head of a web page and then set up the map in the body of the html page, as shown in the [Leaflet Quick Start Guide].
+Una forma alternativa es crear el mapa web usando un paquete desarrollado para el [lenguaje R] llamado [leaflet], desarrollado por la gente de [RStudio], el cual permite controlar e integrar mapas de Leaflet en R. En esta entrada del blog explico cómo leer en R un mapa vectorial en formato [shapefile] y cómo crear un mapa web con leaflet personalizando la forma en que el mapa vectorial es presentado. También describo cómo adicionar una legenda, un control para las capas y popups para desplegar datos de la tabla de atributos. <!--more--> Para el propósito de este tutorial recomiendo utilizar el programa [RStudio].
 
-An alternative way is to create the web map in the R environment using an R package called [leaflet], developed by the guys from [RStudio], which allows controlling and integrating Leaflet maps in R. Here I'll show how to read a vector map in [shapefile] format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, a layers control and popups for displaying attribute data. <!--more-->I recommend to use the [RStudio IDE] for the purpose of this tutorial.
-
-First we need to install the leaflet package in R entering the following command line in the R console:
+Primero necesitamos instalar el paquete leaflet en R ingresando la siguiente línea de comando en la consola de R:
 
 ```
 install.packages("leaflet")
 ```
 <br>
-The next step is to read in R the maps we want to display in our web map. For reading a shapefile, there are a number of functions included in different R packages (see [rgdal], [maptools], [shapefiles], and [others]). I'm going to use the [raster] package, so we need to install it first:
+El siguiente paso es importar en R los mapas que deseamos visualizar en nuestro mapa web. Existen varias funciones disponibles en diferentes paquetes de R (ver [rgdal], [maptools], [shapefiles], y [otros]). Aquí voy a utilizar el paquete [raster], así que primero necesitamos instalarlo:
 
 ```
 install.packages("raster")
 ```
 <br>
-Now let's load the two packages:
+Ahora carguemos los dos paquetes:
 
 ```
 library(raster)
  library(leaflet)
 ```
 <br>
-For this example I am going to import in R a polygon shapefile enclosing the study area of one of my projects. The projection of this map is defined in geographic coordinates (latitude/longitude). Let's use the `shapefile` function from the raster package to read the file:
+Para este ejemplo voy a importar en R un shapefile de polígonos que abarca el área de estudio de uno de mis proyectos. La proyección de este mapa está definida en coordenadas geográficas (latitud/longitud). Usemos la función `shapefile` del paquete raster para leer el archivo:
 
 ```
 llanos <- shapefile("C:/my_dir/llanos.shp")
 ```
 <br>
-In this case the file has been read in R as an [SpatialPolygonsDataFrame] object called `llanos`. Now we are going to create the leaflet map using this object for the `data` argument in the `leaflet` function. We can do that in just one line of code concatenating several commands with the forward pipe operator `%>%`. First we create a Leaflet map widget (with the `leaflet` command) and then add a tile layer (with `addTiles`), the vector map as polygon (`addPolygons`) and a legend (`addLegend`).
+En este caso el archivo ha sido leído en R como un objeto de clase [SpatialPolygonsDataFrame] que he llamado `llanos`. Ahora vamos a crear un mapa leaflet usando este objeto para el argumento `data` en la función `leaflet`. Podemos hacer eso en una sola línea de código concatenando varios comandos con el operador `%>%`. Primero creamos un *widget* para un mapa Leaflet (con el comando `leaflet`) y luego adicionamos la capa de referencia de fondo (con `addTiles`), el mapa vectorial como un polígono (`addPolygons`) y una leyenda (`addLegend`).
 
 ```
 leaflet(data = llanos) %>% addTiles() %>% addPolygons(fill = FALSE, stroke = TRUE, color = "#03F") %>% 
   addLegend("bottomright", colors = "#03F", labels = "Llanos ecoregion")
 ```
 <br>
-The `fill`, `stroke` and `color` arguments allow customizing whether to fill the polygon with color, whether to draw the border of the polygon, and the border color, respectively. For the `addLegend` command, we define the position, colors and labels of the legend. If you are working in RStudio, you should see your map displayed in the 'Viewer' tab when you hit enter:
+Los argumentos `fill`, `stroke` y `color` permiten personalizar si deseamos rellenar el polígono con color, si deseamos dibujar el borde del polígono, y definir el color del borde, respectivamente. Para el comando `addLegend`, definimos la posición, los colores y las etiquetas de la leyenda. Si estás trabajando en RStudio, deberías ver tu mapa desplegado en la pestaña 'Viewer' una vez presiones la tecla Enter:
 
 <img src="/images/2015-08-11-leaflet-R-fig-1.png" alt="Web map with leaflet" style="width:785px">
 
-Leaflet displays [OpenStreetMap (OSM)] tiles by default but you can use any map provider (e.g., [MapQuest Open], [MapBox], [Bing Maps], etc.) as long as you conform to its terms of use. You can see the help page for the `addTiles` function in R, if needed, entering `?addTiles` in the R console.
+Leaflet despliega una capa de [OpenStreetMap (OSM)] por defecto pero puedes usar cualquier servicio proveedor de mapas (e.g., [MapQuest Open], [MapBox], [Bing Maps], etc.) en tanto que aceptes los términos de uso correspondientes. Si lo necesitas puedes revisar la página de ayuda de la función `addTiles` ingresando `?addTiles` en la consola de R.
 
-We can display more than one map at a time with leaflet. For this example I am going to overlay another polygon feature that shows the [Landsat] scenes that cover my study area based on the [WRS2 descending grid]. Let's read this second shapefile: 
+Es posible visualizar más de un mapa a la vez con leaflet. Para este ejemplo voy a superponer otro mapa de polígonos que muestra las escenas de [Landsat] que cubren mi área de estudio con base en la [grilla de referencia WRS2]. Importemos este segundo shapefile: 
 
 ```
 wrs2 <- shapefile("C:/my_dir/wrs2_desc.shp")
 ```
 <br>
-As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define "Study area" as the group for the `llanos` layer, and the "Landsat scenes" group for the `wrs2` layer. For popups, the `popup` argument in the `addPolygons` function is used to display attribute data from the vector map. In this case, I am using a column called 'PATH_ROW' that indicates the path and row of the corresponding Landsat scene.
+Como lo hicimos anteriormente, creamos el widget del mapa Leaflet, adicionamos la capa OSM y añadimos los polígonos. Para incluir los controles de las capas, necesitamos indicar el nombre del grupo a los cuales pertenecen las nuevas capas. Por ejemplo, voy a crear el grupo "Study area" para la capa `llanos`, y el grupo "Landsat scenes" para la capa `wrs2`. En cuanto a los popups, el argumento `popup` en la función `addPolygons` es utilizado para desplegar datos de la tabla de atributos del mapa vectorial. En este caso, estoy usando una columna llamada 'PATH_ROW' que indica las propiedades 'path' y 'row' de la correspondiente escena de Landsat.
 
-For the legend, we add pairs of values for the `colors` and `labels` arguments for the corresponding values of the two map layers. Finally, the `addLayersControl` function allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the `overlayGroups` argument and then we define whether we want the layers control to be collapsed or not, using the `options` argument. The complete code snippet can be seen below:
+Con respecto a la leyenda, debemos adicionar parejas de valores para los argumentos `colors` y `labels` para los valores correspondientes de las dos capas de mapas. Finalmente, la función `addLayersControl` realiza la adición de controles para la interfaz de usuario para permitir prender y apagar las capas. Debemos ingresar el nombre del grupo al cual pertenece cada capa en el argumento `overlayGroups` y luego debemos definir si deseamos que el control de las capas esté colapsado o no, usando el argumento `options`. El fragmento completo del código lo puedes ver a continuación:
 
 ```
 leaflet() %>% addTiles() %>%   
@@ -76,9 +74,9 @@ leaflet() %>% addTiles() %>%
   )
 ```
 <br>
-Finally export the map as an html page. In the 'Viewer' tab in RStudio, click the 'Export' button and then click 'Save as Web page...'. Then you just need to upload your output html page to your website to make your map available online. You can see an example of a map created with leaflet in this [link][web map]. 
+Finalmente podemos exportar el mapa como una página html. En la pestaña 'Viewer' de RStudio, haz click en el botón 'Export' y luego en 'Save as Web page...'. Posteriormente ya solo necesitas subir la página html que guardaste a tu sitio web para hacer que tu mapa esté disponible en internet. Puedes ver un ejemplo de un mapa creado con leaflet en este [link][web map]. 
 
-Once uploaded, you can also embed your map in another web page inserting a code snippet like the one below wherever you want to display it: 
+Una vez subido a la web, puedes incrustar tu mapa en otras páginas web insertando un fragmento de código como el que presento a continuación donde sea que desees mostrar tu mapa: 
 
 <div font style="BACKGROUND-COLOR:#f5f5f5;line-height:0.8">
 <xmp font style="border:1px solid;border-color:#d1d1d1;black;border-radius:3px;padding: 0em 0 0.3em 0.3em">
@@ -86,12 +84,12 @@ Once uploaded, you can also embed your map in another web page inserting a code 
 </xmp>
 </font></div>
 
-Now you have a fancy web map with legend, layers controls and popups:
+Si has seguido estos pasos, ahora debes tener un muy elegante mapa web con leyenda, controles de capas y popups:
 
 <iframe id="map_llanos_emb" width=785 height=500 src="http://amsantac.github.io/cuproject/www/landsat_scenes.html"></iframe>
 
 <br>
-That's it. Congratulations for finishing this first tutorial! 
+Eso es todo. Felicitaciones por completar este primer tutorial! 
 
 <a id="comments"></a>
 
@@ -100,7 +98,7 @@ That's it. Congratulations for finishing this first tutorial!
 [RStudio IDE]:               https://www.rstudio.com/products/rstudio/ 
 [leaflet]:                   https://rstudio.github.io/leaflet/
 [R environment]:             https://www.r-project.org/
-[R language]:                https://www.r-project.org/
+[lenguaje R]:                https://www.r-project.org/
 [rstudio_ss]:                /images/2015-08-11-leaflet-R-fig-1.png "Web map with leaflet"
 [web map]:                   http://amsantac.github.io/cuproject/www/landsat_scenes.html
 [OpenStreetMap (OSM)]:       http://www.openstreetmap.org/
@@ -112,8 +110,8 @@ That's it. Congratulations for finishing this first tutorial!
 [rgdal]:                     https://cran.r-project.org/package=rgdal
 [maptools]:                  https://cran.r-project.org/package=maptools
 [shapefiles]:                https://cran.r-project.org/package=shapefiles
-[others]:                    http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment
+[otros]:                    http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment
 [raster]:                    https://cran.r-project.org/package=raster
 [SpatialPolygonsDataFrame]:  http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame
 [Landsat]:                   http://landsat.usgs.gov/
-[WRS2 descending grid]:      http://landsat.usgs.gov/tools_wrs-2_shapefile.php
+[grilla de referencia WRS2]:      http://landsat.usgs.gov/tools_wrs-2_shapefile.php

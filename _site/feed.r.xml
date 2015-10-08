@@ -7,6 +7,95 @@
 		<atom:link href="http://amsantac.co/feed.r.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Usando R para el apilamiento de imágenes en CLASlite</title>
+				<description>&lt;p&gt;&lt;a href=&quot;http://claslite.carnegiescience.edu/&quot;&gt;CLASlite&lt;/a&gt; es un poderoso software de procesamiento de imágenes desarrollado por &lt;a href=&quot;https://carnegiescience.edu/&quot;&gt;Carnegie Institution for Science&lt;/a&gt; que contiene herramientas para la calibración, preprocesamiento, corrección atmosférica, enmascaramiento de nubes, análisis de mezclas espectrales y clasificación.&lt;/p&gt;
+
+&lt;p&gt;En este post describo cómo usar el &lt;a href=&quot;http://r-project.org&quot;&gt;lenguaje R&lt;/a&gt; para crear los archivos de texto requeridos por CLASlite para realizar el apilamiento (stacking) de imágenes a través de procesamiento por lotes. Esta es una aplicación simple para mostrarle a aquellos que están iniciando con R cómo hacer uso de funciones básicas de R tales como el listado de archivos y la implementación de bucles con el comando &lt;code&gt;for&lt;/code&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+
+&lt;p&gt;Usualmente el primer paso para el procesamiento de imágenes obtenidas en formato crudo es el apilamiento de las bandas individuales en un archivo único. CLASlite permite el apilamiento de bandas de imágenes Landsat a través de la herramienta ‘Prepare Landsat’, la cual puede ser accesada desde el menú &#39;Tools&#39; - &#39;Prepare Landsat&#39; en la interfaz gráfica de CLASlite:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015-09-05-stacking-R-fig-1.png&quot; alt=&quot;Prepare Landsat Tool in CLASlite&quot; title=&quot;Herramienta Landsat Tool en CLASlite&quot; style=&quot;width:600px&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Una característica muy útil de CLASlite es la posibilidad de ejecutar diferentes tareas de preprocesamiento y procesamiento para varios archivos al tiempo a través de procesamiento por lotes. Por ejemplo, el procesamiento por lotes de la herramienta ‘Prepare Landsat’ requiere que el usuario suministre un archivo de texto en formato CSV que contenga una lista con las rutas absolutas de las carpetas de cada imagen Landsat a ser procesada. Cada carpeta debe contener todos los archivos individuales (ya descomprimidos) de las bandas de cada imagen, las cuales se obtienen usualmente de un proveedor como el &lt;a href=&quot;http://www.usgs.gov&quot;&gt;USGS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;CLASlite requiere que el archivo CSV contenga el texto &quot;LANDSAT_Folder_Names&quot; en la primera fila y la ruta absoluta de la carpeta de cada imagen en las siguientes filas, como se puede ver a continuación:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015-09-05-stacking-R-fig-2.png&quot; alt=&quot;Prepare Landsat template&quot; title=&quot;Plantilla de &#39;Prepare Landsat&#39;&quot; style=&quot;width:400px&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Puedes encontrar esta plantilla en la carpeta ‘templates’ dentro del directorio donde se realizó la instalación de CLASlite. Podemos crear una pequeña rutina en R que nos ayude a automatizar la creación de este archivo CSV evitando por tanto desperdiciar tiempo en una acción repetitiva como lo es copiar y pegar manualmente en un archivo de texto. Asumamos que tenemos un conjunto de imágenes de una región determinada que hemos almacenado separadamente por año, como sería el caso para un estudio de cambio de coberturas terrestres:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015-09-05-stacking-R-fig-3.png&quot; alt=&quot;Folder structure&quot; title=&quot;Folder structure&quot; style=&quot;width:800px&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;El propósito de nuestro script en R será listar todas las carpetas dentro de la carpeta de cada año que están contenidas en la carpeta ‘images’. Asumamos que hemos almacenado imágenes desde el año 2000 hasta el año 2014 en nuestro ejemplo, así que creemos un objeto de clase &lt;code&gt;integer&lt;/code&gt; que liste la secuencia de años en este intervalo. Creemos también un objeto nulo donde iterativamente adicionaremos la lista de carpetas para cada año, y un objeto de clase &lt;code&gt;character&lt;/code&gt; para almacenar la ruta con respecto la carpeta ‘images’:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;years &amp;lt;- 2000:2014
+ foldersList &amp;lt;- NULL
+ path &amp;lt;- &quot;C:/images&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Ahora podemos usar el comando &lt;code&gt;for&lt;/code&gt; con el fin de crear un bucle para, primero, crear la ruta absoluta para la carpeta de cada año (&lt;code&gt;path_year&lt;/code&gt;), listar las carpetas dentro de la carpeta &lt;code&gt;path_year&lt;/code&gt; usando la función &lt;code&gt;list.dirs&lt;/code&gt;, y luego añadir esta lista de carpetas al objeto &lt;code&gt;foldersList&lt;/code&gt;. Esto será realizado iterativamente para cada año en la secuencia que llamamos &lt;code&gt;years&lt;/code&gt;. Suena complicado ah? Pues la verdad el código es bastante simple:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for (year in years){
+  path_year &amp;lt;- paste0(path, &quot;/&quot;, year)
+  foldersList &amp;lt;- c(foldersList, list.dirs(path_year, recursive = FALSE))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Finalmente podemos crear un objeto de clase &lt;code&gt;data.frame&lt;/code&gt; para almacenar la lista de carpetas asignando el nombre requerido a la columna de datos (i.e., &quot;LANDSAT_Folder_Names&quot;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;foldersListDF &amp;lt;- data.frame(&quot;LANDSAT_Folder_Names&quot; = foldersList)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Usualmente es recomendable escribir las rutinas como una función para facilitar su uso en el futuro. Esto requiere la definición de los parámetros requeridos que la función necesita para ser ejecutada. En este caso sólo dos parámetros son necesarios, la ruta a la carpeta superior y la secuencia de años. De esta forma, nuestra función, que he llamado aquí como &lt;code&gt;stackImgTable4csv&lt;/code&gt;, puede ser definida de la siguiente forma:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;stackImgTable4csv &amp;lt;- function(path, years){
+  foldersList &amp;lt;- NULL
+    for (year in years){
+      path_year &amp;lt;- paste0(path, &quot;/&quot;, year)
+      foldersList &amp;lt;- c(foldersList, list.dirs(path_year, recursive = FALSE))
+    }
+  foldersListDF &amp;lt;- data.frame(&quot;LANDSAT_Folder_Names&quot; = foldersList)
+  return(foldersListDF)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Una vez definida la función de esta manera, ya sólo necesitamos llamar la función y suministrar los argumentos para cada uno de los parámetros y el nombre del objeto de salida (e.g., &lt;code&gt;outDDF&lt;/code&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;path &amp;lt;- &quot;C:/images&quot;
+ years &amp;lt;- 2000:2014
+ outDF &amp;lt;- stackImgTable4csv(path, years)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Luego podemos exportar el objeto resultante a un archivo CSV que será utilizado posteriormente en CLASlite. Para la función &lt;code&gt;write.csv&lt;/code&gt; debemos indicar los datos que van a ser escritos y el nombre del archivo de salida (e.g., &quot;stack_2000_2014.csv&quot;). También debemos indicar que los nombres de las filas no deben ser escritos y que los textos no deben ser rodeados por comillas dobles. Lo anterior es muy importante para que el archivo CSV pueda ser leído correctamente por CLASlite:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;write.csv(outDF, file = &quot;stack_2000_2014.csv&quot;, row.names = FALSE, quote = FALSE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+Ahora podemos regresar a CLASlite y usar el archivo CSV que acabamos de crear. Abre CLASlite y haz click en ‘Tools’ - ‘Prepare Landsat’. Selecciona &#39;Batch Process&#39; y haz clic en el botón &#39;Load File&#39; para navegar y seleccionar el archivo CSV creado previamente. Finalmente haz clic en el botón &#39;Stack&#39;. Como resultado del proceso de apilamiento, en la carpeta de cada imagen deberías encontrar archivos marcados con ‘raw’ (archivos crudos) y ‘therm’ (bandas en el rango térmico del espectro) al final del nombre:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015-09-05-stacking-R-fig-4.png&quot; alt=&quot;Output folder&quot; title=&quot;Ouput folder&quot; style=&quot;width:800px&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Espero que este post te sea útil! En la siguiente entrada del blog explicaré cómo podemos usar R para crear automáticamente los archivos de texto requeridos por CLASlite para producir imágenes con correcciones por distorsión atmosférica. Hasta entonces!&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;comments&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+				<pubDate>Sat, 05 Sep 2015 06:02:52 -0500</pubDate>
+				<link>http://amsantac.co/blog/es/r/2015/09/05/stacking-R-es.html</link>
+				<guid isPermaLink="true">http://amsantac.co/blog/es/r/2015/09/05/stacking-R-es.html</guid>
+			</item>
+		
+			<item>
 				<title>Using R for file stacking in CLASlite</title>
 				<description>&lt;p&gt;&lt;a href=&quot;http://claslite.carnegiescience.edu/&quot;&gt;CLASlite&lt;/a&gt; is a powerful image processing software developed by the &lt;a href=&quot;https://carnegiescience.edu/&quot;&gt;Carnegie Institution for Science&lt;/a&gt; that provides functionality for calibration, pre-processing, atmospheric correction, cloud masking, Monte Carlo Spectral Mixture Analysis and classification.&lt;/p&gt;
 
@@ -29,7 +118,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/images/2015-09-05-stacking-R-fig-3.png&quot; alt=&quot;Folder structure&quot; title=&quot;Folder structure&quot; style=&quot;width:800px&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;The purpose of our R script will be to list all the folders inside each year folders which are contained in the &#39;images&#39; folder. Let&#39;s assume that we have stored images from 2000 to 2015 in our example, so let&#39;s create an integer object in R that lists the sequence of years. Let&#39;s also create a null object where we will iteratively add the list of folders for each year, and a character object to store the path to our top-level folder &#39;images&#39;:&lt;/p&gt;
+&lt;p&gt;The purpose of our R script will be to list all the folders inside each year folders which are contained in the &#39;images&#39; folder. Let&#39;s assume that we have stored images from 2000 to 2014 in our example, so let&#39;s create an integer object in R that lists the sequence of years. Let&#39;s also create a null object where we will iteratively add the list of folders for each year, and a character object to store the path to our top-level folder &#39;images&#39;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;years &amp;lt;- 2000:2014
 foldersList &amp;lt;- NULL
@@ -86,8 +175,7 @@ Now we can go back to CLASlite and use the CSV file that we just created. Open C
 
 &lt;p&gt;Hope you found this post helpful! In the next post I will explain how we can use R to automatically create the text files required by CLASlite for producing atmospherically-corrected imagery. See you then!&lt;/p&gt;
 
-&lt;p&gt;&lt;br&gt;
-&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&quot;comments&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -97,60 +185,58 @@ Now we can go back to CLASlite and use the CSV file that we just created. Open C
 			</item>
 		
 			<item>
-				<title>Web en espanol mapping with Leaflet and R en espanol</title>
-				<description>&lt;p&gt;&lt;a href=&quot;http://leafletjs.com/&quot;&gt;Leaflet&lt;/a&gt; is a JavaScript library that has become quite popular for creating interactive maps. In this post I explain how to create a web map using Leaflet in the &lt;a href=&quot;https://www.r-project.org/&quot;&gt;R environment&lt;/a&gt;.&lt;/p&gt;
+				<title>Mapeo web con Leaflet y R</title>
+				<description>&lt;p&gt;&lt;a href=&quot;http://leafletjs.com/&quot;&gt;Leaflet&lt;/a&gt; es una librería de JavaScript my popular para la creación de mapas interactivos. Una forma de crear un mapa usando la librería JavaScript de Leaflet es incluir los archivos de la librería Leaflet y los archivos de estilo (CSS) en la cabecera de la página y luego definir la configuración del mapa en el cuerpo de la página html.&lt;/p&gt;
 
-&lt;p&gt;There are different ways to create a map using the Leaflet JS library. One way is to include the Leaflet JS and CSS files in the head of a web page and then set up the map in the body of the html page, as shown in the &lt;a href=&quot;http://leafletjs.com/examples/quick-start.html&quot;&gt;Leaflet Quick Start Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Una forma alternativa es crear el mapa web usando un paquete desarrollado para el &lt;a href=&quot;https://www.r-project.org/&quot;&gt;lenguaje R&lt;/a&gt; llamado &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt;, desarrollado por la gente de &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;, el cual permite controlar e integrar mapas de Leaflet en R. En esta entrada del blog explico cómo leer en R un mapa vectorial en formato &lt;a href=&quot;https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm&quot;&gt;shapefile&lt;/a&gt; y cómo crear un mapa web con leaflet personalizando la forma en que el mapa vectorial es presentado. También describo cómo adicionar una legenda, un control para las capas y popups para desplegar datos de la tabla de atributos. &lt;!--more--&gt; Para el propósito de este tutorial recomiendo utilizar el programa &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;An alternative way is to create the web map in the R environment using an R package called &lt;a href=&quot;http://leafletjs.com/&quot;&gt;leaflet&lt;/a&gt;, developed by the guys from &lt;a href=&quot;https://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;, which allows controlling and integrating Leaflet maps in R. Here I&#39;ll show how to read a vector map in &lt;a href=&quot;https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm&quot;&gt;shapefile&lt;/a&gt; format and create a leaflet web map customizing how the vector map is displayed. Also I will show how to add a legend, a layers control and popups for displaying attribute data. &lt;!--more--&gt;I recommend to use the &lt;a href=&quot;https://www.rstudio.com/products/rstudio/&quot;&gt;RStudio IDE&lt;/a&gt; for the purpose of this tutorial.&lt;/p&gt;
-
-&lt;p&gt;First we need to install the leaflet package in R entering the following command line in the R console:&lt;/p&gt;
+&lt;p&gt;Primero necesitamos instalar el paquete leaflet en R ingresando la siguiente línea de comando en la consola de R:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;install.packages(&quot;leaflet&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-The next step is to read in R the maps we want to display in our web map. For reading a shapefile, there are a number of functions included in different R packages (see &lt;a href=&quot;https://cran.r-project.org/package=rgdal&quot;&gt;rgdal&lt;/a&gt;, &lt;a href=&quot;https://cran.r-project.org/package=maptools&quot;&gt;maptools&lt;/a&gt;, &lt;a href=&quot;https://cran.r-project.org/package=shapefiles&quot;&gt;shapefiles&lt;/a&gt;, and &lt;a href=&quot;http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment&quot;&gt;others&lt;/a&gt;). I&#39;m going to use the &lt;a href=&quot;https://cran.r-project.org/package=raster&quot;&gt;raster&lt;/a&gt; package, so we need to install it first:&lt;/p&gt;
+El siguiente paso es importar en R los mapas que deseamos visualizar en nuestro mapa web. Existen varias funciones disponibles en diferentes paquetes de R (ver &lt;a href=&quot;https://cran.r-project.org/package=rgdal&quot;&gt;rgdal&lt;/a&gt;, &lt;a href=&quot;https://cran.r-project.org/package=maptools&quot;&gt;maptools&lt;/a&gt;, &lt;a href=&quot;https://cran.r-project.org/package=shapefiles&quot;&gt;shapefiles&lt;/a&gt;, y &lt;a href=&quot;http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment&quot;&gt;otros&lt;/a&gt;). Aquí voy a utilizar el paquete &lt;a href=&quot;https://cran.r-project.org/package=raster&quot;&gt;raster&lt;/a&gt;, así que primero necesitamos instalarlo:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;install.packages(&quot;raster&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-Now let&#39;s load the two packages:&lt;/p&gt;
+Ahora carguemos los dos paquetes:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;library(raster)
  library(leaflet)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-For this example I am going to import in R a polygon shapefile enclosing the study area of one of my projects. The projection of this map is defined in geographic coordinates (latitude/longitude). Let&#39;s use the &lt;code&gt;shapefile&lt;/code&gt; function from the raster package to read the file:&lt;/p&gt;
+Para este ejemplo voy a importar en R un shapefile de polígonos que abarca el área de estudio de uno de mis proyectos. La proyección de este mapa está definida en coordenadas geográficas (latitud/longitud). Usemos la función &lt;code&gt;shapefile&lt;/code&gt; del paquete raster para leer el archivo:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;llanos &amp;lt;- shapefile(&quot;C:/my_dir/llanos.shp&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-In this case the file has been read in R as an &lt;a href=&quot;http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame&quot;&gt;SpatialPolygonsDataFrame&lt;/a&gt; object called &lt;code&gt;llanos&lt;/code&gt;. Now we are going to create the leaflet map using this object for the &lt;code&gt;data&lt;/code&gt; argument in the &lt;code&gt;leaflet&lt;/code&gt; function. We can do that in just one line of code concatenating several commands with the forward pipe operator &lt;code&gt;%&amp;gt;%&lt;/code&gt;. First we create a Leaflet map widget (with the &lt;code&gt;leaflet&lt;/code&gt; command) and then add a tile layer (with &lt;code&gt;addTiles&lt;/code&gt;), the vector map as polygon (&lt;code&gt;addPolygons&lt;/code&gt;) and a legend (&lt;code&gt;addLegend&lt;/code&gt;).&lt;/p&gt;
+En este caso el archivo ha sido leído en R como un objeto de clase &lt;a href=&quot;http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame&quot;&gt;SpatialPolygonsDataFrame&lt;/a&gt; que he llamado &lt;code&gt;llanos&lt;/code&gt;. Ahora vamos a crear un mapa leaflet usando este objeto para el argumento &lt;code&gt;data&lt;/code&gt; en la función &lt;code&gt;leaflet&lt;/code&gt;. Podemos hacer eso en una sola línea de código concatenando varios comandos con el operador &lt;code&gt;%&amp;gt;%&lt;/code&gt;. Primero creamos un &lt;em&gt;widget&lt;/em&gt; para un mapa Leaflet (con el comando &lt;code&gt;leaflet&lt;/code&gt;) y luego adicionamos la capa de referencia de fondo (con &lt;code&gt;addTiles&lt;/code&gt;), el mapa vectorial como un polígono (&lt;code&gt;addPolygons&lt;/code&gt;) y una leyenda (&lt;code&gt;addLegend&lt;/code&gt;).&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;leaflet(data = llanos) %&amp;gt;% addTiles() %&amp;gt;% addPolygons(fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;) %&amp;gt;% 
   addLegend(&quot;bottomright&quot;, colors = &quot;#03F&quot;, labels = &quot;Llanos ecoregion&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-The &lt;code&gt;fill&lt;/code&gt;, &lt;code&gt;stroke&lt;/code&gt; and &lt;code&gt;color&lt;/code&gt; arguments allow customizing whether to fill the polygon with color, whether to draw the border of the polygon, and the border color, respectively. For the &lt;code&gt;addLegend&lt;/code&gt; command, we define the position, colors and labels of the legend. If you are working in RStudio, you should see your map displayed in the &#39;Viewer&#39; tab when you hit enter:&lt;/p&gt;
+Los argumentos &lt;code&gt;fill&lt;/code&gt;, &lt;code&gt;stroke&lt;/code&gt; y &lt;code&gt;color&lt;/code&gt; permiten personalizar si deseamos rellenar el polígono con color, si deseamos dibujar el borde del polígono, y definir el color del borde, respectivamente. Para el comando &lt;code&gt;addLegend&lt;/code&gt;, definimos la posición, los colores y las etiquetas de la leyenda. Si estás trabajando en RStudio, deberías ver tu mapa desplegado en la pestaña &#39;Viewer&#39; una vez presiones la tecla Enter:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/2015-08-11-leaflet-R-fig-1.png&quot; alt=&quot;Web map with leaflet&quot; style=&quot;width:785px&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;Leaflet displays &lt;a href=&quot;http://www.openstreetmap.org/&quot;&gt;OpenStreetMap (OSM)&lt;/a&gt; tiles by default but you can use any map provider (e.g., &lt;a href=&quot;http://www.mapquest.com/&quot;&gt;MapQuest Open&lt;/a&gt;, &lt;a href=&quot;https://www.mapbox.com/&quot;&gt;MapBox&lt;/a&gt;, &lt;a href=&quot;http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx&quot;&gt;Bing Maps&lt;/a&gt;, etc.) as long as you conform to its terms of use. You can see the help page for the &lt;code&gt;addTiles&lt;/code&gt; function in R, if needed, entering &lt;code&gt;?addTiles&lt;/code&gt; in the R console.&lt;/p&gt;
+&lt;p&gt;Leaflet despliega una capa de &lt;a href=&quot;http://www.openstreetmap.org/&quot;&gt;OpenStreetMap (OSM)&lt;/a&gt; por defecto pero puedes usar cualquier servicio proveedor de mapas (e.g., &lt;a href=&quot;http://www.mapquest.com/&quot;&gt;MapQuest Open&lt;/a&gt;, &lt;a href=&quot;https://www.mapbox.com/&quot;&gt;MapBox&lt;/a&gt;, &lt;a href=&quot;http://www.microsoft.com/maps/choose-your-bing-maps-API.aspx&quot;&gt;Bing Maps&lt;/a&gt;, etc.) en tanto que aceptes los términos de uso correspondientes. Si lo necesitas puedes revisar la página de ayuda de la función &lt;code&gt;addTiles&lt;/code&gt; ingresando &lt;code&gt;?addTiles&lt;/code&gt; en la consola de R.&lt;/p&gt;
 
-&lt;p&gt;We can display more than one map at a time with leaflet. For this example I am going to overlay another polygon feature that shows the &lt;a href=&quot;http://landsat.usgs.gov/&quot;&gt;Landsat&lt;/a&gt; scenes that cover my study area based on the &lt;a href=&quot;http://landsat.usgs.gov/tools_wrs-2_shapefile.php&quot;&gt;WRS2 descending grid&lt;/a&gt;. Let&#39;s read this second shapefile:&lt;/p&gt;
+&lt;p&gt;Es posible visualizar más de un mapa a la vez con leaflet. Para este ejemplo voy a superponer otro mapa de polígonos que muestra las escenas de &lt;a href=&quot;http://landsat.usgs.gov/&quot;&gt;Landsat&lt;/a&gt; que cubren mi área de estudio con base en la &lt;a href=&quot;http://landsat.usgs.gov/tools_wrs-2_shapefile.php&quot;&gt;grilla de referencia WRS2&lt;/a&gt;. Importemos este segundo shapefile:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;wrs2 &amp;lt;- shapefile(&quot;C:/my_dir/wrs2_desc.shp&quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define &quot;Study area&quot; as the group for the &lt;code&gt;llanos&lt;/code&gt; layer, and the &quot;Landsat scenes&quot; group for the &lt;code&gt;wrs2&lt;/code&gt; layer. For popups, the &lt;code&gt;popup&lt;/code&gt; argument in the &lt;code&gt;addPolygons&lt;/code&gt; function is used to display attribute data from the vector map. In this case, I am using a column called &#39;PATH_ROW&#39; that indicates the path and row of the corresponding Landsat scene.&lt;/p&gt;
+Como lo hicimos anteriormente, creamos el widget del mapa Leaflet, adicionamos la capa OSM y añadimos los polígonos. Para incluir los controles de las capas, necesitamos indicar el nombre del grupo a los cuales pertenecen las nuevas capas. Por ejemplo, voy a crear el grupo &quot;Study area&quot; para la capa &lt;code&gt;llanos&lt;/code&gt;, y el grupo &quot;Landsat scenes&quot; para la capa &lt;code&gt;wrs2&lt;/code&gt;. En cuanto a los popups, el argumento &lt;code&gt;popup&lt;/code&gt; en la función &lt;code&gt;addPolygons&lt;/code&gt; es utilizado para desplegar datos de la tabla de atributos del mapa vectorial. En este caso, estoy usando una columna llamada &#39;PATH_ROW&#39; que indica las propiedades &#39;path&#39; y &#39;row&#39; de la correspondiente escena de Landsat.&lt;/p&gt;
 
-&lt;p&gt;For the legend, we add pairs of values for the &lt;code&gt;colors&lt;/code&gt; and &lt;code&gt;labels&lt;/code&gt; arguments for the corresponding values of the two map layers. Finally, the &lt;code&gt;addLayersControl&lt;/code&gt; function allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the &lt;code&gt;overlayGroups&lt;/code&gt; argument and then we define whether we want the layers control to be collapsed or not, using the &lt;code&gt;options&lt;/code&gt; argument. The complete code snippet can be seen below:&lt;/p&gt;
+&lt;p&gt;Con respecto a la leyenda, debemos adicionar parejas de valores para los argumentos &lt;code&gt;colors&lt;/code&gt; y &lt;code&gt;labels&lt;/code&gt; para los valores correspondientes de las dos capas de mapas. Finalmente, la función &lt;code&gt;addLayersControl&lt;/code&gt; realiza la adición de controles para la interfaz de usuario para permitir prender y apagar las capas. Debemos ingresar el nombre del grupo al cual pertenece cada capa en el argumento &lt;code&gt;overlayGroups&lt;/code&gt; y luego debemos definir si deseamos que el control de las capas esté colapsado o no, usando el argumento &lt;code&gt;options&lt;/code&gt;. El fragmento completo del código lo puedes ver a continuación:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;leaflet() %&amp;gt;% addTiles() %&amp;gt;%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;, group = &quot;Study area&quot;) %&amp;gt;% 
@@ -166,9 +252,9 @@ As before, we create the Leaflet map widget, add the OSM tiles and add the polyg
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-Finally export the map as an html page. In the &#39;Viewer&#39; tab in RStudio, click the &#39;Export&#39; button and then click &#39;Save as Web page...&#39;. Then you just need to upload your output html page to your website to make your map available online. You can see an example of a map created with leaflet in this &lt;a href=&quot;http://amsantac.github.io/cuproject/www/landsat_scenes.html&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
+Finalmente podemos exportar el mapa como una página html. En la pestaña &#39;Viewer&#39; de RStudio, haz click en el botón &#39;Export&#39; y luego en &#39;Save as Web page...&#39;. Posteriormente ya solo necesitas subir la página html que guardaste a tu sitio web para hacer que tu mapa esté disponible en internet. Puedes ver un ejemplo de un mapa creado con leaflet en este &lt;a href=&quot;http://amsantac.github.io/cuproject/www/landsat_scenes.html&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Once uploaded, you can also embed your map in another web page inserting a code snippet like the one below wherever you want to display it:&lt;/p&gt;
+&lt;p&gt;Una vez subido a la web, puedes incrustar tu mapa en otras páginas web insertando un fragmento de código como el que presento a continuación donde sea que desees mostrar tu mapa:&lt;/p&gt;
 
 &lt;div font style=&quot;BACKGROUND-COLOR:#f5f5f5;line-height:0.8&quot;&gt;
 &lt;xmp font style=&quot;border:1px solid;border-color:#d1d1d1;black;border-radius:3px;padding: 0em 0 0.3em 0.3em&quot;&gt;
@@ -177,13 +263,13 @@ Finally export the map as an html page. In the &#39;Viewer&#39; tab in RStudio, 
 &lt;/font&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now you have a fancy web map with legend, layers controls and popups:&lt;/p&gt;
+&lt;p&gt;Si has seguido estos pasos, ahora debes tener un muy elegante mapa web con leyenda, controles de capas y popups:&lt;/p&gt;
 
 &lt;iframe id=&quot;map_llanos_emb&quot; width=785 height=500 src=&quot;http://amsantac.github.io/cuproject/www/landsat_scenes.html&quot;&gt;&lt;/iframe&gt;
 
 
 &lt;p&gt;&lt;br&gt;
-That&#39;s it. Congratulations for finishing this first tutorial!&lt;/p&gt;
+Eso es todo. Felicitaciones por completar este primer tutorial!&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&quot;comments&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -204,7 +290,7 @@ That&#39;s it. Congratulations for finishing this first tutorial!&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-The next step is to read in R the maps we want to display in our web map. For reading a shapefile, there are a number of functions included in different R packages (see &lt;a href=&quot;https://cran.r-project.org/package=rgdal&quot;&gt;rgdal&lt;/a&gt;, &lt;a href=&quot;https://cran.r-project.org/package=maptools&quot;&gt;maptools&lt;/a&gt;, &lt;a href=&quot;https://cran.r-project.org/package=shapefiles&quot;&gt;shapefiles&lt;/a&gt;, and &lt;a href=&quot;http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment&quot;&gt;others&lt;/a&gt;). I&#39;m going to use the &lt;a href=&quot;https://cran.r-project.org/package=raster&quot;&gt;raster&lt;/a&gt; package, so we need to install it first:&lt;/p&gt;
+The next step is to read into R the maps we want to display in our web map. For reading a shapefile, there are a number of functions included in different R packages (see &lt;a href=&quot;https://cran.r-project.org/package=rgdal&quot;&gt;rgdal&lt;/a&gt;, &lt;a href=&quot;https://cran.r-project.org/package=maptools&quot;&gt;maptools&lt;/a&gt;, &lt;a href=&quot;https://cran.r-project.org/package=shapefiles&quot;&gt;shapefiles&lt;/a&gt;, and &lt;a href=&quot;http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment&quot;&gt;others&lt;/a&gt;). I&#39;m going to use the &lt;a href=&quot;https://cran.r-project.org/package=raster&quot;&gt;raster&lt;/a&gt; package, so we need to install it first:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;install.packages(&quot;raster&quot;)
 &lt;/code&gt;&lt;/pre&gt;
@@ -223,7 +309,7 @@ For this example I am going to import in R a polygon shapefile enclosing the stu
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;br&gt;
-In this case the file has been read in R as an &lt;a href=&quot;http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame&quot;&gt;SpatialPolygonsDataFrame&lt;/a&gt; object called &lt;code&gt;llanos&lt;/code&gt;. Now we are going to create the leaflet map using this object for the &lt;code&gt;data&lt;/code&gt; argument in the &lt;code&gt;leaflet&lt;/code&gt; function. We can do that in just one line of code concatenating several commands with the forward pipe operator &lt;code&gt;%&amp;gt;%&lt;/code&gt;. First we create a Leaflet map widget (with the &lt;code&gt;leaflet&lt;/code&gt; command) and then add a tile layer (with &lt;code&gt;addTiles&lt;/code&gt;), the vector map as polygon (&lt;code&gt;addPolygons&lt;/code&gt;) and a legend (&lt;code&gt;addLegend&lt;/code&gt;).&lt;/p&gt;
+In this case the file has been read into R as an &lt;a href=&quot;http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame&quot;&gt;SpatialPolygonsDataFrame&lt;/a&gt; object called &lt;code&gt;llanos&lt;/code&gt;. Now we are going to create the leaflet map using this object for the &lt;code&gt;data&lt;/code&gt; argument in the &lt;code&gt;leaflet&lt;/code&gt; function. We can do that in just one line of code concatenating several commands with the forward pipe operator &lt;code&gt;%&amp;gt;%&lt;/code&gt;. First we create a Leaflet map widget (with the &lt;code&gt;leaflet&lt;/code&gt; command) and then add a tile layer (with &lt;code&gt;addTiles&lt;/code&gt;), the vector map as polygon (&lt;code&gt;addPolygons&lt;/code&gt;) and a legend (&lt;code&gt;addLegend&lt;/code&gt;).&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;leaflet(data = llanos) %&amp;gt;% addTiles() %&amp;gt;% addPolygons(fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;) %&amp;gt;% 
   addLegend(&quot;bottomright&quot;, colors = &quot;#03F&quot;, labels = &quot;Llanos ecoregion&quot;)
@@ -244,7 +330,7 @@ The &lt;code&gt;fill&lt;/code&gt;, &lt;code&gt;stroke&lt;/code&gt; and &lt;code&
 &lt;p&gt;&lt;br&gt;
 As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define &quot;Study area&quot; as the group for the &lt;code&gt;llanos&lt;/code&gt; layer, and the &quot;Landsat scenes&quot; group for the &lt;code&gt;wrs2&lt;/code&gt; layer. For popups, the &lt;code&gt;popup&lt;/code&gt; argument in the &lt;code&gt;addPolygons&lt;/code&gt; function is used to display attribute data from the vector map. In this case, I am using a column called &#39;PATH_ROW&#39; that indicates the path and row of the corresponding Landsat scene.&lt;/p&gt;
 
-&lt;p&gt;For the legend, we add pairs of values for the &lt;code&gt;colors&lt;/code&gt; and &lt;code&gt;labels&lt;/code&gt; arguments for the corresponding values of the two map layers. Finally, the &lt;code&gt;addLayersControl&lt;/code&gt; function allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the &lt;code&gt;overlayGroups&lt;/code&gt; argument and then we define whether we want the layers control to be collapsed or not, using the &lt;code&gt;options&lt;/code&gt; argument. The complete code snippet can be seen below:&lt;/p&gt;
+&lt;p&gt;For the legend, we add pairs of values for the &lt;code&gt;colors&lt;/code&gt; and &lt;code&gt;labels&lt;/code&gt; arguments for the corresponding values of the two map layers. Finally, the &lt;code&gt;addLayersControl&lt;/code&gt; function allows the addition of user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the &lt;code&gt;overlayGroups&lt;/code&gt; argument and then we define whether we want the layers control to be collapsed or not, using the &lt;code&gt;options&lt;/code&gt; argument. The complete code snippet can be seen below:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;leaflet() %&amp;gt;% addTiles() %&amp;gt;%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = &quot;#03F&quot;, group = &quot;Study area&quot;) %&amp;gt;% 

@@ -1,6 +1,6 @@
 ---
-layout: page
-title: The R-Spatialist Blog
+layout: page-es
+title: Blog 'The R-Spatialist'
 ---
 
 
@@ -8,21 +8,21 @@ title: The R-Spatialist Blog
   <br>
 
   <ul class="post-list">
-    {% for post in site.posts %}
+    {% for post in site.categories.es %}
       <li>
         <span ><em>{{ post.date | date: "%b %-d, %Y" }}</em></span>
 
         <h1 class="post-list">
           <p><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></p>
         </h1>
-        <p><a href="{{ post.url | prepend: site.baseurl }}" class="image full"><img src="images/{{ post.image }}" alt="" style="float:left;width:150px;height:150px;"/></a> {{ post.excerpt }} </p>
-        <a href="{{ post.url | prepend: site.baseurl }}">Read more ...</a>
+        <p><a href="{{ post.url | prepend: site.baseurl }}" class="image full"><img src="/images/{{ post.image }}" alt="" style="float:left;width:150px;height:150px;"/></a> {{ post.excerpt }} </p>
+        <a href="{{ post.url | prepend: site.baseurl }}">Leer más...</a>
       </li>
       <br>
       <br>
     {% endfor %}
   </ul>
 
-    {% include subscribe.html %}
+    {% include subscribe-es.html %}
 
 <!-- permalink: blog -->

@@ -4,7 +4,7 @@ title:  "Training by amsantac.co"
 date:   2015-09-11 11:02:52
 ---
 <header>
-<h2>Training in Geomatics</h2>
+<h2>Training in Geomatics and R</h2>
 <br>
 <span class="byline">Courses you may be interested in</span>
 </header>

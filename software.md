@@ -9,6 +9,7 @@ date:   2015-09-11 11:02:52
 <span class="byline">Some programs and apps you may find useful!</span>
 </header>
 
+<br>
 <h2 style= "color:#1e6bb8">R PACKAGES</h2>
 <br>
 ## The geospt package

@@ -8,9 +8,9 @@ module Jekyll
       @name = 'index.html'
 
       self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
+      self.read_yaml(File.join(base, '_layouts'), 'tag_es_index.html')
       self.data['tag'] = tag
-      self.data['title'] = "Posts Tagged &ldquo;"+tag+"&rdquo;"
+      self.data['title'] = "Posts etiquetados &ldquo;"+tag+"&rdquo;"
     end
   end
 
@@ -18,8 +18,8 @@ module Jekyll
     safe true
     
     def generate(site)
-      if site.layouts.key? 'tag_index'
-        dir = 'tags'
+      if site.layouts.key? 'tag_es_index'
+        dir = 'tags-es'
         site.tags.keys.each do |tag|
           write_tag_index(site, File.join(dir, tag), tag)
         end

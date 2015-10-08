@@ -1,29 +1,28 @@
 ---
-layout: default-about
-title:  "About amsantac.co"
+layout: default-about-es
+title:  "Acerca de amsantac.co"
 date:   2015-09-11 11:02:52
 ---
 <header>
-<h2>About me</h2>
-<span class="byline">Spatial data scientist | R geek | Lifelong learner</span>
+<h2>Acerca de mí</h2>
+<span class="byline">Experto en geomática | Fanático de R | Aprendiz de por vida</span>
 </header>
 
 <p>
-<a href="#" class="image full"><img src="images/aboutme.png" alt="" style="float:left;width:250px;height:430px;"/></a>
-<strong>Hi, I'm Ali!</strong>
+<a href="#" class="image full"><img src="/images/aboutme.png" alt="" style="float:left;width:250px;height:430px;"/></a>
+<strong>Hola, mi nombre es Alí!</strong>
 
-I am a geomatician with a passion for <a href="http://r-project.org">(R!)</a> programming and data mapping. Currently I'm pursuing a PhD degree in Geography at <a href="http://www.clarku.edu">Clark University</a>. My dissertation research focuses on the environmental impacts of land cover and land use change on tropical savannas. My current interests involve remote sensing, environmental modeling, machine learning for image processing, and automation of data processing using high-level programming languages.
+Soy un geomático apasionado por las tecnologías de la información geográfica y la programación <a href="http://r-project.org">(con R!)</a>. Actualmente estoy cursando un doctorado en Geografía en <a href="http://www.clarku.edu">Clark University</a>. Mi investigación doctoral se enfoca en los impactos ambientales de los cambios en las coberturas y el uso del suelo en sabanas tropicales. Mis intereses actuales incluyen la percepción remota, la modelación ambiental, la aplicación de técnicas de machine learning para el procesamiento de imágenes y la automatización del procesamiento de datos usando lenguajes de programación de alto nivel.
 </p>
 
+Soy graduado de la [Universidad Nacional de Colombia] como Ingeniero Forestal (2004) y como Máster en Geomática (2010). A través de estos años he encontrado que también soy apasionado por la enseñanza y por compartir mi conocimiento con otros a través de internet. Disfruto ayudando a los estudiantes y a mis colegas compartiendo mis experiencias acerca del procesamiento de datos geoespaciales y el desarrollo de programas y aplicaciones web.  
 
-I graduated from the [National University of Colombia] as a Forest Engineer in 2004 and as a Master in Geomatics in 2010. Through the past years I found I'm also passionate about teaching and making my knowledge available to others through the Web. I enjoy helping students and colleagues by sharing my expertise and experience about processing geospatial data and the development of desktop programs and web apps. 
+Más acerca de mí? Bien, una de mis frases favoritas es: **También puedes hacer eso con R!** (*Probablemente escucharás eso de mí más de una vez!*)
 
-More about me? Well, one of my favorite phrases is: **You can do that with R!** (*You will probably hear that from me more than once!*)
-
-If you want to get in touch, feel free to send me a message! Here's [my contact page].
+Si deseas contactarme siéntete libre de enviarme un mensaje. Aquí está [mi página de contacto].
 
 [(R!)]: http://r-project.org
 [R!]: http://r-project.org
 [Clark University]: http://www.clarku.edu
-[National University of Colombia]: http://www.unal.edu.co
-[my contact page]: contact.html
+[Universidad Nacional de Colombia]: http://www.unal.edu.co
+[mi página de contacto]: /es/contact.html

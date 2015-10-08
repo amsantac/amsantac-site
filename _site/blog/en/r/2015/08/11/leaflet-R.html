@@ -60,10 +60,11 @@
 			<div class="container"> 
 				
 				<!-- Logo -->
-				<div id="logo">
-					<h1><a href="/">R-Spatialist</a></h1>
+								<div id="logo">
+					<h1><a href="/">amsantac.co</a></h1>
 					<span>Smart solutions for geospatial data processing</span>
 				</div>
+
 				
 				<!-- Nav -->
 				<nav id="nav">
@@ -107,7 +108,7 @@
 </code></pre>
 
 <p><br>
-The next step is to read in R the maps we want to display in our web map. For reading a shapefile, there are a number of functions included in different R packages (see <a href="https://cran.r-project.org/package=rgdal">rgdal</a>, <a href="https://cran.r-project.org/package=maptools">maptools</a>, <a href="https://cran.r-project.org/package=shapefiles">shapefiles</a>, and <a href="http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment">others</a>). I'm going to use the <a href="https://cran.r-project.org/package=raster">raster</a> package, so we need to install it first:</p>
+The next step is to read into R the maps we want to display in our web map. For reading a shapefile, there are a number of functions included in different R packages (see <a href="https://cran.r-project.org/package=rgdal">rgdal</a>, <a href="https://cran.r-project.org/package=maptools">maptools</a>, <a href="https://cran.r-project.org/package=shapefiles">shapefiles</a>, and <a href="http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment">others</a>). I'm going to use the <a href="https://cran.r-project.org/package=raster">raster</a> package, so we need to install it first:</p>
 
 <pre><code>install.packages("raster")
 </code></pre>
@@ -126,7 +127,7 @@ For this example I am going to import in R a polygon shapefile enclosing the stu
 </code></pre>
 
 <p><br>
-In this case the file has been read in R as an <a href="http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame">SpatialPolygonsDataFrame</a> object called <code>llanos</code>. Now we are going to create the leaflet map using this object for the <code>data</code> argument in the <code>leaflet</code> function. We can do that in just one line of code concatenating several commands with the forward pipe operator <code>%&gt;%</code>. First we create a Leaflet map widget (with the <code>leaflet</code> command) and then add a tile layer (with <code>addTiles</code>), the vector map as polygon (<code>addPolygons</code>) and a legend (<code>addLegend</code>).</p>
+In this case the file has been read into R as an <a href="http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame">SpatialPolygonsDataFrame</a> object called <code>llanos</code>. Now we are going to create the leaflet map using this object for the <code>data</code> argument in the <code>leaflet</code> function. We can do that in just one line of code concatenating several commands with the forward pipe operator <code>%&gt;%</code>. First we create a Leaflet map widget (with the <code>leaflet</code> command) and then add a tile layer (with <code>addTiles</code>), the vector map as polygon (<code>addPolygons</code>) and a legend (<code>addLegend</code>).</p>
 
 <pre><code>leaflet(data = llanos) %&gt;% addTiles() %&gt;% addPolygons(fill = FALSE, stroke = TRUE, color = "#03F") %&gt;% 
   addLegend("bottomright", colors = "#03F", labels = "Llanos ecoregion")
@@ -147,7 +148,7 @@ The <code>fill</code>, <code>stroke</code> and <code>color</code> arguments allo
 <p><br>
 As before, we create the Leaflet map widget, add the OSM tiles and add the polygons. For adding layers controls, we need to provide the name of the group the newly created layers should belong to. For example, I will define "Study area" as the group for the <code>llanos</code> layer, and the "Landsat scenes" group for the <code>wrs2</code> layer. For popups, the <code>popup</code> argument in the <code>addPolygons</code> function is used to display attribute data from the vector map. In this case, I am using a column called 'PATH_ROW' that indicates the path and row of the corresponding Landsat scene.</p>
 
-<p>For the legend, we add pairs of values for the <code>colors</code> and <code>labels</code> arguments for the corresponding values of the two map layers. Finally, the <code>addLayersControl</code> function allows adding user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the <code>overlayGroups</code> argument and then we define whether we want the layers control to be collapsed or not, using the <code>options</code> argument. The complete code snippet can be seen below:</p>
+<p>For the legend, we add pairs of values for the <code>colors</code> and <code>labels</code> arguments for the corresponding values of the two map layers. Finally, the <code>addLayersControl</code> function allows the addition of user interface controls to switch the layers on and off. We have to enter the name of the group each layer map belong to in the <code>overlayGroups</code> argument and then we define whether we want the layers control to be collapsed or not, using the <code>options</code> argument. The complete code snippet can be seen below:</p>
 
 <pre><code>leaflet() %&gt;% addTiles() %&gt;%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = "#03F", group = "Study area") %&gt;% 
@@ -208,7 +209,9 @@ That's it. Congratulations for finishing this first tutorial!</p>
   
   <div class="social-share">
     <!--<g:plusone></g:plusone>--> 
-    <div class="g-plusone" data-size="medium"></div><div class="fb-share-button" data-href="http://amsantac.co/blog/en/r/2015/08/11/leaflet-R.html" data-layout="button_count"></div> <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amsantac.co/blog/en/r/2015/08/11/leaflet-R.html">Tweet</a>
+    
+<div class="g-plusone" data-size="medium"></div> <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amsantac.co/blog/en/r/2015/08/11/leaflet-R.html">Tweet</a>
+<div class="fb-share-button" data-href="http://amsantac.co/blog/en/r/2015/08/11/leaflet-R.html" data-layout="button_count" style="vertical-align: top !important;"></div>
 
     </div>
   <br>
@@ -254,7 +257,7 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 					  <hr>
 					  
 					  
-					  <a href="https://plus.google.com/u/0/117898713832632782598/"><img src="/images/g+32.png" title="Google+" style="height:32px"></a>  <a href="https://www.linkedin.com/in/amsantac"><img src="/images/linkedin.png" title="LinkedIn" style="height:32px"></a> <a href="http://www.researchgate.net/profile/Ali_Santacruz"><img src="/images/rg-icon-180x180.png" title="ResearchGate" style="height:32px"></a> <a href="https://www.facebook.com/amsantac"><img src="/images/F_icon.png" title="Facebook" style="height:32px"></a>  <a href="/feed.xml"><img src="/images/rss.jpg" title="RSS" style="height:32px"></a>
+					  <a href="https://plus.google.com/u/0/117898713832632782598/"><img src="/images/g+32.png" title="Google+" style="height:32px"></a>  <a href="https://www.linkedin.com/in/amsantac"><img src="/images/linkedin.png" title="LinkedIn" style="height:32px"></a> <a href="http://www.researchgate.net/profile/Ali_Santacruz"><img src="/images/rg-icon-180x180.png" title="ResearchGate" style="height:32px"></a> <a href="https://www.facebook.com/amsantac"><img src="/images/F_icon.png" title="Facebook" style="height:32px"></a>  <a href="/feed.en.xml"><img src="/images/rss.jpg" title="RSS" style="height:32px"></a>
 
 
 					  <hr>
@@ -429,7 +432,7 @@ $( "pre" ).addClass( "prettyprint lang-r" );
 			  <!--
 				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
 				-->
-				&copy; Ali Santacruz - <a href="/es/">Version en espanol</a>
+				&copy; Alí Santacruz - <a href="/es/">Versión en español</a>
 			</div>
 		</div>
 

@@ -28,7 +28,7 @@ This template can be found in the 'templates' folder inside the directory where 
 
 <img src="/images/2015-09-05-stacking-R-fig-3.png" alt="Folder structure" title="Folder structure" style="width:800px">
 
-The purpose of our R script will be to list all the folders inside each year folders which are contained in the 'images' folder. Let's assume that we have stored images from 2000 to 2015 in our example, so let's create an integer object in R that lists the sequence of years. Let's also create a null object where we will iteratively add the list of folders for each year, and a character object to store the path to our top-level folder 'images':
+The purpose of our R script will be to list all the folders inside each year folders which are contained in the 'images' folder. Let's assume that we have stored images from 2000 to 2014 in our example, so let's create an integer object in R that lists the sequence of years. Let's also create a null object where we will iteratively add the list of folders for each year, and a character object to store the path to our top-level folder 'images':
 
 ```
 years <- 2000:2014
@@ -86,8 +86,6 @@ Now we can go back to CLASlite and use the CSV file that we just created. Open C
 Hope you found this post helpful! In the next post I will explain how we can use R to automatically create the text files required by CLASlite for producing atmospherically-corrected imagery. See you then! 
 
 <br>
-<br>
-
 
 
 <a id="comments"></a>
