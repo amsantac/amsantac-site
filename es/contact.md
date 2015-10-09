@@ -17,8 +17,7 @@ date:   2015-09-11 11:02:52
 <br>
 O si lo prefieres, usa por favor el siguiente formulario de contacto:
 
-<iframe src="https://docs.google.com/forms/d/1KwCSsN7CkE-BD9KPWYtBRdXUeZJGXZZ8Qad6xAmNCqM/viewform?embedded=true" width="760" height="760" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-
+<iframe src="https://docs.google.com/forms/d/1RNPqF--8QXPDAdgQDQms5tj4ttZFAj1ceMBiUsPdCF0/viewform?embedded=true" width="760" height="760" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 
 [google+]: /images/g+32.png "Google+"
 [g+_profile]: https://plus.google.com/u/0/117898713832632782598/
