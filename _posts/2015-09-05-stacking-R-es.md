@@ -2,7 +2,7 @@
 layout: post-es
 title:  "Usando R para el apilamiento de imágenes en CLASlite"
 date:   2015-09-05 11:02:52
-categories: blog es R 
+categories: blog es r
 tags: R PercepcionRemota CLASlite stacking landsat
 image: 2015-09-05-stacking-R-mini.png
 published: true
