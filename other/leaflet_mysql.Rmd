@@ -1,0 +1,63 @@
+---
+title: "Create a leaflet map from data stored in a MySQL database"
+author: "Ali Santacruz"
+date: "October 11, 2015"
+output: html_document
+---
+
+<br>
+
+#### 1. Install the required packages
+
+On Linux, you don't need to install sp
+
+```{r, eval = FALSE}
+install.packages("RMySQL") 
+install.packages("sp")      # On Windows OS
+install.packages("leaflet")
+```
+<br>
+
+#### 2. Load the packages
+
+```{r}
+library(sp)
+library(leaflet)
+library(RMySQL)
+```
+<br>
+
+#### 3. Connect to the database and read the table into a data.frame
+
+```{r}
+con <- dbConnect(MySQL(),
+                 user = 'user',
+                 password = 'user',
+                 dbname='example')
+
+table1 <- dbReadTable(conn = con, name = 'mydata')  # read the 'mydata' table from the example database as a data.frame
+```
+<br>
+
+#### 4. Convert the data.frame into a SpatialPointsDataFrame
+
+I'm using a very simple table for this example. The table has just one row with three columns (lat for latitude or y-axis, longitude for the x-axis, and population for the data to show in the popup)
+
+```{r}
+table1
+coordinates(table1) <- ~longitude+lat  # convert to a SpatialPointsDataFrame
+class(table1)  # check that table1 is now a SpatialPointsDataFrame
+```
+<br>
+
+#### 5. Create the leaflet map and add the popup
+
+Zoom out for better visualization and click the marker to see the popup
+
+```{r}
+leaflet(data = table1) %>% addTiles() %>% addMarkers(popup = paste0("My data is: ", table1$population)) 
+```
+
+That's it!
+
+<br>

@@ -15,7 +15,7 @@ date:   2015-09-11 11:02:52
 [![google+]][g+_profile]  <a href="https://www.linkedin.com/in/amsantac"><img src="/images/linkedin.png" title="LinkedIn" style="height:32px"></a> <a href="http://www.researchgate.net/profile/Ali_Santacruz"><img src="/images/rg-icon-180x180.png" title="ResearchGate" style="height:32px"></a> <a href="https://www.facebook.com/amsantac"><img src="/images/F_icon.png" title="Facebook" style="height:32px"></a>  <a href="/feed.en.xml"><img src="/images/rss.jpg" title="RSS" style="height:32px"></a>
 
 <br>
-Or if you prefer, please use the below contact form:
+Or if you prefer, please use the contact form below:
 
 <iframe src="https://docs.google.com/forms/d/1KwCSsN7CkE-BD9KPWYtBRdXUeZJGXZZ8Qad6xAmNCqM/viewform?embedded=true" width="760" height="760" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 
