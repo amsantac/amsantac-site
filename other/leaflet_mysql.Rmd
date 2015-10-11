@@ -1,5 +1,5 @@
 ---
-title: "Create a leaflet map from data stored in a MySQL database"
+title: "Use R to create a leaflet map from data stored in a MySQL database"
 author: "Ali Santacruz"
 date: "October 11, 2015"
 output: html_document
@@ -7,7 +7,7 @@ output: html_document
 
 <br>
 
-#### 1. Install the required packages
+#### 1. Install the required packages in R
 
 On Linux, you don't need to install sp
 
@@ -57,7 +57,8 @@ Zoom out for better visualization and click the marker to see the popup
 ```{r}
 leaflet(data = table1) %>% addTiles() %>% addMarkers(popup = paste0("My data is: ", table1$population)) 
 ```
+<br>
 
-That's it!
+That's it! For more info please see the [post in my blog](http://amsantac.co/blog/en/r/2015/08/11/leaflet-R.html).
 
 <br>
