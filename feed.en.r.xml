@@ -11,7 +11,10 @@ layout: null
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.tags.R in site.categories.en %}
+    
+    {% for post in site.posts %}
+      {% if post.categories contains "en" %}
+      {% if post.tags contains "R" %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
         <description>{{ post.content | xml_escape }}</description>
@@ -25,6 +28,9 @@ layout: null
         <category>{{ cat | xml_escape }}</category>
         {% endfor %}
       </item>
-    {% endfor %}
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+
   </channel>
 </rss>

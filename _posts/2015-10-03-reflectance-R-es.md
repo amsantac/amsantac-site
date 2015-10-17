@@ -2,7 +2,7 @@
 layout: post
 title:  "Prepare files for production of atmospherically-corrected imagery in CLASlite using R"
 date:   2015-10-03 11:02:52
-categories: blog en
+categories: blog es
 tags: R RemoteSensing CLASlite reflectance landsat
 image: 2015-10-03-reflectance-R-mini.jpg
 published: false
