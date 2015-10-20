@@ -13,8 +13,9 @@
     {% for post in site.categories.en %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
-        <description><p>{{ post.excerpt | xml_escape }}</p>
-        <p>To read this article in full, <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">please click here</a></p></description>
+        <description><![CDATA[{{ post.excerpt }}
+        <p><a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">To read this article in full, please click here</a></p>
+        ]]></description>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
         <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
