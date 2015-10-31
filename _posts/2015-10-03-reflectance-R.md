@@ -1,20 +1,20 @@
 ---
 layout: post
-title:  "Prepare files for production of atmospherically-corrected imagery in CLASlite using R"
+title:  "Prepare files for production of reflectance imagery in CLASlite using R"
 date:   2015-10-03 11:02:52
 categories: blog en
 tags: R RemoteSensing CLASlite reflectance landsat
-image: 2015-10-03-reflectance-R-mini.jpg
-published: false
+image: 2015-10-03-reflectance-r-mini.jpg
+published: true
 ---
 
 A common step in land cover mapping and multitemporal analysis of land cover change based on remotely-sensed data is the conversion of the data registered in each pixel of land cover by the satellite sensor into surface reflectance values that can be used for mapping. This process is known as calibration to surface reflectance and involves radiometric calibration and atmospheric correction. 
 
-As mentioned in [my previous post], these steps can be conducted using the [CLASlite software]. In this post I explain how to automate the creation of the text files required by CLASlite for image calibration through batch processing.
+As mentioned in [my previous post], these steps can be done using the [CLASlite software]. In this post I explain how to automate the creation of the text files required by CLASlite for image calibration through batch processing.
 
 <!--more-->
 
-<img src="/images/2015-10-03-reflectance-R-fig-0.jpg" alt="" title="" style="width:800px">
+<img src="/images/2015-10-03-reflectance-r-fig-0.jpg" alt="" title="" style="width:800px">
 
 For the batched conversion to surface reflectance, CLASlite asks for a CSV text file containing 18 columns with the following names: "Input_FileName", "Date", "Time", "Gain_Settings", "Satellite", "Lead_File", "Therm_File", "QA_File", "Output_File", "GeoTIFF", "Proc_sys", "Reduce_masking", "no_masking", "fmask", "cldpix", "sdpix", "snpix" and "cldprob". A template file called 'step1_template.csv' can be found in the templates folder inside the CLASlite installation directory.
 
@@ -27,7 +27,7 @@ I wrote an R script called [reflectanceImgTable4csv.R] that helps to the creatio
 
 For using the R script, it is necessary to create first a list of the folders containing the [stacked Landsat images] that will be processed. Let's assume we have a group of Landsat images for a number of years for which we have already created raw and thermal files as shown in [my previous post]:
 
-<img src="/images/2015-10-03-reflectance-R-fig-1.png" alt="Input folder" title="Input folder" style="width:800px">
+<img src="/images/2015-10-03-reflectance-r-fig-1.png" alt="Input folder" title="Input folder" style="width:800px">
 
 Let's use R to create the folders list:
 
@@ -53,15 +53,15 @@ outDF <- reflectanceImgTable4csv(foldersList, no_masking = 1)
 ### **Back to CLASlite**
 Open CLASlite and click "1. Calibrate Image". Browse for and enter the Input Directory and the Output Directory, which are the same and correspond to the folder for each year, in this example. Click "Load". In the new window select the number of images to be processed (e.g., 12) and click "OK". 
 
-<img src="/images/2015-10-03-reflectance-R-fig-2.png" alt="Calibrate image in CLASlite 1" title="Calibrate image in CLASlite 1" style="width:800px">
+<img src="/images/2015-10-03-reflectance-r-fig-2.png" alt="Calibrate image in CLASlite 1" title="Calibrate image in CLASlite 1" style="width:800px">
 
 In the next window click "Load Table". Browse for and select the csv file generated with R, and click "Select". The parameters must be filled in in the table shown in the window:  
 
-<img src="/images/2015-10-03-reflectance-R-fig-3.png" alt="Calibrate image in CLASlite 2" title="Calibrate image in CLASlite 2" style="width:800px">
+<img src="/images/2015-10-03-reflectance-r-fig-3.png" alt="Calibrate image in CLASlite 2" title="Calibrate image in CLASlite 2" style="width:800px">
 
 Finally click "Run" to create the surface reflectance imagery for the provided list of images. After CLASlite processes all the files, you should see in each folder a new image with "_refl" appended to its name that corresponds to the atmospherically-corrected images: 
 
-<img src="/images/2015-10-03-reflectance-R-fig-4.png" alt="Output folder" title="Output folder" style="width:800px">
+<img src="/images/2015-10-03-reflectance-r-fig-4.png" alt="Output folder" title="Output folder" style="width:800px">
 
 <br>
 ### **What the script does**
@@ -185,8 +185,8 @@ This R script intends to help for an efficient creation of the text files requir
 [USGS]:                             http://www.usgs.gov
 [here]:                             https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [this link]:                        https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
-[my previous post]:                 /blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html
-[stacked Landsat images]:           /blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html
-[Using R for file stacking in CLASlite]:                 /blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html
+[my previous post]:                 /blog/en/r/2015/09/05/stacking-R.html
+[stacked Landsat images]:           /blog/en/r/2015/09/05/stacking-R.html
+[Using R for file stacking in CLASlite]:                 /blog/en/r/2015/09/05/stacking-R.html
 [reflectanceImgTable4csv.R]:        https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [reflectanceImgTable4csv.R script]: https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R

@@ -1,11 +1,11 @@
 ---
-layout: post
-title:  "Prepara archivos para la producción de imágenes con corrección atmosférica en CLASlite usando R"
+layout: post-es
+title:  "Prepara archivos para creación de imágenes de reflectancia en CLASlite usando R"
 date:   2015-10-03 11:02:52
 categories: blog es
 tags: R PercepcionRemota CLASlite reflectancia landsat
-image: 2015-10-03-reflectance-R-mini.jpg
-published: false
+image: 2015-10-03-reflectance-r-mini.jpg
+published: true
 ---
 
 Una tarea muy común cuando se procesan imágenes satelitales para producir mapas de cobertura o analizar cambios multitemporales es la conversión de los datos registrados en cada píxel de la imagen a valores de reflectancia en la superficie. Este proceso se conoce como calibración a valores de reflectancia en superficie e involucra la calibración radiométrica y la corrección de distorsiones causadas por la atmósfera. 
@@ -14,7 +14,7 @@ Como se mencionó en la [anterior entrada de mi blog], estas labores de procesam
 
 <!--more-->
 
-<img src="/images/2015-10-03-reflectance-R-fig-0.jpg" alt="" title="" style="width:800px">
+<img src="/images/2015-10-03-reflectance-r-fig-0.jpg" alt="" title="" style="width:800px">
   
 Para la conversión a reflectancia en superficie mediante el procesamiento por lotes, es necesario preparar un archivo de texto en formato CSV con 18 columnas con los siguientes nombres: "Input_FileName", "Date", "Time", "Gain_Settings", "Satellite", "Lead_File", "Therm_File", "QA_File", "Output_File", "GeoTIFF", "Proc_sys", "Reduce_masking", "no_masking", "fmask", "cldpix", "sdpix", "snpix" y "cldprob". En el folder "templates" que se encuentra dentro del directorio donde fue instalado CLASlite se puede encontrar el archivo 'step1_template.csv' con la plantilla para crear este archivo.
 
@@ -26,7 +26,7 @@ En [este link] puedes encontrar un script en lenguaje R llamado [reflectanceImgT
 
 Primero es necesario crear una lista de las carpetas que contienen las imágenes Landsat ([ya apiladas]) que van a ser procesadas. Asumamos que tenemos un grupo de imágenes Landsat para un conjunto de años para los cuales ya hemos creado con CLASlite los archivos ‘raw’ (archivos crudos) y ‘therm’ (bandas en el rango térmico del espectro) como se muestra en [mi anterior post]:
 
-<img src="/images/2015-10-03-reflectance-R-fig-1.png" alt="Input folder" title="Input folder" style="width:800px">
+<img src="/images/2015-10-03-reflectance-r-fig-1.png" alt="Input folder" title="Input folder" style="width:800px">
 
 Usemos R para crear la lista de carpetas:
 
@@ -52,15 +52,15 @@ outDF <- reflectanceImgTable4csv(foldersList, no_masking = 1)
 ### **De vuelta en CLASlite**
 Abre CLASlite y haz click en "1. Calibrate Image". Navega en las carpetas e ingresa el directorio de entrada ('Input Directory') y el directorio de salida ('Output Directory'), los cuales pueden ser iguales y corresponden a la carpeta para cada año, en este ejemplo. Haz click en "Load". En el nuevo cuadro de diálogo selecciona el número de imágenes a ser procesadas (e.g., 12) y haz click en "OK". 
 
-<img src="/images/2015-10-03-reflectance-R-fig-2.png" alt="Calibrar imagen en CLASlite 1" title="Calibrar imagen en CLASlite 1" style="width:800px">
+<img src="/images/2015-10-03-reflectance-r-fig-2.png" alt="Calibrar imagen en CLASlite 1" title="Calibrar imagen en CLASlite 1" style="width:800px">
 
 En la siguiente ventana haz click en "Load Table" para cargar la tabla. Busca y selecciona el archivo csv generado con R, y haz click en "Select". Los datos de los parámetros deben ser llenados automáticamente en la tabla mostrada en esa ventana:  
 
-<img src="/images/2015-10-03-reflectance-R-fig-3.png" alt="Calibrar imagen en CLASlite 2" title="Calibrar imagen en CLASlite 2" style="width:800px">
+<img src="/images/2015-10-03-reflectance-r-fig-3.png" alt="Calibrar imagen en CLASlite 2" title="Calibrar imagen en CLASlite 2" style="width:800px">
 
 Finalmente haz click en "Run" para crear las imágenes con valores convertidos a reflectancia en superficie para la lista de imágenes que suministraste. Después de que CLASlite procese todos los archivos, tu deberías ver en cada carpeta una nueva imagen marcada con "refl" al final del nombre la cual corresponde a la imagen con corrección por distorsiones debidas a la atmósfera: 
 
-<img src="/images/2015-10-03-reflectance-R-fig-4.png" alt="Output folder" title="Output folder" style="width:800px">
+<img src="/images/2015-10-03-reflectance-r-fig-4.png" alt="Output folder" title="Output folder" style="width:800px">
 
 <br>
 ### **Lo que el script de R hace**
@@ -179,14 +179,14 @@ El propósito de este script de R es hacer más eficiente la creación de los ar
 
 <a id="comments"></a>
 
-[anterior entrada de mi blog]:      /blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html
-[mi anterior post]:                 /blog/en/r/claslite/stacking/landsat/2015/09/05/stacking-R.html 
+[anterior entrada de mi blog]:      /blog/es/r/2015/09/05/stacking-R-es.html
+[mi anterior post]:                 /blog/es/r/2015/09/05/stacking-R-es.html 
 [programa CLASlite]:                http://claslite.carnegiescience.edu/
 [R language]:                       http://r-project.org
 [USGS]:                             http://www.usgs.gov
 [verse aquí]:                       https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [link]:                             https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
-[Usando R para el apilamiento de imágenes en CLASlite]:                 /blog/es/r/claslite/stacking/landsat/2015/09/05/stacking-R-es.html
+[Usando R para el apilamiento de imágenes en CLASlite]:                 /blog/es/r/2015/09/05/stacking-R-es.html
 [este link]:                        https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [reflectanceImgTable4csv.R]:        https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
 [script reflectanceImgTable4csv.R]: https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
