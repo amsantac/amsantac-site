@@ -3,7 +3,7 @@
     <title></title>
     <layer-tree-group expanded="1" checked="Qt::Checked" name="">
         <customproperties/>
-        <layer-tree-layer expanded="1" checked="Qt::Checked" id="sampling_sizes_v220151021184954470" name="sampling_sizes_v2">
+        <layer-tree-layer expanded="1" checked="Qt::Checked" id="sampling_sizes20151024163140631" name="sampling_sizes">
             <customproperties/>
         </layer-tree-layer>
         <layer-tree-layer expanded="0" checked="Qt::Checked" id="ecosistemas_llanos_latlon_v2_clip_75720151024162820100" name="ecosistemas_llanos_latlon_v2_clip_757">
@@ -14,10 +14,10 @@
     <mapcanvas>
         <units>meters</units>
         <extent>
-            <xmin>576641.5054142780136317</xmin>
-            <ymin>388166.40486557531403378</ymin>
-            <xmax>859298.3041803773958236</xmax>
-            <ymax>537514.04838689439930022</ymax>
+            <xmin>623942.30765466287266463</xmin>
+            <ymin>397451.26422122545773163</ymin>
+            <xmax>819824.54565083200577646</xmax>
+            <ymax>551931.35234033991582692</ymax>
         </extent>
         <projections>1</projections>
         <destinationsrs>
@@ -33,31 +33,37 @@
             </spatialrefsys>
         </destinationsrs>
         <layer_coordinate_transform_info>
-            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20000316_refl20151015102635421"/>
-            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="ecosistemas_llanos_latlon_v2_clip_75720151021184839710"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="ecosistemas_llanos_latlon_v320151015102843971"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20151024194736505"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20151024194710730"/>
             <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4140" srcDatumTransform="-1" destDatumTransform="-1" layerid="ecosistemas_llanos_latlon_v2_clip_75720151024162820100"/>
-            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="testing_757_200020151021185203051"/>
-            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20000316_refl20151021191440649"/>
-            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20001213_raw20151015120312108"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20151024192407016"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20000316_refl20151021190539035"/>
             <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20000316_refl20151015103255457"/>
             <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20000316_refl20151019155119232"/>
-            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20151021185114388"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20000316_refl20151021191440649"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20151024163219330"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20000316_refl20151015102635421"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="borrar320151024163404544"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="testing_757_200020151021185203051"/>
             <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20000316_refl20151019155013242"/>
-            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20000316_refl20151021190539035"/>
-            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="ecosistemas_llanos_latlon_v320151015102843971"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20151024201733587"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="ecosistemas_llanos_latlon_v2_clip_75720151021184839710"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:32618" srcDatumTransform="-1" destDatumTransform="-1" layerid="L7007057_20001213_raw20151015120312108"/>
+            <layer_coordinate_transform destAuthId="EPSG:32618" srcAuthId="EPSG:4019" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20151021185114388"/>
         </layer_coordinate_transform_info>
     </mapcanvas>
     <visibility-presets/>
     <layer-tree-canvas>
         <custom-order enabled="0">
-            <item>sampling_sizes_v220151021184954470</item>
+            <item>sampling_sizes20151024163140631</item>
             <item>ecosistemas_llanos_latlon_v2_clip_75720151024162820100</item>
         </custom-order>
     </layer-tree-canvas>
     <legend updateDrawingOrder="true">
-        <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="sampling_sizes_v2" showFeatureCount="0">
+        <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="sampling_sizes" showFeatureCount="0">
             <filegroup open="true" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="sampling_sizes_v220151021184954470" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="sampling_sizes20151024163140631" visible="1"/>
             </filegroup>
         </legendlayer>
         <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="ecosistemas_llanos_latlon_v2_clip_757" showFeatureCount="0">
@@ -404,8 +410,6 @@
                         </layer>
                     </symbol>
                 </source-symbol>
-                <colorramp type="randomcolors" name="[source]"/>
-                <invertedcolorramp value="0"/>
                 <rotation/>
                 <sizescale scalemethod="area"/>
             </renderer-v2>
@@ -577,10 +581,10 @@
                 <multilineenabled fieldname="" on=""/>
                 <selectedonly on=""/>
             </labelattributes>
-            <editform></editform>
+            <editform>.</editform>
             <editforminit></editforminit>
             <featformsuppress>0</featformsuppress>
-            <annotationform></annotationform>
+            <annotationform>.</annotationform>
             <editorlayout>generatedlayout</editorlayout>
             <excludeAttributesWMS/>
             <excludeAttributesWFS/>
@@ -685,14 +689,14 @@
             </edittypes>
         </maplayer>
         <maplayer minimumScale="0" maximumScale="1e+08" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
-            <id>sampling_sizes_v220151021184954470</id>
-            <datasource>../../../../PhD/Research/dissertation/processing/other/sampling_sizes_v2.csv</datasource>
+            <id>sampling_sizes20151024163140631</id>
+            <datasource>./sampling_sizes.csv</datasource>
             <title></title>
             <abstract></abstract>
             <keywordList>
                 <value></value>
             </keywordList>
-            <layername>sampling_sizes_v2</layername>
+            <layername>sampling_sizes</layername>
             <srs>
                 <spatialrefsys>
                     <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
@@ -707,7 +711,7 @@
             </srs>
             <customproperties/>
             <provider encoding="System">ogr</provider>
-            <previewExpression></previewExpression>
+            <previewExpression>COALESCE("landcover", '&lt;NULL>')||', '||COALESCE("COB", '&lt;NULL>')||', '||COALESCE("testing", '&lt;NULL>')</previewExpression>
             <vectorjoins/>
             <expressionfields/>
             <edittypes>
@@ -717,20 +721,14 @@
                 <edittype widgetv2type="TextEdit" name="COB">
                     <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
                 </edittype>
-                <edittype widgetv2type="TextEdit" name="training">
-                    <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-                </edittype>
                 <edittype widgetv2type="TextEdit" name="testing">
                     <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
                 </edittype>
-                <edittype widgetv2type="TextEdit" name="validation">
-                    <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-                </edittype>
             </edittypes>
-            <editform>../../../../PhD/Research/dissertation/processing/qgs</editform>
+            <editform>.</editform>
             <editforminit></editforminit>
             <featformsuppress>0</featformsuppress>
-            <annotationform>../../../../PhD/Research/dissertation/processing/qgs</annotationform>
+            <annotationform>.</annotationform>
             <editorlayout>generatedlayout</editorlayout>
             <excludeAttributesWMS/>
             <excludeAttributesWFS/>
@@ -742,13 +740,7 @@
                 <edittype widgetv2type="TextEdit" name="COB">
                     <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
                 </edittype>
-                <edittype widgetv2type="TextEdit" name="training">
-                    <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-                </edittype>
                 <edittype widgetv2type="TextEdit" name="testing">
-                    <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-                </edittype>
-                <edittype widgetv2type="TextEdit" name="validation">
                     <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
                 </edittype>
             </edittypes>
