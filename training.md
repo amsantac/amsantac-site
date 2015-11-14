@@ -9,7 +9,7 @@ date:   2015-09-11 11:02:52
 <span class="byline">Courses you may be interested in</span>
 </header>
 
-<a href="" class="image full"><img src="/images/training-fig-1.png" alt="" /></a>
+<a href="" class="image full"><img src="/images/static/training-fig-1.png" alt="" /></a>
 <br>
 
 ##Introduction to Geographic Information Systems

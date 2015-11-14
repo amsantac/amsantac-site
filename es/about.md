@@ -9,7 +9,7 @@ date:   2015-09-11 11:02:52
 </header>
 
 <p>
-<a href="#" class="image full"><img src="/images/aboutme.png" alt="" style="float:left;width:250px;height:430px;"/></a>
+<a href="#" class="image full"><img src="/images/static/aboutme.png" alt="" style="float:left;width:250px;height:430px;"/></a>
 <strong>Hola, mi nombre es Alí!</strong>
 
 Soy un geomático apasionado por las tecnologías de la información geográfica y la programación <a href="http://r-project.org">(con R!)</a>. Actualmente estoy cursando un doctorado en Geografía en <a href="http://www.clarku.edu">Clark University</a>. Mi investigación doctoral se enfoca en los impactos ambientales de los cambios en las coberturas y el uso del suelo en sabanas tropicales. 
