@@ -5,7 +5,7 @@ date:   2015-11-28 11:02:52
 categories: blog es
 tags: R PercepcionRemota landsat QGIS SIG
 image: 2015-11-28-classification-r-mini.jpg
-published: false
+published: true
 ---
 
 El objetivo de este post es demostrar las capacidades de R para clasificar imágenes multiespectrales usando los [algoritmos conocidos como RandomForests]. Estos algoritmos son actualmente una de las técnicas que producen mejores resultados para la regresión y clasificación de datos. Aunque su interpretabilidad puede ser un tanto difícil, estos algoritmos son ampliamente populares debido a su habilidad para clasificar grandes cantidades de datos con una gran exactitud.

@@ -5,7 +5,7 @@ date:   2015-11-28 11:02:52
 categories: blog en
 tags: R RemoteSensing landsat QGIS GIS
 image: 2015-11-28-classification-r-mini.jpg
-published: false
+published: true
 ---
 
 The goal of this post is to demonstrate the ability of R to classify multispectral imagery using [RandomForests algorithms]. RandomForests are currently one of the top performing algorithms for data classification and regression. Although their interpretability may be difficult, RandomForests are widely popular because of their ability to classify large amounts of data with high accuracy.
