@@ -12,3 +12,6 @@ _site/
 
 # RStudio files
 .Rproj.user/
+
+# temp folder
+temp/
