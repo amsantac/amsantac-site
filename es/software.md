@@ -37,7 +37,7 @@ Esta aplicación web desarrollada con [Shiny] permite la construcción de la cur
 <br>
 ## Aplicación de Los Llanos implementada con Google Earth Engine
 <br>
-Esta aplicación muestra imágenes Landsat (Landsat 5 TM, Landsat 7 ETM y Landsat 8 OLI) en composición de falso color (RGB: infrarrojo cercano/ infrarrojo de onda corta/ rojo) desde el año 2000 hasta el año 2014 para la ecoregión tropical conocida como Los Llanos localizada en Colombia, Suramérica. Esta aplicación está implementada con [Google Earth Engine]. <a href="https://test-project-1036.appspot.com/" target="_blank">Haz clic aquí</a> para lanzar esta aplicación en pantalla completa.
+Esta aplicación muestra imágenes Landsat (Landsat 5 TM, Landsat 7 ETM+ y Landsat 8 OLI) en composición de falso color (RGB: infrarrojo cercano/ infrarrojo de onda corta/ rojo) desde el año 2000 hasta el año 2014 para la ecoregión tropical conocida como Los Llanos localizada en Colombia, Suramérica. Las nubes y las líneas sin informacion producidas por la falla del Scan Line Corrector (SLC-off) en las imágenes de Landsat 7 ETM+ han sido enmascaradas y rellenadas siguiendo una metodología basada en una composición anual de máximo NDVI. Esta aplicación está implementada con [Google Earth Engine]. <a href="https://llanos-app-v2.appspot.com/" target="_blank">Haz clic aquí</a> para lanzar la aplicación en pantalla completa (puede tomar alrededor de 20 segundos para cargar).
 
 <br>
 ### *Interesado en colaboración para el desarrollo de herramientas de software similares? Escríbeme a través de [mi página de contacto].*
