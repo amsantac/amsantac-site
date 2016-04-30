@@ -8,26 +8,26 @@ image: 2016-04-30-arcgis-r-mini.jpg
 published: false
 ---
 
-Hace un par de meses, ESRI hizo pública una nueva librer??a para conectar ArcGIS y R, diseñada con el propósito de facilitar el manejo y procesamiento de datos de ArcGIS para los usuarios de R, y al mismo tiempo, hacer más sencillo para los usuarios de ArcGIS la incorporación de las poderosas herramientas de análisis de R en sus flujos de trabajo.
+Hace un par de meses, ESRI hizo pública una nueva librería para conectar ArcGIS y R, diseñada con el propósito de facilitar el manejo y procesamiento de datos de ArcGIS para los usuarios de R, y al mismo tiempo, hacer más sencillo para los usuarios de ArcGIS la incorporación de las poderosas herramientas de análisis de R en sus flujos de trabajo.
 
-Este nuevo proyecto parece bastante prometedor, por lo cual he escrito un breve tutorial para aprender, e igualmente para probar, las capacidades de esta librer??a para integrar dos de los más importantes herramientas de los campos de los SIG y el análisis de datos. En este post describo cómo instalar la librer??a y cómo crear y ejecutar una herramienta que combina datasets de ArcGIS con las funcionalidades existentes en algunos paquetes de R para abordar un problema de modelamiento de distribución de especies dentro del ambiente de ArcGIS. Arranquemos! 
+Este nuevo proyecto parece bastante prometedor, por lo cual he escrito un breve tutorial para aprender, e igualmente para probar, las capacidades de esta librería para integrar dos de los más importantes herramientas de los campos de los SIG y el análisis de datos. En este post describo cómo instalar la librería y cómo crear y ejecutar una herramienta que combina datasets de ArcGIS con las funcionalidades existentes en algunos paquetes de R para abordar un problema de modelamiento de distribución de especies dentro del ambiente de ArcGIS. Arranquemos! 
 
 <!--more-->
 
 <img src="/images/2016-04-30-arcgis-r-fig-0.png" alt="" title="" style="width:750px">
 
 <br>
-### **Instala la librer??a puente entre ArcGIS y R**
+### **Instala la librería puente entre ArcGIS y R**
 
-Primero, ingresa a [https://r-arcgis.github.io/] y luego entra a [r-bridge-install]. Haz click en el botón ‘Download ZIP’ para descargar el contenido del repositorio en el archivo 'r-bridge-install-master.zip' y descompr??melo en una carpeta en tu computador.
+Primero, ingresa a [https://r-arcgis.github.io/] y luego entra a [r-bridge-install]. Haz click en el botón ‘Download ZIP’ para descargar el contenido del repositorio en el archivo 'r-bridge-install-master.zip' y descomprímelo en una carpeta en tu computador.
 
-Inicia ArcMap (para versiones ArcGIS 10.3.1 o superior) como administrador y usa la ventana de Catálogo para navegar a la carpeta donde se encuentra el archivo descomprimido. All?? debes encontrar el toolbox llamado ‘R Integration Python Toolbox’, el cual contiene cuatro scripts. Haz doble click en el script 'Install R bindings' y luego simplemente presiona OK para ejecutarlo. Este script descarga e instala la [más reciente versión de un paquete de R llamado ‘arcgisbinding’], el cual provee clases y funciones para importar, manejar y exportar datos de ArcGIS usando el lenguaje R. Para verificar que la librer??a de conexión entre ArcGIS y R ha sido instalada exitosamente, puedes ejecutar los scripts 'R Version' y 'R Installation Details'.
+Inicia ArcMap (para versiones ArcGIS 10.3.1 o superior) como administrador y usa la ventana de Catálogo para navegar a la carpeta donde se encuentra el archivo descomprimido. Allí debes encontrar el toolbox llamado ‘R Integration Python Toolbox’, el cual contiene cuatro scripts. Haz doble click en el script 'Install R bindings' y luego simplemente presiona OK para ejecutarlo. Este script descarga e instala la [más reciente versión de un paquete de R llamado ‘arcgisbinding’], el cual provee clases y funciones para importar, manejar y exportar datos de ArcGIS usando el lenguaje R. Para verificar que la librería de conexión entre ArcGIS y R ha sido instalada exitosamente, puedes ejecutar los scripts 'R Version' y 'R Installation Details'.
 
-Si abres el programa de R o RStudio vas a encontrar que el paquete ‘arcgisbinding’ fue instalado en tu librer??a de paquetes de R. Ten en cuenta que el puente entre ArcGIS y R también puede ser instalado usando ArcGIS Pro 1.1 (o superior).
+Si abres el programa de R o RStudio vas a encontrar que el paquete ‘arcgisbinding’ fue instalado en tu librería de paquetes de R. Ten en cuenta que el puente entre ArcGIS y R también puede ser instalado usando ArcGIS Pro 1.1 (o superior).
 
-El siguiente video muestra la instalación paso a paso de la librer??a puente entre ArcGIS y R: 
+El siguiente video muestra la instalación paso a paso de la librería puente entre ArcGIS y R: 
 
-<iframe width="750" height="422" src="https://www.youtube.com/embed/-6Hsase6xQw" frameborder="0" allowfullscreen></iframe>
+<iframe width="750" height="422" src="https://www.youtube.com/embed/7Tft6yubEts" frameborder="0" allowfullscreen></iframe>
 
 <br>
 
@@ -65,7 +65,7 @@ Luego vamos a abrir el shapefile (de puntos) de entrada (por ejemplo, datos de p
    occurrence <- arc.data2sp(arc.select(d))
 ```
 <br>
-A continuación procederemos a leer los archivos raster. Como `arc.open` aún no permite abrir capas raster (hasta la versión 1.0.0.118 de 'arcgisbinding'), voy a implementar la siguiente solución: los archivos raster que representan variables continuas (por ej., temperatura, precipitación) van a ser le??dos de una carpeta que los contiene, mientras que un raster de una variable categórica (por ej., bioma) va a ser le??do de un archivo aparte. 
+A continuación procederemos a leer los archivos raster. Como `arc.open` aún no permite abrir capas raster (hasta la versión 1.0.0.118 de 'arcgisbinding'), voy a implementar la siguiente solución: los archivos raster que representan variables continuas (por ej., temperatura, precipitación) van a ser leídos de una carpeta que los contiene, mientras que un raster de una variable categórica (por ej., bioma) va a ser leído de un archivo aparte. 
 
 ```
   # lee los rasters de variables continuas desde una carpeta
@@ -126,7 +126,7 @@ En la última ventana de ‘Add Script’ es necesario ingresar las propiedades 
 
 ### **Carga los datos y ejecuta la herramienta de R ArcGIS**
 
-Para este tutorial vamos a usar unos [datos de ejemplo] que consisten de un conjunto de ocho archivos raster que representan variables continuas (variables bioclimáticas de la [base de datos WorldClim], incluyendo temperatura y precipitación), un archivo raster de una variable categórica (correspondiente a datos de biomas terrestres de [WWF]), y un shapefile de puntos que contiene registros de presencia del Perezoso de tres dedos (*Bradypus sp.*), una especie de mam??fero arbóreo que habita en Suramérica y Centroamérica. El shapefile fue generado a partir de datos que vienen incluidos en el paquete ‘dismo’. El objetivo de este ejercicio es modelar la distribución espacial de *Bradypus sp.* usando los datos de clima y bioma como predictores.
+Para este tutorial vamos a usar unos [datos de ejemplo] que consisten de un conjunto de ocho archivos raster que representan variables continuas (variables bioclimáticas de la [base de datos WorldClim], incluyendo temperatura y precipitación), un archivo raster de una variable categórica (correspondiente a datos de biomas terrestres de [WWF]), y un shapefile de puntos que contiene registros de presencia del Perezoso de tres dedos (*Bradypus sp.*), una especie de mamífero arbóreo que habita en Suramérica y Centroamérica. El shapefile fue generado a partir de datos que vienen incluidos en el paquete ‘dismo’. El objetivo de este ejercicio es modelar la distribución espacial de *Bradypus sp.* usando los datos de clima y bioma como predictores.
 
 Después de cargar los datos en ArcMap, debes ir en la ventana del Catalog al toolbox creado previamente. Haz click derecho en el script y luego haz click en ‘Open...’ (o simplemente haz doble click). En la interfaz que se abre, selecciona el shapefile de datos de presencia de la especie (‘bradypus.shp’), la carpeta que contiene los rasters continuos, y el archivo raster del bioma. Luego ingresa el modelo que deseas ejecutar y suministra los parámetros para los archivos de salida (el raster con la predicción del modelo, y la tabla y shapefile resultantes). Corre el script haciendo click en OK. En las rutas que definiste previamente debes encontrar los archivos resultantes esperados una vez el script finalice su ejecución.
 
@@ -134,20 +134,20 @@ Después de cargar los datos en ArcMap, debes ir en la ventana del Catalog al to
 
 Eso es todo! Para más información puedes ver el siguiente video que explica la creación y ejecución de la herramienta de R ArcGIS para modelación de distribución de especies:
 
-<iframe width="750" height="422" src="https://www.youtube.com/embed/-6Hsase6xQw" frameborder="0" allowfullscreen></iframe>
+<iframe width="750" height="422" src="https://www.youtube.com/embed/MMgBvRrBtBg" frameborder="0" allowfullscreen></iframe>
 
 <br>
 
 
 ### **Observaciones finales**
 
-La nueva librer??a publicada por ESRI ofrece varias caracter??sticas interesantes que permiten la integración entre ArcGIS y el lenguaje R. Primero, la instalación de paquetes se puede realizar desde la herramienta  de R ArcGIS, lo cual elimina trabajo adicional por parte del usuario. Una segunda funcionalidad atractiva es la habilidad de generar varios productos de salida simultáneamente, lo cual incrementa la eficiencia de estas herramientas al permitir la posible creación de varias tablas, gráficas y datasets a partir del mismo script. Adicionalmente, encontrar problemas en el script se facilita mediante la impresión y despliegue de los errores en las t??picas ventanas de ejecución de scripts de ArcGIS.
+La nueva librería publicada por ESRI ofrece varias características interesantes que permiten la integración entre ArcGIS y el lenguaje R. Primero, la instalación de paquetes se puede realizar desde la herramienta  de R ArcGIS, lo cual elimina trabajo adicional por parte del usuario. Una segunda funcionalidad atractiva es la habilidad de generar varios productos de salida simultáneamente, lo cual incrementa la eficiencia de estas herramientas al permitir la posible creación de varias tablas, gráficas y datasets a partir del mismo script. Adicionalmente, encontrar problemas en el script se facilita mediante la impresión y despliegue de los errores en las típicas ventanas de ejecución de scripts de ArcGIS.
 
-Quizá la principal desventaja de las herramientas de R ArcGIS a la fecha es la falta de soporte para leer y escribir archivos raster de manera nativa a través de `arc.open` y `arc.write` respectivamente, aunque existen alternativas como la que presenté anteriormente. Es de esperar que los desarrolladores de ESRI incorporen esta caracter??stica en las próximas versiones del paquete ‘arcgisbinding’. Por otra parte, [crear una interfaz gráfica para un script de R en QGIS] es mucho más simple que en ArcGIS, pero la creación de un toolbox en ArcGIS no es complicado y ofrece una gran flexibilidad.
+Quizá la principal desventaja de las herramientas de R ArcGIS a la fecha es la falta de soporte para leer y escribir archivos raster de manera nativa a través de `arc.open` y `arc.write` respectivamente, aunque existen alternativas como la que presenté anteriormente. Es de esperar que los desarrolladores de ESRI incorporen esta característica en las próximas versiones del paquete ‘arcgisbinding’. Por otra parte, [crear una interfaz gráfica para un script de R en QGIS] es mucho más simple que en ArcGIS, pero la creación de un toolbox en ArcGIS no es complicado y ofrece una gran flexibilidad.
 
 Para aprender más acerca de modelación de distribución de especies y de los modelos implementados en el script, te invito a leer el vignette [Species distribution modeling with R] del paquete ‘dismo’. Puedes encontrar el script completo de este post [en este link] y puedes descargar el toolbox y los datos de ejemplo usados en este tutorial [desde este repositorio de GitHub].
 
-El paquete ‘arcgisbinding’ está todav??a en versión beta por lo que puede ser un poco inestable. Si intentas este tutorial cuéntame qué tal te va. Buena suerte!
+El paquete ‘arcgisbinding’ está todavía en versión beta por lo que puede ser un poco inestable. Si intentas este tutorial cuéntame qué tal te va. Buena suerte!
 
 <br>
 <br>
@@ -168,9 +168,9 @@ El paquete ‘arcgisbinding’ está todav??a en versión beta por lo que puede 
 [documentación del paquete ‘arcgisbinding’]: https://github.com/R-ArcGIS/r-bridge
 [base de datos WorldClim]: http://www.worldclim.org/bioclim
 [WWF]: http://www.worldwildlife.org/pages/conservation-science-data-and-tools
-[datos de ejemplo]:
+[datos de ejemplo]: https://github.com/amsantac/extras
 [en este link]: https://gist.github.com/amsantac/63884509591810bdd6d9fbafa407ae2e
 [crear una interfaz gráfica para un script de R en QGIS]: /blog/en/2015/10/31/qgis-r.html
 [Integración de QGIS y R: Un ejemplo con muestreo espacial estratificado]: /blog/en/2015/10/31/qgis-r.html
-[desde este repositorio de GitHub]: 
+[desde este repositorio de GitHub]: https://github.com/amsantac/extras
 
