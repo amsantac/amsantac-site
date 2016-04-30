@@ -38,7 +38,7 @@ setwd("C:/images/2000")   # define el directorio de trabajo
 Leamos desde el [link] en internet el código fuente de la función `reflectanceImgTable4csv`:
 
 ```
-source("https://raw.githubusercontent.com/amsantac/cuproject/gh-pages/code/reflectanceImgTable4csv.R")
+source("https://raw.githubusercontent.com/amsantac/extras/gh-pages/code/reflectanceImgTable4csv.R")
 ```
 <br>
 Ahora necesitamos correr la función suministrando la lista de carpetas como primer parámetro. Para este ejemplo voy a establecer el valor del parámetro `no_masking` como 1, con el fin de ordenar a CLASlite que no enmascare las nubes y las sombras de nubes. Para los otros parámetros voy a usar los valores por defecto. Como último paso en R, tenemos que exportar el objeto de clase `data.frame` resultante como un archivo en formato CSV (i.e., comma separated values). Indicamos que los nombres de las filas no deben ser incluidos en el archivo y que las cadenas de caracteres no deben ser rodeadas por comillas:
@@ -184,9 +184,9 @@ El propósito de este script de R es hacer más eficiente la creación de los ar
 [programa CLASlite]:                http://claslite.carnegiescience.edu/
 [R language]:                       http://r-project.org
 [USGS]:                             http://www.usgs.gov
-[verse aquí]:                       https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
-[link]:                             https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
+[verse aquí]:                       https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
+[link]:                             https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
 [Usando R para el apilamiento de imágenes en CLASlite]:                 /blog/es/r/2015/09/05/stacking-R-es.html
-[este link]:                        https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
-[reflectanceImgTable4csv.R]:        https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
-[script reflectanceImgTable4csv.R]: https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
+[este link]:                        https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
+[reflectanceImgTable4csv.R]:        https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
+[script reflectanceImgTable4csv.R]: https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R

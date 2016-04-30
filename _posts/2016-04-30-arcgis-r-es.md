@@ -10,7 +10,7 @@ published: false
 
 Hace un par de meses, ESRI hizo pública una nueva librería para conectar ArcGIS y R, diseñada con el propósito de facilitar el manejo y procesamiento de datos de ArcGIS para los usuarios de R, y al mismo tiempo, hacer más sencillo para los usuarios de ArcGIS la incorporación de las poderosas herramientas de análisis de R en sus flujos de trabajo.
 
-Este nuevo proyecto parece bastante prometedor, por lo cual he escrito un breve tutorial para aprender, e igualmente para probar, las capacidades de esta librería para integrar dos de los más importantes herramientas de los campos de los SIG y el análisis de datos. En este post describo cómo instalar la librería y cómo crear y ejecutar una herramienta que combina datasets de ArcGIS con las funcionalidades existentes en algunos paquetes de R para abordar un problema de modelamiento de distribución de especies dentro del ambiente de ArcGIS. Arranquemos! 
+Esta nueva librería parece bastante prometedora, por lo cual he escrito un breve tutorial para aprender, e igualmente para probar, las capacidades de la misma para integrar dos de los más importantes proyectos de los campos de los SIG y el análisis de datos. En este post describo cómo instalar la librería y cómo crear y ejecutar una herramienta que combina datasets de ArcGIS con las funcionalidades existentes en algunos paquetes de R para abordar el modelamiento de distribución de especies dentro del ambiente de ArcGIS. Arranquemos! 
 
 <!--more-->
 

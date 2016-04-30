@@ -86,7 +86,7 @@ Una vez subido a la web, puedes incrustar tu mapa en otras páginas web insertan
 
 Si has seguido estos pasos, ahora debes tener un muy elegante mapa web con leyenda, controles de capas y popups:
 
-<iframe id="map_llanos_emb" width=785 height=500 src="http://amsantac.github.io/cuproject/www/landsat_scenes.html"></iframe>
+<iframe id="map_llanos_emb" width=785 height=500 src="http://amsantac.github.io/extras/www/landsat_scenes.html"></iframe>
 
 <br>
 Eso es todo. Felicitaciones por completar este primer tutorial! 
@@ -100,7 +100,7 @@ Eso es todo. Felicitaciones por completar este primer tutorial!
 [R environment]:             https://www.r-project.org/
 [lenguaje R]:                https://www.r-project.org/
 [rstudio_ss]:                /images/2015-08-11-leaflet-R-fig-1.png "Web map with leaflet"
-[web map]:                   http://amsantac.github.io/cuproject/www/landsat_scenes.html
+[web map]:                   http://amsantac.github.io/extras/www/landsat_scenes.html
 [OpenStreetMap (OSM)]:       http://www.openstreetmap.org/
 [MapQuest Open]:             http://www.mapquest.com/
 [MapBox]:                    https://www.mapbox.com/

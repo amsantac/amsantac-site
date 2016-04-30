@@ -39,7 +39,7 @@ setwd("C:/images/2000")   # set the working directory
 You can found the complete code script for the `reflectanceImgTable4csv` function in [this link]. Let's source the script file:
 
 ```
-source("https://raw.githubusercontent.com/amsantac/cuproject/gh-pages/code/reflectanceImgTable4csv.R")
+source("https://raw.githubusercontent.com/amsantac/extras/gh-pages/code/reflectanceImgTable4csv.R")
 ```
 <br>
 Now we need to run the function providing the folders list as the first parameter. For this example, I am going to set the `no_masking` parameter to 1, in order to ask CLASlite to not mask clouds and cloud shadows. I will use the default values for the other parameters. As the last step in R, we have to save the output data frame as a comma separated values file. The row names must not be saved in the file and the strings must not be surrounded by double quotes:
@@ -183,10 +183,10 @@ This R script intends to help for an efficient creation of the text files requir
 [CLASlite software]:                http://claslite.carnegiescience.edu/
 [R language]:                       http://r-project.org
 [USGS]:                             http://www.usgs.gov
-[here]:                             https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
-[this link]:                        https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
+[here]:                             https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
+[this link]:                        https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
 [my previous post]:                 /blog/en/r/2015/09/05/stacking-R.html
 [stacked Landsat images]:           /blog/en/r/2015/09/05/stacking-R.html
 [Using R for file stacking in CLASlite]:                 /blog/en/r/2015/09/05/stacking-R.html
-[reflectanceImgTable4csv.R]:        https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
-[reflectanceImgTable4csv.R script]: https://github.com/amsantac/cuproject/blob/gh-pages/code/reflectanceImgTable4csv.R
+[reflectanceImgTable4csv.R]:        https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
+[reflectanceImgTable4csv.R script]: https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
