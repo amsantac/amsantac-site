@@ -5,7 +5,7 @@ date:   2016-04-30 11:02:52
 categories: blog es
 tags: R ArcGIS SIG
 image: 2016-04-30-arcgis-r-mini.jpg
-published: false
+published: true
 ---
 
 Hace un par de meses, ESRI hizo pública una nueva librería para conectar ArcGIS y R, diseñada con el propósito de facilitar el manejo y procesamiento de datos de ArcGIS para los usuarios de R, y al mismo tiempo, hacer más sencillo para los usuarios de ArcGIS la incorporación de las poderosas herramientas de análisis de R en sus flujos de trabajo.
