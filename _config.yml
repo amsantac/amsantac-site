@@ -13,7 +13,10 @@ github_username:  amsantac
 #  Feed: '/feed.xml'
 
 # Build settings
-markdown: rdiscount
-#markdown: kramdown
-highlighter: pygments
+#markdown: rdiscount
+markdown: kramdown
+kramdown:
+  input: "GFM"
+#  syntax_highlighter: "coderay"
+#highlighter: rouge   # pygments
 excerpt_separator: <!--more-->

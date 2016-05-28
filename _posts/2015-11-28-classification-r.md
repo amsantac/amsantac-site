@@ -17,9 +17,10 @@ In the sections below I show how to import into R a Landsat image and how to ext
 <img src="/images/2015-11-28-classification-r-fig-0.png" alt="" title="" style="width:750px">
 
 <br>
+
 ### **Loading the data in R**
 
-For the purpose of this post, I'm going to conduct a land-cover classification of a 6-band Landsat 7 image (path 7 row 57) taken in 2000 that has been processed to surface reflectance, as shown [in a previous post in my blog]. First, let's load the R packages we need for this tutorial:
+For the purpose of this post, I'm going to conduct a land-cover classification of a 6-band Landsat 7 image (path 7 row 57) taken in 2000 that has been processed to surface reflectance, as shown [in a previous post in my blog]. Several R packages are needed, including: [rgdal], [raster], [caret], [randomForest] and [e1071]. After installation, let's load the packages:
 
 ```
 library(rgdal)
@@ -27,6 +28,7 @@ library(rgdal)
  library(caret)
 ```
 <br>
+
 Now let's import the Landsat image into R as a `RasterBrick` object using the `brick` function from the ['raster' package]. Also let's replace the original band names (e.g., 'X485.0.Nanometers') with shorter ones ('B1' to 'B5', and 'B7'): 
 
 ```
@@ -34,6 +36,7 @@ img <- brick("C:/data/landsat/images/2000/LE70070572000076EDC00/L7007057_2000031
  names(img) <- c(paste0("B", 1:5, coll = ""), "B7")  
 ```
 <br>
+
 We can make a RGB visualization of the Landsat image in R using the `plotRGB` command, for example, a false color composite RGB 4:5:3 (Near infrared - Shortwave infrarred - Red). I'm using the expression `img * (img >= 0)` to convert the negative values to zero:
 
 ```
@@ -64,12 +67,13 @@ dfAll = data.frame(matrix(vector(), nrow = 0, ncol = length(names(img)) + 1))
   category <- unique(trainData[[responseCol]])[i]
   categorymap <- trainData[trainData[[responseCol]] == category,]
   dataSet <- extract(img, categorymap)
-  dataSet <- sapply(dataSet, function(x){cbind(x, class = rep(category, nrow(x)))})
+  dataSet <- lapply(dataSet, function(x){cbind(x, class = as.numeric(rep(category, nrow(x))))})
   df <- do.call("rbind", dataSet)
   dfAll <- rbind(dfAll, df)
 }
 ```
 <br>
+
 The data frame resulting from working with my data has about 80K rows. It is necessary to work with a smaller dataset as it may take a long time to train and fit a RandomForests model with a dataset this size. For a start, let's subset the data generating 1000 random samples: 
 
 ```
@@ -86,7 +90,8 @@ Next we must define and fit the RandomForests model using the `train` function f
 modFit_rf <- train(as.factor(class) ~ B3 + B4 + B5, method = "rf", data = sdfAll)
 ```
 <br>
-At this point we could simply use the `predict` command to make a raster with predictions from the fitted model object (i.e., `modFit_rf`). However, it is possible to speed up computations using the `clusterR` function from the 'raster' package which supports multi-core computing for functions such as `predict`. We just need to add one line for creating a cluster object and another one for deleting it after the operation is finished:
+
+At this point we could simply use the `predict` command to make a raster with predictions from the fitted model object (i.e., `modFit_rf`). However, it is possible to speed up computations using the `clusterR` function from the 'raster' package which supports multi-core computing for functions such as `predict` (Note: the ['snow' package] has to be installed). We just need to add one line for creating a cluster object and another one for deleting it after the operation is finished:
 
 ```
 beginCluster()
@@ -94,6 +99,7 @@ beginCluster()
  endCluster()
 ```
 <br>
+
 The implementation of parallel computation using my 8-core processor laptop gave an improvement of about 70% in terms of computation time (~14.2 min for unparallel processing vs. ~4.1 min for multicore procedure). You can see an screenshot of the classified image below:
 
 <a href="/images/2015-11-28-classification-r-fig-3.JPG" class="image full"><img src="/images/2015-11-28-classification-r-fig-3.JPG" alt="" title="Classified Landsat image in RStudio"></a>
@@ -127,7 +133,7 @@ The R+QGIS approach shown in this post expands the image classification methods 
 In a future post I'll write about recommended practices for accuracy assessment of classified images through the comparison of reference data versus the corresponding classification results. Stay tuned!
 
 <br>
-<br>
+
 **You may also be interested in:**
 
 &#42; [Integrating QGIS and R: A stratified sampling example]
@@ -139,6 +145,12 @@ In a future post I'll write about recommended practices for accuracy assessment 
 [RandomForests algorithms]:              https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm
 [in a previous post in my blog]:         /blog/en/2015/10/03/reflectance-R.html
 [Prepare files for production of reflectance imagery in CLASlite using R]:         /blog/en/2015/10/03/reflectance-R.html
+[rgdal]:                                 http://cran.r-project.org/package=rgdal
+[raster]:                                http://cran.r-project.org/package=raster
+[caret]:                                 http://cran.r-project.org/package=caret
+[randomForest]:                          http://cran.r-project.org/package=randomForest
+[e1071]:                                 http://cran.r-project.org/package=e1071
+['snow' package]:                        http://cran.r-project.org/package=snow
 ['raster' package]:                      http://cran.r-project.org/package=raster
 [QGIS]:                                  http://www.qgis.org/
 [in my previous post]:                   /blog/en/2015/10/31/qgis-r.html

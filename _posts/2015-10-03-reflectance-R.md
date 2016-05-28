@@ -36,12 +36,14 @@ setwd("C:/images/2000")   # set the working directory
  foldersList <- normalizePath(list.dirs(full.names = TRUE, recursive = FALSE))  # get absolute folder paths
 ```
 <br>
+
 You can found the complete code script for the `reflectanceImgTable4csv` function in [this link]. Let's source the script file:
 
 ```
 source("https://raw.githubusercontent.com/amsantac/extras/gh-pages/code/reflectanceImgTable4csv.R")
 ```
 <br>
+
 Now we need to run the function providing the folders list as the first parameter. For this example, I am going to set the `no_masking` parameter to 1, in order to ask CLASlite to not mask clouds and cloud shadows. I will use the default values for the other parameters. As the last step in R, we have to save the output data frame as a comma separated values file. The row names must not be saved in the file and the strings must not be surrounded by double quotes:
 
 ```
@@ -64,6 +66,7 @@ Finally click "Run" to create the surface reflectance imagery for the provided l
 <img src="/images/2015-10-03-reflectance-r-fig-4.png" alt="Output folder" title="Output folder" style="width:800px">
 
 <br>
+
 ### **What the script does**
 
 In the next lines I'm going to provide a brief review about what the [reflectanceImgTable4csv.R script] does.
@@ -77,6 +80,7 @@ outDF <- data.frame(matrix(data = NA, nrow = length(foldersList), ncol = 18))
                                "cldpix", "sdpix", "snpix", "cldprob")
 ```
 <br>
+
 Then the values for the `GeoTIFF`, `Reduce_masking`, `no_masking`, `fmask`, `cldpix`, `sdpix`, `snpix` and `cldprob` parameters are assigned, based on user input or on the default values if the user does not change them:
 
 ```
@@ -85,6 +89,7 @@ outDF[, "GeoTIFF"] <- GeoTIFF
                                                                                            cldprob)}))
 ```
 <br>
+
 For each folder in the folders list, the absolute path of each raw image file is stored in the `Input_FileName` column of the data frame: 
 
 ```
@@ -92,6 +97,7 @@ rawImg1 <- grep("raw", list.files(folder, full.names = TRUE), value = TRUE)[1]
  outDF[i, "Input_FileName"] <- gsub("/", "\\", rawImg1, fixed = TRUE)
 ```
 <br>
+
 The text file containing the image metadata is read to extract the image acquisition date...
 
 ```
@@ -101,6 +107,7 @@ mtlTxt <- grep("MTL.txt", list.files(folder, full.names = TRUE), value = TRUE)
  outDF[i, "Date"] <- format(as.Date(date1), "%d%m%Y")
 ```
 <br>
+
 ... and the acquisition time:
 
 ```
@@ -109,6 +116,7 @@ time1 <- strsplit(mtl[grep("SCENE_CENTER_TIME", mtl)], "= ")[[1]][2]
  outDF[i, "Time"] <- gsub("\"", "", time2)
 ```
 <br>
+
 Then the satellite platform is extracted from the metadata file:
 
 ```
@@ -125,6 +133,7 @@ sid1 <- strsplit(mtl[grep("SPACECRAFT_ID", mtl)], "= ")[[1]][2]
  outDF[i, "Satellite"] <- Satellitei
 ```
 <br>
+
 Next the gain settings for bands 1 through 5 and 7 for Landsat 7 images is extracted:
 
 ```
@@ -139,6 +148,7 @@ gains <- NULL
 }
 ```    
 <br>
+
 The processing software version is read and treated as a boolean variable (i.e., 0 for LPGS, 1 for NLAPS):
 
 ```
@@ -148,6 +158,7 @@ sys1 <- strsplit(mtl[grep("PROCESSING_SOFTWARE_VERSION", mtl)], "= ")[[1]][2]
  if(sys2 == "NLAPS") outDF[i, "Proc_sys"] <- 1
 ```
 <br>
+
 Then the names of the thermal image files are read and stored in the `Therm_File` column of the data frame:
 
 ```
@@ -155,6 +166,7 @@ ThermImg1 <- grep("therm", list.files(folder, full.names = TRUE), value = TRUE)[
  outDF[i, "Therm_File"] <- gsub("/", "\\", ThermImg1, fixed = TRUE)
 ```    
 <br>
+
 For Landsat 8 imagery the absolute path of the quality image file is extracted:
 
 ```
@@ -164,16 +176,19 @@ if (Satellitei == 0){
 }
 ```    
 <br>
+
 Finally the names of the output files are assigned:
 
 ```
 outDF[i, "Output_File"] <- sub("_therm", "_refl", outDF[i, "Therm_File"])
 ```    
 <br>
+
 This R script intends to help for an efficient creation of the text files required by the CLASlite software for producing surface reflectance imagery. The script has been tested for Landsat imagery on a Windows environment. If you happen to use this script, I appreciate any feedback that helps to its improvement. Hope you find it helpful! 
 
+
 <br>
-<br>
+
 **You may be also interested in:**
 
 &#42; [Using R for file stacking in CLASlite]

@@ -8,27 +8,30 @@ date:   2015-09-11 11:02:52
 </header>
 <br>
 
-##Peer reviewed journal articles
-<br>
+## Peer reviewed journal articles
+<p></p>
 Pontius Jr., R.G., **Santacruz, A.** 2014. Quantity, exchange and shift components of difference in a square contingency table. International Journal of Remote Sensing 35 (21), 7543-7554. [[link]][Pontius_Santacruz_2014]
 
 Gutierrez, V., Zapata, M., Usma, C., Laguado, W., **Santacruz, A.** 2006. Maximizing the profitability of forestry projects under the Clean Development Mechanism using a forest management optimization model. Forest Ecology and Management 226 (1-3), 341-350. [[link]][Gutierrez_et_al_2006]
 
 <br>
-##Peer reviewed book chapters
-<br>
+
+## Peer reviewed book chapters
+<p></p>
 **Santacruz, A.**, Rubiano, Y., Melo, C. 2014. Evolutionary optimization of spatial sampling networks designed for the monitoring of soil organic carbon. In: Hartemink, A.E., McSweeney, K. (Eds.). Soil Carbon (Progress in Soil Science Series). Springer, Dordrecht. ISBN: 978-3-319-04083-7. [[link]][Santacruz_et_al_2014]
 
 <br>
-##Books
-<br>
+
+## Books
+<p></p>
 **Santacruz, A.** 2011. Evolutionary optimization of spatial sampling networks. An application of genetic algorithms and geostatistics for the monitoring of soil organic carbon. Editorial Academica Espanola. Saarbrucken, Germany. 183 p. ISBN: 978-3-8454-9815-7. (In Spanish) Available at [amazon.com][Santacruz_2011b_1] and [amazon.co.uk][Santacruz_2011b_2].
 
 **Santacruz, A.** 2011. Study of the dynamics of the landscape matrix. A landscape ecology application for land use change analysis. Editorial Academica Espanola. Saarbrucken, Germany. 80 p. ISBN: 978-3-8443-4504-9. (In Spanish) Available at [amazon.com][Santacruz_2011a_1] and [amazon.co.uk][Santacruz_2011a_2].
 
 <br>
-##Publications as popular scientific newsletters
-<br>
+
+## Publications as popular scientific newsletters
+<p></p>
 Arias, L., **Santacruz, A.**, Posada, E. 2010. Colombian Earth Observation Satellite Program: A strategy of innovation and technological development for Colombia. Revista Analisis Geograficos 44, 13-29. (In Spanish)
 
 **Santacruz, A.**, Posada, E. 2010. Classification of the growth stages of rice crops in radarsat-2 imaging through the Polsarpro program. Revista Analisis Geograficos 44, 59-71. (In Spanish)   

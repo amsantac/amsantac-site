@@ -35,12 +35,14 @@ setwd("C:/images/2000")   # define el directorio de trabajo
  foldersList <- normalizePath(list.dirs(full.names = TRUE, recursive = FALSE))  # crea la lista de rutas absolutas a las carpetas
 ```
 <br>
-Leamos desde el [link] en internet el código fuente de la función `reflectanceImgTable4csv`:
+
+Leamos desde el [link en internet] el código fuente de la función `reflectanceImgTable4csv`:
 
 ```
 source("https://raw.githubusercontent.com/amsantac/extras/gh-pages/code/reflectanceImgTable4csv.R")
 ```
 <br>
+
 Ahora necesitamos correr la función suministrando la lista de carpetas como primer parámetro. Para este ejemplo voy a establecer el valor del parámetro `no_masking` como 1, con el fin de ordenar a CLASlite que no enmascare las nubes y las sombras de nubes. Para los otros parámetros voy a usar los valores por defecto. Como último paso en R, tenemos que exportar el objeto de clase `data.frame` resultante como un archivo en formato CSV (i.e., comma separated values). Indicamos que los nombres de las filas no deben ser incluidos en el archivo y que las cadenas de caracteres no deben ser rodeadas por comillas:
 
 ```
@@ -50,6 +52,7 @@ outDF <- reflectanceImgTable4csv(foldersList, no_masking = 1)
 <br>
 
 ### **De vuelta en CLASlite**
+
 Abre CLASlite y haz click en "1. Calibrate Image". Navega en las carpetas e ingresa el directorio de entrada ('Input Directory') y el directorio de salida ('Output Directory'), los cuales pueden ser iguales y corresponden a la carpeta para cada año, en este ejemplo. Haz click en "Load". En el nuevo cuadro de diálogo selecciona el número de imágenes a ser procesadas (e.g., 12) y haz click en "OK". 
 
 <img src="/images/2015-10-03-reflectance-r-fig-2.png" alt="Calibrar imagen en CLASlite 1" title="Calibrar imagen en CLASlite 1" style="width:800px">
@@ -63,6 +66,7 @@ Finalmente haz click en "Run" para crear las imágenes con valores convertidos a
 <img src="/images/2015-10-03-reflectance-r-fig-4.png" alt="Output folder" title="Output folder" style="width:800px">
 
 <br>
+
 ### **Lo que el script de R hace**
 
 En las siguientes líneas voy a dar un breve resumen acerca de lo que hace el [script reflectanceImgTable4csv.R].
@@ -76,6 +80,7 @@ outDF <- data.frame(matrix(data = NA, nrow = length(foldersList), ncol = 18))
                                "cldpix", "sdpix", "snpix", "cldprob")
 ```
 <br>
+
 Luego se asignan los valores para los parámetros `GeoTIFF`, `Reduce_masking`, `no_masking`, `fmask`, `cldpix`, `sdpix`, `snpix` y `cldprob` con base en lo que defina el usuario o se toman los valores por defecto si el usuario no indica algo diferente:
 
 ```
@@ -84,6 +89,7 @@ outDF[, "GeoTIFF"] <- GeoTIFF
                                                                                            cldprob)}))
 ```
 <br>
+
 Para cada carpeta en la lista de carpetas, la ruta absoluta de cada archivo original de la imagen es almacenada en la columna `Input_FileName` del data frame: 
 
 ```
@@ -91,6 +97,7 @@ rawImg1 <- grep("raw", list.files(folder, full.names = TRUE), value = TRUE)[1]
  outDF[i, "Input_FileName"] <- gsub("/", "\\", rawImg1, fixed = TRUE)
 ```
 <br>
+
 El archivo que contiene los metadatos de la imagen es leído para extraer la fecha de adquisición de la imagen...
 
 ```
@@ -100,6 +107,7 @@ mtlTxt <- grep("MTL.txt", list.files(folder, full.names = TRUE), value = TRUE)
  outDF[i, "Date"] <- format(as.Date(date1), "%d%m%Y")
 ```
 <br>
+
 ... y la hora exacta de la toma:
 
 ```
@@ -108,6 +116,7 @@ time1 <- strsplit(mtl[grep("SCENE_CENTER_TIME", mtl)], "= ")[[1]][2]
  outDF[i, "Time"] <- gsub("\"", "", time2)
 ```
 <br>
+
 Luego se extrae la plataforma satelital del archivo de metadatos:
 
 ```
@@ -124,6 +133,7 @@ sid1 <- strsplit(mtl[grep("SPACECRAFT_ID", mtl)], "= ")[[1]][2]
  outDF[i, "Satellite"] <- Satellitei
 ```
 <br>
+
 A continuación se extrae la configuración de la ganancia para las bandas 1 a 5 y la banda 7 para las imágenes de Landsat 7:
 
 ```
@@ -138,6 +148,7 @@ gains <- NULL
 }
 ```    
 <br>
+
 La versión del software de procesamiento se lee y se trata como una variable booleana (i.e., 0 para LPGS, 1 para NLAPS):
 
 ```
@@ -147,6 +158,7 @@ sys1 <- strsplit(mtl[grep("PROCESSING_SOFTWARE_VERSION", mtl)], "= ")[[1]][2]
  if(sys2 == "NLAPS") outDF[i, "Proc_sys"] <- 1
 ```
 <br>
+
 Luego se leen los nombres de los archivos con las bandas térmicas de la imagen y se almacenan en la columna `Therm_File` del data frame:
 
 ```
@@ -154,6 +166,7 @@ ThermImg1 <- grep("therm", list.files(folder, full.names = TRUE), value = TRUE)[
  outDF[i, "Therm_File"] <- gsub("/", "\\", ThermImg1, fixed = TRUE)
 ```    
 <br>
+
 Para imágenes de Landsat 8 también se extrae la ruta absoluta del archivo de calidad de la imagen:
 
 ```
@@ -163,16 +176,18 @@ if (Satellitei == 0){
 }
 ```    
 <br>
+
 Finalmente se asignan los nombres de los archivos de salida:
 
 ```
 outDF[i, "Output_File"] <- sub("_therm", "_refl", outDF[i, "Therm_File"])
 ```    
 <br>
+
 El propósito de este script de R es hacer más eficiente la creación de los archivos de texto requeridos por el programa CLASlite para producir imágenes de reflectancia en superficie. Este script ha sido probado con imágenes Landsat en un sistema operativo Windows. Si llegas a utilizar el script, agradezco tu retroalimentación para mejorarlo. Espero que este post te haya sido útil! 
 
 <br>
-<br>
+
 **También te puede interesar:**
 
 &#42; [Usando R para el apilamiento de imágenes en CLASlite]
@@ -185,7 +200,7 @@ El propósito de este script de R es hacer más eficiente la creación de los ar
 [R language]:                       http://r-project.org
 [USGS]:                             http://www.usgs.gov
 [verse aquí]:                       https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
-[link]:                             https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
+[link en internet]:                 https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
 [Usando R para el apilamiento de imágenes en CLASlite]:                 /blog/es/r/2015/09/05/stacking-R-es.html
 [este link]:                        https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R
 [reflectanceImgTable4csv.R]:        https://github.com/amsantac/extras/blob/gh-pages/code/reflectanceImgTable4csv.R

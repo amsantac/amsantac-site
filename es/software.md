@@ -11,18 +11,21 @@ date:   2015-09-11 11:02:52
 <br>
 <h2 style= "color:#1e6bb8">PAQUETES DE R</h2>
 <br>
+
 ## El paquete geospt
-<br>
+<p></p>
 Este paquete de R contiene un conjunto de técnicas para el análisis geoestadístico y para el diseño de redes espaciales de muestreo óptimas. Incluye la estimación del variograma a través de la media recortada, estadísticas de resumen para validación cruzada, y el diseño de redes óptimas de muestreo a través de los métodos de puntos secuenciales y puntos simultáneos usando algoritmos genéticos, además de otras funcionalidades. El paquete se encuentra disponible en [CRAN][geospt_CRAN] y [GitHub][geospt_github]. 
 
 <br>
+
 ## El paquete diffeR
-<br>
+<p></p>
 El paquete diffeR implementa un conjunto de métricas de diferencia para comparar pares de mapas que representen variables categóricas o reales, a la resolución original o a múltiples resoluciones. Este paquete puede ser descargado e instalado desde [CRAN][differ_CRAN] o [GitHub][differ_github]. 
 
 <br>
+
 ## El paquete TOC
-<br>
+<p></p>
 Este paquete de R permite la construcción de la curva ROC (i.e., Receiver (o Relative) Operating Characteristic) y la curva TOC (i.e., Total Operating Characteristic) para datos espaciales y no espaciales. La curva ROC es una técnica estadística muy popular usada para evaluar el comportamiento de un sistema clasificador binario a medida que el umbral de discriminación varía. El método TOC es una modificación novedosa de la técnica ROC que ha sido desarrollado recientemente por el profesor [Gil Pontius] de Clark University. El paquete TOC puede ser instalado desde [CRAN][toc_CRAN] o [GitHub][toc_github].
 
 <br>
@@ -30,8 +33,9 @@ Este paquete de R permite la construcción de la curva ROC (i.e., Receiver (o Re
 <br>
 <h2 style= "color:#1e6bb8">APLICACIONES WEB</h2>
 <br>
+
 ## Aplicación TOC implementada con Shiny
-<br>
+<p></p>
 Esta aplicación web desarrollada con [Shiny] permite la construcción de la curva ROC y la curva TOC para datos espaciales y no espaciales a través de una interfaz gráfica de usuario. <a href="https://amsantac.shinyapps.io/TOCapp" target="_blank">Haz clic aquí</a> para lanzar esta aplicación en pantalla completa.
 
 <!--
@@ -42,6 +46,7 @@ Esta aplicación muestra imágenes Landsat (Landsat 5 TM, Landsat 7 ETM+ y Lands
 -->
 
 <br>
+
 ### *Interesado en colaboración para el desarrollo de herramientas de software similares? Escríbeme a través de [mi página de contacto].*
 
 

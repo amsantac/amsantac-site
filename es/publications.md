@@ -8,27 +8,30 @@ date:   2015-09-11 11:02:52
 </header>
 <br>
 
-##Artículos revisados por pares
-<br>
+## Artículos revisados por pares
+<p></p>
 Pontius Jr., R.G., **Santacruz, A.** 2014. Quantity, exchange and shift components of difference in a square contingency table. International Journal of Remote Sensing 35 (21), 7543-7554. [[link]][Pontius_Santacruz_2014]
 
 Gutierrez, V., Zapata, M., Usma, C., Laguado, W., **Santacruz, A.** 2006. Maximizing the profitability of forestry projects under the Clean Development Mechanism using a forest management optimization model. Forest Ecology and Management 226 (1-3), 341-350. [[link]][Gutierrez_et_al_2006]
 
 <br>
-##Capítulos de libro revisados por pares
-<br>
+
+## Capítulos de libro revisados por pares
+<p></p>
 **Santacruz, A.**, Rubiano, Y., Melo, C. 2014. Evolutionary optimization of spatial sampling networks designed for the monitoring of soil organic carbon. In: Hartemink, A.E., McSweeney, K. (Eds.). Soil Carbon (Progress in Soil Science Series). Springer, Dordrecht. ISBN: 978-3-319-04083-7. [[link]][Santacruz_et_al_2014]
 
 <br>
-##Libros
-<br>
+
+## Libros
+<p></p>
 **Santacruz, A.** 2011. Optimización evolutiva de redes espaciales de muestreo. Una aplicación de los algoritmos genéticos y la geoestadística al monitoreo del carbono orgánico del suelo. Editorial Académica Española. 183 p. ISBN: 978-3-8454-9815-7. Disponible en [amazon.com][Santacruz_2011b_1] y [amazon.co.uk][Santacruz_2011b_2].
 
 **Santacruz, A.** 2011. Estudio de la dinámica de la matriz del paisaje. Una aplicación de la ecología del paisaje al análisis del cambio en el uso del suelo. Editorial Académica Española. 80 p. ISBN: 978-3-8443-4504-9. Disponible en [amazon.com][Santacruz_2011a_1] y [amazon.co.uk][Santacruz_2011a_2].
 
 <br>
-##Publicaciones en otras revistas
-<br>
+
+## Publicaciones en otras revistas
+<p></p>
 Arias, L., **Santacruz, A.**, Posada, E. 2010. Programa Satelital Colombiano de Observación de la Tierra: Una estrategia de innovación y desarrollo tecnológico para Colombia. Revista Análisis Geográficos No. 44. Edición especial Comisión Colombiana del Espacio VI. Págs.: 13-29.
 
 **Santacruz, A.**, Posada, E. 2010. Clasificación de los estados fenológicos del cultivo de arroz a partir de imágenes de radarsat-2 mediante el programa Polsarpro. Revista Análisis Geográficos No. 44. Edición especial Comisión Colombiana del Espacio VI. Págs.: 59-71.   

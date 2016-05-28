@@ -36,6 +36,7 @@ years <- 2000:2014
  path <- "C:/images"
 ```
 <br>
+
 Ahora podemos usar el comando `for` con el fin de crear un bucle para, primero, crear la ruta absoluta para la carpeta de cada año (`path_year`), listar las carpetas dentro de la carpeta `path_year` usando la función `list.dirs`, y luego añadir esta lista de carpetas al objeto `foldersList`. Esto será realizado iterativamente para cada año en la secuencia que llamamos `years`. Suena complicado ah? Pues la verdad el código es bastante simple:
 
 ```
@@ -45,12 +46,14 @@ for (year in years){
 }
 ```
 <br>
+
 Finalmente podemos crear un objeto de clase `data.frame` para almacenar la lista de carpetas asignando el nombre requerido a la columna de datos (i.e., "LANDSAT_Folder_Names"):
 
 ```
 foldersListDF <- data.frame("LANDSAT_Folder_Names" = foldersList)
 ```
 <br>
+
 Usualmente es recomendable escribir las rutinas como una función para facilitar su uso en el futuro. Esto requiere la definición de los parámetros requeridos que la función necesita para ser ejecutada. En este caso sólo dos parámetros son necesarios, la ruta a la carpeta superior y la secuencia de años. De esta forma, nuestra función, que he llamado aquí como `stackImgTable4csv`, puede ser definida de la siguiente forma:
 
 ```
@@ -65,6 +68,7 @@ stackImgTable4csv <- function(path, years){
 }
 ```
 <br>
+
 Una vez definida la función de esta manera, ya sólo necesitamos llamar la función y suministrar los argumentos para cada uno de los parámetros y el nombre del objeto de salida (e.g., `outDDF`):
 
 ```
@@ -73,19 +77,20 @@ path <- "C:/images"
  outDF <- stackImgTable4csv(path, years)
 ```
 <br>
+
 Luego podemos exportar el objeto resultante a un archivo CSV que será utilizado posteriormente en CLASlite. Para la función `write.csv` debemos indicar los datos que van a ser escritos y el nombre del archivo de salida (e.g., "stack_2000_2014.csv"). También debemos indicar que los nombres de las filas no deben ser escritos y que los textos no deben ser rodeados por comillas dobles. Lo anterior es muy importante para que el archivo CSV pueda ser leído correctamente por CLASlite:
 
 ```
 write.csv(outDF, file = "stack_2000_2014.csv", row.names = FALSE, quote = FALSE)
 ```
 <br>
+
 Ahora podemos regresar a CLASlite y usar el archivo CSV que acabamos de crear. Abre CLASlite y haz click en ‘Tools’ - ‘Prepare Landsat’. Selecciona 'Batch Process' y haz clic en el botón 'Load File' para navegar y seleccionar el archivo CSV creado previamente. Finalmente haz clic en el botón 'Stack'. Como resultado del proceso de apilamiento, en la carpeta de cada imagen deberías encontrar archivos marcados con ‘raw’ (archivos crudos) y ‘therm’ (bandas en el rango térmico del espectro) al final del nombre:
 
 <img src="/images/2015-09-05-stacking-R-fig-4.png" alt="Output folder" title="Ouput folder" style="width:800px">
 
 Espero que este post te sea útil! En la siguiente entrada del blog explicaré cómo podemos usar R para crear automáticamente los archivos de texto requeridos por CLASlite para producir imágenes con correcciones por distorsión atmosférica. Hasta entonces! 
 
-<br>
 
 
 <a id="comments"></a>

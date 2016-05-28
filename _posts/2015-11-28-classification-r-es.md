@@ -8,7 +8,7 @@ image: 2015-11-28-classification-r-mini.jpg
 published: true
 ---
 
-El objetivo de este post es demostrar las capacidades de R para clasificar imágenes multiespectrales usando los [algoritmos conocidos como RandomForests]. Estos algoritmos son actualmente una de las técnicas que producen mejores resultados para la regresión y clasificación de datos. Aunque su interpretabilidad puede ser un tanto difícil, estos algoritmos son ampliamente populares debido a su habilidad para clasificar grandes cantidades de datos con una gran exactitud.
+El objetivo de este post es demostrar las capacidades de R para clasificar imágenes multiespectrales usando los [algoritmos conocidos como RandomForests]. Estos algoritmos son actualmente una de las técnicas que producen mejores resultados para la regresión y clasificación de datos. Aunque su interpretabilidad puede ser un tanto difícil, estos algoritmos son ampliamente populares debido a su habilidad para clasificar grandes cantidades de datos con una alta exactitud.
 
 En las secciones siguientes describo cómo importar en R una imagen Landsat y cómo extraer los valores de los pixeles para entrenar y ajustar un modelo de RandomForests. También explico cómo acelerar la clasificación de las imágenes mediante procesamiento en paralelo. Finalmente presento cómo implementar estos algoritmos para clasificación de imágenes en [QGIS] usando los paquetes de R.
 
@@ -17,9 +17,10 @@ En las secciones siguientes describo cómo importar en R una imagen Landsat y c�
 <img src="/images/2015-11-28-classification-r-fig-0.png" alt="" title="" style="width:750px">
 
 <br>
+
 ### **Importación de datos en R**
 
-Para el propósito de este post, voy a realizar una clasificación de coberturas terrestres en una imagen de Landsat 7 (path 7 row 57, seis bandas) tomada en el año 2000 para la cual se ha efectuado la corrección por distorsiones atmosféricas, como se explica [en un post anterior en mi blog]. Primero carguemos los paquetes de R que necesitamos para este tutorial:
+Para el propósito de este post, voy a realizar una clasificación de coberturas terrestres en una imagen de Landsat 7 (path 7 row 57, seis bandas) tomada en el año 2000 para la cual se ha efectuado la corrección por distorsiones atmosféricas, como se explica [en un post anterior en mi blog]. Se van a necesitar varios paquetes de R instalados, incluyendo: [rgdal], [raster], [caret], [randomForest] y [e1071]. Después de instalarlos carguemos los paquetes:
 
 ```
 library(rgdal)
@@ -27,6 +28,7 @@ library(rgdal)
  library(caret)
 ```
 <br>
+
 Ahora importemos la imagen Landsat en R como un objeto `RasterBrick` usando la función `brick` del [paquete ‘raster’]. Igualmente reemplacemos los nombres originales de las bandas (e.g., 'X485.0.Nanometers') con nombres más cortos (‘B1’ a ‘B5’, y ‘B7’): 
 
 ```
@@ -34,6 +36,7 @@ img <- brick("C:/data/landsat/images/2000/LE70070572000076EDC00/L7007057_2000031
  names(img) <- c(paste0("B", 1:5, coll = ""), "B7")  
 ```
 <br>
+
 Podemos generar una visualización RGB de la imagen Landsat en R usando el comando `plotRGB` para, por ejemplo, crear una composición en falso color RGB 4:5:3 (Infrarojo cercano - Infrarojo de onda corta - Rojo). Voy a usar la expresión `img * (img >= 0)` para convertir los valores negativos a cero:
 
 ```
@@ -64,12 +67,13 @@ dfAll = data.frame(matrix(vector(), nrow = 0, ncol = length(names(img)) + 1))
   category <- unique(trainData[[responseCol]])[i]
   categorymap <- trainData[trainData[[responseCol]] == category,]
   dataSet <- extract(img, categorymap)
-  dataSet <- sapply(dataSet, function(x){cbind(x, class = rep(category, nrow(x)))})
+  dataSet <- lapply(dataSet, function(x){cbind(x, class = as.numeric(rep(category, nrow(x))))})
   df <- do.call("rbind", dataSet)
   dfAll <- rbind(dfAll, df)
 }
 ```
 <br>
+
 El data frame resultante del paso anterior realizado con mis datos tiene cerca de 80 mil registros. Es necesario trabajar con un dataset más pequeño ya que puede tomar un tiempo bastante largo el entrenamiento y ajuste de un modelo de RandomForests con un dataset de este tamaño. Para comenzar, creemos un subconjunto de datos tomando 1000 muestras aleatorias: 
 
 ```
@@ -86,7 +90,8 @@ A continuación debemos definir y ajustar el modelo RandomForests usando la func
 modFit_rf <- train(as.factor(class) ~ B3 + B4 + B5, method = "rf", data = sdfAll)
 ```
 <br>
-En este punto podríamos simplemente usar el comando `predict` para crear un raster con las predicciones usando el objeto del modelo ajustado (i.e., `modFit_rf`). Sin embargo, es posible acelerar el proceso de clasificación usando la función `clusterR` del paquete ‘raster’ el cual soporta procesamiento en paralelo para funciones como `predict` y otras. Solamente necesitamos agregar una línea para crear el objeto cluster y otra para eliminarlo después de que finalice la operación:
+
+En este punto podríamos simplemente usar el comando `predict` para crear un raster con las predicciones usando el objeto del modelo ajustado (i.e., `modFit_rf`). Sin embargo, es posible acelerar el proceso de clasificación usando la función `clusterR` del paquete ‘raster’ el cual soporta procesamiento en paralelo para funciones como `predict` y otras (Nota: el [paquete 'snow'] debe estar instalado). Solamente necesitamos agregar una línea para crear el objeto cluster y otra para eliminarlo después de que finalice la operación:
 
 ```
 beginCluster()
@@ -94,6 +99,7 @@ beginCluster()
  endCluster()
 ```
 <br>
+
 La implementación del cálculo en paralelo en mi PC con procesador de 8 núcleos produjo una mejora de aproximadamente 70% en términos de tiempo de procesamiento (~14.2 minutos sin paralelización vs. ~4.1 minutos del procesamiento en paralelo). En el siguiente pantallazo puedes ver la imagen clasificada resultante:
 
 <a href="/images/2015-11-28-classification-r-fig-3.JPG" class="image full"><img src="/images/2015-11-28-classification-r-fig-3.JPG" alt="" title="Imagen Landsat clasificada en RStudio"></a>
@@ -127,7 +133,7 @@ La integración R+QGIS demostrada en este post amplía los métodos de clasifica
 En un próximo post estaré escribiendo sobre prácticas recomendadas para la evaluación de la exactitud de imágenes clasificadas a través de la comparación de datos de referencia versus los correspondientes resultados de la clasificación. Hasta pronto!
 
 <br>
-<br>
+
 **También te puede interesar:**
 
 &#42; [Integración de QGIS y R: Un ejemplo con muestreo espacial estratificado]
@@ -139,6 +145,12 @@ En un próximo post estaré escribiendo sobre prácticas recomendadas para la ev
 [algoritmos conocidos como RandomForests]:              https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm
 [en un post anterior en mi blog]:         /blog/es/2015/10/03/reflectance-R-es.html
 [Prepara archivos para creación de imágenes de reflectancia en CLASlite usando R]:         /blog/es/2015/10/03/reflectance-R-es.html
+[rgdal]:                                 http://cran.r-project.org/package=rgdal
+[raster]:                                http://cran.r-project.org/package=raster
+[caret]:                                 http://cran.r-project.org/package=caret
+[randomForest]:                          http://cran.r-project.org/package=randomForest
+[e1071]:                                 http://cran.r-project.org/package=e1071
+[paquete 'snow']:                        http://cran.r-project.org/package=snow
 [paquete ‘raster’]:                      http://cran.r-project.org/package=raster
 [QGIS]:                                  http://www.qgis.org/
 [en mi anterior post]:                   /blog/es/2015/10/31/qgis-r-es.html

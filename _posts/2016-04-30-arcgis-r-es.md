@@ -8,7 +8,7 @@ image: 2016-04-30-arcgis-r-mini.jpg
 published: true
 ---
 
-Hace un par de meses, ESRI hizo pública una nueva librería para conectar ArcGIS y R, diseñada con el propósito de facilitar el manejo y procesamiento de datos de ArcGIS para los usuarios de R, y al mismo tiempo, hacer más sencillo para los usuarios de ArcGIS la incorporación de las poderosas herramientas de análisis de R en sus flujos de trabajo.
+Hace un par de meses ESRI hizo pública una nueva librería para conectar ArcGIS y R, la cual fue diseñada con el propósito de facilitar el manejo y procesamiento de datos de ArcGIS para los usuarios de R, y al mismo tiempo, hacer más sencillo para los usuarios de ArcGIS la incorporación de las poderosas herramientas de análisis de R en sus flujos de trabajo.
 
 Esta nueva librería parece bastante prometedora, por lo cual he escrito un breve tutorial para aprender, e igualmente para probar, las capacidades de la misma para integrar dos de los más importantes proyectos de los campos de los SIG y el análisis de datos. En este post describo cómo instalar la librería y cómo crear y ejecutar una herramienta que combina datasets de ArcGIS con las funcionalidades existentes en algunos paquetes de R para abordar el modelamiento de distribución de especies dentro del ambiente de ArcGIS. Arranquemos! 
 
@@ -17,6 +17,7 @@ Esta nueva librería parece bastante prometedora, por lo cual he escrito un brev
 <img src="/images/2016-04-30-arcgis-r-fig-0.png" alt="" title="" style="width:750px">
 
 <br>
+
 ### **Instala la librería puente entre ArcGIS y R**
 
 Primero, ingresa a [https://r-arcgis.github.io/] y luego entra a [r-bridge-install]. Haz click en el botón ‘Download ZIP’ para descargar el contenido del repositorio en el archivo 'r-bridge-install-master.zip' y descomprímelo en una carpeta en tu computador.
@@ -58,6 +59,7 @@ tool_exec <- function(in_params, out_params)
   out_shp = out_params[[3]]
 ```
 <br>
+
 Luego vamos a abrir el shapefile (de puntos) de entrada (por ejemplo, datos de presencia de una especie de interes) usando la funcion `arc.open` del paquete ‘arcgisbinding’, y convertimos el dataset resultante en un objeto SpatialPointsDataFrame usando `arc.select` and `arc.data2sp`: 
 
 ```
@@ -65,6 +67,7 @@ Luego vamos a abrir el shapefile (de puntos) de entrada (por ejemplo, datos de p
    occurrence <- arc.data2sp(arc.select(d))
 ```
 <br>
+
 A continuación procederemos a leer los archivos raster. Como `arc.open` aún no permite abrir capas raster (hasta la versión 1.0.0.118 de 'arcgisbinding'), voy a implementar la siguiente solución: los archivos raster que representan variables continuas (por ej., temperatura, precipitación) van a ser leídos de una carpeta que los contiene, mientras que un raster de una variable categórica (por ej., bioma) va a ser leído de un archivo aparte. 
 
 ```
@@ -76,6 +79,7 @@ A continuación procederemos a leer los archivos raster. Como `arc.open` aún no
   raster2 <- raster(gsub("/", "\\\\", biome_raster))
 ```
 <br>
+
 Después necesitamos crear un objeto de clase RasterStack con todas las capas raster continuas y categóricas que van a ser usadas como variables predictoras en el modelo, y luego extraemos los valores del RasterStack en las localizaciones (de punto) de ocurrencia o presencia de la especie: 
 
 ```
@@ -83,6 +87,7 @@ Después necesitamos crear un objeto de clase RasterStack con todas las capas ra
    presvals <- as.data.frame(extract(predictors, occurrence))
 ```
 <br>
+
 Existen varios modelos que pueden ser implementados para modelación de distribución de especies. Para el modelo ‘bioclim’, por ejemplo, podemos usar el siguiente código:  
 
 ```
@@ -92,6 +97,7 @@ Existen varios modelos que pueden ser implementados para modelación de distribu
   }
 ```
 <br>
+
 Para la implementación de los modelos ’domain’, ‘glm’ (modelos lineales generalizados) y ‘mahal’ (Mahalanobis), puedes mirar el [script completo en este link]. Otros métodos de modelación como MaxEnt o randomForests pueden ser implementados fácilmente de manera similar en este script.
 
 Finalmente, vamos a usar `arc.write` para exportar como tabla y como shapefile unas salidas resultantes del paso ‘extract’ ejecutado previamente. Para exportar el raster con la distribución de especies predicha por el modelo, vamos a tener que usar la función `writeRaster` del paquete ‘raster’: 
@@ -108,6 +114,7 @@ Finalmente, vamos a usar `arc.write` para exportar como tabla y como shapefile u
 
 ```
 <br>
+
 Este script muestra el uso de algunas de las funciones disponibles para cargar y manejar datos entre ArcGIS y R, tales como `arc.open`, `arc.select`, `arc.data2sp`, `arc.shapeinfo` y  `arc.write`. Para información sobre otras funcionalidades, puedes revisar la [documentación del paquete ‘arcgisbinding’].
 
 ### **Crea un toolbox de ArcGIS**
@@ -150,7 +157,7 @@ Para aprender más acerca de modelación de distribución de especies y de los m
 El paquete ‘arcgisbinding’ está todavía en versión beta por lo que puede ser un poco inestable. Si intentas este tutorial cuéntame qué tal te va. Buena suerte!
 
 <br>
-<br>
+
 **También te puede interesar:**
 
 &#42; [Integración de QGIS y R: Un ejemplo con muestreo espacial estratificado]
