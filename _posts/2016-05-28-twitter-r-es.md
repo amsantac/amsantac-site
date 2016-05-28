@@ -4,7 +4,7 @@ title:  "Mapeando tweets: Cómo crear tu propia aplicación web"
 date:   2016-05-28 11:02:52
 categories: blog es
 tags: R Twitter Shiny mapeoweb 
-image: 2016-05-28-twitter-r-mini.JPG
+image: 2016-05-28-twitter-r-mini.jpg
 published: true
 ---
 
