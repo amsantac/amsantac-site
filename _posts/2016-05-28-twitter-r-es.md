@@ -5,7 +5,7 @@ date:   2016-05-28 11:02:52
 categories: blog es
 tags: R Twitter Shiny mapeoweb 
 image: 2016-05-28-twitter-r-mini.JPG
-published: false
+published: true
 ---
 
 Una de las razones por las cuales [Twitter] es tan popular es porque se ha convertido en un excelente medio para obtener datos para proyectos y aplicaciones web. A través de su interfaz de programación de aplicaciones (API) para búsquedas ([Search API]), es posible encontrar contenido a partir de consultas en Twitter con base en términos de búsqueda. Los resultados pueden ser analizados o visualizados posteriormente usando herramientas de software complementarias.
