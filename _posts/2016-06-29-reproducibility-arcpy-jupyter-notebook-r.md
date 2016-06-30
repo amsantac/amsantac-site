@@ -5,7 +5,7 @@ date:   2016-06-29 11:02:52
 categories: blog en
 tags: R ArcPy ArcGIS GIS RemoteSensing 
 image: 2016-06-29-reproducibility-arcpy-jupyter-notebook-r-mini.jpg
-published: false
+published: true
 ---
 
 Reproducibility, the ability of an entire study to be replicated, is one of the core concepts in data science. Although preparing data analyses so they are reproducible is not a trivial task, it can bring many benefits and make a researcher's life much easier: it can help to save time by allowing reuse of code and results from past studies or by allowing application of previously defined methodologies on new data.
@@ -59,11 +59,11 @@ conda create -n arc1031 python=2.7.10 numpy=1.7.1 matplotlib=1.3.0 pyparsing xlr
 
 <ul>
 <li>
-- Find the 'site-packages' folder inside the ArcGIS folder that is created when ArcGIS installs its Python version ('C:\Python27\ArcGIS10.3\Lib\site-packages' in my installation). In this folder create a new path (.pth) file. Include in this file the path to the 'site-packages' folder that is located inside the Anaconda installation folder (e.g., C:\Users\Guest\Anaconda2\Lib\site-packages). 
+Find the 'site-packages' folder inside the ArcGIS folder that is created when ArcGIS installs its Python version ('C:\Python27\ArcGIS10.3\Lib\site-packages' in my installation). In this folder create a new path (.pth) file. Include in this file the path to the 'site-packages' folder that is located inside the Anaconda installation folder (e.g., C:\Users\Guest\Anaconda2\Lib\site-packages). 
 </li>
 <br>
 <li>
-- Copy the Desktop10.3.pth file located in the 'site-packages' folder ('C:\Python27\ArcGIS10.3\Lib\site-packages') and paste it into the Anaconda installation folder ('C:\Users\Guest\Anaconda2' in my installation). If you are working with ArcGIS Pro, you have to copy the ArcGISPro.pth file instead.
+Copy the Desktop10.3.pth file located in the 'site-packages' folder ('C:\Python27\ArcGIS10.3\Lib\site-packages') and paste it into the Anaconda installation folder ('C:\Users\Guest\Anaconda2' in my installation). If you are working with ArcGIS Pro, you have to copy the ArcGISPro.pth file instead.
 </li>
 </ul>
 
@@ -128,5 +128,5 @@ If you create your own reproducible documents with Jupyter Notebook showing spat
 
 [arcgisbinding: Testing the new ArcGIS interface for the R language]: /blog/en/2016/04/30/arcgis-r.html
 
-[on GitHub]: https://github.com/amsantac/extras/blob/master/2016-06-25-reproducibility-arcpy-jupyter-notebook-r/Reproducible%20spatial%20analyses%20with%20ArcPy%20and%20R.ipynb
-[on nbviewer]: http://nbviewer.jupyter.org/github/amsantac/extras/blob/master/2016-06-25-reproducibility-arcpy-jupyter-notebook-r/Reproducible%20spatial%20analyses%20with%20ArcPy%20and%20R.ipynb
+[on GitHub]: https://github.com/amsantac/extras/blob/master/2016-06-29-reproducibility-arcpy-jupyter-notebook-r/Reproducible%20spatial%20analyses%20with%20ArcPy%20and%20R.ipynb
+[on nbviewer]: http://nbviewer.jupyter.org/github/amsantac/extras/blob/master/2016-06-29-reproducibility-arcpy-jupyter-notebook-r/Reproducible%20spatial%20analyses%20with%20ArcPy%20and%20R.ipynb
