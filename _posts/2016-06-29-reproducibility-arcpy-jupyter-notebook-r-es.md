@@ -73,7 +73,7 @@ Para probar si Jupyter efectivamente es capaz de ver ArcPy, abre una consola de 
 
 Para la parte final, **instala el kernel para R** para hacer que Jupyter sea capaz de ejecutar comandos de R. Para ello ingresa a [irkernel.github.io], copia las instrucciones para la instalación del kernel, y pégalas en una consola de R:
 
-<a href="/images/2016-06-29-reproducibility-arcpy-jupyter-notebook-r-fig-7.JPG" class="image full"><img src="/images/2016-06-29-reproducibility-arcpy-jupyter-notebook-r-fig-7.JPG" alt="" title=""></a>
+<a href="/images/2016-06-29-reproducibility-arcpy-jupyter-notebook-r-fig-7.jpg" class="image full"><img src="/images/2016-06-29-reproducibility-arcpy-jupyter-notebook-r-fig-7.jpg" alt="" title=""></a>
 
 Eso es todo! La próxima vez que inicies Jupyter Notebook deberías ver la opción para iniciar un notebook de R cuando hagas clic en el botón ‘New’:
 
@@ -95,7 +95,7 @@ Una vez hayamos configurado Jupyter Notebook tendremos todas las herramientas ne
 
 Los notebooks de Jupyter se pueden compartir muy fácilmente a través de email, Dropbox, GitHub y [Jupyter Notebook Viewer]. Puedes ver cómo el notebook del ejemplo presentado arriba es visualizado apropiadamente [en GitHub] y [en nbviewer].
 
-<a href="/images/2016-06-29-reproducibility-arcpy-jupyter-notebook-r-fig-8.JPG" class="image full"><img src="/images/2016-06-29-reproducibility-arcpy-jupyter-notebook-r-fig-8.JPG" alt="" title=""></a>
+<a href="/images/2016-06-29-reproducibility-arcpy-jupyter-notebook-r-fig-8.jpg" class="image full"><img src="/images/2016-06-29-reproducibility-arcpy-jupyter-notebook-r-fig-8.jpg" alt="" title=""></a>
 
 Los productos generados son idénticos a como se ven en nuestro computador.
 
