@@ -12,8 +12,10 @@ date:   2015-09-11 11:02:52
 <a href="" class="image full"><img src="/images/static/training-fig-1.png" alt="" /></a>
 <br>
 
-##Introducción a los Sistemas de Información Geográfica 
+## Introducción a los Sistemas de Información Geográfica 
+
 <br>
+
 El objetivo de este curso es introducir a los estudiantes a los conceptos básicos de los Sistemas de Información Geográfica (SIG), la cartografía y el análisis espacial a través de una serie de presentaciones y ejercicios prácticos. Este curso es impartido a través de un conjunto de módulos que incluye:
 
 <ul style="margin-left:2em; list-style-type:none">
@@ -26,8 +28,11 @@ El objetivo de este curso es introducir a los estudiantes a los conceptos básic
 He enseñado este curso varias veces para diferentes departamentos en la [Universidad Nacional de Colombia] usando software libre y de código abierto incluyendo [QGIS] y [GRASS GIS], al igual que paquetes comerciales como [ArcGIS]. También trabajé como asistente de docencia para la clase ‘Intro to GIS’ en [Clark University] durante el semestre de otoño de 2012. Los ejercicios de laboratorio se realizaron usando ArcGIS e [IDRISI].
 
 <br>
-##Introducción a la Percepción Remota y el Procesamiento Digital de Imágenes
+
+## Introducción a la Percepción Remota y el Procesamiento Digital de Imágenes
+
 <br>
+
 Este curso busca que los estudiantes desarrollen un buen entendimiento y las habilidades básicas en el área de la percepción remota. A través de presentaciones y ejercicios en clase, se realiza una introducción a las principales técnicas y herramientas usadas para visualizar procesar y analizar datos tomados por sensores remotos. Este curso hace énfasis en las aplicaciones ambientales de la percepción remota. Los siguientes temas se presentan durante el curso:
 
 <ul style="margin-left:2em; list-style-type:none">
@@ -43,8 +48,11 @@ Este curso busca que los estudiantes desarrollen un buen entendimiento y las hab
 Este curso fue impartido a estudiantes en el programa de Maestría en Geomática en la Universidad Nacional de Colombia durante el primer semestre de 2012. Las prácticas fueron realizadas usando [ENVI] y el [lenguaje R]. También enseñé algunos de estos módulos a estudiantes en los programas de posgrado en SIG y Geomática (2008-2010) en el [Instituto Geográfico Agustín Codazzi]. 
 
 <br>
-##Introducción a la Geoestadística
+
+## Introducción a la Geoestadística
+
 <br>
+
 El objetivo de este curso es brindar a los estudiantes una introducción a la geoestadistica, tanto en la teoría como en la práctica. La primera parte introduce a los estudiantes a los fundamentos y técnicas básicas de análisis estadístico y geoestadístico. La segunda parte trata de la aplicación de los principios geoestadisticos a la predicción espacial y el diseño de redes de muestreo espacial óptimas. Este curso está estructurado de la siguiente forma:
 
 <ul style="margin-left:2em; list-style-type:none">
@@ -59,8 +67,11 @@ El objetivo de este curso es brindar a los estudiantes una introducción a la ge
 Anteriormente enseñé este curso en la  especialización en sistemas de información geográfica en la [Universidad de Manizales] durante el segundo semestre del 2008. Las prácticas se llevaron a cabo usando la extensión [ArcGIS Geostatistical Analyst] y el [lenguaje R].
 
 <br>
-##Análisis de Datos con el Lenguaje R
+
+## Análisis de Datos con el Lenguaje R
+
 <br>
+
 Actualmente estoy preparando este nuevo curso para introducir a los estudiantes al análisis de datos cuantitativos usando el lenguaje R y otras herramientas modernas. El curso cubre las técnicas esenciales para importar, preparar, visualizar y procesar datos crudos y convertirlos en información    útil. El curso también suministra una introducción práctica a técnicas ampliamente usadas hoy en día por analistas de datos para generar reportes modernos de análisis de datos de manera reproducible. Los siguientes temas son ofrecidos en este curso:    
 
 <ul style="margin-left:2em; list-style-type:none">
@@ -75,6 +86,7 @@ Actualmente estoy preparando este nuevo curso para introducir a los estudiantes 
 </ul>
 
 <br>
+
 ### *Si deseas recibir alguno de estos cursos en tu grupo u organización no dudes en [enviarme un mensaje].*
 
 [QGIS]: http://www.qgis.org/

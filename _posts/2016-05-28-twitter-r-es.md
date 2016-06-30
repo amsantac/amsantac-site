@@ -88,7 +88,7 @@ El segundo componente de una aplicación de Shiny se denomina *server* y contien
 ```
 <br>
 
-En primer lugar, todos los parámetros de autenticación (*consumer key*, *consumer secret*, *access token* y *access secret*) son leídos desde un archivo de texto y utilizados para la autenticación con `setup_twitter_oauth`. Yo llamé ‘tokens.txt’ al archivo de texto y lo guardé en la misma carpeta donde se encuentra el archivo app.R.
+En primer lugar, todos los parámetros de autenticación (*consumer key*, *consumer secret*, *access token* y *access secret*) son leídos desde un archivo de texto y utilizados para la autenticación con `setup_twitter_oauth`. Yo llamé ‘tokens.txt’ al archivo de texto y lo guardé en la misma carpeta donde se encuentra el archivo app.R (Nota: si te sale una advertencia al leer el archivo de texto (*'Warning in readLines("tokens.txt") : incomplete final line found on 'tokens.txt''*), entonces adiciona una línea vacía al final del archivo).
 
 Luego viene la parte central de nuestra app. `dataInput` es una [función reactiva] que envía una consulta a Twitter a partir de unos términos de búsqueda (`input$searchkw`) suministrados por el usuario. Como estamos interesados en tweets geocodificados, es necesario ingresar el radio de búsqueda y las coordenadas de latitud/longitud siguiendo el formato `latitud,longitud,radio`. Por simplicidad, el número máximo de tweets solicitados (`n = 100`) y el radio de búsqueda (`10km`) en nuestra app son parámetros fijos, pero esto puede ser modificado fácilmente, así que siéntete libre de hacer cambios y experimentar. Nota que la última línea de `dataInput`: `!is.na()` es utilizada para remover aquellos tweets que no están geocodificados.
 
@@ -130,7 +130,7 @@ Espero que este post te motive a crear pronto tu propia aplicación web!
 
 <br>
 
-**You may also be interested in:**
+**También te puede interesar:**
 
 &#42; [Mapeo web con Leaflet y R]
 
