@@ -59,11 +59,11 @@ conda create -n arc1031 python=2.7.10 numpy=1.7.1 matplotlib=1.3.0 pyparsing xlr
 
 <ul>
 <li>
-Find the 'site-packages' folder inside the ArcGIS folder that is created when ArcGIS installs its Python version ('C:\Python27\ArcGIS10.3\Lib\site-packages' in my installation). In this folder create a new path (.pth) file. Include in this file the path to the 'site-packages' folder that is located inside the Anaconda installation folder (e.g., C:\Users\Guest\Anaconda2\Lib\site-packages). 
+- Find the 'site-packages' folder inside the ArcGIS folder that is created when ArcGIS installs its Python version ('C:\Python27\ArcGIS10.3\Lib\site-packages' in my installation). In this folder create a new path (.pth) file. Include in this file the path to the 'site-packages' folder that is located inside the Anaconda installation folder (e.g., C:\Users\Guest\Anaconda2\Lib\site-packages). 
 </li>
 <br>
 <li>
-Copy the Desktop10.3.pth file located in the 'site-packages' folder ('C:\Python27\ArcGIS10.3\Lib\site-packages') and paste it into the Anaconda installation folder ('C:\Users\Guest\Anaconda2' in my installation). If you are working with ArcGIS Pro, you have to copy the ArcGISPro.pth file instead.
+- Copy the Desktop10.3.pth file located in the 'site-packages' folder ('C:\Python27\ArcGIS10.3\Lib\site-packages') and paste it into the Anaconda installation folder ('C:\Users\Guest\Anaconda2' in my installation). If you are working with ArcGIS Pro, you have to copy the ArcGISPro.pth file instead.
 </li>
 </ul>
 
