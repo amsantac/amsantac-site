@@ -5,12 +5,12 @@ date:   2016-08-07 11:02:52
 categories: blog en
 tags: R DataScience 
 image: 2016-08-07-spatial-data-science-r-mini.jpg
-published: false
+published: true
 ---
 
-As a professional working with spatial data, I've found that many of the principles and good practices proposed in Data Science can be incorporated into the GIScience and remote sensing field for improving our data handling and analyzing processes. Previous posts in my blog, such as those covering [machine learning application to image classification] and [implementation of reproducible spatial analysis], have been written with the intention of accelerating adoption of Data Science practices into the profession.  
+As a professional working with spatial data, I've found that many of the principles and good practices proposed in Data Science can be incorporated into the GIScience and remote sensing fields for improving our data handling and analyzing processes. Previous posts in my blog, such as those covering [machine learning application to image classification] and [implementation of reproducible spatial analysis], have been written with the intention of accelerating adoption of Data Science practices into the profession.  
 
-As part of this continuing effort, and thanks to an invitation by [Raul Jimenez], coordinator of the [GeoDevelopers community], I recently gave a talk, in webinar format, about how Data Science can be applied to spatial data. [GeoDevelopers] is a very active and friendly online community with more than 800 GIS developers sharing and creating content regarding geospatial apps development, cloud services and data processing, among many other topics.
+As part of this continuing effort, and thanks to an invitation by [Raul Jimenez], coordinator of the [GeoDevelopers community], I recently gave a talk, in webinar format, about how Data Science can be applied to the analysis of spatial information. [GeoDevelopers] is a very active and friendly online community with more than 800 GIS developers sharing and creating content regarding geospatial apps development, cloud services and data processing, among many other topics.
 
 <!--more-->
 

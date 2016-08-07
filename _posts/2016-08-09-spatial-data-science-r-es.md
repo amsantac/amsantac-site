@@ -5,10 +5,10 @@ date:   2016-08-07 11:02:52
 categories: blog es
 tags: R DataScience 
 image: 2016-08-07-spatial-data-science-r-mini.jpg
-published: false
+published: true
 ---
 
-Como profesional involucrado con el procesamiento de datos espaciales, he encontrado que muchos de los principios y buenas prácticas propuestos en Data Science pueden ser incorporados en el campo de los SIG y el procesamiento de imágenes para lograr mejorar los procesos de manejo y análisis de datos. Por ello, algunos de los posts que he publicado previamente en mi blog, entre ellos el de la [aplicación de Machine Learning a la clasificación de imágenes] y la [implementación de análisis espaciales reproducibles], han sido escritos con el propósito de acelerar la adopción de prácticas de Data Science en la profesión de la geomática.
+Como profesional involucrado con el procesamiento de datos espaciales, he encontrado que muchos de los principios y buenas prácticas propuestos en Data Science pueden ser incorporados en el campo de los SIG y el procesamiento de imágenes para lograr mejorar los procesos de manejo y análisis de datos. Por ello, algunos de los posts que he publicado previamente en mi blog, entre ellos el de la [aplicación de Machine Learning a la clasificación de imágenes] y el de la [implementación de análisis espaciales reproducibles], han sido escritos con el propósito de acelerar la adopción de prácticas de Data Science en la profesión de la geomática.
 
 Como parte de este esfuerzo continuo, y gracias a la invitación de [Raúl Jiménez], coordinador de la [comunidad de GeoDevelopers], recientemente di una charla, en formato webinar, sobre cómo Data Science puede ser aplicado a los datos espaciales. [GeoDevelopers] es una comunidad virtual muy activa y colaboradora con más de 800 desarrolladores SIG que comparten y crean contenido en temas como el desarrollo de apps geoespaciales, servicios en la nube y el procesamiento de datos, entre muchos otros.
 
