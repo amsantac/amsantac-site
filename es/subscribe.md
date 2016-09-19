@@ -7,11 +7,11 @@ date:   2015-09-11 11:02:52
 <h2>Suscripción</h2>
 <br>
 <br>
-<span class="byline">Suscríbete a mi blog y obtén la guía con los **'50 mejores plugins de QGIS de 2016'** y **contenido exclusivo** para suscriptores</span>
+<span class="byline">Suscríbete a mi blog y obtén la guía con los <strong>'50 mejores plugins de QGIS de 2016'</strong> y <strong>contenido exclusivo</strong> para suscriptores</span>
 </header>
 
 <br>
-##Por favor ingresa tu email y nombre para suscribirte:
+<h2> Por favor ingresa tu email y nombre para suscribirte:</h2>
 
 <!-- Begin MailChimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">

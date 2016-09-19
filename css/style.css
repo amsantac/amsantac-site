@@ -84,8 +84,9 @@
   
   code
 	{
+    font-size: 0.97em;   /* esto es nuevo*/
     border-color: #d1d1d1;
-    color: #dd1144; /*esto es nuevo*/
+    color: #dd1144;  /*#dd1144;*/ /*esto es nuevo*/
     padding: 0.2em 0.2em 0.2em 0.2em; /*esto es nuevo*/
     border-radius: 3px; /*esto es nuevo*/
   }

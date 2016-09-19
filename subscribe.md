@@ -7,11 +7,11 @@ date:   2015-09-11 11:02:52
 <h2>Subscribe</h2>
 <br>
 <br>
-<span class="byline">Subscribe to my blog and get the **'50 best QGIS plugins of 2016'** ebook and **exclusive content** completely free!</span>
+<span class="byline">Subscribe to my blog and get the <strong>'50 best QGIS plugins of 2016'</strong> ebook and <strong>exclusive content</strong> completely free!</span>
 </header>
 
 <br>
-##Please enter your email address and name to subscribe:
+<h2> Please enter your email address and name to subscribe: </h2>
 
 <!-- Begin MailChimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
