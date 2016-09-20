@@ -5,7 +5,7 @@ date        : 2016-09-20 11:02:52
 categories  : blog es
 tags        : R DataScience PercepcionRemota landsat 
 image       : 2016-09-20-balanced-image-classification-r-mini.jpg
-published   : false
+published   : true
 ---
 
 Cuando se realiza clasificación supervisada con algoritmos de machine learning como RandomForests, una práctica que se recomienda es trabajar con un dataset de clasificación balanceado. Sin embargo, algunas veces esta recomendación se ignora debido a que se desconoce su relevancia o no se tiene conocimiento sobre cómo llevarla a cabo.
