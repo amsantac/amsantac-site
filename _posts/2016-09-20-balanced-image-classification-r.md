@@ -92,7 +92,6 @@ table(training$class)
 ```
 
 ```
-
     1     2     3     5     6     7 
  4753 21626 14866  8093  3535  3789 
 ```
@@ -102,7 +101,6 @@ table(testing$class)
 ```
 
 ```
-
    1    2    3    5    6    7 
 2068 9236 6371 3468 1508 1630 
 ```
@@ -117,7 +115,6 @@ training_ub <- training[sample(1:nrow(training), 2400), ]
 ```
 
 ```
-
   1   2   3   5   6   7 
 211 904 608 357 149 171 
 ```
@@ -187,7 +184,6 @@ training_bc <- undersample_ds(training, "class", nsamples_class)
 ```
 
 ```
-
   1   2   3   5   6   7 
 400 400 400 400 400 400 
 ```
