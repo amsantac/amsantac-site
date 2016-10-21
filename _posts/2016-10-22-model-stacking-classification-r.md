@@ -265,7 +265,7 @@ Here are the slides from the video:
 
 <br>
 
-You can find the source code for the slides and the R script for this post available for [download from this link] and [on GitHub]. 
+You can find the source code for the slides and the R script for this post available for [download from this link]. 
 
 In general, I found model stacking to be a helpful technique for improving classification accuracy, although it may require several tries before finding a good model combination. If you're interested in further testing, there is an R package called [caretEnsemble] which provides several tools for assessing combinations of several classification or regression caret models. 
 
@@ -290,5 +290,6 @@ Well, hope you've learned something new with this post as I did. Happy coding an
 [caret package]: https://cran.r-project.org/package=caret
 [caretEnsemble]: https://cran.r-project.org/package=caretEnsemble
 [a previous post]: /blog/en/2015/11/28/classification-r.html
-[download from this link]: https://www.dropbox.com/sh/6l572eieht0rerw/AADnWuTyvneKa8D-dIPbKnJQa?dl=0
+[the training data]: https://www.dropbox.com/sh/5sa8udavzumm66a/AAABoa-POOSNorcVIagX2Pu0a?dl=0
+[download from this link]: https://www.dropbox.com/sh/5sa8udavzumm66a/AAABoa-POOSNorcVIagX2Pu0a?dl=0
 [on GitHub]: https://github.com/amsantac/extras/tree/master/2016-09-20-balanced-image-classification-r

@@ -263,7 +263,7 @@ Acá encuentras las diapositivas del video:
 
 <br>
 
-El código fuente de las diapositivas y la rutina en R los puedes [descargar desde este link] y desde [GitHub].
+El código fuente de las diapositivas y la rutina en R los puedes [descargar desde este link].
   
 En general, la combinación de modelos mediante model stacking me pareció una técnica bastante útil para mejorar la exactitud en la clasificación, aunque para lograrlo necesité probar distintas combinaciones antes de encontrar una solución que me satisficiera. Si te interesa avanzar más en este tema hay un paquete de R llamado [caretEnsemble] el cual provee un conjunto de herramientas para evaluar combinaciones de varios modelos tanto para clasificación como para regresión usando el [paquete caret]. 
 
@@ -288,5 +288,7 @@ Bueno, espero que hayas aprendido algo nuevo con este post como yo lo hice!
 [paquete caret]: https://cran.r-project.org/package=caret
 [caretEnsemble]: https://cran.r-project.org/package=caretEnsemble
 [a previous post]: /blog/es/2015/11/28/classification-r-es.html
-[descargar desde este link]: https://www.dropbox.com/sh/6l572eieht0rerw/AADnWuTyvneKa8D-dIPbKnJQa?dl=0
 [GitHub]: https://github.com/amsantac/extras/tree/master/2016-09-20-balanced-image-classification-r
+[los datos de entrenamiento]: https://www.dropbox.com/sh/5sa8udavzumm66a/AAABoa-POOSNorcVIagX2Pu0a?dl=0
+[descargar desde este link]: https://www.dropbox.com/sh/5sa8udavzumm66a/AAABoa-POOSNorcVIagX2Pu0a?dl=0
+
