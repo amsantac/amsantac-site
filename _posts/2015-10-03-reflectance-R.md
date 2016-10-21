@@ -134,7 +134,7 @@ sid1 <- strsplit(mtl[grep("SPACECRAFT_ID", mtl)], "= ")[[1]][2]
 ```
 <br>
 
-Next the gain settings for bands 1 through 5 and 7 for Landsat 7 images is extracted:
+Next the gain settings for bands 1 through 5 and 7 for Landsat 7 images are extracted:
 
 ```
 gains <- NULL

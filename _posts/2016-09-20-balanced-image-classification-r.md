@@ -14,13 +14,13 @@ The purpose of this post is, first, to examine some of the consequences of worki
 
 <!--more-->
 
-<a href="" class="image full"><img src="/images/2016-09-20-balanced-image-classification-r-fig-0.png" alt="Spatial Data Science with R" title=""></a>
+<a href="" class="image full"><img src="images/2016-09-20-balanced-image-classification-r-fig-0.png" alt="Balanced image classification with R" title=""></a>
 
 ### **What is imbalanced data**
 
 Imbalanced data refers to a situation where the number of observations is not the same for all the classes in a classification dataset. In some fields, imbalanced data problems are quite common.  Think of fraud detection or rare disease diagnosing, for instance, where the majority of the cases will be in the "Not-Fraud" or "Not-Disease" class and a very small minority will be in the "Fraud" or "Disease" class, respectively. In remote sensing, binary classification of urban and non-urban areas, or detection of small burned patches in an agricultural landscape, represent examples of imbalanced two-class classification problems. Class-imbalanced issues can also happen in multi-class classifications as well. 
 
-Machine learning classifiers such as Random Forests fail to cope with imbalanced training datasets as they are sensitive to the proportions of the different classes. As a consequence, these algorithms tend to favor the class with the largest proportion of observations (known as majority class), which may result in misleading accuracies. This may be particularly problematic when we are interested in the correct classification of a "rare" class (also known as minority class) but we find high accuracies which are actually the product of the correct classification of the majority class (ie, are the reflection of the underlying class distribution). 
+Machine learning classifiers such as Random Forests fail to cope with imbalanced training datasets as they are sensitive to the proportions of the different classes. As a consequence, these algorithms tend to favor the class with the largest proportion of observations (known as majority class), which may lead to misleading accuracies. This may be particularly problematic when we are interested in the correct classification of a "rare" class (also known as minority class) but we find high accuracies which are actually the product of the correct classification of the majority class (ie, are the reflection of the underlying class distribution). 
 
 Given that these algorithms aim to minimize the overall error rate, instead of paying special attention to the minority class, they may fail to make an accurate prediction for this class if they don't get the necessary amount of information about it. Thus it is highly recommended to perform an analysis of the sensitivity of the classifier to the training sample distribution. Below I show a basic analysis using remote sensing data.
 
@@ -92,6 +92,7 @@ table(training$class)
 ```
 
 ```
+
     1     2     3     5     6     7 
  4753 21626 14866  8093  3535  3789 
 ```
@@ -101,6 +102,7 @@ table(testing$class)
 ```
 
 ```
+
    1    2    3    5    6    7 
 2068 9236 6371 3468 1508 1630 
 ```
@@ -115,6 +117,7 @@ training_ub <- training[sample(1:nrow(training), 2400), ]
 ```
 
 ```
+
   1   2   3   5   6   7 
 211 904 608 357 149 171 
 ```
@@ -184,6 +187,7 @@ training_bc <- undersample_ds(training, "class", nsamples_class)
 ```
 
 ```
+
   1   2   3   5   6   7 
 400 400 400 400 400 400 
 ```
