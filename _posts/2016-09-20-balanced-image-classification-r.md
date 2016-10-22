@@ -14,7 +14,7 @@ The purpose of this post is, first, to examine some of the consequences of worki
 
 <!--more-->
 
-<a href="" class="image full"><img src="images/2016-09-20-balanced-image-classification-r-fig-0.png" alt="Balanced image classification with R" title=""></a>
+<a href="" class="image full"><img src="/images/2016-09-20-balanced-image-classification-r-fig-0.png" alt="Balanced image classification with R" title=""></a>
 
 ### **What is imbalanced data**
 
