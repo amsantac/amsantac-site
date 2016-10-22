@@ -5,7 +5,7 @@ date        : 2016-10-22 11:02:52
 categories  : blog es
 tags        : R DataScience PercepcionRemota landsat 
 image       : 2016-10-22-model-stacking-classification-r-mini.jpg
-published   : false
+published   : true
 ---
 
 Cuando tomé los cursos de la especialización de Data Science en Coursera, uno de los métodos que me pareció más interesante fue el ensamble de modelos, el cual busca incrementar la exactitud a partir de la combinación de las predicciones de múltiples modelos.

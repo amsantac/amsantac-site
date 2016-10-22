@@ -5,7 +5,7 @@ date        : 2016-10-22 11:02:52
 categories  : blog en
 tags        : R DataScience RemoteSensing landsat 
 image       : 2016-10-22-model-stacking-classification-r-mini.jpg
-published   : false
+published   : true
 ---
 
 When I took the courses of the Data Science specialization in Coursera, one of the methods that I found most interesting was model ensembling which aims to increase accuracy by combining the predictions of multiple models together. 
