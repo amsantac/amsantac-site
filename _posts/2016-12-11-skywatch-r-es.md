@@ -1,11 +1,11 @@
 ---
 layout      : post-es
 title       : "Búsqueda y descarga automatizada de imágenes satelitales con SkyWatch"
-date        : 2016-12-10 11:02:52
+date        : 2016-12-11 11:02:52
 categories  : blog es
 tags        : R PercepcionRemota landsat API 
-image       : 2016-12-10-skywatch-r-mini.jpg
-published   : false
+image       : 2016-12-11-skywatch-r-mini.jpg
+published   : true
 ---
 
 Durante las últimas semanas he estado probando un API desarrollado por [SkyWatch] que ofrece un fácil acceso a varios datasets climáticos y atmosféricos y a imágenes satelitales, incluyendo Landsat-8 y Sentinel-2. El [API de SkyWatch] permite buscar datasets por parámetros como fecha, localización, fuente de datos (ya sea sensor o el satélite) o cobertura de nubes, entre otros.
@@ -14,7 +14,7 @@ He desarrollado un paquete de R llamado [SkyWatchr] para facilitar las consultas
 
 <!--more-->
 
-<a href="" class="image full"><img src="/images/2016-12-10-skywatch-r-fig-0.png" alt="Búsqueda y descarga automatizada de imágenes satelitales con SkyWatch" title=""></a>
+<a href="" class="image full"><img src="/images/2016-12-11-skywatch-r-fig-0.png" alt="Búsqueda y descarga automatizada de imágenes satelitales con SkyWatch" title=""></a>
 
 ### **Cómo instalar el paquete SkyWatchr**
 
@@ -96,7 +96,7 @@ sppolygon <- getPolygon(res, 24)
 ```
 <br>
 
-Para esta función solamente se necesitan dos argumentos, un data.frame generado por `querySW` y el índice (fila) del dataset correspondiente. Después de que se extrae el polígono, éste puede ser fácilmente visualizado con paquetes como mapview, u otros:
+Para esta función solamente se necesitan dos argumentos, un data.frame generado por `querySW` y el índice (fila) del dataset correspondiente. (Para usar la función `getPolygon`, por favor [instala la versión en desarrollo 0.5-1 disponible en GitHub]. Esta actualización la estaré subiendo a CRAN pronto) Después de que se extrae el polígono, éste puede ser fácilmente visualizado con paquetes como mapview, u otros:
 
 ```r
 library(mapview)
@@ -164,3 +164,5 @@ Planeo seguir desarrollando este nuevo paquete de R por lo que agradecería tus 
 [solicites una clave de acceso al API]: http://www.skywatch.co/request-access
 [en este link]: https://amsantac.github.io/SkyWatchr/examples/html_output_example.html
 [Clasificación de imágenes con RandomForests en R (y QGIS)]: /blog/es/2015/11/28/classification-r-es.html
+[instala la versión en desarrollo 0.5-1 disponible en GitHub]: https://github.com/amsantac/SkyWatchr
+

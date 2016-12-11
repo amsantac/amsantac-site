@@ -1,11 +1,11 @@
 ---
 layout      : post
 title       : "Searching and downloading Earth Observation data programmatically with SkyWatch"
-date        : 2016-12-10 11:02:52
+date        : 2016-12-11 11:02:52
 categories  : blog en
 tags        : R RemoteSensing landsat API 
-image       : 2016-12-10-skywatch-r-mini.jpg
-published   : false
+image       : 2016-12-11-skywatch-r-mini.jpg
+published   : true
 ---
 
 During the last weeks I've been testing an API developed by [SkyWatch] that provides easy access to several climate/atmospheric datasets and satellite imagery, including Landsat-8 and Sentinel-2. The [SkyWatch API] allows searching datasets by parameters such as date, location, data source (either the sensor or the satellite itself) or cloud cover, among others.
@@ -14,7 +14,7 @@ I've written an R wrapper called [SkyWatchr] to facilitate querying the API and 
 
 <!--more-->
 
-<a href="" class="image full"><img src="/images/2016-12-10-skywatch-r-fig-0.png" alt="Improving classification accuracy through model stacking" title=""></a>
+<a href="" class="image full"><img src="/images/2016-12-11-skywatch-r-fig-0.png" alt="Improving classification accuracy through model stacking" title=""></a>
 
 ### **How to install the SkyWatchr package**
 
@@ -96,7 +96,7 @@ sppolygon <- getPolygon(res, 24)
 ```
 <br>
 
-For this function, only two arguments are needed, a data.frame resulting from `querySW` and the index (row) for the corresponding dataset. After the polygon is extracted, one can easily visualize it with a package such as mapview, for instance:
+For this function, only two arguments are needed, a data.frame resulting from `querySW` and the index (row) for the corresponding dataset. (For using the `getPolygon` function, please [install the development version 0.5-1 from GitHub]. This update will be uploaded to CRAN soon) After the polygon is extracted, one can easily visualize it with a package such as mapview, for instance:
 
 ```r
 library(mapview)
@@ -163,4 +163,4 @@ I'll continue working on this new R package so I'd appreciate any feedback and i
 [here]: https://amsantac.github.io/SkyWatchr/examples/html_output_example.html
 [Image Classification with RandomForests in R (and QGIS)]: /blog/en/2015/11/28/classification-r.html
 [available datasets]: http://www.skywatch.co/datasets-index
-
+[install the development version 0.5-1 from GitHub]: https://github.com/amsantac/SkyWatchr 
