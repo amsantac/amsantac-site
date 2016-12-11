@@ -12,21 +12,27 @@ date:   2015-09-11 11:02:52
 <h2 style= "color:#1e6bb8">PAQUETES DE R</h2>
 <br>
 
-## El paquete geospt
+## El paquete SkyWatchr
 <p></p>
-Este paquete de R contiene un conjunto de técnicas para el análisis geoestadístico y para el diseño de redes espaciales de muestreo óptimas. Incluye la estimación del variograma a través de la media recortada, estadísticas de resumen para validación cruzada, y el diseño de redes óptimas de muestreo a través de los métodos de puntos secuenciales y puntos simultáneos usando algoritmos genéticos, además de otras funcionalidades. El paquete se encuentra disponible en [CRAN][geospt_CRAN] y [GitHub][geospt_github]. 
+SkyWatchr es un paquete de R desarrollado para acceder al [API de SkyWatch]. Este API ofrece una fácil búsqueda y descarga de varios datasets climáticos y atmosféricos y de imágenes satelitales, incluyendo Landsat-8, Sentinel-2 y OCO2, entre otros. Con SkyWatchr es posible buscar datasets por parámetros como localización, fecha (o periodo de tiempo), fuente de datos (ya sea sensor o el satélite), máxima cobertura de nubes, máxima resolución espacial, bandas y nivel de procesamiento. Puedes ver un video con la descripción del proceso de instalación y ejemplos de uso en [mi post sobre SkyWatchr]. El paquete se encuentra disponible en [CRAN][SkyWatchr_CRAN] y [GitHub][SkyWatchr_github]. 
 
 <br>
 
-## El paquete diffeR
+## El paquete geospt
 <p></p>
-El paquete diffeR implementa un conjunto de métricas de diferencia para comparar pares de mapas que representen variables categóricas o reales, a la resolución original o a múltiples resoluciones. Este paquete puede ser descargado e instalado desde [CRAN][differ_CRAN] o [GitHub][differ_github]. 
+El paquete geospt contiene un conjunto de técnicas para el análisis geoestadístico y para el diseño de redes espaciales de muestreo óptimas. Incluye la estimación del variograma a través de la media recortada, estadísticas de resumen para validación cruzada, y el diseño de redes óptimas de muestreo a través de los métodos de puntos secuenciales y puntos simultáneos usando algoritmos genéticos, además de otras funcionalidades. El paquete se encuentra disponible en [CRAN][geospt_CRAN] y [GitHub][geospt_github]. 
 
 <br>
 
 ## El paquete TOC
 <p></p>
 Este paquete de R permite la construcción de la curva ROC (i.e., Receiver (o Relative) Operating Characteristic) y la curva TOC (i.e., Total Operating Characteristic) para datos espaciales y no espaciales. La curva ROC es una técnica estadística muy popular usada para evaluar el comportamiento de un sistema clasificador binario a medida que el umbral de discriminación varía. El método TOC es una modificación novedosa de la técnica ROC que ha sido desarrollado recientemente por el profesor [Gil Pontius] de Clark University. El paquete TOC puede ser instalado desde [CRAN][toc_CRAN] o [GitHub][toc_github].
+
+<br>
+
+## El paquete diffeR
+<p></p>
+El paquete diffeR implementa un conjunto de métricas de diferencia para comparar pares de mapas que representen variables categóricas o reales, a la resolución original o a múltiples resoluciones. Este paquete puede ser descargado e instalado desde [CRAN][differ_CRAN] o [GitHub][differ_github]. 
 
 <br>
 <hr>
@@ -50,14 +56,17 @@ Esta aplicación muestra imágenes Landsat (Landsat 5 TM, Landsat 7 ETM+ y Lands
 ### *Interesado en colaboración para el desarrollo de herramientas de software similares? Escríbeme a través de [mi página de contacto].*
 
 
-[geospt_CRAN]: http://cran.r-project.org/web/packages/geospt/
+[SkyWatchr_CRAN]: https://cran.r-project.org/package=SkyWatchr
+[SkyWatchr_github]: https://github.com/amsantac/SkyWatchr
+[geospt_CRAN]: https://cran.r-project.org/package=geospt
 [geospt_github]: https://github.com/amsantac/geospt
-[differ_CRAN]: http://cran.r-project.org/web/packages/diffeR/
+[differ_CRAN]: https://cran.r-project.org/package=diffeR
 [differ_github]: https://github.com/amsantac/diffeR
-[toc_CRAN]: http://cran.r-project.org/web/packages/TOC/
+[toc_CRAN]: https://cran.r-project.org/package=TOC
 [toc_github]: https://github.com/amsantac/TOC
 [Gil Pontius]: http://www.clarku.edu/~rpontius/
 [Google Earth Engine]: https://earthengine.google.org
 [mi página de contacto]: /es/contact.html
 [Shiny]: http://shiny.rstudio.com/
-
+[API de SkyWatch]: https://github.com/skywatchspaceapps/api
+[mi post sobre SkyWatchr]: /blog/es/2016/12/10/skywatch-r-es.html

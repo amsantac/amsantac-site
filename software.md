@@ -13,9 +13,21 @@ date:   2015-09-11 11:02:52
 <h2 style= "color:#1e6bb8">R PACKAGES</h2>
 <br>
 
+## The SkyWatchr package
+<p></p>
+SkyWatchr is an R package for accessing the [SkyWatch API]. This API facilitates searching and downloading several climate/atmospheric datasets and satellite imagery, including Landsat-8, Sentinel-2, OCO2 and others. SkyWatchr allows searching datasets by parameters such as location, date (or time period), data source (either instrument or satellite platform), wavelength bands, data processing level, maximum spatial resolution and maximum cloud cover. Watch a video on package installation and usage examples in my [post about SkyWatchr]. The package is available at [CRAN][SkyWatchr_CRAN] and [GitHub][SkyWatchr_github]. 
+
+<br>
+
 ## The geospt package
 <p></p>
-This R package provides a set of techniques for geostatistical analysis and for the design of optimal spatial sampling networks. It includes variogram estimation through the trimmed mean, summary statistics for cross-validation and the design of optimal sampling networks through sequential and simultaneous points methods using genetic algorithms, among other functionalities. The package is available at [CRAN][geospt_CRAN] and [GitHub][geospt_github]. 
+The geospt provides a set of techniques for geostatistical analysis and for the design of optimal spatial sampling networks. It includes variogram estimation through the trimmed mean, summary statistics for cross-validation and the design of optimal sampling networks through sequential and simultaneous points methods using genetic algorithms, among other functionalities. The package is available at [CRAN][geospt_CRAN] and [GitHub][geospt_github]. 
+
+<br>
+
+## The TOC package
+<p></p>
+This R package allows the construction of the Receiver (aka Relative) Operating Characteristic (ROC) curve and the Total Operating Characteristic (TOC) curve for spatial and non-spatial data. The ROC curve is a widely-popular statistical technique used for evaluating the performance of a binary classifier system as its discrimination threshold is varied. The TOC method is a novel modification of the ROC method that has been introduced recently by [Professor Gil Pontius] from Clark University. The TOC package can be installed from [CRAN][toc_CRAN] and [GitHub][toc_github].
 
 <br>
 
@@ -25,11 +37,6 @@ The diffeR package implements a set of metrics of difference for comparing pairs
 
 <br>
 
-## The TOC package
-<p></p>
-This R package allows the construction of the Receiver (aka Relative) Operating Characteristic (ROC) curve and the Total Operating Characteristic (TOC) curve for spatial and non-spatial data. The ROC curve is a widely-popular statistical technique used for evaluating the performance of a binary classifier system as its discrimination threshold is varied. The TOC method is a novel modification of the ROC method that has been introduced recently by [Professor Gil Pontius] from Clark University. The TOC package can be installed from [CRAN][toc_CRAN] and [GitHub][toc_github].
-
-<br>
 <hr>
 <br>
 <h2 style= "color:#1e6bb8">WEB APPS</h2>
@@ -51,12 +58,16 @@ The Llanos GEE App displays Landsat imagery (Landsat 5 TM, Landsat 7 ETM+ and La
 ### *Interested in collaboration for the development of similar software tools? Feel free to [contact me].*
 
 
-[geospt_CRAN]: http://cran.r-project.org/web/packages/geospt/
+[SkyWatchr_CRAN]: https://cran.r-project.org/package=SkyWatchr
+[SkyWatchr_github]: https://github.com/amsantac/SkyWatchr
+[geospt_CRAN]: https://cran.r-project.org/package=geospt
 [geospt_github]: https://github.com/amsantac/geospt
-[differ_CRAN]: http://cran.r-project.org/web/packages/diffeR/
+[differ_CRAN]: https://cran.r-project.org/package=diffeR
 [differ_github]: https://github.com/amsantac/diffeR
-[toc_CRAN]: http://cran.r-project.org/web/packages/TOC/
+[toc_CRAN]: https://cran.r-project.org/package=TOC
 [toc_github]: https://github.com/amsantac/TOC
 [Professor Gil Pontius]: http://www.clarku.edu/~rpontius/
 [Google Earth Engine]: https://earthengine.google.org
 [contact me]: contact.html
+[SkyWatch API]: https://github.com/skywatchspaceapps/api
+[post about SkyWatchr]: /blog/en/2016/12/10/skywatch-r.html
