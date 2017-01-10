@@ -96,7 +96,7 @@ sppolygon <- getPolygon(res, 24)
 ```
 <br>
 
-For this function, only two arguments are needed, a data.frame resulting from `querySW` and the index (row) for the corresponding dataset. (For using the `getPolygon` function, please [install the development version 0.5-1 from GitHub]. This update will be uploaded to CRAN soon) After the polygon is extracted, one can easily visualize it with a package such as mapview, for instance:
+For this function, only two arguments are needed, a data.frame resulting from `querySW` and the index (row) for the corresponding dataset. After the polygon is extracted, one can easily visualize it with a package such as mapview, for instance:
 
 ```r
 library(mapview)
