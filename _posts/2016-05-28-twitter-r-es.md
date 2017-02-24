@@ -60,7 +60,7 @@ El segundo componente de una aplicación de Shiny se denomina *server* y contien
     consumer_secret <- readLines("tokens.txt")[2]
     access_token <- readLines("tokens.txt")[3]
     access_secret <- readLines("tokens.txt")[4]
-    options(httr_oauth_cache = TRUE) # enable using a local file to cache OAuth access credentials between R sessions
+    options(httr_oauth_cache = TRUE) 
     setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
     
     # Enviar consulta a Twitter
@@ -81,8 +81,7 @@ El segundo componente de una aplicación de Shiny se denomina *server* y contien
     
     # Crear una tabla reactiva 
     output$table <- renderTable(
-      #dataInput()[, c("text", "screenName", "longitude", "latitude", "created")]
-      d <- data.frame(x = 1, y = 1:10, fac = sample(LETTERS[1:3], 10, replace = TRUE))
+      dataInput()[, c("text", "screenName", "longitude", "latitude", "created")]
     )
   }
 )
