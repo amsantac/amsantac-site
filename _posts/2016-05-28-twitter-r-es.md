@@ -39,8 +39,8 @@ shinyApp(
   ui = fluidPage(
     fluidRow(
       column(4, textInput("searchkw", label = "search:", value = "#movie")),
-      column(4, textInput("lat", label = "lat:", value = 40.75)),
-      column(4, textInput("long", label = "long:", value = -74)),
+      column(4, textInput("lat", label = "latitude:", value = 40.75)),
+      column(4, textInput("long", label = "longitude:", value = -74)),
       column(8, leafletOutput("myMap")),
       column(12, tableOutput('table'))
     )
@@ -74,14 +74,15 @@ El segundo componente de una aplicación de Shiny se denomina *server* y contien
     # Crear un mapa leaflet reactivo
     mapTweets <- reactive({
       map = leaflet() %>% addTiles() %>%
-        addMarkers(dataInput()$longitude, dataInput()$latitude, popup = dataInput()$screenName) %>%
+        addMarkers(as.numeric(dataInput()$longitude), as.numeric(dataInput()$latitude), popup = dataInput()$screenName) %>%
         setView(input$long, input$lat, zoom = 11)
     })
     output$myMap = renderLeaflet(mapTweets())
     
     # Crear una tabla reactiva 
     output$table <- renderTable(
-      dataInput()[, c("text", "screenName", "longitude", "latitude", "created")]
+      #dataInput()[, c("text", "screenName", "longitude", "latitude", "created")]
+      d <- data.frame(x = 1, y = 1:10, fac = sample(LETTERS[1:3], 10, replace = TRUE))
     )
   }
 )
