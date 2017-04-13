@@ -67,6 +67,7 @@ dfAll = data.frame(matrix(vector(), nrow = 0, ncol = length(names(img)) + 1))
   category <- unique(trainData[[responseCol]])[i]
   categorymap <- trainData[trainData[[responseCol]] == category,]
   dataSet <- extract(img, categorymap)
+  dataSet <- dataSet[!unlist(lapply(dataSet, is.null))]
   dataSet <- lapply(dataSet, function(x){cbind(x, class = as.numeric(rep(category, nrow(x))))})
   df <- do.call("rbind", dataSet)
   dfAll <- rbind(dfAll, df)
