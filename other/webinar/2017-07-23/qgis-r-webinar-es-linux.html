@@ -451,7 +451,7 @@ initGRASS(&quot;C:/Program Files/GRASS GIS 7.0.3&quot;, home=tempdir(), SG = r2,
 <p>Ejecutemos el módulo <em>r.neighbors</em> para aplicar un filtro de tipo <em>majority</em> donde la moda de los valores en una ventana de 11x11 pixels se asigna al pixel central:</p>
 <pre class="r"><code>execGRASS(&quot;r.neighbors&quot;, parameters=list(input=&quot;r2&quot;, output=&quot;r2maj&quot;, method=&quot;mode&quot;, size=as.integer(11)))</code></pre>
 <pre><code>##    0%   3%   6%   9%  12%  15%  18%  21%  24%  27%  30%  33%  36%  39%  42%  45%  48%  51%  54%  57%  60%  63%  66%  69%  72%  75%  78%  81%  84%  87%  90%  93%  96%  99% 100%</code></pre>
-<p>Veamos la lista de rasters en nuestra locación nuevamente y ploteemos el resultados:</p>
+<p>Veamos la lista de rasters en nuestra locación nuevamente, importemos el raster a R y ploteemos el resultado:</p>
 <pre class="r"><code>execGRASS(&quot;g.list&quot;, parameters = list(type=&quot;all&quot;))</code></pre>
 <pre><code>## r2
 ## r2maj</code></pre>
