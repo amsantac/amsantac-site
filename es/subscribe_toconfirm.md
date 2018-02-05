@@ -14,4 +14,4 @@ date:   2015-09-11 11:02:52
 
 <br>
 
-###[<< regresar al blog](/es/blog.html)
+### [<< regresar al blog](/es/blog.html)

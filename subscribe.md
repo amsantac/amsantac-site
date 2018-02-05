@@ -7,7 +7,7 @@ date:   2015-09-11 11:02:52
 <h2>Subscribe</h2>
 <br>
 <br>
-<span class="byline">Subscribe to my blog and get the <strong>'50 best QGIS plugins of 2016'</strong> ebook and <strong>exclusive content</strong> completely free!</span>
+<span class="byline">Subscribe to my blog and get the <strong>'50 best QGIS plugins of 2017'</strong> ebook and <strong>exclusive content</strong> completely free!</span>
 </header>
 
 <br>

@@ -7,7 +7,7 @@ date:   2015-09-11 11:02:52
 <h2>Suscripción</h2>
 <br>
 <br>
-<span class="byline">Suscríbete a mi blog y obtén la guía con los <strong>'50 mejores plugins de QGIS de 2016'</strong> y <strong>contenido exclusivo</strong> para suscriptores</span>
+<span class="byline">Suscríbete a mi blog y obtén la guía con los <strong>'50 mejores plugins de QGIS de 2017'</strong> y <strong>contenido exclusivo</strong> para suscriptores</span>
 </header>
 
 <br>

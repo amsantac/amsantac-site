@@ -55,7 +55,7 @@ El segundo componente de una aplicación de Shiny se denomina *server* y contien
 ```
   server = function(input, output) {
     
-    # Autenticación OAuth
+    # Autenticacion OAuth
     consumer_key <- readLines("tokens.txt")[1]
     consumer_secret <- readLines("tokens.txt")[2]
     access_token <- readLines("tokens.txt")[3]
