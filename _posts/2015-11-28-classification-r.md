@@ -33,7 +33,7 @@ Now let's import the Landsat image into R as a `RasterBrick` object using the `b
 
 ```
 img <- brick("C:/data/landsat/images/2000/LE70070572000076EDC00/L7007057_20000316_refl")
- names(img) <- c(paste0("B", 1:5, coll = ""), "B7")  
+ names(img) <- paste0("B", c(1:5, 7))  
 ```
 <br>
 
@@ -63,14 +63,20 @@ Now let's extract the pixel values in the training areas for every band in the L
 
 ```
 dfAll = data.frame(matrix(vector(), nrow = 0, ncol = length(names(img)) + 1))   
- for (i in 1:length(unique(trainData[[responseCol]]))){                          
+ for (i in 1:length(unique(trainData[[responseCol]]))){
   category <- unique(trainData[[responseCol]])[i]
   categorymap <- trainData[trainData[[responseCol]] == category,]
   dataSet <- extract(img, categorymap)
   dataSet <- dataSet[!unlist(lapply(dataSet, is.null))]
-  dataSet <- lapply(dataSet, function(x){cbind(x, class = as.numeric(rep(category, nrow(x))))})
-  df <- do.call("rbind", dataSet)
-  dfAll <- rbind(dfAll, df)
+  if(is(trainData, "SpatialPointsDataFrame")){
+    dataSet <- cbind(dataSet, class = as.numeric(category))
+    dfAll <- rbind(dfAll, dataSet)
+  }
+  if(is(trainData, "SpatialPolygonsDataFrame")){
+    dataSet <- lapply(dataSet, function(x){cbind(x, class = as.numeric(rep(category, nrow(x))))})
+    df <- do.call("rbind", dataSet)
+    dfAll <- rbind(dfAll, df)
+  }
 }
 ```
 <br>
@@ -79,7 +85,7 @@ The data frame resulting from working with my data has about 80K rows. It is nec
 
 ```
 nsamples <- 1000
- sdfAll <- subset(dfAll[sample(1:nrow(dfAll), nsamples), ])
+ sdfAll <- dfAll[sample(1:nrow(dfAll), nsamples), ]
 ```
 <br>
 

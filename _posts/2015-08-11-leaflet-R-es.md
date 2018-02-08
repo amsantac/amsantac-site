@@ -44,8 +44,8 @@ llanos <- shapefile("C:/my_dir/llanos.shp")
 En este caso el archivo ha sido leído en R como un objeto de clase [SpatialPolygonsDataFrame] que he llamado `llanos`. Ahora vamos a crear un mapa leaflet usando este objeto para el argumento `data` en la función `leaflet`. Podemos hacer eso en una sola línea de código concatenando varios comandos con el operador `%>%`. Primero creamos un *widget* para un mapa Leaflet (con el comando `leaflet`) y luego adicionamos la capa de referencia de fondo (con `addTiles`), el mapa vectorial como un polígono (`addPolygons`) y una leyenda (`addLegend`).
 
 ```
-leaflet(data = llanos) %>% addTiles() %>% addPolygons(fill = FALSE, stroke = TRUE, color = "#03F") %>% 
-  addLegend("bottomright", colors = "#03F", labels = "Llanos ecoregion")
+leaflet(data = llanos) %>% addTiles() %>% addProviderTiles(providers$OpenStreetMap) %>% 
+  addPolygons(fill = FALSE, stroke = TRUE, color = "#03F") %>% addLegend("bottomright", colors = "#03F", labels = "Llanos ecoregion")
 ```
 <br>
 
@@ -53,7 +53,7 @@ Los argumentos `fill`, `stroke` y `color` permiten personalizar si deseamos rell
 
 <img src="/images/2015-08-11-leaflet-R-fig-1.png" alt="Web map with leaflet" style="width:785px">
 
-Leaflet despliega una capa de [OpenStreetMap (OSM)] por defecto pero puedes usar cualquier servicio proveedor de mapas (e.g., [MapQuest Open], [MapBox], [Bing Maps], etc.) en tanto que aceptes los términos de uso correspondientes. Si lo necesitas puedes revisar la página de ayuda de la función `addTiles` ingresando `?addTiles` en la consola de R.
+Leaflet despliega una capa de [OpenStreetMap (OSM)] por defecto pero puedes usar cualquier servicio proveedor de mapas base (e.g., [MapQuest Open], [MapBox], [Bing Maps], etc.) en tanto que aceptes los términos de uso correspondientes. Si lo necesitas puedes revisar la página de ayuda de la función `addTiles` ingresando `?addTiles` en la consola de R.
 
 Es posible visualizar más de un mapa a la vez con leaflet. Para este ejemplo voy a superponer otro mapa de polígonos que muestra las escenas de [Landsat] que cubren mi área de estudio con base en la [grilla de referencia WRS2]. Importemos este segundo shapefile: 
 
@@ -67,7 +67,7 @@ Como lo hicimos anteriormente, creamos el widget del mapa Leaflet, adicionamos l
 Con respecto a la leyenda, debemos adicionar parejas de valores para los argumentos `colors` y `labels` para los valores correspondientes de las dos capas de mapas. Finalmente, la función `addLayersControl` realiza la adición de controles para la interfaz de usuario para permitir prender y apagar las capas. Debemos ingresar el nombre del grupo al cual pertenece cada capa en el argumento `overlayGroups` y luego debemos definir si deseamos que el control de las capas esté colapsado o no, usando el argumento `options`. El fragmento completo del código lo puedes ver a continuación:
 
 ```
-leaflet() %>% addTiles() %>%   
+leaflet() %>% addTiles() %>% addProviderTiles(providers$OpenStreetMap) %>%   
   addPolygons(data = llanos, fill = FALSE, stroke = TRUE, color = "#03F", group = "Study area") %>% 
   addPolygons(data = wrs2, fill = TRUE, stroke = TRUE, color = "#f93", 
               popup = paste0("Scene: ", as.character(wrs2$PATH_ROW)), group = "Landsat scenes") %>% 
@@ -118,8 +118,8 @@ Eso es todo. Felicitaciones por completar este primer tutorial!
 [rgdal]:                     https://cran.r-project.org/package=rgdal
 [maptools]:                  https://cran.r-project.org/package=maptools
 [shapefiles]:                https://cran.r-project.org/package=shapefiles
-[otros]:                    http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment
+[otros]:                     http://gis.stackexchange.com/questions/118077/read-esri-shape-file-polygon-or-polyline-in-r-environment
 [raster]:                    https://cran.r-project.org/package=raster
-[SpatialPolygonsDataFrame]:  http://www.inside-r.org/packages/cran/sp/docs/as.data.frame.SpatialPolygonsDataFrame
+[SpatialPolygonsDataFrame]:  https://www.rdocumentation.org/packages/sp/versions/1.2-7/topics/SpatialPolygonsDataFrame-class
 [Landsat]:                   http://landsat.usgs.gov/
-[grilla de referencia WRS2]:      http://landsat.usgs.gov/tools_wrs-2_shapefile.php
+[grilla de referencia WRS2]: http://landsat.usgs.gov/tools_wrs-2_shapefile.php

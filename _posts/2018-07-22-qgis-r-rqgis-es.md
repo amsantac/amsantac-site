@@ -138,7 +138,7 @@ params$A  <- shpA
 
 **Nota para usuarios de GRASS:** Si los resultados arrojados por `find_algorithms` no muestran comandos de GRASS, entonces en QGIS ve al menu Processing y haz click en Options... - Providers - GRASS commands y marca la casilla Activate:
 
-<a href="" class="image full"><img src="/images/2018-07-22-qgis-r-rqgis-fig-2.png" alt="Activa GRASS GIS en QGIS" title=""></a>
+<a href="" class="image full"><img src="/images/2018-07-22-qgis-r-rqgis-fig-2.PNG" alt="Activa GRASS GIS en QGIS" title=""></a>
 
 Para verificar la activación busca algoritmos que contengan "contour" como palabra clave. En los resultados deberias ver algoritmos suministrados por GRASS, SAGA y GDAL:
 
