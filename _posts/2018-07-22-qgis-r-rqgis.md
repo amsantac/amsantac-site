@@ -12,7 +12,7 @@ Several people have been asking me how to further integrate R with GIS software 
 
 Thus I have written a couple of posts where I'll introduce some of the most helpful packages recently developed for combining R and QGIS capabilities. In this post I introduce RQGIS En este post presento RQGIS, una herramienta que permite de una manera muy facil hacer uso de mas de 1000 geoalgoritmos de QGIS desde la consola de R.
 
-Furthermore I have prepared an online course that I expect will help people to develop their skills for efficiently analyze spatial data both using the R language as well as by integrating R with free/open source and commercial GIS software. If you're interested, you'll find *the link to access this online course for free* (until December 31, 2018) below in this post, so keep reading!
+Furthermore I have prepared an online course that I expect will help people to develop their skills for efficiently analyze spatial data both by using the R language and by integrating R with free/open source and commercial GIS software. If you're interested, you'll find *the link to access this online course for free* (until December 31, 2018) below in this post, so keep reading!
 
 <!--more-->
 
@@ -134,10 +134,12 @@ params$A  <- shpA
 
 <a href="" class="image full"><img src="/images/2018-07-22-qgis-r-rqgis-fig-1.png" alt="Difference between vector layers using RQGIS" title=""></a>
 
-**Note for GRASS users:** If results retrieved by `find_algorithms` don't show any GRASS commands, then go to the Processing menu in QGIS and click Options... - Providers - GRASS commands and mark the Activate checkbox:
+**Note for GRASS users:** If results retrieved by `find_algorithms` don't show any GRASS commands, in QGIS 3.x go to the Settings menu and click Options..., and in the Processing tab go to Providers - GRASS and mark the Activate checkbox:
 
-<a href="" class="image full"><img src="/images/2018-07-22-qgis-r-rqgis-fig-2.PNG" alt="Activate GRASS GIS in QGIS" title=""></a>
+<a href="" class="image full"><img src="/images/2018-07-22-qgis-r-rqgis-fig-2.png" alt="Activate GRASS GIS in QGIS" title=""></a>
 
+
+(Note: In QGIS 2.x go to the Processing menu and click Options... - Providers - GRASS commands)
 
 To check GRASS activation, search algorithms that contain "contour" as keyword. You should see in the results algorithms provided by GRASS, SAGA and GDAL:
 
@@ -167,6 +169,8 @@ params$INPUT_RASTER  <- "data/AP_26958_FBS_F0060_RT2.dem.tif"
 
 <a href="" class="image full"><img src="/images/2018-07-22-qgis-r-rqgis-fig-3.png" alt="Difference between vector layers using RQGIS" title=""></a>
 
+Link to download data: 
+
 As you can see, the RQGIS package provides an easy-to-use interface for accessing (1000+) geoprocessing modules available in QGIS and third-party providers (such as GRASS, SAGA and GDAL) from the R console. Take a look at the following video tutorial to see it in action:
 
 <iframe width="750" height="422" src="https://www.youtube.com/embed/H_mr2JPxmiY" frameborder="0" allowfullscreen></iframe>
@@ -188,15 +192,4 @@ If you want to develop your skills in processing and analysis geospatial data us
 
 <a id="comments"></a>
 
-[SkyWatch API]: https://github.com/skywatchspaceapps/api
-[SkyWatch]: http://www.skywatch.co/
-[SkyWatchr]: https://cran.r-project.org/package=SkyWatchr
-[CRAN]: https://cran.r-project.org/package=SkyWatchr
-[package repository on GitHub]: https://github.com/amsantac/SkyWatchr
-[package repository]: https://github.com/amsantac/SkyWatchr
-[package documentation]: https://github.com/amsantac/SkyWatchr
-[request an API key]: http://www.skywatch.co/request-access
-[here]: https://amsantac.github.io/SkyWatchr/examples/html_output_example.html
-[Image Classification with RandomForests in R (and QGIS)]: /blog/en/2015/11/28/classification-r.html
-[available datasets]: http://www.skywatch.co/datasets-index
-[install the development version 0.5-1 from GitHub]: https://github.com/amsantac/SkyWatchr 
+[Image Classification with RandomForests in R (and QGIS)]: /blog/en/2015/11/28/classification-r.html 
