@@ -180,7 +180,7 @@ If you have any doubts about how to use pqgisr and particularly how to conduct t
 
 **Get the online course: Analysis of Spatial Data with the R Language** 
 
-If you want to develop your skills in processing and analysis geospatial data using the R language I have prepared an *online course* which will be available for free until December 31, 2018. In this course I first cover the basics of the R language and then introduce the ... (spatial data input/output, R classes and functions for spatial data, integration with GIS software, visualization, etc.) tools that will help you to efficiently xxx common GIS tasks and efficiently solve xxx problems. Here is the access for this *free online course*. Enroll now!
+Update If you want to develop your skills in processing and analysis geospatial data using the R language I have prepared an *online course* which will be available for free until December 31, 2018. In this course I first cover the basics of the R language and then introduce the ... (spatial data input/output, R classes and functions for spatial data, integration with GIS software, visualization, etc.) tools that will help you to efficiently xxx common GIS tasks and efficiently solve xxx problems. Here is the access for this *free online course*. Enroll now!
 
 <br>
 
