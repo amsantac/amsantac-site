@@ -75,7 +75,7 @@ Para las instrucciones que se muestran en seguida asumo que tú simplemente desc
 Una vez hayas descargado pqgisr desde el repositorio, descomprime el archivo y luego carga pqgisr en una sesión de R con el comando `devtools::load_all()` indicando la carpeta descomprimida:
   
 ```r
-devtools::load_all("~/shared/temp/pqgisr-master-871d81c4617bc5b5c1454a8740f472212cd6e33d")
+devtools::load_all("~/Downloads/pqgisr-master-871d81c4617bc5b5c1454a8740f472212cd6e33d")
 ```
 
 <br>
@@ -95,7 +95,7 @@ A continuación podemos cargar capas que van a ser adicionadas al canvas de mapa
 
 ```r
 tiles <- add_tile_layer()
- shp <- add_ogr_layer("../../data/llanos_latlon_col_v3.shp")
+ shp <- add_ogr_layer("data/llanos_latlon_col_v3.shp")
 ```
 
 <br>
@@ -126,7 +126,7 @@ Las capas que ya están cargadas se pueden remover del canvas con la función `r
 
 ```r
 remove_layer(shp)
- shp2 <- add_ogr_layer("../../data/mpios_llanos_col_v3_epsg3117_v1.shp")
+ shp2 <- add_ogr_layer("data/mpios_llanos_col_v3_epsg3117_v1.shp")
  qgis
 ```
 <br>
@@ -137,7 +137,7 @@ En los anteriores ejemplos cargué capas al canvas indicando la ruta del archivo
 
 ```r
 library(raster)
- spdf <- shapefile("../../data/cities.shp")
+ spdf <- shapefile("data/cities.shp")
  shp3 = add_sp_layer(spdf)
  qgis
 ```
@@ -148,7 +148,7 @@ library(raster)
 De otra parte, los archivos raster pueden ser cargados al canvas de mapas usando `add_gdal_layer()`:
   
 ```r
-rst = add_gdal_layer("../../data/mod11a1_2000_4.tif")
+rst = add_gdal_layer("data/mod11a1_2000_4.tif")
  qgis
 ```
 <br>
@@ -159,7 +159,7 @@ A la fecha, la opción 'Change Style' no funciona aún para capas raster. Ten en
   
 ```r
 remove_layer(rst)
- rst2 = add_gdal_layer("../../data/c_2000_2001_1000m_epsg4326_clip_rec_2.rst")
+ rst2 = add_gdal_layer("data/c_2000_2001_1000m_epsg4326_clip_rec_2.rst")
  qgis
 ```
 <br>

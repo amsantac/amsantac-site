@@ -76,7 +76,7 @@ For the instructions below I assume you just downloaded the zipped file which is
 Once you have downloaded pqgisr from its repository, unzip it and then load pqgisr in an R session with the `devtools::load_all()` command pointing to the unzipped folder:
   
 ```r
-devtools::load_all("~/shared/temp/pqgisr-master-871d81c4617bc5b5c1454a8740f472212cd6e33d")
+devtools::load_all("~/Downloads/pqgisr-master-871d81c4617bc5b5c1454a8740f472212cd6e33d")
 ```
 
 <br>
@@ -95,7 +95,7 @@ Next we can load layers that will be added to the QGIS map canvas. For basemaps 
 
 ```r
 tiles <- add_tile_layer()
- shp <- add_ogr_layer("../../data/llanos_latlon_col_v3.shp")
+ shp <- add_ogr_layer("data/llanos_latlon_col_v3.shp")
 ```
 
 <br>
@@ -126,7 +126,7 @@ Already-loaded layers can be removed from the canvas with the `remove_layer()` f
 
 ```r
 remove_layer(shp)
- shp2 <- add_ogr_layer("../../data/mpios_llanos_col_v3_epsg3117_v1.shp")
+ shp2 <- add_ogr_layer("data/mpios_llanos_col_v3_epsg3117_v1.shp")
  qgis
 ```
 <br>
@@ -137,8 +137,8 @@ In the previous examples I loaded layers to the canvas by indicating the file pa
 
 ```r
 library(raster)
- spdf <- shapefile("../../data/cities.shp")
- shp3 = add_sp_layer(spdf)
+ spdf <- shapefile("data/cities.shp")
+ shp3 <- add_sp_layer(spdf)
  qgis
 ```
 <br>
@@ -148,7 +148,7 @@ library(raster)
 On the other hand, raster files can be loaded to the map canvas using `add_gdal_layer()`:
   
 ```r
-rst = add_gdal_layer("../../data/mod11a1_2000_4.tif")
+rst <- add_gdal_layer("data/mod11a1_2000_4.tif")
  qgis
 ```
 <br>
@@ -159,7 +159,7 @@ To this date, the 'Change Style' option does not work for raster layers. Note th
   
 ```r
 remove_layer(rst)
- rst2 = add_gdal_layer("../../data/c_2000_2001_1000m_epsg4326_clip_rec_2.rst")
+ rst2 <- add_gdal_layer("data/c_2000_2001_1000m_epsg4326_clip_rec_2.rst")
  qgis
 ```
 <br>
@@ -174,11 +174,11 @@ If you have any doubts about how to use pqgisr and particularly how to conduct t
 
 <br>
 
-**Subscribe to my YouTube channel!** if you haven't yet. In the next post we'll learn about another R package that allows *remotely* handling the processing and canvas drawing functionalities of QGIS Desktop directly from an R session, so don't miss it! 
+**Subscribe to my YouTube channel!** if you haven't yet. In the next post we'll learn about another R package that allows us to *remotely* control the processing and canvas drawing functionalities of QGIS Desktop directly from an R session, so don't miss it! 
 
 <br>
 
-**Get the online course: Analysis of Spatial Data with the R Language** 
+**Get the FREE online course: ANALYSIS OF SPATIAL DATA WITH THE R LANGUAGE** 
 
 Update If you want to develop your skills in processing and analysis geospatial data using the R language I have prepared an *online course* which will be available for free until December 31, 2018. In this course I first cover the basics of the R language and then introduce the ... (spatial data input/output, R classes and functions for spatial data, integration with GIS software, visualization, etc.) tools that will help you to efficiently xxx common GIS tasks and efficiently solve xxx problems. Here is the access for this *free online course*. Enroll now!
 
