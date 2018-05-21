@@ -95,7 +95,7 @@ Next we can load layers that will be added to the QGIS map canvas. For basemaps 
 
 ```r
 tiles <- add_tile_layer()
- shp <- add_ogr_layer("data/llanos_latlon_col_v3.shp")
+ shp <- add_ogr_layer("data/llanos_latlon_col_v3.shp") 
 ```
 
 <br>
