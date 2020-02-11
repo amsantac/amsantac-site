@@ -10,7 +10,7 @@ date:   2015-09-11 11:02:52
 
 <span class="byline"><strong>Thanks for subscribing!</strong></span>
 
-<span class="byline">You'll receive soon in your email the link to download the <strong>'50 best QGIS plugins of 2017'</strong> ebook.</span>
+<span class="byline">You'll receive soon in your email the link to download the <strong>'50 best QGIS plugins'</strong> ebook.</span>
 
 <span class="byline">If you have any comment or question, <a href="/contact.html">please send me a message</a> and I'll reply as soon as possible.</span>
 
