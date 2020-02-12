@@ -9,7 +9,7 @@ date:   2015-09-11 11:02:52
 <br>
 <span class="byline">Your email address needs to be confirmed.</span>
 
-<span class="byline">To complete the subscription process, please click the link in the email that has been sent to you.</span>
+<span class="byline">To complete the process, please click the link in the email that has been sent to you.</span>
 </header>
 
 <br>
