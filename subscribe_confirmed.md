@@ -4,11 +4,11 @@ title:  "Subscribe to amsantac.co"
 date:   2015-09-11 11:02:52
 ---
 <header>
-<h2>Subscription Confirmed</h2>
+<h2>Email Confirmed</h2>
 <br>
 <br>
 
-<span class="byline"><strong>Thanks for subscribing!</strong></span>
+<span class="byline"><strong>Thanks for your interest in my ebook!</strong></span>
 
 <span class="byline">You'll receive soon in your email the link to download the <strong>'50 best QGIS plugins'</strong> ebook.</span>
 
