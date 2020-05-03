@@ -5,7 +5,7 @@ date:   2015-09-05 11:02:52
 categories: blog en R 
 tags: R RemoteSensing CLASlite stacking landsat
 image: 2015-09-05-stacking-R-mini.png
-published: true
+published: false
 ---
 
 [CLASlite] is a powerful image processing software developed by the [Carnegie Institution for Science] that provides functionality for calibration, pre-processing, atmospheric correction, cloud masking, Monte Carlo Spectral Mixture Analysis and classification. 

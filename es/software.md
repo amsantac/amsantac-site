@@ -12,11 +12,13 @@ date:   2015-09-11 11:02:52
 <h2 style= "color:#1e6bb8">PAQUETES DE R</h2>
 <br>
 
+<!--
 ## El paquete SkyWatchr
 <p></p>
 SkyWatchr es un paquete de R desarrollado para acceder al [API de SkyWatch]. Este API ofrece una fácil búsqueda y descarga de varios datasets climáticos y atmosféricos y de imágenes satelitales, incluyendo Landsat-8, Sentinel-2 y OCO2, entre otros. Con SkyWatchr es posible buscar datasets por parámetros como localización, fecha (o periodo de tiempo), fuente de datos (ya sea sensor o el satélite), máxima cobertura de nubes, máxima resolución espacial, bandas y nivel de procesamiento. Puedes ver un video con la descripción del proceso de instalación y ejemplos de uso en [mi post sobre SkyWatchr]. El paquete se encuentra disponible en [CRAN][SkyWatchr_CRAN] y [GitHub][SkyWatchr_github]. 
 
 <br>
+-->
 
 ## El paquete geospt
 <p></p>

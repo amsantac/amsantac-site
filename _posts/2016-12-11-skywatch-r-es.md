@@ -5,7 +5,7 @@ date        : 2016-12-11 11:02:52
 categories  : blog es
 tags        : R PercepcionRemota landsat API 
 image       : 2016-12-11-skywatch-r-mini.jpg
-published   : true
+published   : false
 ---
 
 Durante las últimas semanas he estado probando un API desarrollado por [SkyWatch] que ofrece un fácil acceso a varios datasets climáticos y atmosféricos y a imágenes satelitales, incluyendo Landsat-8 y Sentinel-2. El [API de SkyWatch] permite buscar datasets por parámetros como fecha, localización, fuente de datos (ya sea sensor o el satélite) o cobertura de nubes, entre otros.

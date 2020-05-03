@@ -5,7 +5,7 @@ date        : 2016-12-11 11:02:52
 categories  : blog en
 tags        : R RemoteSensing landsat API 
 image       : 2016-12-11-skywatch-r-mini.jpg
-published   : true
+published   : false
 ---
 
 During the last weeks I've been testing an API developed by [SkyWatch] that provides easy access to several climate/atmospheric datasets and satellite imagery, including Landsat-8 and Sentinel-2. The [SkyWatch API] allows searching datasets by parameters such as date, location, data source (either the sensor or the satellite itself) or cloud cover, among others.
