@@ -18,7 +18,7 @@ Mis intereses actuales incluyen la percepción remota, la modelación ambiental,
 
 Más acerca de mí? Bien, una de mis frases favoritas es: **También puedes hacer eso con R!** (*Probablemente escucharás eso de mí más de una vez!*)
 
-Si deseas contactarme siéntete libre de enviarme un mensaje. Aquí está [mi página de contacto].
+<!-- Si deseas contactarme siéntete libre de enviarme un mensaje. Aquí está [mi página de contacto]. -->
 
 [(R!)]: http://r-project.org
 [R!]: http://r-project.org

@@ -57,7 +57,7 @@ The Llanos GEE App displays Landsat imagery (Landsat 5 TM, Landsat 7 ETM+ and La
 
 <br>
 
-### *Interested in collaboration for the development of similar software tools? Feel free to [contact me].*
+<!-- ### *Interested in collaboration for the development of similar software tools? Feel free to [contact me].* -->
 
 
 [SkyWatchr_CRAN]: https://cran.r-project.org/package=SkyWatchr

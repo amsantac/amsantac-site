@@ -55,7 +55,7 @@ Esta aplicación muestra imágenes Landsat (Landsat 5 TM, Landsat 7 ETM+ y Lands
 
 <br>
 
-### *Interesado en colaboración para el desarrollo de herramientas de software similares? Escríbeme a través de [mi página de contacto].*
+<!-- ### *Interesado en colaboración para el desarrollo de herramientas de software similares? Escríbeme a través de [mi página de contacto].* -->
 
 
 [SkyWatchr_CRAN]: https://cran.r-project.org/package=SkyWatchr

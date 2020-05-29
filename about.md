@@ -20,7 +20,7 @@ My current interests involve remote sensing, environmental modeling, machine lea
 
 More about me? Well, one of my favorite phrases is: **You can do that with R!** (*You will probably hear that from me more than once!*)
 
-If you want to get in touch, feel free to send me a message! Here's [my contact page].
+<!-- If you want to get in touch, feel free to send me a message! Here's [my contact page]. -->
 
 [(R!)]: http://r-project.org
 [R!]: http://r-project.org
