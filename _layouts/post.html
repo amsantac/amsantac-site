@@ -1,0 +1,74 @@
+---
+layout: page
+---
+
+    <p><em>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %}  {{ page.author }}{% endif %}{% if page.meta %}  {{ page.meta }}{% endif %}</em></p>
+
+
+  <!-- <article> -->
+    {{ content }}
+  <!-- </article> -->
+
+  <br>
+  <p><strong>Share this post: &nbsp;&nbsp;</strong></p>
+  
+  <!-- facebook button -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- g+ button -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
+  <!-- twitter button -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  
+  
+  <div class="social-share">
+    <!--<g:plusone></g:plusone>--> 
+    
+<div class="g-plusone" data-size="medium"></div> <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">Tweet</a>
+<div class="fb-share-button" data-href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" data-layout="button_count" style="vertical-align: top !important;"></div>
+
+    </div>
+  <br>
+  
+  <br>
+  
+  
+  
+  {% include subscribe.html %}
+  
+  
+  
+  <br>
+
+<!--  <h2>Comments Section</h2> -->
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'r-spatialist';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<script>
+$( "pre" ).addClass( "prettyprint lang-r" );
+</script>
+
+<!-- <div> -->
+<!-- </div> -->
+
+<!-- permalink: /blog/:title -->
